@@ -1,0 +1,182 @@
+
+				<div class="x-col l3 x-padding">
+					<div class="xcontainer x-round-large x-padding x-card">
+						<span class="x-large x-text-blue">Profiling</span><br><br>
+						<div class="x-center x-container">
+							<b id="num_profiles" class="x-large x-green x-padding x-round-large"><span class="x-animate-fading">Loading</span></b><br>
+							<i class="x-tiny x-text-grey">(Number of Profiles)</i><br>
+							<hr>
+						</div>
+						<div class="x-container">
+							<b class="x-text-blue">Sex</b><br>
+							<div class="x-padding">
+								<span class="x-tiny x-text-grey">Female <b id="conso_female"><span class="x-animate-fading">Loading</span></b></span><br>
+								<span class="x-tiny x-text-grey">Male <b id="conso_male"><span class="x-animate-fading">Loading</span></b></span><br>
+								<span class="x-tiny x-text-grey">Untagged <b id="conso_untagged"><span class="x-animate-fading">Loading</span></b></span>
+							</div>
+						</div>
+						<div class="x-dropdown-hover">
+							<button class="x-button"><span class="x-text-green fa fa-address-book-o"></span> Areas <i class="fa fa-caret-down"></i></button>
+							<div id="num_area_profile" class="x-dropdown-content x-bar-block">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="x-col l3 x-padding">
+					<div class="x-container x-round-large x-padding x-card">
+						<span class="x-large x-text-orange">Assets</span><br><br>
+						<div class="x-center x-container">
+							<b id="num_assets" class="x-large x-green x-padding x-round-large"><span class="x-animate-fading">Loading</span></b><br>
+							<i class="x-tiny x-text-grey">(Number of Assets encoded)</i><br>
+							<hr>
+						</div>
+						<div id="com_ls" class="x-left x-container"></div>
+					</div>
+				</div>
+				<script type="text/javascript">
+					function dash_conso1(_dataconso1){
+						var drops = "<span class='x-large x-text-green'>Crops</span><br>"
+						var graph_data = []
+						var type_profile = {}
+						var conso_state_profile = {}
+						var conso_Gender_profile = {}
+						println(_dataconso1)
+						$ID('num_profiles').innerHTML = Money(_dataconso1.profiles.length)
+						$ID('num_assets').innerHTML = Money(_dataconso1.assets.length)
+
+						for (const [key, value] of Object.entries(_dataconso1.profiled_assets)) {
+							drops += `<div class="x-dropdown-hover x-container x-round-xlarge x-border-dashed x-border-green" style='margin:1px;'>
+								<span class="">`+key+`</span>
+								<div class="x-dropdown-content x-bar-block">`
+							for (const [key1, value1] of Object.entries(_dataconso1.profiled_assets[key])) {
+								drops +=`<span class="x-leftbar x-border-green x-text-grey x-padding x-bar-item x-tiny">`+key1.replaceAll("_"," ")+' <b>'+value1+`</b></span>`
+							}
+							drops +=`</div></div>`
+						}
+
+						$ID('com_ls').innerHTML = drops
+						for (var i = 0; i < _dataconso1.profiles.length; i++) {
+							if(conso_state_profile[_dataconso1.profiles[i]['State']]==undefined){conso_state_profile[_dataconso1.profiles[i]['State']]=1}
+							else{conso_state_profile[_dataconso1.profiles[i]['State']]= conso_state_profile[_dataconso1.profiles[i]['State']]+ 1}
+
+							if(conso_Gender_profile[_dataconso1.profiles[i]['Gender']]==undefined){conso_Gender_profile[_dataconso1.profiles[i]['Gender']]=1}
+							else{conso_Gender_profile[_dataconso1.profiles[i]['Gender']]= conso_Gender_profile[_dataconso1.profiles[i]['Gender']]+ 1}
+
+							if(type_profile[_dataconso1.profiles[i]['Projects_Farmer_Assigned_To']]==undefined){type_profile[_dataconso1.profiles[i]['Projects_Farmer_Assigned_To']]=1}
+							else{type_profile[_dataconso1.profiles[i]['Projects_Farmer_Assigned_To']]= type_profile[_dataconso1.profiles[i]['Projects_Farmer_Assigned_To']]+ 1}
+						}
+						ALL_DATA["conso"] = {
+							"type_profile":type_profile,
+							"conso_gender_profile":conso_Gender_profile,
+							"conso_state_profile":conso_state_profile,
+						}
+						$ID('conso_male').innerHTML = conso_Gender_profile.MALE
+						$ID('conso_female').innerHTML = conso_Gender_profile.FEMALE
+						$ID('conso_untagged').innerHTML =conso_Gender_profile.null
+						// for (const [key, value] of Object.entries(_dataconso1)) {
+						// 	_dataconso1[key]["crops"] = key
+						// 	graph_data.push(_dataconso1[key])
+						// }
+						// println("-----------------")
+						// println(graph_data)
+								// init_chart01(graph_data)
+					}
+
+					function init_chart01(_data) {
+						var root = am5.Root.new("conso1_chart");
+						root.setThemes([
+							am5themes_Animated.new(root)
+						]);
+						var chart = root.container.children.push(am5xy.XYChart.new(root, {
+							panX: false,
+							panY: false,
+							wheelX: "panX",
+							wheelY: "zoomX",
+							layout: root.verticalLayout
+						}));
+						chart.set("scrollbarX", am5.Scrollbar.new(root, {
+							orientation: "horizontal"
+						}));
+
+						var data = _data
+
+
+						// Create axes
+						// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+						var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+							categoryField: "crops",
+							renderer: am5xy.AxisRendererX.new(root, {}),
+							tooltip: am5.Tooltip.new(root, {})
+						}));
+
+						xAxis.data.setAll(data);
+
+						var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+							min: 0,
+							max: 100,
+							// numberFormat: "#'%'",
+							strictMinMax: true,
+							calculateTotals: true,
+							renderer: am5xy.AxisRendererY.new(root, {})
+						}));
+
+
+						// Add legend
+						// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+						var legend = chart.children.push(am5.Legend.new(root, {
+							centerX: am5.p50,
+							x: am5.p50
+						}));
+
+
+						// Add series
+						// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+						function makeSeries(name, fieldName) {
+							var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+								name: name,
+								stacked: true,
+								xAxis: xAxis,
+								yAxis: yAxis,
+								valueYField: fieldName,
+								valueYShow: "valueYTotalPercent",
+								categoryXField: "crops"
+							}));
+
+							series.columns.template.setAll({
+								tooltipText: "{name}, {categoryX}:{valueYTotalPercent.formatNumber('#.#')}%",
+								tooltipY: am5.percent(10)
+							});
+							series.data.setAll(data);
+
+							// Make stuff animate on load
+							// https://www.amcharts.com/docs/v5/concepts/animations/
+							series.appear();
+
+							series.bullets.push(function () {
+								return am5.Bullet.new(root, {
+									sprite: am5.Label.new(root, {
+										text: "{valueYTotalPercent.formatNumber('#.#')}%",
+										fill: root.interfaceColors.get("alternativeText"),
+										centerY: am5.p50,
+										centerX: am5.p50,
+										populateText: true
+									})
+								});
+							});
+
+							legend.data.push(series);
+						}
+
+						for (var i = 0; i < _data.length; i++) {
+							for (const [key, value] of Object.entries(_data[i])) {
+								if(key != "crops"){
+									makeSeries(key, key.replace("_"," "));
+								}
+							}
+						}
+						chart.appear(1000, 100);
+
+					}; 
+				</script>
+				<!-- <div id="conso1_chart"></div>
+				<span class="x-tiny" id="res"></span> -->

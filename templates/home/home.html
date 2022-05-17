@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	{% include 'head.html' %}
+	<body onload="__init__()">
+		<!-- ---------------- SIDE NAV ------------------------------- -->
+		<!-- <div class="x-sidebar x-bar-block x-light-grey" style="width:15%"> -->
+		<div class="x-sidebar x-bar-block x-light-grey" style="width:15%">
+			<span href="#" class="x-bar-item x-button">
+				<div class="x-col l5">
+					<img src="../static/img/rapidlogo1.jpg" class="x-image">
+				</div>
+				<div class="x-col l7 x-padding">
+					<span class="x-xlarge">MIS</span><br>
+					<span class="x-small">DTI Rapid</span>
+				</div>
+			</span>
+			<a href="#" class="x-text-grey x-padding x-bar-item x-button" onclick="$show_view('dash1','content-dash')"><span class="fa fa-dashboard"></span> Dashboard </a>
+			<a href="#" class="x-text-grey x-padding x-bar-item x-button" onclick="$show_view('content-activities','content-dash')"><span class="fa fa-calendar"></span> Activities </a>
+			<div class="x-dropdown-hover">
+				<button class="x-button x-text-grey "><span class="fa fa-users"></span> Profiles <i class="fa fa-caret-down"></i></button>
+				<div class="x-dropdown-content_ x-bar-block">
+					<a href="#" class="x-text-grey x-padding x-bar-item x-button" onclick="$show_view('profile-farmer','content-dash')">&nbsp;&nbsp;&nbsp;Farmers</a>
+					<a href="#" class="x-text-grey x-padding x-bar-item x-button">&nbsp;&nbsp;&nbsp;Busines</a>
+				</div>
+			</div>
+			<div class="x-dropdown-hover">
+				<button class="x-button x-text-grey "><span class=" fa fa-sticky-note-o"></span> Forms <i class="fa fa-caret-down"></i></button>
+				<div class="x-dropdown-content_ x-bar-block">
+					<a href="#" class="x-text-grey x-padding x-bar-item x-button">&nbsp;&nbsp;&nbsp;Form A</a>
+					<a href="#" class="x-text-grey x-padding x-bar-item x-button">&nbsp;&nbsp;&nbsp;form B</a>
+					<a href="#" class="x-text-grey x-padding x-bar-item x-button">&nbsp;&nbsp;&nbsp;form C</a>
+				</div>
+			</div>
+			<a href="#" class="x-text-grey x-padding x-bar-item x-button"><span class=" fa fa-gear"></span> Settings</a>
+		</div>
+		<div class="" style="margin-left: 15%;">
+			<!-- -------------------------------- HEADER --------------------------w -->
+			<header class="x-header x-blue x-container">
+				<div class="x-left x-padding">
+					<span class="x-xlarge x-padding">Management Information System <span class=" fa fa-dashboard"></span></span>
+				</div>
+				<div class="x-right">
+					<button class="x-button x-bottombar x-border-red"><span class="x-xlarge fa fa-user"></span></button>
+				</div>
+			</header>
+			<!-- -------------------------------------- CONTENT : BODY ---------------------------------- -->
+			<div class="x-container x-row">
+				<div id="dash1" class="x-animate-left content-dash">
+					{% include 'home/dashboard1.html'%}
+				</div>
+				<div id="content-activities" class="x-animate-left content-dash" style="display: none;">
+					{% include 'home/maintenance.html'%}
+				</div>
+				<div id="profile-farmer" class="x-animate-left content-dash" style="display: none;">
+					{% include 'home/farmer-list.html'%}
+				</div>
+			</div>
+
+		</div>
+	</body>
+	<style>
+		#conso1_chart {
+			width: 100%;
+			height: 100vh;
+		}
+	</style>
+	<script type="text/javascript">
+		let ALL_DATA = undefined
+		let ALL_DATA_CONSO = {}
+
+
+		function __init__(){
+			conso()
+		}
+
+		function conso(){
+			$send({
+				action : '/api/conso',
+				method : POST,
+				func : function (res) {
+					ALL_DATA = JSON.parse(res)
+					dash_conso1(ALL_DATA)
+					get_farmer_cards()
+					$show_view('profile-farmer','content-dash')/////////////////////////////
+					
+				}
+			})
+		}
+
+	</script>
+
+
+			
+					<!-- <a href="#" class="x-text-grey x-padding x-bar-item x-button">Form A</a> -->
+					
+				
+</html>

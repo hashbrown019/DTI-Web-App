@@ -1,0 +1,133 @@
+<div class="x-row x-padding">
+	<div class="x-container">
+		<div class="x-container x-left">
+			<span class="x-row x-xxlarge x-text-blue">Profile Lists</span>
+		</div>
+		
+	</div>
+	<div class="x-container">
+		<div class="x-container x-col l3 x-padding x-card">
+			<span class="x-text-blue x-large">Quick Search</span><br>
+			<input class="x-input x-round-large x-border" type="" id="farmer_search_item"><br>
+			<button class="x-btn x-green x-block x-round-large" onclick="get_farmer_cards($ID('farmer_search_item').value)">Search</button>
+		</div>
+		<div class="x-container x-col l3 x-padding x-card">
+			<span class="x-text-blue x-large">Advance Search</span><br>
+		</div>
+	</div>
+	<hr>
+	<div class="x-row">
+		<div class="x-left x-container x-padding">
+			<b class="x-blue x-round-large" style="padding:5px" onclick="prev_page_farmer()">prev</b> - 
+			<span class="x-text-grey x-tiny"><span id="cur_num_farmer"></span>/<span id="total_farmer"></span></span> - 
+			<b class="x-blue x-round-large" style="padding:5px" onclick="next_page_farmer()">next</b>
+		</div>
+		<div class="x-right x-container x-padding">
+			<i id="ls_mode_farmer" class="x-text-grey x-small" style="padding:5px">card mode</i>
+			<b class="x-light-grey x-large x-round-large fa fa-tasks" onclick="change_ls_mode_farmer('table')" style="padding:5px"></b>
+			<b class="x-light-grey x-large x-round-large fa fa-drivers-license-o" onclick="change_ls_mode_farmer('card')" style="padding:5px"></b>
+		</div>
+	</div>
+
+	<div id="farmer-cards" style="max-height: 80vh;overflow-y: scroll;">
+
+	</div>
+</div>
+<script type="text/javascript">
+	var max_ls_farmer = 50
+	var page_ls_farmer = 1
+	var ls_mode_farmer = "card"
+
+	function next_page_farmer(){max_ls_farmer += 50;get_farmer_cards();}
+	function prev_page_farmer(){if(max_ls_farmer-50!=0){max_ls_farmer -= 50;get_farmer_cards();}}
+	function change_ls_mode_farmer(flsmode){ls_mode_farmer = flsmode;$ID('ls_mode_farmer').innerHTML = flsmode.toCamelCase() + ' mode';get_farmer_cards();}
+
+	function get_farmer_cards(search_item){
+		$ID('total_farmer').innerHTML =  ALL_DATA.profiles.length
+		$ID('cur_num_farmer').innerHTML =  max_ls_farmer
+		tfoot_farmer = `</tbody></table>`
+		var thead_farmer = `
+			<table class='x-table x-striped'>
+				<thead class='x-blue x-center'>
+					<th>Farmer Code</th>
+					<th>Farmer name</th>
+					<th>Mobile Number</th>
+					<th>Sex</th>
+					<th>Age</th>
+					<th>Total Assets</th>
+					<th>Registration Date</th>
+					<th>Address</th>
+					<th>Area</th>
+				</thead>
+				<tbody class='x-small' style="max-height: 60vh;overflow-y: scroll;">`
+
+		var farmer_cards = ""
+		var temp_farmer_cards = ""
+		for (var i = 0; i < ALL_DATA.profiles.length; i++) {
+			var farmer = ALL_DATA.profiles[i]
+
+			if(i>=max_ls_farmer-50){
+				if (ls_mode_farmer=="card") {
+					thead_farmer = ""
+					tfoot_farmer = ""
+					temp_farmer_cards =`
+						<div class="x-container x-padding" onclick="selected_farmer_ls('`+farmer['Farmer_Code']+`')">
+							<div class="x-card x-round x-container x-rightbar x-border-blue">
+								<div class="x-col l4">
+									<span class="x-text-grey x-small">Farmer Code : <span class="x-text-black">`+farmer['Farmer_Code']+`</span></span><br>
+									<span class="x-text-grey x-small">Farmer name : <span class="x-text-black">`+farmer['Farmer_Name']+`</span></span><br>
+									<span class="x-text-grey x-small">Mobile Number: <span class="x-text-black">`+farmer['Mobile_Number']+`</span></span><br>
+								</div>
+								<div class="x-col l4">
+									<span class="x-text-grey x-small">Sex : <span class="x-text-black">`+farmer['Gender']+`</span></span> | 
+									<span class="x-text-grey x-small">Age: <span class="x-text-black">`+farmer['Age']+`</span></span><br>
+									<span class="x-text-grey x-small">Total Assets: <span class="x-text-black">`+farmer['Total_Assets']+`</span></span><br>
+									<span class="x-text-grey x-small">Registration Date: <span class="x-text-black">`+farmer['Registration_Date']+`</span></span>
+								</div>
+								<div class="x-col l4">
+									<span class="x-text-grey x-small">Address: <span class="x-text-black">`+farmer['Address']+`</span></span><br>
+									<span class="x-text-grey x-small">Area: <span class="x-text-black">`+farmer['Declared_Area']+`</span></span><br>
+									<span class="x-text-grey x-small">Unit Area: <span class="x-text-black">`+farmer['Declared_Area_Unit']+`</span></span>
+								</div>
+							</div>
+						</div>`
+				}
+				else if (ls_mode_farmer=="table") {
+					temp_farmer_cards =`
+						<tr onclick="selected_farmer_ls('`+farmer['Farmer_Code']+`')">
+							<td>`+farmer['Farmer_Code']+`</td>
+							<td>`+farmer['Farmer_Name']+`</td>
+							<td>`+farmer['Mobile_Number']+`</td>
+							<td>`+farmer['Gender']+`</td>
+							<td>`+farmer['Age']+`</td>
+							<td>`+farmer['Total_Assets']+`</td>
+							<td>`+farmer['Registration_Date']+`</td>
+							<td>`+farmer['Address']+`</td>
+							<td>`+farmer['Declared_Area']+` `+farmer['Declared_Area_Unit']+`</td>
+						</tr>`
+				}
+
+			}
+			if (search_item !=undefined) {
+				var search_arr  = search_item.split(" ")
+				if(search_str_arr(JSON.stringify(farmer),search_arr)){farmer_cards += temp_farmer_cards}
+			}
+			else {
+				farmer_cards += temp_farmer_cards
+				if(i==max_ls_farmer){break}
+			}
+
+		}
+		$ID("farmer-cards").innerHTML = thead_farmer + farmer_cards + tfoot_farmer
+	}
+
+	function selected_farmer_ls(fcode) {
+		for (var i = 0; i < ALL_DATA.assets.length; i++) {
+			if(fcode == ALL_DATA.assets[i].Farmer_Code){
+				println(ALL_DATA.assets[i])
+			}
+		}
+	}
+
+
+</script>

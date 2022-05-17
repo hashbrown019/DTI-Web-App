@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	{% include 'head.html' %}
+	<body>
+		<div id="" class="" style="background-image: url('../static/img/login_bg.jpg');height: 100vh;">
+			<div class="x-container x-col l8 m8 center-bg">&nbsp;
+				<div style="position: absolute;bottom: 0px;">
+					<img src="../static/img/ifad.jpg" class="x-image x-round-large" style="max-width: 5%;">
+					<img src="../static/img/dti.png" class="x-image x-round-large" style="max-width: 5%;">
+					<p>
+						<b class="x-text-white dti-bg-color1">
+							To provide focused, firm-level, value chain-based, and climate-smart assistance and financing program to micro and small businesses,  through  enabling sectoral and trade policies which are designed to provide enhanced access to institutional, regional, and world markets.
+						</b>
+					</p>
+					<br>
+				</div>
+			</div>
+			<div class="x-container x-col l4 m4" style="height: 100vh;">
+				<div class="x-round-large x-white x-padding">
+					<div class="x-container x-center">
+						<img class="x-img" src="../static/img/rapidlogo1.jpg" style="max-width: 50%"><br>
+						<b class=" x-xxlarge dti-text-color1">Login</b>
+					</div>
+					<div class="x-container">
+						<div class="x-row">
+							<span class="x-text-grey">Username</span>
+							<input class="x-input x-border-blue x-border" type="" id="user_name" placeholder="@username01">
+							<span class="x-text-grey">Password</span>
+							<input class="x-input x-border-blue x-border" type="pasword" id="password" placeholder="*******d">
+						</div>
+						<div class="x-row"><br>
+							<div class="x-col l8 m8 s8 x-right-align">
+								<span class="x-text-grey x-small">Don't have an account ? <span class="x-text-blue">click here</span> to request one</span>
+							</div>
+							<div class="x-col l4 m4 s4 x-right-align x-padding">
+								<button class="x-btn x-green x-round-xxlarge" onclick="login()">Login <span class="fa fa-arrow-right"></span></button>
+							</div>
+						</div>
+ 						<br>
+ 						<span>
+ 							<span class="x-text-blue"><span class="fa fa-facebook-square"></span> Facebook</span><br>
+ 							<span class="x-text-blue"><span class="fa fa-twitter-square"></span> Twitter</span>
+ 						</span>
+						<!-- <span class="x-text-grey">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco
+						</span> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		function login(){
+			$send({
+				action : '/login_auth',
+				method : POST,
+				data : $DATA({"user_name":$ID('user_name').value,"password":$ID('password').value}),
+				func : function (res) {
+					println(res)
+				}
+			})
+		}
+	</script>
+</html>
