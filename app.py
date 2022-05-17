@@ -33,5 +33,4 @@ def index():return redirect("/login")
 # 				return redirect('/home')
 # 	pass
 
-
 app.run(host=c.HOST,port=c._PORT,debug=c.IS_DEBUG)
