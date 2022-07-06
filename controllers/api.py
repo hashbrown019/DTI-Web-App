@@ -95,9 +95,22 @@ class _main:
 	# @cross_origin()
 	@app.route("/api/upload_data",methods=["POST","GET"])
 	def upload_data():
-
+		data = request.form['data']
+		f_name = request.form['f_name']
 		response = jsonify({"success":True,"status": "DONE","data":None})
 		# response.headers.add('Access-Control-Allow-Origin', '*')
-		return response
+		f = open(c.RECORDS+"/profiles/form_a/"+ f_name+".json", "w")
+		f.write(data)
+		f.close
+		return f_name
+
+
+
+	# @cross_origin()
+	@app.route("/api/test")
+	def test():
+		print(request.get_json())
+		# response.headers.add('Access-Control-Allow-Origin', '*')
+		return "Test Complete | Data base Used : "+ SQLITE_DB
 
 

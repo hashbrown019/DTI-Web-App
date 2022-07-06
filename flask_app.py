@@ -1,5 +1,6 @@
 import Configurations as c
 c.SQLITE_DB = c.SQLITE_DB_SERVER
+c.RECORDS = c.RECORDS_SERVER
 
 from flask import Flask, session, jsonify, request, redirect
 from flask_cors import CORS,cross_origin
