@@ -88,3 +88,9 @@ class _main:
 		return jsonify({"success":True,"status": "DONE","data":sql_res})
 
 
+	@app.route("/api/upload_data",methods=["POST","GET"])
+	@cross_origin()
+	def upload_data():
+		return jsonify({"success":True,"status": "DONE","data":None})
+
+
