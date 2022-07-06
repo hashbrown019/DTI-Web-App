@@ -7,7 +7,7 @@ IS_DEBUG = True
 
 SQLITE_DB_LOCAL = "assets/DB/dti_rapidxi.db"
 SQLITE_DB_SERVER = "/home/crisnotbrown/DTI-Web-App/assets/DB/dti_rapidxi.db"
-SQLITE_DB = None
+SQLITE_DB = "none"
 # --- DATABASE---- #
 
 LOCAL_PORT=3306

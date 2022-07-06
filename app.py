@@ -1,5 +1,7 @@
-from flask import Flask, session, jsonify, request, redirect
 import Configurations as c
+c.SQLITE_DB = c.SQLITE_DB_LOCAL
+
+from flask import Flask, session, jsonify, request, redirect
 from flask_cors import CORS,cross_origin
 
 from views import login
@@ -7,7 +9,6 @@ from views import home
 from controllers import api
 # import sms_main as gsm
 c.PORT = 80
-c.SQLITE_DB = c.SQLITE_DB_LOCAL
 
 app = Flask(__name__)
 app.config["JSONIFY_PRETTYPRINT_REGULAR"] = True
