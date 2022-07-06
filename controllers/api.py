@@ -64,7 +64,7 @@ class _main:
 		# return str(_conso)
 
 
-	# @cross_origin()
+	@cross_origin()
 	@app.route("/api/user_register",methods=["POST","GET"])
 	def user_register():
 		reg_form = request.get_json()
@@ -78,19 +78,26 @@ class _main:
 		sql = "INSERT INTO `users`({}) VALUES ({})".format(row_name[:-1],row_value[:-1])
 		sql_response = rapid.do(sql)
 		print(sql)
-		return jsonify({"success":True,"status": "DONE","sql_response":sql_response})
+		response = jsonify({"success":True,"status": "DONE","sql_response":sql_response})
+		# response.headers.add('Access-Control-Allow-Origin', '*')
+		return response
 
-	@app.route("/api/login",methods=["POST","GET"])
 	@cross_origin()
+	@app.route("/api/login",methods=["POST","GET"])
 	def login():
 		login_form = request.get_json()
 		sql_res = rapid.select("SELECT * FROM `users` WHERE `username`='{}' and `password`='{}';".format(login_form["username"],login_form["password"]))
-		return jsonify({"success":True,"status": "DONE","data":sql_res})
+		response = jsonify({"success":True,"status": "DONE","data":sql_res})
+		response.headers.add('Access-Control-Allow-Origin', '*')
+		return response
 
 
-	@app.route("/api/upload_data",methods=["POST","GET"])
 	@cross_origin()
+	@app.route("/api/upload_data",methods=["POST","GET"])
 	def upload_data():
-		return jsonify({"success":True,"status": "DONE","data":None})
+
+		response = jsonify({"success":True,"status": "DONE","data":None})
+		# response.headers.add('Access-Control-Allow-Origin', '*')
+		return response
 
 
