@@ -7,6 +7,7 @@ from views import home
 from controllers import api
 # import sms_main as gsm
 c.PORT = 80
+c.SQLITE_DB = c.SQLITE_DB_SERVER
 
 app = Flask(__name__)
 app.config["JSONIFY_PRETTYPRINT_REGULAR"] = True
