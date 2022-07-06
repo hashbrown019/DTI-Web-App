@@ -21,16 +21,3 @@ app.register_blueprint(api.app)
 
 @app.route("/")
 def index():return redirect("/login")
-
-# @app.before_request
-# def before_request():
-# 	if( request.endpoint != "static" and "Handshake" not in str(request.endpoint).split(".")):
-# 		if "USER_DATA" not in session:
-# 			if(request.endpoint != "login.login"):
-# 				return redirect('/login')
-# 		else:
-# 			if(request.endpoint == "login.login"):
-# 				return redirect('/home')
-# 	pass
-
-app.run(host=c.HOST,port=c._PORT,debug=c.IS_DEBUG)

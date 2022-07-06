@@ -26,11 +26,14 @@
 			<div class="x-dropdown-hover">
 				<button class="x-button x-text-grey "><span class=" fa fa-sticky-note-o"></span> Forms <i class="fa fa-caret-down"></i></button>
 				<div class="x-dropdown-content_ x-bar-block">
-					<a href="#" class="x-text-grey x-padding x-bar-item x-button">&nbsp;&nbsp;&nbsp;Form A</a>
+					<a href="#" class="x-text-grey x-padding x-bar-item x-button" onclick="$show_view('forms-a','content-dash')">&nbsp;&nbsp;&nbsp;Form A</a>
 					<a href="#" class="x-text-grey x-padding x-bar-item x-button">&nbsp;&nbsp;&nbsp;form B</a>
 					<a href="#" class="x-text-grey x-padding x-bar-item x-button">&nbsp;&nbsp;&nbsp;form C</a>
 				</div>
 			</div>
+			<a href="#" class="x-text-grey x-padding x-bar-item x-button"><span class=" fa fa-gear"></span> FMI</a>
+			<a href="#" class="x-text-grey x-padding x-bar-item x-button"><span class=" fa fa-gear"></span> Fund Tracker</a>
+			<hr>
 			<a href="#" class="x-text-grey x-padding x-bar-item x-button"><span class=" fa fa-gear"></span> Settings</a>
 		</div>
 		<div class="" style="margin-left: 15%;">
@@ -53,6 +56,9 @@
 				</div>
 				<div id="profile-farmer" class="x-animate-left content-dash" style="display: none;">
 					{% include 'home/farmer-list.html'%}
+				</div>
+				<div id="forms-a" class="x-animate-left content-dash" style="display: none;">
+					{% include 'home/forms/a.html'%}
 				</div>
 			</div>
 

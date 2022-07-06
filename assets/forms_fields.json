@@ -1,0 +1,21 @@
+{
+	"form_1":[
+		{
+			"name": "project_name",
+			"group" "address"
+			"label": "Project Name",
+			"type" : "select",
+			"sub-type" : "select",
+			"options" : "_project_name",
+			"value" : "",
+			"sub-input" : [],
+			"display" : "block",
+			"col" : "1",					//
+			"data" : "1",					// Data that will be use for selecting Ex: advance search
+			"auto_fill":{
+				"if" : "",					//input:selected = if value is true selected. auto fill with data
+				"data": ""					//data that will auto fill the field name name
+			}
+		}
+	]
+}
