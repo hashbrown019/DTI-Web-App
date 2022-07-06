@@ -11,10 +11,12 @@ class sqlite:
 		print(self)
 		conn = None
 		try:
+			print("----------- SQLITE INITIALIZATION STARTED -----------")
 			conn = sqlite3.connect(self.database)
+			print("<<<<<<<<< SQLITE INITIALIZATION COMPLETE <<<<<<<<<")
 		except Exception as e:
 			print(e)
-			print("======== ERROR IN SQLITE INITIALIZATION  ========")
+			print("xxxxxxxx ERROR IN SQLITE INITIALIZATION  xxxxxxxx")
 		return conn
 
 	def do(self,sql):
