@@ -14,6 +14,7 @@ class sqlite:
 			conn = sqlite3.connect(self.database)
 		except Exception as e:
 			print(e)
+			print("======== ERROR IN SQLITE INITIALIZATION  ========")
 		return conn
 
 	def do(self,sql):
