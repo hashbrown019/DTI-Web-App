@@ -28,7 +28,8 @@ class sqlite:
 
 	def select(self,sql):
 		conn = sqlite.init_db(self)
-		cur = conn.cursor(dictionary=True)
+		conn.row_factory = sqlite.dict_factory
+		cur = conn.cursor()
 		cur.execute(sql)
 		rows = cur.fetchall()
 		return rows
