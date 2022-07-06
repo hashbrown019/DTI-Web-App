@@ -5,7 +5,7 @@ PORT = 5000
 _PORT = 5000
 IS_DEBUG = True
 
-SQLITE_DB = "assets/db/dti_rapidxi.db"
+SQLITE_DB = "/home/crisnotbrown/DTI-Web-App/assets/DB"
 # --- DATABASE---- #
 
 LOCAL_PORT=3306
