@@ -64,7 +64,7 @@ class _main:
 		# return str(_conso)
 
 
-	@cross_origin()
+	# @cross_origin()
 	@app.route("/api/user_register",methods=["POST","GET"])
 	def user_register():
 		reg_form = request.get_json()
@@ -82,17 +82,17 @@ class _main:
 		# response.headers.add('Access-Control-Allow-Origin', '*')
 		return response
 
-	@cross_origin()
+	# @cross_origin()
 	@app.route("/api/login",methods=["POST","GET"])
 	def login():
 		login_form = request.get_json()
 		sql_res = rapid.select("SELECT * FROM `users` WHERE `username`='{}' and `password`='{}';".format(login_form["username"],login_form["password"]))
 		response = jsonify({"success":True,"status": "DONE","data":sql_res})
-		response.headers.add('Access-Control-Allow-Origin', '*')
+		# response.headers.add('Access-Control-Allow-Origin', '*')
 		return response
 
 
-	@cross_origin()
+	# @cross_origin()
 	@app.route("/api/upload_data",methods=["POST","GET"])
 	def upload_data():
 
