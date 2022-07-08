@@ -49,7 +49,7 @@
 			<!-- -------------------------------------- CONTENT : BODY ---------------------------------- -->
 			<div class="x-container x-row">
 				<div id="dash1" class="x-animate-left content-dash">
-					{% include 'home/dashboard1.html'%}
+					{% include 'home/dashboard2.html'%}
 				</div>
 				<div id="content-activities" class="x-animate-left content-dash" style="display: none;">
 					{% include 'home/maintenance.html'%}
@@ -85,9 +85,9 @@
 				method : POST,
 				func : function (res) {
 					ALL_DATA = JSON.parse(res)
-					dash_conso1(ALL_DATA)
-					get_farmer_cards()
-					$show_view('profile-farmer','content-dash')/////////////////////////////
+					// dash_conso1(ALL_DATA)
+					// get_farmer_cards()
+					// $show_view('profile-farmer','content-dash')/////////////////////////////
 					
 				}
 			})

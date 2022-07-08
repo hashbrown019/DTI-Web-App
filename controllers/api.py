@@ -20,6 +20,16 @@ class _main:
 		super(_main, self).__init__()
 		self.arg = arg
 
+
+	# @cross_origin()
+	@app.route("/api/test")
+	@app.route("/api")
+	def test():
+		print(request.get_json())
+		# response.headers.add('Access-Control-Allow-Origin', '*')
+		return "Test Complete | Data base Used : "+ SQLITE_DB
+
+
 	@app.route("/api/index",methods=["POST","GET"])
 	def api_index():
 		return "api"
@@ -98,19 +108,26 @@ class _main:
 		data = request.form['data']
 		f_name = request.form['f_name']
 		response = jsonify({"success":True,"status": "DONE","data":None})
+		FARMER_ID = f_name.split("@")
 		# response.headers.add('Access-Control-Allow-Origin', '*')
-		f = open(c.RECORDS+"/profiles/form_a/"+ f_name+".json", "w")
-		f.write(data)
-		f.close
+		try:
+			old_data = open(c.RECORDS+"/profiles/form_a/"+ FARMER_ID[0]+".json", "r");
+			old_data_read = old_data.read()
+			old_data.close()
+		except Exception as e:
+			old_data_read = "{}"
+			# f = open(c.RECORDS+"/profiles/form_a/"+ FARMER_ID[0]+".json", "w")
+			# f.write(json.dumps({}))
+			# f.close()
+			# raise e
+		
+
+		old_data_read = json.loads(old_data_read)
+		old_data_read[FARMER_ID[1]] = json.loads(data)
+
+		print(FARMER_ID[1])
+		f = open(c.RECORDS+"/profiles/form_a/"+ FARMER_ID[0]+".json", "w")
+		f.write(json.dumps(old_data_read))
+		f.close()
 		return f_name
-
-
-
-	# @cross_origin()
-	@app.route("/api/test")
-	def test():
-		print(request.get_json())
-		# response.headers.add('Access-Control-Allow-Origin', '*')
-		return "Test Complete | Data base Used : "+ SQLITE_DB
-
 
