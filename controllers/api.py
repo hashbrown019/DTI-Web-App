@@ -22,12 +22,14 @@ class _main:
 
 
 	# @cross_origin()
-	@app.route("/api/test")
-	@app.route("/api")
+	@app.route("/api/test",methods=["POST","GET"])
+	@app.route("/api",methods=["POST","GET"])
 	def test():
-		print(request.get_json())
+		# print(request.get_json())
+		# client_version = request.form['']
+		print(dict(request.headers))
 		# response.headers.add('Access-Control-Allow-Origin', '*')
-		return "Test Complete | Data base Used : "+ SQLITE_DB
+		return "Test Complete | Data base Used : "+ c.SQLITE_DB
 
 
 	@app.route("/api/index",methods=["POST","GET"])
@@ -121,9 +123,14 @@ class _main:
 			# f.close()
 			# raise e
 		
-
-		old_data_read = json.loads(old_data_read)
-		old_data_read[FARMER_ID[1]] = json.loads(data)
+		print(type(old_data_read))
+		try:
+			old_data_read = json.loads(old_data_read)
+			old_data_read[FARMER_ID[1]] = json.loads(data)
+		except Exception as e:
+			# raise e
+			print(" * ERROR IN FORM : "+FARMER_ID[1])
+			return f_name
 
 		print(FARMER_ID[1])
 		f = open(c.RECORDS+"/profiles/form_a/"+ FARMER_ID[0]+".json", "w")
