@@ -174,11 +174,11 @@ class _main:
 		shh =  _cont["tests"]
 		print(tests)
 		acd = dict({
-					"_AA":0,
-					"_IA":0,
-					"_PEA":0,
-					"_SA":0
-				})
+			"_AA":0,
+			"_IA":0,
+			"_PEA":0,
+			"_SA":0
+		})
 
 		for kkk in tests:
 			try:
@@ -205,10 +205,10 @@ class _main:
 		gas = ((acd["_AA"] + acd["_SA"])/gran_total )* 100
 
 		acd = {
-			"_humss":humms,
-			"_stem":stem,
-			"_abm":abm,
-			"_gas":gas,
+			"_humss":math.ceil(humms),
+			"_stem":math.ceil(stem),
+			"_abm":math.ceil(abm),
+			"_gas":math.ceil(gas),
 		}
 		return jsonify(acd)
 
