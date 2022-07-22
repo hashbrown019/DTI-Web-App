@@ -1,67 +1,82 @@
 <!DOCTYPE html>
 <html>
 	{% include 'head.html' %}
-	<body onload="__init__()">
-		<!-- ---------------- SIDE NAV ------------------------------- -->
-		<!-- <div class="x-sidebar x-bar-block x-light-grey" style="width:15%"> -->
-		<div class="x-sidebar x-bar-block x-light-grey" style="width:15%">
-			<span href="#" class="x-bar-item x-button">
-				<div class="x-col l5">
-					<img src="../static/img/rapidlogo1.jpg" class="x-image">
+	<body class="x-light-grey" onload="__init__()">
+		<header class="x-white x-container x-border" style="padding-left: 10%;padding-right: 10%;">
+			<div class="">
+				<div class="x-container x-col l6 ">
+					<img src="../static/img/rapidlogo1.jpg" class="x-image" style="max-width: 10%;">
 				</div>
-				<div class="x-col l7 x-padding">
-					<span class="x-xlarge">MIS</span><br>
-					<span class="x-small">DTI Rapid</span>
+				<div class="x-container x-padding-large x-col l6 ">
+					<div class="x-container">
+						<img src="../static/img/user.png" class="x-img x-circle x-right" style="max-width:7%">
+						<span class="x-container x-right">
+							<button class="x-btn x-border x-round"> <span class="x-text-red fa fa-power-off"></span> Logout</button>
+							<button class="x-btn x-border x-round"> <span class="x-text-yellow fa fa-cog"></span> Settings</button>
+						</span>
+					</div>
 				</div>
+			</div>
+		</header>
+		<header class="x-white x-container" style="padding-left: 10%;padding-right: 10%;">
+			<span class="">
+				<button class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(0)">
+					<b class="x-text-teal fa fa-home"></b>&nbsp;&nbsp; Home
+				</button>
+				<button class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(1)">
+					<b class="x-text-teal fa fa-users"></b>&nbsp;&nbsp; Profiling
+				</button>
+				<button class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(2)">
+					<b class="x-text-teal fa fa-map-signs"></b>&nbsp;&nbsp; FMI
+				</button>
+				<button class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(3)">
+					<b class="x-text-teal fa fa-calendar-check-o"></b>&nbsp;&nbsp; Activities
+				</button>
+				<button class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(4)">
+					<b class="x-text-teal fa fa-money"></b>&nbsp;&nbsp; Fund Tracker
+				</button>
+				<button class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(5)">
+					<b class="x-text-teal fa fa-book"></b>&nbsp;&nbsp; Documents
+				</button>
+				<button class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(6)">
+					<b class="x-text-teal fa fa-newspaper-o"></b>&nbsp;&nbsp; Newsletters
+				</button>
 			</span>
-			<a href="#" class="x-text-grey x-padding x-bar-item x-button" onclick="$show_view('dash1','content-dash')"><span class="fa fa-dashboard"></span> Dashboard </a>
-			<a href="#" class="x-text-grey x-padding x-bar-item x-button" onclick="$show_view('content-activities','content-dash')"><span class="fa fa-calendar"></span> Activities </a>
-			<div class="x-dropdown-hover">
-				<button class="x-button x-text-grey "><span class="fa fa-users"></span> Profiles <i class="fa fa-caret-down"></i></button>
-				<div class="x-dropdown-content_ x-bar-block">
-					<a href="#" class="x-text-grey x-padding x-bar-item x-button" onclick="$show_view('profile-farmer','content-dash')">&nbsp;&nbsp;&nbsp;Farmers</a>
-					<a href="#" class="x-text-grey x-padding x-bar-item x-button">&nbsp;&nbsp;&nbsp;Busines</a>
-				</div>
-			</div>
-			<div class="x-dropdown-hover">
-				<button class="x-button x-text-grey "><span class=" fa fa-sticky-note-o"></span> Forms <i class="fa fa-caret-down"></i></button>
-				<div class="x-dropdown-content_ x-bar-block">
-					<a href="#" class="x-text-grey x-padding x-bar-item x-button" onclick="$show_view('forms-a','content-dash')">&nbsp;&nbsp;&nbsp;Form A</a>
-					<a href="#" class="x-text-grey x-padding x-bar-item x-button">&nbsp;&nbsp;&nbsp;form B</a>
-					<a href="#" class="x-text-grey x-padding x-bar-item x-button">&nbsp;&nbsp;&nbsp;form C</a>
-				</div>
-			</div>
-			<a href="#" class="x-text-grey x-padding x-bar-item x-button"><span class=" fa fa-gear"></span> FMI</a>
-			<a href="#" class="x-text-grey x-padding x-bar-item x-button"><span class=" fa fa-gear"></span> Fund Tracker</a>
-			<hr>
-			<a href="#" class="x-text-grey x-padding x-bar-item x-button"><span class=" fa fa-gear"></span> Settings</a>
-		</div>
-		<div class="" style="margin-left: 15%;">
-			<!-- -------------------------------- HEADER --------------------------w -->
-			<header class="x-header x-blue x-container">
-				<div class="x-left x-padding">
-					<span class="x-xlarge x-padding">Management Information System <span class=" fa fa-dashboard"></span></span>
-				</div>
-				<div class="x-right">
-					<button class="x-button x-bottombar x-border-red"><span class="x-xlarge fa fa-user"></span></button>
-				</div>
-			</header>
-			<!-- -------------------------------------- CONTENT : BODY ---------------------------------- -->
-			<div class="x-container x-row">
-				<div id="dash1" class="x-animate-left content-dash">
-					{% include 'home/dashboard2.html'%}
-				</div>
-				<div id="content-activities" class="x-animate-left content-dash" style="display: none;">
-					{% include 'home/maintenance.html'%}
-				</div>
-				<div id="profile-farmer" class="x-animate-left content-dash" style="display: none;">
-					{% include 'home/farmer-list.html'%}
-				</div>
-				<div id="forms-a" class="x-animate-left content-dash" style="display: none;">
-					{% include 'home/forms/a.html'%}
-				</div>
-			</div>
+			<span class="x-right x-padding">
+				<input style="width: 25%;" onkeyup="" class="x-padding x-right x-center x-input x-animate-input x-border x-round-xxlarge" placeholder="&#128269;" type="" name="">
+			</span>
+		</header>
+		<br>
 
+		 <!-- CONTENT BODY ---------------------------------------- -->
+		<div class="x-container"  style="padding-left: 10%;padding-right: 10%;">
+			<div class="body_content x-padding x-round" style="display:block;">
+				{% include 'home/dashboard1.html' %}
+				{% include 'home/maintenance.html' %}
+			</div>
+			<div class="body_content x-padding x-round" style="display:none;">
+				{% include 'home/profiling.html' %}
+			</div>
+			<div class="body_content x-padding x-round" style="display:none;">
+				{% include 'home/fmi.html' %}
+				{% include 'home/maintenance.html' %}
+			</div>
+			<div class="body_content x-padding x-round" style="display:none;">
+				{% include 'home/activities.html' %}
+				{% include 'home/maintenance.html' %}
+			</div>
+			<div class="body_content x-padding x-round" style="display:none;">
+				{% include 'home/fund_tracker.html' %}
+				{% include 'home/maintenance.html' %}
+			</div>
+			<div class="body_content x-padding x-round" style="display:none;">
+				{% include 'home/documents.html' %}
+				{% include 'home/maintenance.html' %}
+			</div>
+			<div class="body_content x-padding x-round" style="display:none;">
+				{% include 'home/newsletters.html' %}		
+				{% include 'home/maintenance.html' %}
+			</div>
 		</div>
 	</body>
 	<style>
@@ -76,7 +91,9 @@
 
 
 		function __init__(){
-			conso()
+			// conso()
+			var tab_id = (window.location.href).split("#")[1]
+			go_tab(parseInt(tab_id))
 		}
 
 		function conso(){
@@ -93,11 +110,19 @@
 			})
 		}
 
-	</script>
+		function go_tab(_index){
+			var tabs = $CLASS("top_tab")
+			var body_content = $CLASS("body_content")  // FOR BODY CONTENT
+			for (var i = 0; i < tabs.length; i++) {
+				tabs[i].classList.remove("x-bottombar","x-border-teal")
+				body_content[i].style.display = "none"  // FOR BODY CONTENT
+			}
+			tabs[_index].classList.add("x-bottombar","x-border-teal")
+			body_content[_index].style.display = "block" // FOR BODY CONTENT
 
+			redirectto("#"+_index)
 
-			
-					<!-- <a href="#" class="x-text-grey x-padding x-bar-item x-button">Form A</a> -->
-					
-				
+		}
+		
+	</script>	
 </html>

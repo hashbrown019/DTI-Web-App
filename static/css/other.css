@@ -1,3 +1,8 @@
+span,p,b,body,div{
+	font-stretch: extra-condensed;
+	font-family: sans-serif, "Helvetica Neue", "Lucida Grande", Arial;
+}
+
 #myInput:focus {outline: 3px solid #ddd;}
 .dropdown {position: relative;display: inline-block;}
 .dropbtn:hover, .dropbtn:focus {background-color: #3e8e41;}

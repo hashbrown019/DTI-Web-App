@@ -20,16 +20,36 @@ class _main:
 		super(_main, self).__init__()
 		self.arg = arg
 
+	# @cross_origin()
+	@app.route("/list_all_profile",methods=["POST","GET"])
+	def list_all_profile():
+		res = []
+		dir_path = c.RECORDS+"/profiles/form_a/"
+		for path in os.listdir(dir_path):
+			if os.path.isfile(os.path.join(dir_path, path)):
+				res.append(path)
+		return jsonify(res)
+
+
+	# 5wOTPKoKHnQBAdswHkFmrBIIcUJcqfEUq7k1LjqK5tMAjCTDanNxzC8AXP7p1esGEVa1Zv6xeoEn.json
+	# @cross_origin()
+	@app.route("/get_profile",methods=["POST","GET"])
+	def get_profile():
+		FILE = request.form["profile_file_name"]
+		f = open(c.RECORDS+"/profiles/form_a/"+ FILE, "r")
+		res = json.loads(f.read())
+		f.close()
+		return jsonify(res)
 
 	# @cross_origin()
 	@app.route("/api/test",methods=["POST","GET"])
 	@app.route("/api",methods=["POST","GET"])
 	def test():
-		# print(request.get_json())
-		# client_version = request.form['']
-		print(dict(request.headers))
-		# response.headers.add('Access-Control-Allow-Origin', '*')
-		return "Test Complete | Data base Used : "+ c.SQLITE_DB
+		# print(dict(request.headers))
+		resp = {}
+		resp = rapid.select("SELECT * FROM `SYSTEM_SETTINGS`;")
+		resp[0]["DATABASE_PATH_WEB"] = c.SQLITE_DB
+		return jsonify(resp)
 
 
 	@app.route("/api/index",methods=["POST","GET"])
@@ -137,4 +157,23 @@ class _main:
 		f.write(json.dumps(old_data_read))
 		f.close()
 		return f_name
+
+
+	# @cross_origin()
+	@app.route("/api/res",methods=["POST","GET"])
+	def res():
+		content = request.form["DATA"]
+		_cont = json.loads(content)
+		print(_cont)
+
+		tests = _cont
+
+
+		acd = {
+			"_humss":0,
+			"_stem":12,
+			"_abm":0,
+			"_gas":0,
+		}
+		return jsonify(acd)
 

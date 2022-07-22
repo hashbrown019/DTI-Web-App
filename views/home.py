@@ -17,4 +17,9 @@ class _main:
 
 	@app.route("/home",methods=["POST","GET"])
 	def home():
+		return redirect("/homepage#0")
+
+
+	@app.route("/homepage",methods=["POST","GET"])
+	def homepage():
 		return render_template("home/home.html")
