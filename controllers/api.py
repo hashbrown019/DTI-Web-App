@@ -162,18 +162,54 @@ class _main:
 	# @cross_origin()
 	@app.route("/api/res",methods=["POST","GET"])
 	def res():
+		_AA = [3,6,10,13,17,19,21,23,26,28,29,37,39,42,48,50,52,55,56,62,64,65]
+		_IA = [16,31,32,34,41,45,47,57,58,59,60]
+		_PEA= [2,5,7,11,12,15,20,22,24,25,27,30,33,36,38,43,49,51,53]
+		_SA = [1,4,8,9,14,18,35,40,44,46,54,61,63]
+
 		content = request.form["DATA"]
 		_cont = json.loads(content)
-		print(_cont)
+		# print(_cont)
+		tests = _cont["tests"].keys()
+		shh =  _cont["tests"]
+		print(tests)
+		acd = dict({
+					"_AA":0,
+					"_IA":0,
+					"_PEA":0,
+					"_SA":0
+				})
 
-		tests = _cont
+		for kkk in tests:
+			try:
+				if(kkk.split("_")[1] in _AA): pass
+			except Exception as e:
+				print("SKIPPING ITEM : {}".format(e))
+				continue
+				# raise e
+			if(int(kkk.split("_")[1]) in _AA):					
+				acd["_AA"] = acd["_AA"] + int(shh[kkk]);print("_AA")
+			elif(int(kkk.split("_")[1]) in _IA):				
+				acd["_IA"] = acd["_IA"] + int(shh[kkk]);print("IA")
+			elif(int(kkk.split("_")[1]) in _PEA):				
+				acd["_PEA"] = acd["_PEA"] + int(shh[kkk]);print("_PEA")
+			elif(int(kkk.split("_")[1]) in _SA):				
+				acd["_SA"] = acd["_SA"] + int(shh[kkk]);print("_SA")
 
+		print(acd)
+		gran_total = acd["_SA"] + acd["_PEA"] +acd["_IA"] +acd["_AA"]
+
+		humms = ((acd["_PEA"] + acd["_SA"])/gran_total )* 100
+		stem = ((acd["_AA"] + acd["_IA"])/gran_total )* 100
+		abm = ((acd["_IA"] +acd["_SA"])/gran_total )* 100
+		gas = ((acd["_AA"] + acd["_SA"])/gran_total )* 100
 
 		acd = {
-			"_humss":0,
-			"_stem":12,
-			"_abm":0,
-			"_gas":0,
+			"_humss":humms,
+			"_stem":stem,
+			"_abm":abm,
+			"_gas":gas,
 		}
 		return jsonify(acd)
+
 
