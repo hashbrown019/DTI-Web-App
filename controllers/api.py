@@ -159,6 +159,27 @@ class _main:
 		return f_name
 
 
+	@app.route("/api/sql_test",methods=["POST","GET"])
+	def sql_test():
+		_file = open("assets/records/fo.json",'r')
+		cont_ = json.loads(_file.read())
+		_file.close()
+		for key1 in cont_:
+			for key2 in cont_[key1]:
+				for fo in cont_[key1][key2]:
+					print("{} : {} -- {}".format(key1,key2,fo))
+					rapid.do('''
+						INSERT INTO 
+							`fo_list`
+							(`fo_name`,`pcu`, `rcu` ) 
+						VALUES
+							("{}","{}","{}");
+					'''.format(key1,key2,fo))
+		return jsonify(cont_)
+
+
+
+	# =============================================================================================
 	# @cross_origin()
 	@app.route("/api/res",methods=["POST","GET"])
 	def res():
@@ -211,5 +232,3 @@ class _main:
 			"_gas":math.ceil(gas),
 		}
 		return jsonify(acd)
-
-
