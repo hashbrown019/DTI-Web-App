@@ -9,10 +9,8 @@ from flask_cors import CORS,cross_origin
 app = Blueprint("api",__name__)
 cors = CORS(app)
 
-# rapid = sqlite
 rapid= sqlite(c.SQLITE_DB)
 # rapid = mysql(c.LOCAL_HOST,c.LOCAL_USER,c.LOCAL_PASSWORD,c.LOCAL_DATABASE)
-
 farm_details = None
 
 class _main:

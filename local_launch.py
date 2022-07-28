@@ -1,7 +1,7 @@
 import Configurations as c
-c.SQLITE_DB = c.SQLITE_DB_SERVER
-c.RECORDS = c.RECORDS_SERVER
-print(" * SERVER Launch")
+c.SQLITE_DB = c.SQLITE_DB_LOCAL
+c.RECORDS = c.RECORDS_LOCAL
+print(" * LOCAL Launch")
 
 from flask import Flask, session, jsonify, request, redirect
 from flask_cors import CORS,cross_origin
@@ -37,5 +37,5 @@ def index():return redirect("/login")
 # 				return redirect('/home')
 # 	pass
 
-
+app.run(host=c.HOST,port=c._PORT,debug=c.IS_DEBUG,ssl_context='adhoc')
 app.run(host=c.HOST,port=c._PORT,debug=c.IS_DEBUG)
