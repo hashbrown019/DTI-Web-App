@@ -157,7 +157,6 @@ class _main:
 		f.close()
 		return f_name
 
-
 	@app.route("/api/sql_test",methods=["POST","GET"])
 	def sql_test():
 		_file = open("assets/records/fo.json",'r')
