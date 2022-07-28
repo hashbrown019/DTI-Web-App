@@ -1,18 +1,92 @@
-				<div class="x-container x-row x-leftbar x-border-teal">
+				<style type="text/css">
+					#map { height: 280px; }
+				</style>
 
-					<div>
-						<span class=" x-text-grey">
-							<b class="x-text-teal fa fa-map-signs"></b>FMI Overview<br>
-						</span>
-						<span class="x-large">FMI Tracker</span></span>
+				<div class="x-container x-row x-leftbar x-border-teal">
+					<div class="x-container x-header">
+						<div class="x-col l4">
+							<span class=" x-text-grey">
+								<b class="x-text-teal fa fa-map-signs"></b>FMI Overview<br>
+							</span>
+							<span class="x-large">FMI Tracker</span></span>
+						</div>
+						<div class="x-col l8">
+							<button class="x-btn x-green x-right" onclick="$ID('id01').style.display='block'">
+								Add FMI <span class="fa fa-plus"></span>
+							</button>
+						</div>
 					</div>
 
-					 <button>
-					 	Add FMI <span class="fa fa-plus"></span>
-					 </button>
-				</div>
-				<script type="text/javascript">
+					<div class="x-container">
+						
+					</div>
 
+					<div id="id01" class="x-modal" style="display:block">
+						<div class="x-modal-content">
+							<div class="x-container">
+								<b onclick="$ID('id01').style.display='none'"
+								class="x-button x-display-topright x-red">&times;</b>
+								<h3 class="x-text-teal"><b>Create Farm-to-Market Infra</b></h3>
+							</div>
+							<div class="x-container">
+								<span class="x-container x-row">
+									<span>Project Title</span>
+									<input class="x-input x-border" name="">
+								</span>
+								<span class="x-container x-col l4">
+									<span>Project Fund Source</span>
+									<select class="x-select x-border">
+										<option value="">GOP</option>
+									</select>
+								</span>
+								<span class="x-container x-col l4">
+									<span>Project Allocated Fund <i>(in Php)</i></span>
+									<input type="number" class="x-input x-border" name="">
+								</span>
+								<span class="x-container">
+									<div id="map"></div>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<script type="text/javascript">
+					var map_source = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+
+					var MAP = L.map('map');
+					var TILE = L.tileLayer(map_source, {
+							attribution: 'DTI',
+							maxZoom: 15,
+							minZoom: 2,
+							tileSize: 512,
+							id: 'mapbox/streets-v11',
+							accessToken: 'pk.eyJ1IjoiZGlvYW1lIiwiYSI6ImNrbGo1ZDc1aDAxZTQybnBoc2tpZGcxOWoifQ.90lp0SPxVC4Kz113q_Wn9g',
+						})
+
+					MAP.setView([51.505, -0.09], 13)
+					// MAP.locate({setView: true, maxZoom: 16});
+					TILE.addTo(MAP);
+
+					MAP.on('click',function(e){
+						println(e)
+					})
+
+					var pointA = new L.LatLng(28.635308, 77.22496);
+					var pointB = new L.LatLng(28.984461, 77.70641);
+					var pointList = [pointA, pointB];
+
+					var firstpolyline = new L.Polyline(pointList, {
+						color: 'red',
+						weight: 3,
+						opacity: 0.5,
+						smoothFactor: 1
+					});
+					firstpolyline.addTo(MAP);
+					println("firstpolyline")
+					println(firstpolyline)
+
+				
 				</script>
 				<!-- <div id="conso1_chart"></div>
 				<span class="x-tiny" id="res"></span> -->
