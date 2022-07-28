@@ -141,7 +141,6 @@ class _main:
 			# f.write(json.dumps({}))
 			# f.close()
 			# raise e
-		
 		print(type(old_data_read))
 		try:
 			old_data_read = json.loads(old_data_read)
