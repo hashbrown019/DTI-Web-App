@@ -174,8 +174,6 @@ class _main:
 					'''.format(key1,key2,fo))
 		return jsonify(cont_)
 
-
-
 	# =============================================================================================
 	# @cross_origin()
 	@app.route("/api/res",methods=["POST","GET"])
