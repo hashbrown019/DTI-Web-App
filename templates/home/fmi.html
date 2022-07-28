@@ -1,5 +1,14 @@
 				<style type="text/css">
-					#map { height: 280px; }
+					#map { height: 300px; }
+					:root {
+						--map-tiles-filter: brightness(0.7) invert(2) contrast(3) hue-rotate(200deg) saturate(0.3) ;
+					}
+
+					@media (prefers-color-scheme: dark) {
+						.map-tiles {
+							filter:var(--map-tiles-filter, none);
+						}
+					}
 				</style>
 
 				<div class="x-container x-row x-leftbar x-border-teal">
@@ -52,41 +61,31 @@
 				</div>
 
 				<script type="text/javascript">
-					var map_source = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-
+					let INIT_CENTER = {"lat":7.039734854223885,"lng":125.43367030805013}
 					var MAP = L.map('map');
-					var TILE = L.tileLayer(map_source, {
-							attribution: 'DTI',
-							maxZoom: 15,
-							minZoom: 2,
-							tileSize: 512,
+					var TILE = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+						// L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+							attribution: 'DTI RAPID GROWTH',
+							maxZoom: 18,
 							id: 'mapbox/streets-v11',
-							accessToken: 'pk.eyJ1IjoiZGlvYW1lIiwiYSI6ImNrbGo1ZDc1aDAxZTQybnBoc2tpZGcxOWoifQ.90lp0SPxVC4Kz113q_Wn9g',
+							className: 'map-tiles',
+							tileSize: 512,
+							zoomOffset: -1,
+							accessToken: 'pk.eyJ1IjoiZGlvYW1lIiwiYSI6ImNrbGo1ZDc1aDAxZTQybnBoc2tpZGcxOWoifQ.90lp0SPxVC4Kz113q_Wn9g'// Default 
+							// accessToken: 'PyTJUlEU1OPJwCJlW1k0NC8JIt2CALpyuj7uc066O7XbdZCjWEL3WYJIk6dnXtps'// Jawg 
 						})
 
-					MAP.setView([51.505, -0.09], 13)
+					MAP.setView([INIT_CENTER.lat, INIT_CENTER.lng], 14);
 					// MAP.locate({setView: true, maxZoom: 16});
-					TILE.addTo(MAP);
 
 					MAP.on('click',function(e){
 						println(e)
 					})
-
-					var pointA = new L.LatLng(28.635308, 77.22496);
-					var pointB = new L.LatLng(28.984461, 77.70641);
-					var pointList = [pointA, pointB];
-
-					var firstpolyline = new L.Polyline(pointList, {
-						color: 'red',
-						weight: 3,
-						opacity: 0.5,
-						smoothFactor: 1
+					MAP.on('tileload', function (e) {
+						println(e);
 					});
-					firstpolyline.addTo(MAP);
-					println("firstpolyline")
-					println(firstpolyline)
-
-				
+			
+					TILE.addTo(MAP);
 				</script>
 				<!-- <div id="conso1_chart"></div>
 				<span class="x-tiny" id="res"></span> -->

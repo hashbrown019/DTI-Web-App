@@ -29,7 +29,7 @@ var h = undefined
 let INIT_CENTER = {"lat":7.039734854223885,"lng":125.43367030805013}
 
 
-var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+var MAP = L.map('mapid').setView([51.505, -0.09], 13);
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
 // L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
 	attribution: 'DTI RAPID GROWTH',
@@ -40,23 +40,24 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 	zoomOffset: -1,
 	accessToken: 'pk.eyJ1IjoiZGlvYW1lIiwiYSI6ImNrbGo1ZDc1aDAxZTQybnBoc2tpZGcxOWoifQ.90lp0SPxVC4Kz113q_Wn9g'// Default 
 	// accessToken: 'PyTJUlEU1OPJwCJlW1k0NC8JIt2CALpyuj7uc066O7XbdZCjWEL3WYJIk6dnXtps'// Jawg 
-}).addTo(mymap);
+}).addTo(MAP);
 
-mymap.setView([INIT_CENTER.lat, INIT_CENTER.lng], 10);
+MAP.setView([INIT_CENTER.lat, INIT_CENTER.lng], 10);
 
 
-marker = L.marker(INIT_CENTER).addTo(mymap);
+marker = L.marker(INIT_CENTER).addTo(MAP);
 marker.on('click', function(eta){
 	println(eta)
 });
 
 // var popup = L.popup();
 
-function onMapClick(e) {
-	// if(marker != undefined){mymap.removeLayer(marker)}
-	// popup.setLatLng(e.latlng).setContent("You clicked the map at " + e.latlng.toString()).openOn(mymap);
+function 
+(e) {
+	// if(marker != undefined){MAP.removeLayer(marker)}
+	// popup.setLatLng(e.latlng).setContent("You clicked the map at " + e.latlng.toString()).openOn(MAP);
 
-	// marker = L.marker(INIT_CENTER).addTo(mymap);
+	// marker = L.marker(INIT_CENTER).addTo(MAP);
 
 	// println(e.latlng.lat + " --- "+e.latlng.lng)
 	// $.get('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+e.latlng.lat+'&lon='+e.latlng.lng, function(data){
@@ -79,7 +80,7 @@ function onMapClick(e) {
 	// 	// $ID("address").value = addr.replaceAll("undefined,","")
 	// });
 }
-mymap.on('click', onMapClick);
+MAP.on('click', onMapClick);
 
 </script>
 				<!-- <div id="conso1_chart"></div>
