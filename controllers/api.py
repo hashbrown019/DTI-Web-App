@@ -95,7 +95,6 @@ class _main:
 		return jsonify(_conso)
 		# return str(_conso)
 
-
 	# @cross_origin()
 	@app.route("/api/user_register",methods=["POST","GET"])
 	def user_register():
