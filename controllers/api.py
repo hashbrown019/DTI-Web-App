@@ -31,7 +31,6 @@ class _main:
 		return jsonify(res)
 
 
-	# 5wOTPKoKHnQBAdswHkFmrBIIcUJcqfEUq7k1LjqK5tMAjCTDanNxzC8AXP7p1esGEVa1Zv6xeoEn.json
 	# @cross_origin()
 	@app.route("/get_profile",methods=["POST","GET"])
 	def get_profile():
