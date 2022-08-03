@@ -41,6 +41,9 @@
 				<button class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(6)">
 					<b class="x-text-teal fa fa-newspaper-o"></b>&nbsp;&nbsp; Newsletters
 				</button>
+				<button class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(7)">
+					<b class="x-text-teal fa fa-newspaper-o"></b>&nbsp;&nbsp; Data Capture Forms
+				</button>
 			</span>
 			<span class="x-right x-padding">
 				<input style="width: 25%;" onkeyup="" class="x-padding x-right x-center x-input x-animate-input x-border x-round-xxlarge" placeholder="&#128269;" type="" name="">
@@ -76,6 +79,10 @@
 			<div class="body_content x-padding x-round" style="display:none;">
 				{% include 'home/newsletters.html' %}		
 				{% include 'home/maintenance.html' %}
+			</div>
+			<div class="body_content x-padding x-round" style="display:none;">
+				{% include 'home/data_capture_forms.html' %}		
+				<!-- {% include 'home/maintenance.html' %} -->
 			</div>
 		</div>
 	</body>

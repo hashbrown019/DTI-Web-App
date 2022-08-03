@@ -1,6 +1,6 @@
 				<style type="text/css">
-					#map { height: 300px; }
-					:root {
+					#mapid { height: 500px;position: relative;}
+/*					:root {
 						--map-tiles-filter: brightness(0.7) invert(2) contrast(3) hue-rotate(200deg) saturate(0.3) ;
 					}
 
@@ -8,7 +8,7 @@
 						.map-tiles {
 							filter:var(--map-tiles-filter, none);
 						}
-					}
+					}*/
 				</style>
 
 				<div class="x-container x-row x-leftbar x-border-teal">
@@ -30,62 +30,110 @@
 						
 					</div>
 
-					<div id="id01" class="x-modal" style="display:block">
-						<div class="x-modal-content">
+					<div id="id01" class="x-modal" style="display:block;">
+						<div class="x-modal-content" style="width: 70%">
 							<div class="x-container">
 								<b onclick="$ID('id01').style.display='none'"
 								class="x-button x-display-topright x-red">&times;</b>
 								<h3 class="x-text-teal"><b>Create Farm-to-Market Infra</b></h3>
 							</div>
 							<div class="x-container">
-								<span class="x-container x-row">
-									<span>Project Title</span>
-									<input class="x-input x-border" name="">
-								</span>
-								<span class="x-container x-col l4">
-									<span>Project Fund Source</span>
-									<select class="x-select x-border">
-										<option value="">GOP</option>
-									</select>
-								</span>
-								<span class="x-container x-col l4">
-									<span>Project Allocated Fund <i>(in Php)</i></span>
-									<input type="number" class="x-input x-border" name="">
-								</span>
-								<span class="x-container">
-									<div id="map"></div>
-								</span>
+								<div class="x-container x-col l6">
+									<span class="x-container x-row">
+										<span>Project Title</span>
+										<input class="x-input x-border" name="">
+									</span>
+									<span class="x-container x-row">
+										<span class=" x-col l4">
+											<span>Project Fund Source</span>
+											<select class="x-select x-border">
+												<option value="">GOP</option>
+											</select>
+										</span>
+										<span class=" x-col l4">
+											<span>Allocated Fund <i>(in Php)</i></span>
+											<input type="number" class="x-input x-border" name="">
+										</span>
+										<span class=" x-col l4">
+											<span>Kilometers <i>(Planned)</i></span>
+											<input type="number" class="x-input x-border" name="">
+										</span>
+									</span>
+
+								</div>
+								<div class="x-col l6">
+									<div id="mapid"></div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 
 				<script type="text/javascript">
-					let INIT_CENTER = {"lat":7.039734854223885,"lng":125.43367030805013}
-					var MAP = L.map('map');
-					var TILE = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-						// L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-							attribution: 'DTI RAPID GROWTH',
+					var marker = undefined
+					let latlong_line_ls = []
+					let _MAP = undefined
+					let cur_loc = {"lat":7.060377702562426,"lng":125.55474053778968}
+					// function __onload__(){
+					// 	$ID("dti_map_btn").parentNode.querySelectorAll("a").innerText= "--"
+					// }
+
+
+					load_map1()
+					function load_map1(){
+						_MAP = L.map('mapid').setView([cur_loc.lat, cur_loc.lng], 13);
+						L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+							attribution: '<button id="dti_map_btn" class="x-btn x-green" onclick="set_line(this)">DTI RAPID GROWTH</button>',
 							maxZoom: 18,
 							id: 'mapbox/streets-v11',
-							className: 'map-tiles',
-							tileSize: 512,
-							zoomOffset: -1,
-							accessToken: 'pk.eyJ1IjoiZGlvYW1lIiwiYSI6ImNrbGo1ZDc1aDAxZTQybnBoc2tpZGcxOWoifQ.90lp0SPxVC4Kz113q_Wn9g'// Default 
-							// accessToken: 'PyTJUlEU1OPJwCJlW1k0NC8JIt2CALpyuj7uc066O7XbdZCjWEL3WYJIk6dnXtps'// Jawg 
-						})
+							// tileSize: 670,
+							// // tileSize: 512,
+							// zoomOffset: -1,
+							accessToken: 'pk.eyJ1IjoiZGlvYW1lIiwiYSI6ImNrbGo1ZDc1aDAxZTQybnBoc2tpZGcxOWoifQ.90lp0SPxVC4Kz113q_Wn9g'
+						}).addTo(_MAP);
+						
+						_MAP.setView([cur_loc.lat, cur_loc.lng], 13);
 
-					MAP.setView([INIT_CENTER.lat, INIT_CENTER.lng], 14);
-					// MAP.locate({setView: true, maxZoom: 16});
 
-					MAP.on('click',function(e){
-						println(e)
-					})
-					MAP.on('tileload', function (e) {
-						println(e);
-					});
-			
-					TILE.addTo(MAP);
+						// var popup = L.popup();
+
+						function onMapClick(e) {
+							if(marker != undefined){_MAP.removeLayer(marker)}
+							marker = L.marker(e.latlng).addTo(_MAP);
+							latlong_line_ls.push([e.latlng.lat,e.latlng.lng])
+							marker.on('click',function(__map){
+								println(__map)
+							})
+						}
+
+						_MAP.on('click', onMapClick);
+					}
+
+
+
+					function set_line(a_l){
+						a_l.parentNode.querySelectorAll("a").innerText= "--"
+						println(a_l.parentNode.querySelectorAll("a"))
+						var polyline =L.polyline(latlong_line_ls,{
+			                color: 'blue',
+			                weight: 12,
+			                // opacity: 0.5,
+			                // smoothFactor: 1
+			            }).addTo(_MAP)
+						// MAP.fitBounds(latlong_line_ls)
+						// MAP.fitBounds(polyline.getBounds())
+					}
+
+					// var ss = document.querySelectorAll('.leaflet-bottom')
+					// ss[1].innerHTML=`
+					// 	<button class="x-btn x-container x-padding x-border"  onclick="set_line()">
+					// 		<b class="x-text-teal x-xlarge">DTI</b> RAPID GROWTH
+					// 	</button>	`
+
+					// Things you DO - Gordon
+					// Pray slow
+					// U got It Bad
 				</script>
-				<!-- <div id="conso1_chart"></div>
-				<span class="x-tiny" id="res"></span> -->
+
+
+				

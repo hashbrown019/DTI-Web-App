@@ -1,0 +1,97 @@
+<div class="x-row">
+	<b class="x-large x-padding x-text-teal x-left">Capacity Building for the Direct Beneficiaries</b>
+	<div class="x-button x-right x-text-orange x-hover-orange" onclick="">
+		<b>Export Data</b> | <span class="fa fa-download"></span>
+	</div>
+	<div class="x-button x-right x-text-blue x-hover-blue" onclick="">
+		<b>Import Spreadsheet</b> | <span class="fa fa-upload"></span>
+	</div>
+	<button class="x-btn x-right x-green" onclick="$ID('dcf_modal_add').style.display='block'">
+		Add DC Form <span class="fa fa-plus"></span>
+	</button>
+
+	<div id="dcf_modal_add" class="x-modal" style="display:none;">
+		<div class="x-modal-content">
+			<div class="x-container">
+				<b onclick="$ID('dcf_modal_add').style.display='none'"
+				class="x-button x-display-topright x-red">&times;</b>
+				<h3 class="x-text-teal"><b>Create Capacity Building for the Direct Beneficiaries Entry</b></h3>
+			</div>
+			<div class="x-container z-padding">
+				<div class="x-col l6 x-padding">
+					<span>Name</span>
+					<input class="cap_build_dir_benif x-input x-border" type="" id="name">
+					<span>Name of Organization</span>
+					<input class="cap_build_dir_benif x-input x-border" type="" id="name_org">
+					<span>Position to the Orgainzation</span>
+					<input class="cap_build_dir_benif x-input x-border" type="" id="position_org">
+					<span>Sex</span>
+					<select class="cap_build_dir_benif x-select x-border" id="sex">
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+					</select>
+
+					<span>Age</span>
+					<input class="cap_build_dir_benif x-input x-border" type="number" id="age">
+					<br>
+					<div class="x-padding x-border-dashed">
+						<input type="checkbox" class="cap_build_dir_benif x-checkbox" id="pwd">
+						<label for="pwd">PWD</label>
+						<br>
+						<input type="checkbox" class="cap_build_dir_benif x-checkbox" id="senior_citizen">
+						<label for="seniro_citizen">Senior Citizen</label>
+					</div>
+					<br>
+					<span>Attachments</span>
+					<input class="cap_build_dir_benif x-input x-border" type="file" multiple id="attachments">
+
+
+				</div>
+				<div class="x-col l6 x-padding">
+					<span>Indicate Value Chain</span>
+					<select class="cap_build_dir_benif x-select x-border" id="value_chain">
+						<option value="unselected">Please Select Entry</option>
+					</select>
+
+					<span>Title of the Training</span>
+					<select class="cap_build_dir_benif x-select x-border" id="title_training">
+						<option value="unselected">Please Select Entry</option>
+					</select>
+					<span>Training Topic</span>
+					<select class="cap_build_dir_benif x-select x-border" id="topic_training">
+						<option value="unselected">Please Select Entry</option>
+					</select>
+					<br>
+					<span>Inclusive Dates</span>
+					<input class="cap_build_dir_benif x-input x-border" type="date" id="inclusive_date">
+
+					<span>Venue</span>
+					<input class="cap_build_dir_benif x-input x-border" type="" id="venue">
+					<span>Priority Commodity</span>
+					<input class="cap_build_dir_benif x-input x-border" type="" id="prior_commodity">
+					<span>Value Chain Segments</span>
+					<input class="cap_build_dir_benif x-input x-border" type="" id="vc_segments">
+					<span>Remarks</span>
+					<input class="cap_build_dir_benif x-input x-border" type="" id="remarks">
+				</div>
+			</div>
+			<hr>
+			<div class="x-container x-row">
+				<span class=" x-padding x-text-grey x-left" style="width:70%">
+					By Clicking Submit. You agree that all the data above is correct and true
+				</span>
+
+				<button class="x-btn x-green x-right" onclick="submit_1('cap_build_dir_benif')">
+					Add DC Form <span class="fa fa-plus"></span>
+				</button>
+			</div>
+			<hr>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+</script>
+
+
+

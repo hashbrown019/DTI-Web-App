@@ -1,0 +1,94 @@
+				<div class="x-container">
+					<div class="x-container x-col l2 x-leftbar x-border-teal">
+						<div>
+							<span class=" x-text-grey">
+								<b class="x-text-teal fa fa-calendar-chart"></b>Data Capture Forms Overview<br>
+							</span>
+							<span class="x-large">Data Capture Forms</span>
+						</div>
+						<hr>
+						<div class="x-row">
+							<button class="dcf_top_tab x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="dcf_go_tab(0)">
+								<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
+								Capacity Building for the Direct Beneficiaries
+							</button>
+							<button class="dcf_top_tab x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="dcf_go_tab(1)">
+								<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
+								Capacity Building for FSP's
+							</button>
+							<button class="dcf_top_tab x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="dcf_go_tab(2)">
+								<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
+								Planting Materials
+							</button>
+							<button class="dcf_top_tab x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="dcf_go_tab(3)">
+								<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
+								Rehabilitation and Rejuvenation interventions
+							</button>
+							<button class="dcf_top_tab x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="dcf_go_tab(4)">
+								<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
+								Trade Fair/ Selling Mission Participation
+							</button>
+							<button class="dcf_top_tab x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="dcf_go_tab(5)">
+								<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
+								Prototypes Developed
+							</button>
+							<button class="dcf_top_tab x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="dcf_go_tab(6)">
+								<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
+								Matching Grant Recipients
+							</button>
+						</div>
+					</div>
+
+					<div class="x-container x-col l10">
+						<br><br>
+						<div class="x-container x-round">
+
+							<div class="dcf_body_content x-white x-padding x-round x-animate-top" style="display:block;">
+								{% include 'home/data_capture_forms/cap_build_dir_benif.html' %}
+								{% include 'home/no_data.html' %}
+							</div>
+							<div class="dcf_body_content x-white x-padding x-round x-animate-top" style="display:none;">
+								{% include 'home/data_capture_forms/cap_build_fsp.html' %}
+								{% include 'home/no_data.html' %}
+							</div>
+							<div class="dcf_body_content x-white x-padding x-round x-animate-top" style="display:none;">
+								{% include 'home/data_capture_forms/planting_materials.html' %}
+								{% include 'home/no_data.html' %}
+							</div>
+							<div class="dcf_body_content x-white x-padding x-round x-animate-top" style="display:none;">
+								{% include 'home/data_capture_forms/rehab_rejuv.html' %}
+								{% include 'home/no_data.html' %}
+							</div>
+							<div class="dcf_body_content x-white x-padding x-round x-animate-top" style="display:none;">
+								{% include 'home/data_capture_forms/trade_fair.html' %}
+								{% include 'home/no_data.html' %}
+							</div>
+							<div class="dcf_body_content x-white x-padding x-round x-animate-top" style="display:none;">
+								{% include 'home/data_capture_forms/prototypes_dev.html' %}
+								{% include 'home/no_data.html' %}
+							</div>
+							<div class="dcf_body_content x-white x-padding x-round x-animate-top" style="display:none;">
+								{% include 'home/data_capture_forms/matching_grants_receipt.html' %}
+								{% include 'home/no_data.html' %}
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<script type="text/javascript">
+					dcf_go_tab(0)
+					function dcf_go_tab(_index){
+						var tabs = $CLASS("dcf_top_tab")
+						var dcf_body_content = $CLASS("dcf_body_content")  // FOR BODY CONTENT
+						for (var i = 0; i < tabs.length; i++) {
+							tabs[i].classList.remove("x-leftbar","x-border-teal")
+							dcf_body_content[i].style.display = "none"  // FOR BODY CONTENT
+						}
+						tabs[_index].classList.add("x-leftbar","x-border-teal")
+						dcf_body_content[_index].style.display = "block" // FOR BODY CONTENT
+					}
+
+				</script>
+				<!-- <div id="conso1_chart"></div>
+				<span class="x-tiny" id="res"></span> -->

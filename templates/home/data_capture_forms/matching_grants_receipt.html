@@ -1,0 +1,82 @@
+<div class="x-row">
+	<b class="x-large x-padding x-text-teal x-left">Matching Grant Recipients</b>
+	<button class="x-btn x-right x-green" onclick="$ID('dcf_modal_add_4').style.display='block'">
+		Add DC Form <span class="fa fa-plus"></span>
+	</button>
+
+	<div id="dcf_modal_add_4" class="x-modal" style="display:none;">
+		<div class="x-modal-content">
+			<div class="x-container">
+				<b onclick="$ID('dcf_modal_add_4').style.display='none'"
+				class="x-button x-display-topright x-red">&times;</b>
+				<h3 class="x-text-teal"><b>Matching Grant Recipients</b></h3>
+			</div>
+			<div class="x-container z-padding">
+				<div class="x-col l6 x-padding">
+					<span>Name of Farmer's Organization</span>
+					<input id="name_fo" class="matching_grants_receipt x-input x-border" type="" name="">
+
+					<span>Address</span>
+					<input id="address" class="matching_grants_receipt x-input x-border" type="" name="">
+
+					<br>
+					<b>Number of Farmers Covered</i></b>
+					<div class="x-row x-container">
+						<div class="x-col l6">
+							<span>Female</span>
+							<input id="farmers_covered_male" class="matching_grants_receipt x-input x-border" type="number" name="">
+						</div>
+						<div class="x-col l6">
+							<span>Female</span>
+							<input id="farmers_covered_female" class="matching_grants_receipt x-input x-border" type="number" name="">
+						</div>
+					</div>
+
+					<span>Area Covered <i>(in Ha)</i></span>
+					<input id="area_covered_ha" class="matching_grants_receipt x-input x-border" type="date" name="">
+
+					<span>Amount of Matching Grant Received in Php</span>
+					<input id="matching_grant_amount_received_php" class="matching_grants_receipt x-input x-border" type="" name="">
+
+					<span>DIP Ref. No/Code</span>
+					<input id="dip_ref" class="matching_grants_receipt x-input x-border" type="" name="">
+					
+				</div>
+				<div class="x-col l6 x-padding">
+					<br>
+					<span>Use of Matching Grant</span>
+					<input id="matching_grant_use" class="matching_grants_receipt x-input x-border" type="text" name="">
+
+					<span>Priority Commodity</span>
+					<input id="prior_commodity" class="matching_grants_receipt x-input x-border" type="" name="">
+
+					<span>Date Received</span>
+					<input id="date_received" class="matching_grants_receipt x-input x-border" type="date" name="">
+
+					<span>Value Chain Segment</span>
+					<input id="value_chain_segments" class="matching_grants_receipt x-input x-border" type="" name="">
+
+					<span>Remarks</span>
+					<input id="remarks" class="matching_grants_receipt x-input x-border" type="" name="">
+					<br>
+					<span>Attachments</span>
+					<input id="attachments" class="matching_grants_receipt x-input x-border" type="file" multiple name="">
+				</div>
+			</div>
+			<hr>
+			<div class="x-container x-row">
+				<span class=" x-padding x-text-grey x-left" style="width:70%">
+					By Clicking Submit. You agree that all the data above is correct and true
+				</span>
+
+				<button class="x-btn x-green x-right" onclick="submit_1('matching_grants_receipt')">
+					Add DC Form <span class="fa fa-plus"></span>
+				</button>
+			</div>
+			<hr>
+		</div>
+	</div>
+
+</div>
+
+

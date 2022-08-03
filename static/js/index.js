@@ -1,29 +1,41 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
+println(" * Loading Index.js")
 
-// Wait for the deviceready event before using any of Cordova's device APIs.
-// See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
-document.addEventListener('deviceready', onDeviceReady, false);
+function submit_1(form_class){
+    println(" * Submitting")
+    var form_data_arr = {}
+    var form_data = $CLASS(form_class)
+    var fields = []
 
-function onDeviceReady() {
-    // Cordova is now initialized. Have fun!
+    for (var i = 0; i < form_data.length; i++) {
+        if(form_data[i].type=="checkbox"){
+            form_data_arr[form_data[i].id] = form_data[i].checked
+        }
+        else if (form_data[i].type=="file"){
+            form_data_arr[form_data[i].id] = form_data[i].value // TO BE EDITTED
+        }
+        else{
+            form_data_arr[form_data[i].id] = form_data[i].value
+        }
+        fields.push(form_data[i].id)
+        println(form_data[i].id)
+    }
+    // println(form_data_arr)
+    println(fields)
+    submit_to_(form_class,form_data_arr)
+}
 
-    console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
-    document.getElementById('deviceready').classList.add('ready');
+function submit_to_(t_,data_){
+    $send({
+        action : "/api/todbdti",
+        method : POST,
+        data : $DATA({
+            "table" : t_ ,
+            "data":JSON.stringify(data_)}),
+        func : function (res){
+            println(res)
+        },
+        // err : function (){
+        //     alert(" Error in Saving")
+        // }
+    })
 }

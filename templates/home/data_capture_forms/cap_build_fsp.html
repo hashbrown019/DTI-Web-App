@@ -1,0 +1,81 @@
+<div class="x-row">
+	
+	<b class="x-large x-padding x-text-teal x-left">Capacity Building for FSP's</b>
+	<button class="x-btn x-right x-green" onclick="$ID('dcf_modal_add_1').style.display='block'">
+		Add DC Form <span class="fa fa-plus"></span>
+	</button>
+
+	<div id="dcf_modal_add_1" class="x-modal" style="display:none;">
+		<div class="x-modal-content">
+			<div class="x-container">
+				<b onclick="$ID('dcf_modal_add_1').style.display='none'"
+				class="x-button x-display-topright x-red">&times;</b>
+				<h3 class="x-text-teal"><b>Capacity Building for FSP's</b></h3>
+			</div>
+			<div class="x-container z-padding">
+				<div class="x-col l6 x-padding">
+					<span>Name</span>
+					<input id="name" class="cap_build_fsp x-input x-border" type="" name="">
+
+					<span>Sex</span>
+					<select id="sex" class="cap_build_fsp x-select x-border">
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+					</select>
+
+					<span>Age</span>
+					<input id="age" class="cap_build_fsp x-input x-border" type="number" name="">
+					<br>
+					<div class="x-padding x-border-dashed">
+						<input type="checkbox" id="pwd" class="cap_build_fsp x-checkbox" name="pwd">
+						<label for="pwd">PWD</label>
+						<br>
+						<input type="checkbox" id="senior_citizen" class="cap_build_fsp x-checkbox" name="sr_c">
+						<label for="sr_c">Senior Citizen</label>
+					</div>
+					<br>
+					<span>Attachments</span>
+					<input id="file" class="cap_build_fsp x-input x-border" type="file" multiple name="">
+
+
+				</div>
+				<div class="x-col l6 x-padding">
+					<span>Name of Institution</span>
+					<input id="name_institution" class="cap_build_fsp x-input x-border" type="text" name="">
+					
+					<span>Position</span>
+					<input id="position" class="cap_build_fsp x-input x-border" type="text" name="">
+					
+					<span>Title of Training Attended/Participated</span>
+					<input id="title_training" class="cap_build_fsp x-input x-border" type="text" name="">
+
+					<span>Inclusive Dates</span>
+					<input id="inclusive_date" class="cap_build_fsp x-input x-border" type="date" name="">
+
+					<span>Venue</span>
+					<input id="venue" class="cap_build_fsp x-input x-border" type="" name="">
+					<span>Priority Commodity</span>
+					<input id="prior_commodity" class="cap_build_fsp x-input x-border" type="" name="">
+
+					<span>Remarks</span>
+					<input id="remarks" class="cap_build_fsp x-input x-border" type="" name="">
+				</div>
+			</div>
+			<hr>
+			<div class="x-container x-row">
+				<span class=" x-padding x-text-grey x-left" style="width:70%">
+					By Clicking Submit. You agree that all the data above is correct and true
+				</span>
+
+				<button class="x-btn x-green x-right" onclick="submit_1('cap_build_fsp')">
+					Add DC Form <span class="fa fa-plus"></span>
+				</button>
+			</div>
+			<hr>
+		</div>
+	</div>
+
+
+
+
+</div>
