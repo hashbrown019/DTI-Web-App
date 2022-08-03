@@ -1,3 +1,11 @@
+import("./Brorn.min.js").then(function(module){
+// import("./Bootloader.js").then(function(module){
+    // var v__ = module.version
+    // println("-------- + "+v__)
+    println(module)
+})
+ // -----------
+
 println(" * Loading Index.js")
 
 function submit_1(form_class){
@@ -34,8 +42,8 @@ function submit_to_(t_,data_){
         func : function (res){
             println(res)
         },
-        // err : function (){
-        //     alert(" Error in Saving")
-        // }
+        err : function (){
+            alert(" Error in Saving")
+        }
     })
 }

@@ -101,7 +101,7 @@ span,p,b,body,div{
 }
 
 div,span{
-	cursor: pointer;
+	cursor: default;
 }
 
 

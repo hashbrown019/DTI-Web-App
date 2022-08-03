@@ -1,3 +1,10 @@
+define("Bootloader",function(){
+
+})
+
+
+
+
 var APP_VERSION = "0.1.2 beta"
 
 var DOMAIN = "https://cswdtrain.novusoftit.com"

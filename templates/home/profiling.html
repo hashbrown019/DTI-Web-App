@@ -51,6 +51,7 @@
 								if(prof_pic=="" || prof_pic==" " || prof_pic==undefined){
 									prof_pic = "../static/img/user.png"
 								}
+								println(person)
 								$ID("profile_list").innerHTML += `
 									<div class="x-row x-padding" id="`+person.farmer_code+`">
 										<div class="x-col l1">
@@ -66,7 +67,7 @@
 												</span><br>
 										</div>
 										<div class="x-col l3 x-container">
-											<i class="">Cacao</i><br>
+											<i class=""><span>`+person["farmer-primary_crop"]+`</span> </i><br>
 											<span class="x-tiny">P-7 Tungao Butuan City</span><br>
 										</div>
 										<div class="x-col l4 x-container x-center">
