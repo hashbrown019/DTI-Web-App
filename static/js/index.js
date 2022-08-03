@@ -1,10 +1,12 @@
-import("./Brorn.min.js").then(function(module){
-// import("./Bootloader.js").then(function(module){
-    // var v__ = module.version
-    // println("-------- + "+v__)
+
+import("./Bootloader.js").then(function(module){
+    _____ = module
     println(module)
+    return (module)
+
 })
  // -----------
+
 
 println(" * Loading Index.js")
 

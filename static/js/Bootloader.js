@@ -1,4 +1,6 @@
-const version = "Tiger0110";
-const release = 40;
+export const version = "Tiger0110";
+export const release = 40;
 
-export {version, release};
+export function TEST(){
+	return "TEST"
+}
