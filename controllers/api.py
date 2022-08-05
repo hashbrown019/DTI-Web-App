@@ -119,7 +119,6 @@ class _main:
 		# response.headers.add('Access-Control-Allow-Origin', '*')
 		return response
 
-
 	# @cross_origin()
 	@app.route("/api/upload_data",methods=["POST","GET"])
 	def upload_data():
@@ -152,7 +151,6 @@ class _main:
 		f.write(json.dumps(old_data_read))
 		f.close()
 		return f_name
-
 
 	@app.route("/api/todbdti",methods=["POST","GET"])
 	def todbdti():
