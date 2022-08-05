@@ -145,7 +145,6 @@ class _main:
 		except Exception as e:
 			# raise e
 			print(" * ERROR IN FORM : "+FARMER_ID[1])
-			# print(" * ERROR IN MESSAGE : "+e)
 			return f_name
 
 		print(FARMER_ID[1])
