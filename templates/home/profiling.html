@@ -27,7 +27,9 @@
 							<div>
 								<h3 class="x-padding x-text-teal">Profile Lists</h3>
 							</div>
-							<i class="x-text-grey">Displaying <b id="prof_farmer_count">0</b> File/s</i>
+							<div class="x-padding">
+								<i class="x-text-grey">Displaying <b id="prof_farmer_count">0</b> File/s</i>
+							</div>
 							<div id="profile_list" class="" style="overflow-y:scroll; max-height: 80vh;">
 								------- List Of Profiles ------
 							</div>
@@ -128,7 +130,11 @@
 								func : function(res) {
 									var im_res = JSON.parse(res)
 									var ids_ = (im_res.f_name).split(".")[0]
-									$ID("img_"+ids_).src = im_res.base_64
+									var prof_pic = im_res.base_64
+									if(prof_pic=="" || prof_pic==" " || prof_pic==undefined){
+										prof_pic = "../static/img/user.png"
+									}
+									$ID("img_"+ids_).src = prof_pic
 								}
 							})
 						}
