@@ -61,13 +61,13 @@
 								$ID("profile_list").innerHTML = ""
 								for (var i = 0; i < ls_file.length; i++) {
 									// println(ls_file[i])
-									get_profile(ls_file[i], ls_file.length)
+									get_profile(ls_file[i], ls_file.length, ls_file)
 								}
 							}
 						})
 					}
 
-					function get_profile(_file_name,total_recors_farmer){
+					function get_profile(_file_name,total_recors_farmer, f_FILE){
 						var total_recors_farmer_counter = 1
 						$send({
 							action:"/get_profile",
@@ -86,7 +86,7 @@
 								$ID("profile_list").innerHTML += `
 									<div class="x-row x-padding" id="`+person.farmer_code+`">
 										<div class="x-col l1">
-											<img loading="lazy" src="`+prof_pic+`" class="x-image" style="max-width:100%">
+											<img loading="lazy" id="img_`+person.farmer_code+`" src="`+prof_pic+`" class="x-image" style="max-width:100%">
 										</div>
 										<div class="x-col l3 x-container">
 											<b class="">`+person.farmer_name+`</b><br>
@@ -108,11 +108,26 @@
 									</div>`
 								if(total_recors_farmer_counter==total_recors_farmer ){
 									alert("Done Loading ["+total_recors_farmer_counter+"] files")
+									get_prof_imgs(f_FILE)
 								}
 								println(total_recors_farmer_counter +" -- "+total_recors_farmer)
 								total_recors_farmer_counter+= 1
 							}
 						})
+					}
+
+					function get_prof_imgs(ls_file){  // Lazy Load for Profile Images After profrile list completely lodaded
+						for (var i = 0; i < ls_file.length; i++) {
+							$send({
+								action : "/api/get_imgProf/"+ls_file[i],
+								method : POST,
+								func : function(res) {
+									var im_res = JSON.parse(res)
+									var ids_ = (im_res.f_name).split(".")[0]
+									$ID("img_"+ids_).src = im_res.base_64
+								}
+							})
+						}
 					}
 
 					function get_user(_file_name){

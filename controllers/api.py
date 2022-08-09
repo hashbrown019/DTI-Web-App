@@ -47,6 +47,13 @@ class _main:
 		f.close()
 		return jsonify(res)
 
+	# @cross_origin()
+	@app.route("/api/get_imgProf/<ids>",methods=["POST","GET"]) # GET ONLY PROFILE FORM INFIO
+	def get_imgProf(ids):
+		f = open(c.RECORDS+"/profiles/form_a/"+ ids, "r")
+		res = json.loads(f.read())
+		f.close()
+		return jsonify({"f_name":ids,"base_64":res["profile"]["farmer_img_base64"]})
  
 	# @cross_origin()
 	@app.route("/get_user",methods=["POST","GET"])
