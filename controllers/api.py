@@ -4,7 +4,7 @@ import Configurations as c
 import os
 import json
 from flask_cors import CORS,cross_origin
-
+import base64
 
 app = Blueprint("api",__name__)
 cors = CORS(app)
@@ -30,15 +30,23 @@ class _main:
 
 
 	# @cross_origin()
-	@app.route("/get_profile",methods=["POST","GET"])
+	@app.route("/get_profile",methods=["POST","GET"]) # GET ONLY PROFILE FORM INFIO
 	def get_profile():
+		FILE = request.form["profile_file_name"]
+		f = open(c.RECORDS+"/profiles/form_a/"+ FILE, "r")
+		res = json.loads(f.read())
+		f.close()
+		return jsonify(res["profile"])
+
+	@app.route("/get_full_profile",methods=["POST","GET"]) # GETS the Fulll data of Farmer
+	def get_full_profile():
 		FILE = request.form["profile_file_name"]
 		f = open(c.RECORDS+"/profiles/form_a/"+ FILE, "r")
 		res = json.loads(f.read())
 		f.close()
 		return jsonify(res)
 
-
+ 
 	# @cross_origin()
 	@app.route("/get_user",methods=["POST","GET"])
 	def get_user():
@@ -67,7 +75,6 @@ class _main:
 			print(ast)
 			rapid.do(ast.replace("\\","/"))
 		return "api"
-
 
 	@app.route("/api/conso",methods=["POST","GET"])
 	def conso():
@@ -158,6 +165,15 @@ class _main:
 		f.close()
 		return f_name
 
+
+
+
+
+
+
+
+
+
 	@app.route("/api/todbdti",methods=["POST","GET"])
 	def todbdti():
 		data = json.loads(request.form["data"])
@@ -171,13 +187,6 @@ class _main:
 		print(sql)
 		rapid.do(sql)
 		return "done"
-
-
-
-
-
-
-
 
 	@app.route("/api/sql_test",methods=["POST","GET"])
 	def sql_test():
