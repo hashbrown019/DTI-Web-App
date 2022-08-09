@@ -36,6 +36,7 @@ class _main:
 		f = open(c.RECORDS+"/profiles/form_a/"+ FILE, "r")
 		res = json.loads(f.read())
 		f.close()
+		res["profile"]["farmer_img_base64"] = "" # Remove Profile
 		return jsonify(res["profile"])
 
 	@app.route("/get_full_profile",methods=["POST","GET"]) # GETS the Fulll data of Farmer
