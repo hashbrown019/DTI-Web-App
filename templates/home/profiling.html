@@ -10,9 +10,7 @@
 					<div class="x-row">
 						<div class="x-col l6 x-white">
 							<div id="profile_list" class="">
-
 								------- List Of Profiles ------
-
 							</div>
 						</div>
 						<div class="x-col l6"></div>
@@ -39,6 +37,47 @@
 					}
 
 					function get_profile(_file_name){
+						$send({
+							action:"/get_profile",
+							method: POST,
+							data : $DATA({"profile_file_name":_file_name}),
+							func : function(res){
+								var file_profile = JSON.parse(res)
+								println(file_profile)
+								var person = file_profile.profile
+								var prof_pic = person.farmer_img_base64
+								if(prof_pic=="" || prof_pic==" " || prof_pic==undefined){
+									prof_pic = "../static/img/user.png"
+								}
+								println(person)
+								$ID("profile_list").innerHTML += `
+									<div class="x-row x-padding" id="`+person.farmer_code+`">
+										<div class="x-col l1">
+											<img loading="lazy" src="`+prof_pic+`" class="x-image" style="max-width:100%">
+										</div>
+										<div class="x-col l3 x-container">
+											<b class="">`+person.farmer_name+`</b><br>
+											<span class="x-tiny">
+												<span>`+person.addr_street_purok_sitio+`</span> 
+												<span>`+person.addr_city+`</span> 
+												<span>`+person.addr_prov+`</span> 
+												<span>R:`+person.addr_region+`</span> 
+												</span><br>
+										</div>
+										<div class="x-col l3 x-container">
+											<i class=""><span>`+person["farmer-primary_crop"]+`</span> </i><br>
+											<span class="x-tiny">-----</span><br>
+										</div>
+										<div class="x-col l4 x-container x-center">
+											<span class="x-tiny">Form Completion</span><br>
+											<b class="x-large">--%</b><br>
+										</div>
+									</div>`
+							}
+						})
+					}
+
+					function get_user(_file_name){
 						$send({
 							action:"/get_profile",
 							method: POST,

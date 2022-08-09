@@ -38,6 +38,13 @@ class _main:
 		f.close()
 		return jsonify(res)
 
+
+	# @cross_origin()
+	@app.route("/get_user",methods=["POST","GET"])
+	def get_user():
+		resp = rapid.select("SELECT * FROM `users`;")
+		return jsonify(resp)
+
 	# @cross_origin()
 	@app.route("/api/test",methods=["POST","GET"])
 	@app.route("/api",methods=["POST","GET"])
@@ -47,7 +54,6 @@ class _main:
 		resp = rapid.select("SELECT * FROM `SYSTEM_SETTINGS`;")
 		resp[0]["DATABASE_PATH_WEB"] = c.SQLITE_DB
 		return jsonify(resp)
-
 
 	@app.route("/api/index",methods=["POST","GET"])
 	def api_index():
