@@ -24,7 +24,10 @@
 					<br>
 					<div class="x-col l10">
 						<div class="x-col l6 x-white">
-							<h3 class="x-padding x-text-teal">Profile Lists</h3>
+							<div>
+								<h3 class="x-padding x-text-teal">Profile Lists</h3>
+							</div>
+							<i class="x-text-grey">Displaying <b id="prof_farmer_count">0</b> File/s</i>
 							<div id="profile_list" class="" style="overflow-y:scroll; max-height: 80vh;">
 								------- List Of Profiles ------
 							</div>
@@ -107,7 +110,8 @@
 										</div>
 									</div>`
 								if(total_recors_farmer_counter==total_recors_farmer ){
-									alert("Done Loading ["+total_recors_farmer_counter+"] files")
+									$ID("prof_farmer_count").innerHTML = total_recors_farmer_counter
+									// alert("Done Loading ["+total_recors_farmer_counter+"] files")
 									get_prof_imgs(f_FILE)
 								}
 								println(total_recors_farmer_counter +" -- "+total_recors_farmer)
