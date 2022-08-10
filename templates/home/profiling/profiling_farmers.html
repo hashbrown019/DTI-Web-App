@@ -17,23 +17,6 @@
 						</div>
 
 						<script type="text/javascript">
-							function get_list_file(){
-								$ID("profile_list").innerHTML = ""
-								println(" * Getting List of Profiles")
-								$send({
-									action:"/list_all_profile",
-									method: POST,
-									func : function(res){
-										var ls_file = JSON.parse(res)
-										println(ls_file)
-										$ID("profile_list").innerHTML = ""
-										for (var i = 0; i < ls_file.length; i++) {
-											// println(ls_file[i])
-											get_profile(ls_file[i], ls_file.length, ls_file)
-										}
-									}
-								})
-							}
 
 							function get_profile(_file_name,total_recors_farmer, f_FILE){
 								var total_recors_farmer_counter = 1

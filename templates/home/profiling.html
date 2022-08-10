@@ -36,6 +36,9 @@
 				<script type="text/javascript">
 					get_list_file() // For Inititalizing list in profiling/profiling_farmers.html
 					profile_go_tab(1)
+
+					let ls_file_farmer = undefined
+
 					function profile_go_tab(_index){
 						var tabs = $CLASS("profile_top_tab")
 						var profile_body_content = $CLASS("profile_body_content")  // FOR BODY CONTENT
@@ -47,7 +50,25 @@
 						profile_body_content[_index].style.display = "block" // FOR BODY CONTENT
 					}
 
-					
+
+					function get_list_file(){ // For Inititalizing list in profiling/profiling_farmers.html
+						$ID("profile_list").innerHTML = ""
+						println(" * Getting List of Profiles")
+						$send({
+							action:"/list_all_profile",
+							method: POST,
+							func : function(res){
+								ls_file_farmer = JSON.parse(res)
+								println(ls_file_farmer)
+								$ID("profile_list").innerHTML = ""
+								for (var i = 0; i < ls_file_farmer.length; i++) {
+									// println(ls_file_farmer[i])
+									get_profile(ls_file_farmer[i], ls_file_farmer.length, ls_file_farmer)
+								}
+							}
+						})
+					}
+
 				</script>
 				<!-- <div id="conso1_chart"></div>
 				<span class="x-tiny" id="res"></span> -->
