@@ -3,14 +3,12 @@ import socket
 host_name = socket.gethostname()
 IP_address = socket.gethostbyname(host_name)
 
-print(host_name)
-print(IP_address)
 
 
 # --- SYSTEM CONFIG --- #
 SECRET_KEY = "@002342562988603673976#131452@HHPLHKHHH"
-HOST = host_name
-# HOST = "0.0.0.0"
+# HOST = host_name
+HOST = "0.0.0.0"
 CUSTOM_HOST = "192.168.0.1"
 PORT = 5000
 _PORT = 5000
