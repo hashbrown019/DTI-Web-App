@@ -23,5 +23,6 @@ class _main:
 	def login_auth():
 		username = request.form['user_name']
 		password = request.form['password']
-		log_res = rapid.select("SELECT * from `users_account` WHERE `user_name` = '{}' AND `password`='{}';".format(username,password))
+		log_res = rapid.select("SELECT * from `users` WHERE `username` = '{}' AND `password`='{}';".format(username,password))
+		print(flask.session['_id'])
 		return jsonify(log_res)

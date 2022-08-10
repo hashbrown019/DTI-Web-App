@@ -28,7 +28,6 @@ class _main:
 				res.append(path)
 		return jsonify(res)
 
-
 	# @cross_origin()
 	@app.route("/get_profile",methods=["POST","GET"]) # GET ONLY PROFILE FORM INFIO
 	def get_profile():
