@@ -1,7 +1,7 @@
 import Configurations as c
 c.SQLITE_DB = c.SQLITE_DB_SERVER
 c.RECORDS = c.RECORDS_SERVER
-c.M_APPVER = M_APPVER_SERVER
+c.M_APPVER = c.M_APPVER_SERVER
 
 
 from flask import Flask, session, jsonify, request, redirect
