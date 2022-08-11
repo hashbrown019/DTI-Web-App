@@ -21,6 +21,11 @@ SQLITE_DB = "none"
 RECORDS_LOCAL = "assets/records/"
 RECORDS_SERVER = "/home/crisnotbrown/DTI-Web-App/assets/records/"
 RECORDS = "none"
+
+
+M_APPVER_LOCAL = ""
+M_APPVER_SERVER = "/home/crisnotbrown/DTI-Web-App/"
+M_APPVER = "none"
 # --- DATABASE---- #
 
 LOCAL_PORT=3306
