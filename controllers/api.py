@@ -179,7 +179,7 @@ class _main:
 	@app.route("/api/download_zip_app",methods=["POST","GET"])
 	def downloadFile ():
 		#For windows you need to use drive name [ex: F:/Example.pdf]
-		path = "app-debug.apk"
+		path = c.M_APPVER+"app-debug.apk"
 		return send_file(path, as_attachment=True)
 	# def download_zip_app():
 	# 	from flask import Response # Changed line
