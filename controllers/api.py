@@ -68,7 +68,7 @@ class _main:
 		resp = {}
 		resp = rapid.select("SELECT * FROM `SYSTEM_SETTINGS`;")
 		resp[0]["DATABASE_PATH_WEB"] = c.SQLITE_DB
-		f_v = open("app_version.txt","r")
+		f_v = open(c.M_APPVER+"app_version.txt","r")
 		resp[0]["APP_VERSION"] = f_v.read()
 		f_v.close()
 		return jsonify(resp)
