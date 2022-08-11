@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, session, redirect, jsonify
+from flask import Blueprint, render_template, request, session, redirect, jsonify, send_file
 from modules.Connections import mysql,sqlite
 import Configurations as c
 import os
@@ -68,6 +68,9 @@ class _main:
 		resp = {}
 		resp = rapid.select("SELECT * FROM `SYSTEM_SETTINGS`;")
 		resp[0]["DATABASE_PATH_WEB"] = c.SQLITE_DB
+		f_v = open("app_version.txt","r")
+		resp[0]["APP_VERSION"] = f_v.read()
+		f_v.close()
 		return jsonify(resp)
 
 	@app.route("/api/index",methods=["POST","GET"])
@@ -173,8 +176,32 @@ class _main:
 		return f_name
 
 
-
-
+	@app.route("/api/download_zip_app",methods=["POST","GET"])
+	def downloadFile ():
+		#For windows you need to use drive name [ex: F:/Example.pdf]
+		path = "app-debug.apk"
+		return send_file(path, as_attachment=True)
+	# def download_zip_app():
+	# 	from flask import Response # Changed line
+	# 	import io
+	# 	import zipfile
+	# 	import time
+	# 	FILEPATH = "app-debug.apk"
+	# 	fileobj = io.BytesIO()
+	# 	with zipfile.ZipFile(fileobj, 'w') as zip_file:
+	# 		zip_info = zipfile.ZipInfo(FILEPATH)
+	# 		zip_info.date_time = time.localtime(time.time())[:6]
+	# 		zip_info.compress_type = zipfile.ZIP_DEFLATED
+	# 		with open(FILEPATH, 'rb') as fd:
+	# 			zip_file.writestr(zip_info, fd.read())
+	# 	fileobj.seek(0)
+	# 	f_v = open("app_version.txt","r")
+	# 	__ver = f_v.read()
+	# 	f_v.close()
+	# 	# Changed line below
+	# 	return Response(fileobj.getvalue(),
+	# 					mimetype='application/zip',
+	# 					headers={'Content-Disposition': 'attachment;filename=DTI_RAPID_MIS_'+__ver+'.apk'})
 
 
 
