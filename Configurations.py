@@ -31,7 +31,7 @@ RECORDS = "none"
 
 M_APPVER_LOCAL = ""
 M_APPVER_SERVER = "/home/dtirapid/DTI-Web-App/"
-M_APPVER_SERVER = "/home/crisnotbrown/DTI-Web-App/"
+# M_APPVER_SERVER = "/home/crisnotbrown/DTI-Web-App/"
 M_APPVER = "none"
 # --- DATABASE---- #
 
