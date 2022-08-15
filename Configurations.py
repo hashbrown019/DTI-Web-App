@@ -15,15 +15,22 @@ _PORT = 5000
 IS_DEBUG = True
 
 SQLITE_DB_LOCAL = "assets/DB/dti_rapidxi.db"
-SQLITE_DB_SERVER = "/home/crisnotbrown/DTI-Web-App/assets/DB/dti_rapidxi.db"
+SQLITE_DB_SERVER = "/home/dtirapid/DTI-Web-App/assets/DB/dti_rapidxi.db"
+
+RECORDS_SERVER = "/home/dtirapid/DTI-Web-App/assets/records/"
+# SQLITE_DB_SERVER = "/home/crisnotbrown/DTI-Web-App/assets/DB/dti_rapidxi.db"
 SQLITE_DB = "none"
 
 RECORDS_LOCAL = "assets/records/"
-RECORDS_SERVER = "/home/crisnotbrown/DTI-Web-App/assets/records/"
+SQLITE_DB_SERVER = "/home/dtirapid/DTI-Web-App/assets/DB/dti_rapidxi.db"
+
+RECORDS_SERVER = "/home/dtirapid/DTI-Web-App/assets/records/"
+# RECORDS_SERVER = "/home/crisnotbrown/DTI-Web-App/assets/records/"
 RECORDS = "none"
 
 
 M_APPVER_LOCAL = ""
+M_APPVER_SERVER = "/home/dtirapid/DTI-Web-App/"
 M_APPVER_SERVER = "/home/crisnotbrown/DTI-Web-App/"
 M_APPVER = "none"
 # --- DATABASE---- #
