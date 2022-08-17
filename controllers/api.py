@@ -34,7 +34,11 @@ class _main:
 	def get_profile():
 		FILE = request.form["profile_file_name"]
 		f = open(c.RECORDS+"/profiles/form_a/"+ FILE, "r")
-		res = json.loads(json.dumps(f.read()))
+		try:
+			res = json.loads(f.read())
+		except Exception as e:
+			res = json.loads(json.dumps(f.read()))
+			# raise e
 		f.close()
 		res["profile"]["farmer_img_base64"] = "" # Remove Profile
 		return jsonify(res["profile"])
