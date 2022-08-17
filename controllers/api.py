@@ -40,7 +40,12 @@ class _main:
 			res = json.loads(json.dumps(f.read()))
 			# raise e
 		f.close()
-		res["profile"]["farmer_img_base64"] = "" # Remove Profile
+		try:
+			res["profile"]["farmer_img_base64"] = "" # Remove Profile
+			# pass
+		except Exception as e:
+			res[0]["profile"]["farmer_img_base64"] = "" # Remove Profile
+			# raise e
 		return jsonify(res["profile"])
 
 	@app.route("/get_full_profile",methods=["POST","GET"]) # GETS the Fulll data of Farmer
