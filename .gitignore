@@ -4,6 +4,7 @@ __pycache__/
 controllers/__pycache__/
 modules/__pycache__/
 views/__pycache__/
+assets/DB/dti_rapidxi.db
 assets/records/
 app-debug.apk
 app_version.txt
