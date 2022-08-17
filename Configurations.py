@@ -47,7 +47,7 @@ SERVER_USER = "rapid_apps"
 SERVER_PASSWORD = "none"
 SERVER_DATABASE = "dti_rapidxi"
 
-
+# SAMPLE
 # {
 # 	"font_size": 8,
 # 	"ignored_packages":
