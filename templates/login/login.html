@@ -2,20 +2,22 @@
 <html>
 	{% include 'head.html' %}
 	<body>
-		<div id="" class="" style="background-image: url('../static/img/login_bg.jpg');height: 100vh;">
-			<div class="x-container x-col l8 m8 center-bg">&nbsp;
-				<div style="position: absolute;bottom: 0px;">
-					<img src="../static/img/ifad.jpg" class="x-image x-round-large" style="max-width: 5%;">
-					<img src="../static/img/dti.png" class="x-image x-round-large" style="max-width: 5%;">
-					<p>
-						<b class="x-text-white dti-bg-color1">
-							To provide focused, firm-level, value chain-based, and climate-smart assistance and financing program to micro and small businesses,  through  enabling sectoral and trade policies which are designed to provide enhanced access to institutional, regional, and world markets...
-						</b>
-					</p>
-					<br>
-				</div>
-			</div>
-			<div class="x-container x-col l4 m4" style="height: 100vh;">
+		<style type="text/css">
+			#container_b{
+				background-image: url('../static/img/login_bg_dark.jpg');
+				/*background-image: url('../static/img/bg.webp');*/
+				height: 100vh;
+				min-height: 100%;
+				background-position: center;
+				background-size: cover;
+			}
+			#mapid { height: 180px; }
+		</style>
+		<!-- <div id="" class="" style="height: 100vh;"> -->
+
+
+		<div id="container_b" class="x-display-container" style="">
+			<div class="x-container x-display-middle" style="padding-top: 50px;width: 30%;height: 100vh;">
 				<div class="x-round-large x-white x-padding">
 					<div class="x-container x-center">
 						<img class="x-img" src="../static/img/rapidlogo1.jpg" style="max-width: 50%"><br>
@@ -24,13 +26,15 @@
 					<div class="x-container">
 						<div class="x-row">
 							<span class="x-text-grey">Username</span>
-							<input class="x-input x-border-blue x-border" type="" id="user_name" placeholder="@username01">
+							<input value="dtirapid" class="login_data x-input x-border-blue x-border" type="" id="user_name" placeholder="@username01">
 							<span class="x-text-grey">Password</span>
-							<input class="x-input x-border-blue x-border" type="pasword" id="password" placeholder="*******d">
+							<input value="dtirapid" class="login_data x-input x-border-blue x-border" type="pasword" id="password" placeholder="*******d">
+							<br><br>
+							<span style="display:none;" class="x-center x-leftbar x-border-red x-pale-red x-text-red" id="err_log"></span>
 						</div>
 						<div class="x-row"><br>
 							<div class="x-col l8 m8 s8 x-right-align">
-								<span class="x-text-grey x-small">Don't have an account ? <span class="x-text-blue">click here</span> to request one</span>
+								<span class="x-text-grey x-small">Don't have an account ? <span class="x-text-blue" onclick="open_reg()">click here</span> to request one</span>
 							</div>
 							<div class="x-col l4 m4 s4 x-right-align x-padding">
 								<button class="x-btn x-green x-round-xxlarge" onclick="login()">Login <span class="fa fa-arrow-right"></span></button>
@@ -49,7 +53,116 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="x-display-bottommiddle x-center" style="">
+				<img src="../static/img/ifad.jpg" class="x-image x-round-large" style="max-width: 5%;">
+				<img src="../static/img/dti.png" class="x-image x-round-large" style="max-width: 5%;">
+				<br>
+				<br>
+				<br>
+			</div>
+
 		</div>
+
+		<!-- ------------------------------------------------------ -->
+		<div id="registration_modal" class="x-modal">
+			<div class="x-modal-content x-padding x-margin x-round-large" style="max-width: 30%;">
+				<div class="x-container x-center x-padding">
+					<b onclick="$ID('registration_modal').style.display='none'"
+					class="x-button x-display-topright">&times;</b>
+					<span class=" x-large x-text-green">
+					Registration</span>
+				</div>
+				<div class="x-container">
+					<form name="reg_form">
+						<span class="x-text-grey">Name<span class="x-text-red">*</span></span>
+						<input type="text" name="name" class="form_data x-input x-border x-round ">
+						<span class="x-text-grey">Email Address<span class="x-text-red">*</span></span>
+						<input type="text" name="email" class="form_data x-input x-border x-round ">
+
+						<span class="x-text-grey">Home Address<span class="x-text-red">*</span></span>
+						<input type="text" id="address" name="address" class="form_data x-input x-border x-round ">
+						<div id="map_cont" class="x-container x-round x-padding x-round-xlarge">
+							<div id="mapid"></div>
+						</div>
+						<hr>
+						<b class="x-text-green">Area of Assignment</b><br>
+
+						<span class="x-text-grey">RCU<span class="x-text-red">*</span></span>
+						<select name="rcu"t id="rcu" class="form_data x-select x-border" onchange="set_ls_pcu(this.value)">
+							<option disabled selected value="">Please select RCU</option>
+							<!-- <option value="n_a">N/A</option> -->
+						</select>
+
+						<span class="x-text-grey">PCU<span class="x-text-red">*</span></span>
+						<select name="pcu" id="pcu" class="form_data x-select x-border" disabled>
+							<option disabled selected value="">Please select PCU</option>
+							<option value="n_a">N/A</option>
+						</select>
+
+
+						<span class="x-text-grey">Mobile Phone<span class="x-text-red">*</span></span>
+						<input type="phone" id="mobile" name="mobile" class="form_data x-input x-border x-round ">
+
+						
+						<span class="x-text-grey">Job Designation<span class="x-text-red">*</span></span>
+						<select name="job" id="job" class="form_data x-select x-border">
+							<option disabled selected value="">Please select Job Designation</option>
+							<option value="Enumerator">Enumerator</option>
+							<option value="Value Chain Facilitator">Value Chain Facilitator</option>
+							<option value="Provincial Project Coordinator">Provincial Project Coordinator</option>
+							<option value="Regional Project Coordinator">Regional Project Coordinator</option>
+							<option value="Regional Project Coordinator">M&E</option>
+						</select><br>
+						<hr>
+						<b class="x-text-green">Account information</b><br>
+
+						<span class="x-text-grey">Username<span class="x-text-red">*</span></span>
+						<input type="text" id="username" name="username" class="form_data x-input x-border x-round ">
+
+						<span class="x-text-grey">Password<span class="x-text-red">*</span></span>
+						<input type="password" id="password" name="password" class="form_data x-input x-border x-round ">
+					</form>
+					<div class="x-container x-center">
+						<span id="note_reg" class="x-text-red x-leftbar x-border-red x-pale-red"></span>
+						<hr>
+						<span class="x-text-grey">By Clicking "Register", I have fully read, understand and AGREE on the <b class="x-text-blue" onclick="show_eula()">Terms and Condition</b> of this app</span><br><br>
+						<button class="x-btn x-green x-round-xlarge x-block" onclick="next_step_reg()">Register</button>
+					</div>
+					<hr>
+				</div>
+			</div>
+		</div>
+
+		<div id="login_loading_modal" class="x-modal">
+			<div class="x-modal-content x-padding x-margin x-round-large">
+				<div class="x-container x-center x-padding">
+					<span onclick="$ID('login_loading_modal').style.display='none'"
+					class="x-button x-display-topright">&times;</span>
+					<span class="x-jumbo fa fa-circle-o-notch fa-spin x-text-blue"></span><br>
+					<span class="x-text-gray x-large">Loading. please wait</span>
+				</div>
+			</div>
+		</div>
+
+		<div id="modal_done" class="x-modal" style="">
+
+			<div class="x-modal-content x-padding x-margin x-round-large">
+				<div class="x-container x-center x-padding">
+					<span onclick="$ID('modal_done').style.display='none'"
+					class="x-button x-display-topright">&times;</span>
+					<span class="x-jumbo fa fa-thumbs-o-up x-text-blue"></span><br>
+					<span class="x-text-green">Task Done</span><br>
+					<span class="x-text-grey">
+						Your task is now being processed. some results may appear as dialog, 
+						Pop-up, Modal (like this one) or an alert depending on the result, 
+						and some will not appear 
+					</span><br><br>
+					<button class="x-green x-round-xlarge x-btn" onclick="$ID('modal_done').style.display='none'">Continue</button>
+				</div>
+			</div>
+		</div>
+
 	</body>
 	<script type="text/javascript">
 		function login(){
@@ -58,9 +171,139 @@
 				method : POST,
 				data : $DATA({"user_name":$ID('user_name').value,"password":$ID('password').value}),
 				func : function (res) {
-					println(res)
+					var login = JSON.parse(res).success
+					if(login){
+						redirectto("/home")
+					}
+					else{
+						$ID("err_log").style.display="block"
+						var ins  = $CLASS('login_data')
+						for (var i = 0; i < ins.length; i++) {ins[i].classList.add("x-border-red")}
+					}
 				}
 			})
 		}
+
+		function open_reg(){
+			println(" Registering")
+			$ID('registration_modal').style.display='block'
+			for(var key in RCU_PCU){
+				$ID("rcu").innerHTML += "<option value='"+key+"'>"+key+"</option>"
+				println(key)
+
+			}
+		}
+		function set_ls_pcu(sel_rcu){
+			$ID("pcu").innerHTML = ''
+			println(RCU_PCU[sel_rcu])
+			for (var i = 0; i < RCU_PCU[sel_rcu].length; i++) {
+				$ID("pcu").innerHTML += "<option value='"+RCU_PCU[sel_rcu][i]+"'>"+RCU_PCU[sel_rcu][i]+"</option>"
+			}
+			$ID("pcu").innerHTML += `<option value="n_a">N/A</option>`
+			$ID("pcu").disabled = false
+		}
+
+		function next_step_reg(){
+			var form_data = $CLASS("form_data")
+			var form_data_json = {}
+			for (var i = 0; i < form_data.length; i++) {
+				form_data_json[form_data[i].name] = form_data[i].value
+			}
+			if(input_validate('form_data')){
+				send_register(form_data_json)
+			}else{
+				$ID("note_reg").innerHTML = "Pls fill-up all for inputs"
+			}
+			println(form_data_json)
+		}
+
+		function send_register(_DATA){
+			$ID('login_loading_modal').style.display='block'
+			$send({
+				action : "/api/user_register",
+				data : JSON.stringify(_DATA),
+				method : POST,
+				headers : {"Content-Type": "application/json"},
+				func : function(r){
+					var res = JSON.parse(r)
+
+					println(res)
+					// alert("Registration Submitted")
+					$ID('login_loading_modal').style.display='none'
+					$ID('registration_modal').style.display='none'
+					$ID('modal_done').style.display='block'
+
+					// __createNewFileEntry("cur_registered.txt",JSON.stringify(_DATA),function(){
+					// 	// goto("home_screen.html?data="+__data)  //PLS UNCOMMENT LATER
+					// })
+
+				}
+			})
+		}
+
+		var marker = undefined
+		try{
+			var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+			L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+				attribution: 'DTI RAPID GROWTH',
+				maxZoom: 18,
+				id: 'mapbox/streets-v11',
+				tileSize: 512,
+				zoomOffset: -1,
+				accessToken: 'pk.eyJ1IjoiZGlvYW1lIiwiYSI6ImNrbGo1ZDc1aDAxZTQybnBoc2tpZGcxOWoifQ.90lp0SPxVC4Kz113q_Wn9g'
+			}).addTo(mymap);
+			let samp = {"lat":8.945209,"lng":125.538939}
+			mymap.setView([samp.lat, samp.lng], 13);
+
+
+			// var popup = L.popup();
+
+			function onMapClick(e) {
+				if(marker != undefined){mymap.removeLayer(marker)}
+				// popup
+				// 	.setLatLng(e.latlng)
+				// 	.setContent("You clicked the map at " + e.latlng.toString())
+				// 	.openOn(mymap);
+
+				marker = L.marker(e.latlng).addTo(mymap);
+				// println(e.latlng.lat)
+				$.get('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+e.latlng.lat+'&lon='+e.latlng.lng, function(data){
+					console.log(data.address);
+					// $ID("reg_business_address").value = data.address.region + ', ' +data.address.state
+					// $ID("reg_muni").value = data.address.city
+					var addr = 
+						 String(data.address.village + "," ).replace("undefined,",'')
+						+String(data.address.neighbourhood+",").replace("undefined,",'')
+						+String(data.address.quarter+",").replace("undefined,",'')
+						+String(data.address.suburb+",").replace("undefined,",'')
+						+String(data.address.road + ",").replace("undefined,",'')
+						+String(data.address.tourism + ",").replace("undefined,",'')
+						+String(data.address.leisure + ",").replace("undefined,",'')
+						+String(data.address.state + ",").replace("undefined,",'')
+						+String(data.address.region + ",").replace("undefined,",'')
+						+String(e.latlng.lat +","+e.latlng.lng+ ",").replace("undefined,",'')
+					// $ID("reg_brgy").value = addr.split("undefined ,").join("")
+					$ID("address").value = addr
+					// $ID("address").value = addr.replaceAll("undefined,","")
+				});
+			}
+			mymap.on('click', onMapClick);
+		}
+		catch(e){
+			$ID("map_cont").style.display = "none"
+			println("ERROR >> "+ e)
+		}
+
+		// ---------------------------------------------------------------------
+		let RCU_PCU = {
+			"BARMM":["Maguindanao"],
+			"RCU 8":["Northern Samar","Leyte","Southern Leyte"],
+			"RCU 9":["Zamboanga del Norte","Zamboanga Sibugay","Zamboanga del Sur"],
+			"RCU 10":["Misamis Oriental","Bukidnon","Lanao del Norte"],
+			"RCU 11":["Davao de Oro","Davao Oriental","Davao del Norte","Davao del Sur","Davao Occidental"],
+			"RCU 12":["North Cotabato","Sultan Kudarat","Sarangani"],
+			"RCU 13":["Agusan del Norte","Agusan del Sur","Surigao del Sur"]
+		}
+		// ----------------------------------------------------------------------------
 	</script>
 </html>

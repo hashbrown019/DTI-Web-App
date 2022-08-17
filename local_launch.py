@@ -38,5 +38,5 @@ def index():return redirect("/login")
 # 	pass
 
 
-app.run(host=c.HOST,port=c._PORT,debug=c.IS_DEBUG,ssl_context='adhoc')
-# app.run(host=c.HOST,port=c._PORT,debug=c.IS_DEBUG)
+# app.run(host=c.HOST,port=c._PORT,debug=c.IS_DEBUG,ssl_context='adhoc')
+app.run(host=c.HOST,port=c._PORT,debug=c.IS_DEBUG)

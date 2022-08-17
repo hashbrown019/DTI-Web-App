@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, session, redirect, jsonify
+from flask_session import Session
 from modules.Connections import mysql,sqlite
 import Configurations as c
 import os
@@ -17,6 +18,7 @@ class _main:
 
 	@app.route("/login",methods=["POST","GET"])
 	def login():
+		# return render_template("login/loginv2.html")
 		return render_template("login/login.html")
 
 	@app.route("/login_auth",methods=["POST"])
@@ -24,5 +26,18 @@ class _main:
 		username = request.form['user_name']
 		password = request.form['password']
 		log_res = rapid.select("SELECT * from `users` WHERE `username` = '{}' AND `password`='{}';".format(username,password))
-		print(flask.session['_id'])
-		return jsonify(log_res)
+		if(len(log_res)!=0):
+			log_res[0]['password'] = "********"
+			session["USER_DATA"] = log_res
+			return jsonify({"success":True})
+		else:
+			return jsonify({"success":False})
+
+	@app.route("/logout")
+	def logout():
+		session.clear()
+		return jsonify(session )
+
+	@app.route("/get_session")
+	def get_session():
+		return jsonify(session )

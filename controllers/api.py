@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, session, redirect, jsonify, send_file
+from flask_session import Session
 from modules.Connections import mysql,sqlite
 import Configurations as c
 import os
