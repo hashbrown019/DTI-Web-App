@@ -11,3 +11,5 @@ app_version.txt
 app_version.txt
 app_version.txt
 app_version.txt
+*.db
+assets/DB/dti_rapidxi.db
