@@ -28,5 +28,3 @@ class _main:
 			return render_template("home/home.html")
 		else:
 			return redirect("/login?force_url=1")
-
-

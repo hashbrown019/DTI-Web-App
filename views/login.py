@@ -8,7 +8,8 @@ import json
 app = Blueprint("login",__name__)
 
 # rapid = mysql(c.LOCAL_HOST,c.LOCAL_USER,c.LOCAL_PASSWORD,c.LOCAL_DATABASE)
-rapid= sqlite("assets\\db\\dti_rapidxi.db")
+# rapid= sqlite("assets\\db\\dti_rapidxi.db")
+rapid= sqlite(c.SQLITE_DB)
 
 
 class _main:
