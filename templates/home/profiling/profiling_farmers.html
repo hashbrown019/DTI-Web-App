@@ -24,10 +24,20 @@
 									action:"/get_profile",
 									method: POST,
 									data : $DATA({"profile_file_name":_file_name}),
+									err : function (e){
+										println("error")
+									},
 									func : function(res){
 										var file_profile = JSON.parse(res)
 										// println(file_profile)
-										// var person = file_profile.profile
+										if(file_profile.farmer_code==undefined){
+											println("-------------------UNDEFINED-------------- "+ total_recors_farmer_counter)
+											// return
+										}
+										else{
+
+										}
+
 										var person = file_profile
 										var prof_pic = person.farmer_img_base64
 										if(prof_pic=="" || prof_pic==" " || prof_pic==undefined){
@@ -36,33 +46,38 @@
 										// println(person)
 										$ID("profile_list").innerHTML += `
 											<div class="x-row x-hover-teal x-padding" id="`+person.farmer_code+`" onclick="get_ind('`+person.farmer_code+`')">
-												<div class="x-col l1">
-													<img loading="lazy" id="img_`+person.farmer_code+`" src="`+prof_pic+`" class="x-image x-round" style="max-width:100%">
-												</div>
-												<div class="x-col l3 x-container">
-													<b class="">`+person.farmer_name+`</b><br>
-													<span class="x-tiny">
-														<span>`+person.addr_street_purok_sitio+`</span> 
-														<span>`+person.addr_city+`</span> 
-														<span>`+person.addr_prov+`</span> 
-														<span>R:`+person.addr_region+`</span> 
-														</span><br>
-												</div>
-												<div class="x-col l3 x-container">
-													<i class=""><span>`+person["farmer-primary_crop"]+`</span> </i><br>
-													<span class="x-tiny">-----</span><br>
-												</div>
-												<div class="x-col l4 x-container x-center">
-													<span class="x-tiny">Form Completion</span><br>
-													<b class="x-large">--%</b><br>
+												<span class="x-tiny x-text-grey x-right"><b>`+total_recors_farmer_counter+`</b>-`+person.farmer_code+`</span>
+												<div class='x-row'>
+													<div class="x-col l1">
+														<img loading="lazy" id="img_`+person.farmer_code+`" src="`+prof_pic+`" class="x-image x-round" style="max-width:100%">
+													</div>
+													<div class="x-col l3 x-container">
+														<b class="">`+person.farmer_name+`</b><br>
+														<span class="x-tiny">
+															<span>`+person.addr_street_purok_sitio+`</span> 
+															<span>`+person.addr_city+`</span> 
+															<span>`+person.addr_prov+`</span> 
+															<span>R:`+person.addr_region+`</span> 
+															</span><br>
+													</div>
+													<div class="x-col l3 x-container">
+														<i class=""><span>`+person["farmer-primary_crop"]+`</span> </i><br>
+														<span class="x-tiny">-----</span><br>
+													</div>
+													<div class="x-col l4 x-container x-center">
+														<span class="x-tiny">Form Completion</span><br>
+														<b class="x-large">--%</b><br>
+													</div>
 												</div>
 											</div>`
+										total_recors_farmer_counter+= 1
+										// var person = file_profile.profile
 										if(total_recors_farmer_counter==total_recors_farmer ){
+											println(" Getting Picures")
 											$ID("prof_farmer_count").innerHTML = total_recors_farmer_counter
 											// alert("Done Loading ["+total_recors_farmer_counter+"] files")
 											get_prof_imgs(f_FILE)
 										}
-										total_recors_farmer_counter+= 1
 									}
 								})
 							}
@@ -81,61 +96,69 @@
 							}
 
 							function get_prof_imgs(ls_file){  // Lazy Load for Profile Images After profrile list completely lodaded
+								// if(ls_file[i]==null){}
 								for (var i = 0; i < ls_file.length; i++) {
 									$send({
 										action : "/api/get_imgProf/"+ls_file[i],
 										method : POST,
 										func : function(res) {
 											var im_res = JSON.parse(res)
+											println(im_res)
 											var ids_ = (im_res.f_name).split(".")[0]
 											var prof_pic = im_res.base_64
 											if(prof_pic=="" || prof_pic==" " || prof_pic==undefined){
 												prof_pic = "../static/img/user.png"
 											}
-											$ID("img_"+ids_).src = prof_pic
+											// println("img_"+ids_)
+											try{
+												$ID("img_"+ids_).src = prof_pic
+											}
+											catch(e){
+												println(" ERROR in getting image for img_"+ids_ +" || ERROR : "+e)
+											}
 										}
 									})
 								}
 							}
 
-							function get_user(_file_name){
-								$send({
-									action:"/get_profile",
-									method: POST,
-									data : $DATA({"profile_file_name":_file_name}),
-									func : function(res){
-										var file_profile = JSON.parse(res)
-										println(file_profile)
-										var person = file_profile.profile
-										var prof_pic = person.farmer_img_base64
-										if(prof_pic=="" || prof_pic==" " || prof_pic==undefined){
-											prof_pic = "../static/img/user.png"
-										}
-										println(person)
-										$ID("profile_list").innerHTML += `
-											<div class="x-row x-padding" id="`+person.farmer_code+`">
-												<div class="x-col l1">
-													<img loading="lazy" src="`+prof_pic+`" class="x-image" style="max-width:100%">
-												</div>
-												<div class="x-col l3 x-container">
-													<b class="">`+person.farmer_name+`</b><br>
-													<span class="x-tiny">
-														<span>`+person.addr_street_purok_sitio+`</span> 
-														<span>`+person.addr_city+`</span> 
-														<span>`+person.addr_prov+`</span> 
-														<span>R:`+person.addr_region+`</span> 
-														</span><br>
-												</div>
-												<div class="x-col l3 x-container">
-													<i class=""><span>`+person["farmer-primary_crop"]+`</span> </i><br>
-													<span class="x-tiny">-----</span><br>
-												</div>
-												<div class="x-col l4 x-container x-center">
-													<span class="x-tiny">Form Completion</span><br>
-													<b class="x-large">--%</b><br>
-												</div>
-											</div>`
-									}
-								})
-							}
+							// function get_user(_file_name){
+							// 	$send({
+							// 		action:"/get_profile",
+							// 		method: POST,
+							// 		data : $DATA({"profile_file_name":_file_name}),
+							// 		func : function(res){
+							// 			var file_profile = JSON.parse(res)
+							// 			println(file_profile)
+							// 			var person = file_profile.profile
+							// 			var prof_pic = person.farmer_img_base64
+							// 			if(prof_pic=="" || prof_pic==" " || prof_pic==undefined){
+							// 				prof_pic = "../static/img/user.png"
+							// 			}
+							// 			println(person)
+							// 			$ID("profile_list").innerHTML += `
+							// 			<div class="x-row x-padding" id="`+person.farmer_code+`">
+							// 				<div class="x-col l1">
+							// 					<img loading="lazy" src="`+prof_pic+`" class="x-image" style="max-width:100%">
+							// 				</div>
+							// 				<div class="x-col l3 x-container">
+							// 					<b class="">`+person.farmer_name+`</b><br>
+							// 					<span class="x-tiny">
+							// 						<span>`+person.addr_street_purok_sitio+`</span> 
+							// 						<span>`+person.addr_city+`</span> 
+							// 						<span>`+person.addr_prov+`</span> 
+							// 						<span>R:`+person.addr_region+`</span> 
+							// 					</span><br>
+							// 				</div>
+							// 				<div class="x-col l3 x-container">
+							// 					<i class=""><span>`+person["farmer-primary_crop"]+`</span> </i><br>
+							// 					<span class="x-tiny">-----</span><br>
+							// 				</div>
+							// 				<div class="x-col l4 x-container x-center">
+							// 					<span class="x-tiny">Form Completion</span><br>
+							// 					<b class="x-large">--%</b><br>
+							// 				</div>
+							// 			</div>`
+							// 		}
+							// 	})
+							// }
 						</script>
