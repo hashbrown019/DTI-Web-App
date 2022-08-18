@@ -1,0 +1,237 @@
+						<style type="text/css">
+							#mapid_reg { height: 500px;position: relative;}
+						/*					:root {
+								--map-tiles-filter: brightness(0.7) invert(2) contrast(3) hue-rotate(200deg) saturate(0.3) ;
+							}
+
+							@media (prefers-color-scheme: dark) {
+								.map-tiles {
+									filter:var(--map-tiles-filter, none);
+								}
+							}*/
+						</style>
+
+						<div onload="load_users()" class=" x-col l6 x-white">
+							<div>
+								<h3 class="x-padding x-text-teal">User List</h3>
+							</div>
+							<div class="x-padding x-container x-bottombar x-border-teal">
+								<i class="x-text-grey">Displaying <b id="prof_acc_count">0</b> File/s</i>
+							</div>
+							<div id="user_ls_" class="" style="overflow-y:scroll; max-height: 70vh;">
+								------- List Of Profiles ------
+								
+							</div>
+						</div>
+
+						<div class="x-col l6 x-white">
+							<div>
+								<h4 class="x-padding x-text-teal"><b>Profile Information</b></h4>
+							</div>
+							<div class="x-container x-bottombar x-border-teal">
+								<span class="x-right">
+									<b id="delete_user_acc_btn" class="x-button x-text-red x-hover-red" style="display:none" onclick="acc_delete()">
+										Delete <span class="fa fa-trash"></span>
+									</b>
+									<b class="x-button x-text-orange x-hover-orange" onclick="acc_clear()">
+										clear <span class="fa fa-times-rectangle-o"></span>
+									</b>
+									<button class="x-btn x-green">Save/Create</button>
+								</span>
+							</div>
+							<div class="x-container"  style="overflow-y:scroll; max-height: 70vh;">
+
+								<br>
+								<div class="x-container x-border-dashed">
+									<div class="x-col l1 s1 m1" style="padding-top:7px">
+										<input type="text" id="id" class="form_data x-black x-center x-input x-border x-round " style="max-height:100%">
+									</div>
+									<span class="x-col l11 m11 s11 x-padding">
+										<div class="">
+											<b>ID</b> <br>
+											<span class="x-text-grey x-small">(Changing the <b>ID</b> may result of lost data created by this account)</span>
+										</div>	
+									</span>
+								</div>
+								<br>
+								<span class="x-text-grey">Name<span class="x-text-red">*</span></span>
+								<input type="text" id="name" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">Email Address<span class="x-text-red">*</span></span>
+								<input type="text" id="email" class="form_data x-input x-border x-round ">
+
+								<span class="x-text-grey">Home Address<span class="x-text-red">*</span></span>
+								<input type="text" id="address" name="address" class="form_data x-input x-border x-round ">
+								<!-- <div id="map_cont" class="x-container x-round x-padding x-round-xlarge">
+									<div id="mapid_reg"></div>
+								</div> -->
+								<hr>
+								<b class="x-text-green">Area of Assignment</b><br>
+
+								<span class="x-text-grey">RCU<span class="x-text-red">*</span></span>
+								<select name="rcu" id="rcu" class="form_data x-select x-border" onchange="set_ls_pcu(this.value)">
+									<option disabled selected value="">Please select RCU</option>
+									<!-- <option value="n_a">N/A</option> -->
+								</select>
+
+								<span class="x-text-grey">PCU<span class="x-text-red">*</span></span>
+								<select name="pcu" id="pcu" class="form_data x-select x-border" disabled>
+									<option disabled selected value="">Please select PCU</option>
+									<option value="n_a">N/A</option>
+								</select>
+
+
+								<span class="x-text-grey">Mobile Phone<span class="x-text-red">*</span></span>
+								<input type="phone" id="mobile" name="mobile" class="form_data x-input x-border x-round ">
+
+
+								<span class="x-text-grey">Job Designation<span class="x-text-red">*</span></span>
+								<select name="job" id="job" class="form_data x-select x-border">
+									<option disabled selected value="">Please select Job Designation</option>
+									<option value="Enumerator">Enumerator</option>
+									<option value="Value Chain Facilitator">Value Chain Facilitator</option>
+									<option value="Provincial Project Coordinator">Provincial Project Coordinator</option>
+									<option value="Regional Project Coordinator">Regional Project Coordinator</option>
+									<option value="Regional Project Coordinator">M&E</option>
+									<option value="Admin" class="x-text-yellow"><b>Admin</b></option>
+									<option value="Super Admin" class="x-text-red"><b><i>Super Admin</i></b></option>
+								</select><br>
+								<hr>
+								<b class="x-text-green">Account information</b><br>
+
+								<span class="x-text-grey">Username<span class="x-text-red">*</span></span>
+								<input type="text" id="username" name="username" class="form_data x-input x-border x-round ">
+
+								<span class="x-text-grey">Password<span class="x-text-red">*</span></span>
+								<input type="text" id="password" name="password" class="form_data x-input x-border x-round ">
+								
+								<hr>
+							</div>
+						</div>
+						<script type="text/javascript">
+							let USER_ACC_LS 
+							let SELECTED_USER_ACC 
+							load_users()
+
+							
+							
+							function load_users(){
+								println(" * Getting User lists")
+								$send({
+									action : "/get_user",
+									method : POST,
+									a_sync : false,
+									func : function (res) {
+										var user_ls = JSON.parse(res)
+										println(user_ls)
+										var user_cards = ""
+										for (var i = 0; i < user_ls.length; i++) {
+											user_cards += `
+											<div class="x-row x-container x-padding" onclick="get_acc_info(`+i+`)">
+												<div class="x-leftbar x-container x-hover-teal">
+													<div class="x-row">
+														<div class="x-col l3 m3">
+														 	<b>`+user_ls[i].name+`</b>
+														</div>
+														<div class="x-col l3 m3">
+														 	<u>`+user_ls[i].job+`</u>
+														</div>
+														<div class="x-col l3 m3 x-small">
+														 	<i>Validity: <b>0000/00/00</b></i>
+														</div>
+													</div>
+													<span class="x-tiny x-text x-row ">
+														Address: <b>`+user_ls[i].address+`</b>
+														<br>
+														Assignment: <b>`+user_ls[i].rcu+` | `+user_ls[i].pcu+`</b>
+													</span>
+													<span class="x-tiny x-right x-text-grey">`+i+`</span>
+												</div>
+											</div>`
+										}
+										USER_ACC_LS = user_ls
+										$ID('user_ls_').innerHTML = user_cards;
+										$ID('prof_acc_count').innerHTML = user_ls.length;
+									}
+								})
+							}
+
+							function acc_clear(){
+
+							}
+
+							function acc_delete(){
+								var to_del = $ID("id").value
+								var del_user_dialog = $dialog({
+									type :"warning",
+									title :"Confirm Deletion?",
+									content :(`
+										Are you sure you want to delete <b>`+SELECTED_USER_ACC.name+`'s</b> User account?<br>Once deleted, it will be gone forever						
+									`),
+									buttons :["Proceed to Delection","Cancel"],
+									buttons_actions :[
+										function(){
+											println(this)
+										}
+									],
+								})
+							}
+
+							function get_acc_info(indx){
+								$ID('delete_user_acc_btn').style.display = "inline"
+								$ID("id").value = indx
+								set_ls_rcu()
+								SELECTED_USER_ACC = (USER_ACC_LS[indx])
+								refill_data_forms(USER_ACC_LS[indx],function(data_){
+									set_ls_pcu(data_.rcu)
+									
+								})
+							}
+
+
+							function set_ls_rcu(){
+								println(" Registering")
+								for(var key in RCU_PCU){
+									$ID("rcu").innerHTML += "<option value='"+key+"'>"+key+"</option>"
+
+								}
+							}
+
+							function set_ls_pcu(sel_rcu){
+								$ID("pcu").innerHTML = ''
+								for (var i = 0; i < RCU_PCU[sel_rcu].length; i++) {
+									$ID("pcu").innerHTML += "<option value='"+RCU_PCU[sel_rcu][i]+"'>"+RCU_PCU[sel_rcu][i]+"</option>"
+								}
+								$ID("pcu").innerHTML += `<option value="n_a">N/A</option>`
+								$ID("pcu").disabled = false
+							}
+
+
+							function refill_data_forms(form_data_refill,func){ /////////// REFILLING FOR HAS DATA 
+								var form_data = $CLASS("form_data")
+
+								for (var i = 0; i < form_data.length; i++) {
+									if(form_data[i].type=='checkbox'){
+										// form_data[i].checked = form_data_refill[form_data[i].id] // DIRECT VALUE Transfer 
+
+										if(form_data_refill[form_data[i].id]){// Simulate Clicked
+											println(" --- Clicking >>>> "+form_data[i].id) // Simulate Clicked
+											form_data[i].click() // Simulate Clicked
+										}
+									}
+									else{
+										try{
+											if (form_data_refill[form_data[i].id]==undefined) {form_data_refill[form_data[i].id] = ""}
+											form_data[i].value = form_data_refill[form_data[i].id]
+										}
+										catch(e){println("ERROR in refill_data_forms :: "+e)}
+									}
+								}
+
+								try{
+									func(form_data_refill)
+								}
+								catch(e){
+									println(" Refill Data no Callback : "+e)
+								}
+							}
+						</script>

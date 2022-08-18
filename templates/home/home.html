@@ -130,6 +130,58 @@
 			redirectto("#"+_index)
 
 		}
-		
+
+		// var mapid_reg = load_map('mapid_reg') // USER ACC Map
+
+
+		function load_map(ids){
+			var marker = undefined
+			let latlong_line_ls = []
+			let _MAP = undefined
+			let cur_loc = {"lat":7.060377702562426,"lng":125.55474053778968}
+			
+			_MAP = L.map(ids).setView([cur_loc.lat, cur_loc.lng], 13);
+			L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+				attribution: '<button id="dti_map_btn" class="x-btn x-green" onclick="set_line(this)">DTI RAPID GROWTH</button>',
+				maxZoom: 18,
+				id: 'mapbox/streets-v11',
+				// tileSize: 670,
+				// // tileSize: 512,
+				// zoomOffset: -1,
+				accessToken: 'pk.eyJ1IjoiZGlvYW1lIiwiYSI6ImNrbGo1ZDc1aDAxZTQybnBoc2tpZGcxOWoifQ.90lp0SPxVC4Kz113q_Wn9g'
+			}).addTo(_MAP);
+			
+			_MAP.setView([cur_loc.lat, cur_loc.lng], 13);
+
+
+			// var popup = L.popup();
+
+			function onMapClick(e) {
+				if(marker != undefined){_MAP.removeLayer(marker)}
+				marker = L.marker(e.latlng).addTo(_MAP);
+				latlong_line_ls.push([e.latlng.lat,e.latlng.lng])
+				marker.on('click',function(__map){
+					println(__map)
+				})
+			}
+
+			_MAP.on('click', onMapClick);
+			return _MAP
+		}
+
+
+
+		function set_line(a_l){
+			a_l.parentNode.querySelectorAll("a").innerText= "--"
+			println(a_l.parentNode.querySelectorAll("a"))
+			var polyline =L.polyline(latlong_line_ls,{
+                color: 'blue',
+                weight: 12,
+                // opacity: 0.5,
+                // smoothFactor: 1
+            }).addTo(_MAP)
+			// MAP.fitBounds(latlong_line_ls)
+			// MAP.fitBounds(polyline.getBounds())
+		}
 	</script>	
 </html>

@@ -31,7 +31,7 @@
 										var file_profile = JSON.parse(res)
 										// println(file_profile)
 										if(file_profile.farmer_code==undefined){
-											println("-------------------UNDEFINED-------------- "+ total_recors_farmer_counter)
+											println("UNDEFINED ["+ total_recors_farmer_counter+"] ")
 											// return
 										}
 										else{
@@ -90,7 +90,7 @@
 									method : POST,
 									func : function (res) {
 										var ind_data = JSON.parse(res)
-										println(ind_data)
+										// println(ind_data)
 									}
 								})
 							}
@@ -102,15 +102,15 @@
 										action : "/api/get_imgProf/"+ls_file[i],
 										method : POST,
 										func : function(res) {
-											var im_res = JSON.parse(res)
-											println(im_res)
-											var ids_ = (im_res.f_name).split(".")[0]
-											var prof_pic = im_res.base_64
-											if(prof_pic=="" || prof_pic==" " || prof_pic==undefined){
-												prof_pic = "../static/img/user.png"
-											}
-											// println("img_"+ids_)
 											try{
+												var im_res = JSON.parse(res)
+												// println(im_res)
+												var ids_ = (im_res.f_name).split(".")[0]
+												var prof_pic = im_res.base_64
+												if(prof_pic=="" || prof_pic==" " || prof_pic==undefined){
+													prof_pic = "../static/img/user.png"
+												}
+											// println("img_"+ids_)
 												$ID("img_"+ids_).src = prof_pic
 											}
 											catch(e){
