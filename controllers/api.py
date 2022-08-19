@@ -72,6 +72,16 @@ class _main:
 
 
 	# @cross_origin()
+	@app.route("/api/edit_user_acc",methods=["POST","GET"])
+	def edit_user_acc():
+		u = request.form
+		resp = rapid.do('''UPDATE `users` 
+			SET `address`="{}",`email`="{}",`job`="{}",`mobile`="{}",`name`="{}",`password`="{}",`pcu`="{}",`rcu`="{}",`username`="{}"
+			WHERE `id`={}
+			;'''.format(u['address'],u['email'],u['job'],u['mobile'],u['name'],u['password'],u['pcu'],u['rcu'],u['username'],u['id']))
+		return str(resp)
+
+	# @cross_origin()
 	@app.route("/get_user",methods=["POST","GET"])
 	def get_user():
 		resp = rapid.select("SELECT * FROM `users`;")

@@ -36,7 +36,7 @@
 									<b class="x-button x-text-orange x-hover-orange" onclick="acc_clear()">
 										clear <span class="fa fa-times-rectangle-o"></span>
 									</b>
-									<button class="x-btn x-green">Save/Create</button>
+									<button disabled id="save_btn" class="x-btn x-green" onclick="save_create_user_acc(this)">Save/Create</button>
 								</span>
 							</div>
 							<div class="x-container"  style="overflow-y:scroll; max-height: 70vh;">
@@ -44,7 +44,7 @@
 								<br>
 								<div class="x-container x-border-dashed">
 									<div class="x-col l1 s1 m1" style="padding-top:7px">
-										<input type="text" id="id" class="form_data x-black x-center x-input x-border x-round " style="max-height:100%">
+										<input disabled type="text" id="id" class="form_data x-black x-center x-input x-border x-round " style="max-height:100%">
 									</div>
 									<span class="x-col l11 m11 s11 x-padding">
 										<div class="">
@@ -55,12 +55,12 @@
 								</div>
 								<br>
 								<span class="x-text-grey">Name<span class="x-text-red">*</span></span>
-								<input type="text" id="name" class="form_data x-input x-border x-round ">
+								<input type="text" id="name" class="form_data required x-input x-border x-round ">
 								<span class="x-text-grey">Email Address<span class="x-text-red">*</span></span>
-								<input type="text" id="email" class="form_data x-input x-border x-round ">
+								<input type="text" id="email" class="form_data required x-input x-border x-round ">
 
 								<span class="x-text-grey">Home Address<span class="x-text-red">*</span></span>
-								<input type="text" id="address" name="address" class="form_data x-input x-border x-round ">
+								<input type="text" id="address" name="address" class="form_data required x-input x-border x-round ">
 								<!-- <div id="map_cont" class="x-container x-round x-padding x-round-xlarge">
 									<div id="mapid_reg"></div>
 								</div> -->
@@ -68,24 +68,24 @@
 								<b class="x-text-green">Area of Assignment</b><br>
 
 								<span class="x-text-grey">RCU<span class="x-text-red">*</span></span>
-								<select name="rcu" id="rcu" class="form_data x-select x-border" onchange="set_ls_pcu(this.value)">
+								<select name="rcu" id="rcu" class="form_data required x-select x-border" onchange="set_ls_pcu(this.value)">
 									<option disabled selected value="">Please select RCU</option>
 									<!-- <option value="n_a">N/A</option> -->
 								</select>
 
 								<span class="x-text-grey">PCU<span class="x-text-red">*</span></span>
-								<select name="pcu" id="pcu" class="form_data x-select x-border" disabled>
+								<select name="pcu" id="pcu" class="form_data required x-select x-border" disabled>
 									<option disabled selected value="">Please select PCU</option>
 									<option value="n_a">N/A</option>
 								</select>
 
 
 								<span class="x-text-grey">Mobile Phone<span class="x-text-red">*</span></span>
-								<input type="phone" id="mobile" name="mobile" class="form_data x-input x-border x-round ">
+								<input type="phone" id="mobile" name="mobile" class="form_data required x-input x-border x-round ">
 
 
 								<span class="x-text-grey">Job Designation<span class="x-text-red">*</span></span>
-								<select name="job" id="job" class="form_data x-select x-border">
+								<select name="job" id="job" class="form_data required x-select x-border">
 									<option disabled selected value="">Please select Job Designation</option>
 									<option value="Enumerator">Enumerator</option>
 									<option value="Value Chain Facilitator">Value Chain Facilitator</option>
@@ -99,10 +99,10 @@
 								<b class="x-text-green">Account information</b><br>
 
 								<span class="x-text-grey">Username<span class="x-text-red">*</span></span>
-								<input type="text" id="username" name="username" class="form_data x-input x-border x-round ">
+								<input type="text" id="username" name="username" class="form_data required x-input x-border x-round ">
 
 								<span class="x-text-grey">Password<span class="x-text-red">*</span></span>
-								<input type="text" id="password" name="password" class="form_data x-input x-border x-round ">
+								<input type="text" id="password" name="password" class="form_data required x-input x-border x-round ">
 								
 								<hr>
 							</div>
@@ -156,7 +156,11 @@
 							}
 
 							function acc_clear(){
-
+								var fdata = $CLASS("form_data")
+								for (var i = 0; i < fdata.length; i++) {
+									fdata[i].value = null
+								}
+								$ID('delete_user_acc_btn').style.display = "none"
 							}
 
 							function acc_delete(){
@@ -187,9 +191,55 @@
 								})
 							}
 
+							get_key_events()
+							function get_key_events(){
+								set_ls_rcu()
+								var fdata = $CLASS("form_data")
+								for (var i = 0; i < fdata.length; i++) {
+									var EVENT_ = "keyup"
+									if(fdata[i].type=="select-one"){
+										EVENT_="change"
+									}
+									fdata[i].addEventListener(EVENT_,btn_dis)
+								}
+							}
+
+							function btn_dis(){
+								println('events')
+								if(!input_validate("required")){
+									$ID('save_btn').disabled = true
+								}else{
+									$ID('save_btn').disabled = false
+								}
+							}
+
+							function save_create_user_acc(save_btn){
+								var _form_data ={}
+								var fdata = $CLASS("form_data")
+								for (var i = 0; i < fdata.length; i++) {
+									_form_data[fdata[i].id] = fdata[i].value
+								}
+
+								if(_form_data.id=="" || _form_data.id==null){
+								}else{
+									$send({
+										action : "/api/edit_user_acc",
+										data : $DATA(_form_data),
+										method : POST,
+										func : function (res){
+											// var resp = JSON.parse(res)
+											println(res)
+											load_users()
+											acc_clear()
+										}
+									})
+								}
+								println(_form_data)
+							}
+
+
 
 							function set_ls_rcu(){
-								println(" Registering")
 								for(var key in RCU_PCU){
 									$ID("rcu").innerHTML += "<option value='"+key+"'>"+key+"</option>"
 
@@ -233,5 +283,7 @@
 								catch(e){
 									println(" Refill Data no Callback : "+e)
 								}
+								$ID('save_btn').disabled = false
+
 							}
 						</script>
