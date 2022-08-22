@@ -28,23 +28,24 @@
 										println("error")
 									},
 									func : function(res){
-										var file_profile = JSON.parse(res)
-										// println(file_profile)
-										if(file_profile.farmer_code==undefined){
-											println("UNDEFINED ["+ total_recors_farmer_counter+"] ")
-											// return
-										}
-										else{
+										try{
+											var alldata_farmer = JSON.parse(res)
+											var file_profile = alldata_farmer['profile']
+											println(file_profile)
 
-										}
+											var person = file_profile
+											var prof_pic = "../static/img/user.png"
+											try{
+												prof_pic = person.farmer_img_base64
+												if(prof_pic=="" || prof_pic==" " || prof_pic==undefined || prof_pic==null || prof_pic=="null"){
+													prof_pic = "../static/img/user.png"
+												}
+											}catch(e){
+												println(" - Error in base64 images ")
+											}
+											// println(person)
 
-										var person = file_profile
-										var prof_pic = person.farmer_img_base64
-										if(prof_pic=="" || prof_pic==" " || prof_pic==undefined){
-											prof_pic = "../static/img/user.png"
-										}
-										// println(person)
-										$ID("profile_list").innerHTML += `
+											$ID("profile_list").innerHTML += `
 											<div class="x-row x-hover-teal x-padding" id="`+person.farmer_code+`" onclick="get_ind('`+person.farmer_code+`')">
 												<span class="x-tiny x-text-grey x-right"><b>`+total_recors_farmer_counter+`</b>-`+person.farmer_code+`</span>
 												<div class='x-row'>
@@ -70,14 +71,18 @@
 													</div>
 												</div>
 											</div>`
-										total_recors_farmer_counter+= 1
-										// var person = file_profile.profile
-										if(total_recors_farmer_counter==total_recors_farmer ){
-											println(" Getting Picures")
-											$ID("prof_farmer_count").innerHTML = total_recors_farmer_counter
-											// alert("Done Loading ["+total_recors_farmer_counter+"] files")
-											get_prof_imgs(f_FILE)
+											total_recors_farmer_counter+= 1
+											// var person = file_profile.profile
+											if(total_recors_farmer_counter==total_recors_farmer ){
+												println(" Getting Picures")
+												$ID("prof_farmer_count").innerHTML = total_recors_farmer_counter
+												// alert("Done Loading ["+total_recors_farmer_counter+"] files")
+												get_prof_imgs(f_FILE)
+											}
+										}catch(e){
+											println(" Error in data = "+e)
 										}
+
 									}
 								})
 							}
@@ -85,12 +90,15 @@
 							function get_ind(fid){
 								println(fid)
 								$send({
-									action : "/get_full_profile",
+									action : "/get_full_profile_str",
+									// action : "/get_full_profile",
 									data : $DATA({"profile_file_name":fid+".json"}),
 									method : POST,
 									func : function (res) {
-										var ind_data = JSON.parse(res)
-										// println(ind_data)
+										res = res.replace(`}}"post_harv-phcropothers":`,`},"post_harv-phcropothers":`)
+										res = res.replace(`}}"post_harv-phcropothers":`,`},"post_harv-phcropothers":`)
+										// println(JSON.parse(res))
+										println(res)
 									}
 								})
 							}

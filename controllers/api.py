@@ -36,17 +36,9 @@ class _main:
 		f = open(c.RECORDS+"/profiles/form_a/"+ FILE, "r")
 		strsd = f.read()
 		f.close()
-		prof_1 = json.loads(strsd)
-		# prof_1["profile"]["farmer_img_base64"] =""# Remove Profile
-		return jsonify(prof_1["profile"])
-		# try: pass
-		# except Exception as e:
-		# 	print(" ERROR in "+FILE)
-		# 	return jsonify({})
-
+		print(FILE)
 		# prof_1 = json.loads(strsd)
-		# prof_1["profile"]["farmer_img_base64"] =""# Remove Profile
-		# return jsonify(prof_1["profile"])
+		return strsd
 
 
 	@app.route("/get_full_profile",methods=["POST","GET"]) # GETS the Fulll data of Farmer
@@ -57,6 +49,16 @@ class _main:
 		res = json.loads(f.read())
 		f.close()
 		return jsonify(res)
+
+	@app.route("/get_full_profile_str",methods=["POST","GET"]) # GETS the Fulll data of Farmer
+	def get_full_profile_str():
+		FILE = request.form["profile_file_name"]
+		f = open(c.RECORDS+"/profiles/form_a/"+ FILE, "r")
+
+		res = f.read()
+		# res = json.loads(f.read())
+		f.close()
+		return res
 
 	# @cross_origin()
 	@app.route("/api/get_imgProf/<ids>",methods=["POST","GET"]) # GET ONLY PROFILE FORM INFIO
