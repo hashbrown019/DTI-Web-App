@@ -15,7 +15,6 @@
 								
 							</div>
 						</div>
-
 						<script type="text/javascript">
 
 							function get_profile(_file_name,total_recors_farmer, f_FILE){
@@ -51,7 +50,8 @@
 												<span class="x-tiny x-text-grey x-right"><b>`+total_recors_farmer_counter+`</b>-`+person.farmer_code+`</span>
 												<div class='x-row'>
 													<div class="x-col l1">
-														<img loading="lazy" id="img_`+person.farmer_code+`" src="`+prof_pic+`" class="x-image x-round" style="max-width:100%">
+														<!-- <img loading="lazy" id="img_`+person.farmer_code+`" src="`+prof_pic+`" class="x-image x-round" style="max-width:100%"> -->
+
 													</div>
 													<div class="x-col l3 x-container">
 														<b class="">`+person.farmer_name+`</b><br>
@@ -96,7 +96,6 @@
 									data : $DATA({"profile_file_name":fid+".json"}),
 									method : POST,
 									func : function (res) {
-										res = res.replace(`}}"post_harv-phcropothers":`,`},"post_harv-phcropothers":`)
 										res = res.replace(`}}"post_harv-phcropothers":`,`},"post_harv-phcropothers":`)
 										// println(JSON.parse(res))
 										println(res)

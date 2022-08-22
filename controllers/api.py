@@ -54,7 +54,6 @@ class _main:
 	def get_full_profile_str():
 		FILE = request.form["profile_file_name"]
 		f = open(c.RECORDS+"/profiles/form_a/"+ FILE, "r")
-
 		res = f.read()
 		# res = json.loads(f.read())
 		f.close()

@@ -166,8 +166,9 @@
 							function acc_delete(){
 								var to_del = $ID("id").value
 								var del_user_dialog = $dialog({
-									type :"warning",
+									type :"error",
 									title :"Confirm Deletion?",
+									// footer_content :"Confirm Deletion?",
 									content :(`
 										Are you sure you want to delete <b>`+SELECTED_USER_ACC.name+`'s</b> User account?<br>Once deleted, it will be gone forever						
 									`),
@@ -236,8 +237,6 @@
 								}
 								println(_form_data)
 							}
-
-
 
 							function set_ls_rcu(){
 								for(var key in RCU_PCU){
