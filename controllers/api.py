@@ -37,7 +37,7 @@ class _main:
 		strsd = f.read()
 		f.close()
 		prof_1 = json.loads(strsd)
-		prof_1["profile"]["farmer_img_base64"] =""# Remove Profile
+		# prof_1["profile"]["farmer_img_base64"] =""# Remove Profile
 		return jsonify(prof_1["profile"])
 		# try: pass
 		# except Exception as e:
