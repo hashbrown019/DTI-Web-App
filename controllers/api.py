@@ -36,13 +36,13 @@ class _main:
 		f = open(c.RECORDS+"/profiles/form_a/"+ FILE, "r")
 		strsd = f.read()
 		f.close()
-		try:
-			prof_1 = json.loads(strsd)
-			prof_1["profile"]["farmer_img_base64"] =""# Remove Profile
-			return jsonify(prof_1["profile"])
-		except Exception as e:
-			print(" ERROR in "+FILE)
-			return jsonify({})
+		prof_1 = json.loads(strsd)
+		prof_1["profile"]["farmer_img_base64"] =""# Remove Profile
+		return jsonify(prof_1["profile"])
+		# try: pass
+		# except Exception as e:
+		# 	print(" ERROR in "+FILE)
+		# 	return jsonify({})
 
 		# prof_1 = json.loads(strsd)
 		# prof_1["profile"]["farmer_img_base64"] =""# Remove Profile
