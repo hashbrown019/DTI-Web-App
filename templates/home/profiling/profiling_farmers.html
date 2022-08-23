@@ -28,10 +28,14 @@
 										// println("error")
 									},
 									func : function(res){
+										if(res == `"ERROR"`){
+											println("res oh")
+											println(res)
+											return
+										}
 										try{
 											var alldata_farmer = JSON.parse(res)
 											var file_profile = alldata_farmer['profile']
-											println(file_profile)
 
 											var person = file_profile
 											var prof_pic = "../static/img/user.png"
@@ -41,7 +45,7 @@
 													prof_pic = "../static/img/user.png"
 												}
 											}catch(e){
-												println(" - Error in base64 images ")
+												console(" - Error in base64 images ")
 											}
 											// println(person)
 
@@ -51,7 +55,6 @@
 												<div class='x-row'>
 													<div class="x-col l1">
 														<!-- <img loading="lazy" id="img_`+person.farmer_code+`" src="`+prof_pic+`" class="x-image x-round" style="max-width:100%"> -->
-
 													</div>
 													<div class="x-col l3 x-container">
 														<b class="">`+person.farmer_name+`</b><br>
@@ -60,7 +63,7 @@
 															<span>`+person.addr_city+`</span> 
 															<span>`+person.addr_prov+`</span> 
 															<span>R:`+person.addr_region+`</span> 
-															</span><br>
+														</span><br>
 													</div>
 													<div class="x-col l3 x-container">
 														<i class=""><span>`+person["farmer-primary_crop"]+`</span> </i><br>
@@ -83,13 +86,12 @@
 										}catch(e){
 											println(" Error in data = "+e)
 										}
-
 									}
 								})
 							}
 
 							function get_ind(fid){
-								println(fid)
+								// println(fid)
 								$send({
 									action : "/get_full_profile_str",
 									// action : "/get_full_profile",
@@ -98,7 +100,7 @@
 									func : function (res) {
 										res = res.replace(`}}"post_harv-phcropothers":`,`},"post_harv-phcropothers":`)
 										// println(JSON.parse(res))
-										println(res)
+										// println(res)
 									}
 								})
 							}

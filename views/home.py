@@ -19,7 +19,7 @@ class _main:
 
 	@app.route("/home",methods=["POST","GET"])
 	def home():
-		return redirect("/homepage#0")
+		return redirect("/homepage#1")
 
 
 	@app.route("/homepage",methods=["POST","GET"])

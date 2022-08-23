@@ -111,8 +111,6 @@
 							let USER_ACC_LS 
 							let SELECTED_USER_ACC 
 							load_users()
-
-							
 							
 							function load_users(){
 								println(" * Getting User lists")
@@ -122,7 +120,7 @@
 									a_sync : false,
 									func : function (res) {
 										var user_ls = JSON.parse(res)
-										println(user_ls)
+										// println(user_ls)
 										var user_cards = ""
 										for (var i = 0; i < user_ls.length; i++) {
 											user_cards += `
@@ -162,13 +160,12 @@
 								}
 								$ID('delete_user_acc_btn').style.display = "none"
 							}
-
+							
 							function acc_delete(){
 								var to_del = $ID("id").value
 								var del_user_dialog = $dialog({
 									type :"error",
 									title :"Confirm Deletion?",
-									// footer_content :"Confirm Deletion?",
 									content :(`
 										Are you sure you want to delete <b>`+SELECTED_USER_ACC.name+`'s</b> User account?<br>Once deleted, it will be gone forever						
 									`),
@@ -179,6 +176,7 @@
 										}
 									],
 								})
+								del_user_dialog.show()
 							}
 
 							function get_acc_info(indx){
@@ -266,7 +264,7 @@
 											form_data[i].click() // Simulate Clicked
 										}
 									}
-									else{
+									else{ 
 										try{
 											if (form_data_refill[form_data[i].id]==undefined) {form_data_refill[form_data[i].id] = ""}
 											form_data[i].value = form_data_refill[form_data[i].id]

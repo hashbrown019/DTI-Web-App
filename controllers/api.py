@@ -37,8 +37,13 @@ class _main:
 		strsd = f.read()
 		f.close()
 		print(FILE)
-		# prof_1 = json.loads(strsd)
-		return strsd
+		prof_1 = "ERROR"
+		try:
+			prof_1 = json.loads(strsd)
+			prof_1['profile']['farmer_img_base64'] = ""
+		except:
+			pass
+		return json.dumps(prof_1)
 
 
 	@app.route("/get_full_profile",methods=["POST","GET"]) # GETS the Fulll data of Farmer
