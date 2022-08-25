@@ -5,14 +5,23 @@
 							<div class="x-padding x-container x-bottombar x-border-teal">
 								<i class="x-text-grey">Displaying <b id="prof_farmer_count">0</b> File/s</i>
 							</div>
-							<div id="profile_list" class="" style="overflow-y:scroll; max-height: 80vh;">
+							<div id="profile_list" class="" style="overflow-y:scroll;height: 60vh;">
 								------- List Of Profiles ------
 							</div>
 						</div>
 						<div class="x-col l6 x-white">
 							<h3 class="x-padding x-text-teal">Profile Information</h3>
+
+							<div class="x-padding x-container x-bottombar x-border-teal">
+								&nbsp;
+							</div>
 							<div class="x-container">
-								
+								<div class="x-display-container x-padding " style="height: 60vh;">
+									<!-- <div class="x-container x-display-middle x-center">
+ 										<span class="fa fa-arrow-left x-text-teal x-xxlarge"></span><br>
+										<b>Please choose an entry on the left to display information</b>
+									</div> -->
+								</div>
 							</div>
 						</div>
 						<script type="text/javascript">
@@ -36,9 +45,9 @@
 										try{
 											var alldata_farmer = JSON.parse(res)
 											var file_profile = alldata_farmer['profile']
-
 											var person = file_profile
 											var prof_pic = "../static/img/user.png"
+
 											try{
 												prof_pic = person.farmer_img_base64
 												if(prof_pic=="" || prof_pic==" " || prof_pic==undefined || prof_pic==null || prof_pic=="null"){
