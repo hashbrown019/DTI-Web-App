@@ -19,10 +19,6 @@
 							<button class="profile_top_tab x-hover-teal x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="profile_go_tab(3)">
 								MSME
 							</button>
-							<hr>
-							<button class="profile_top_tab x-hover-teal x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="profile_go_tab(4)">
-								Users
-							</button>
 						</div>
 					</div>
 					<br>
@@ -38,14 +34,10 @@
 					<div class="x-col l10 profile_body_content" style="display:none">
 						{% include 'home/no_data.html' %}
 					</div>
-					<div  id="user_ls_view" class="x-col l10 profile_body_content" style="display:none">
-						{% include 'home/profiling/ls_users.html' %}
-					</div>
 				</div>
 				<!-- <img loading="lazy" src="`+prof_pic+`" class="x-image" style="max-width:100%"> --> <!-- FOR BASE64 IMG REQUEST on get_profile() function -->
 				<script type="text/javascript">
 
-					get_list_file() // For Inititalizing list in profiling/profiling_farmers.html
 					profile_go_tab(1)
 					// profile_go_tab(4) //USER ACCOUNTS
 
@@ -62,24 +54,6 @@
 						profile_body_content[_index].style.display = "block" // FOR BODY CONTENT
 					}
 
-
-					function get_list_file(){ // For Inititalizing list in profiling/profiling_farmers.html
-						$ID("profile_list").innerHTML = ""
-						println(" * Getting List of Profiles")
-						$send({
-							action:"/list_all_profile",
-							method: POST,
-							func : function(res){
-								ls_file_farmer = JSON.parse(res)
-								// println(ls_file_farmer)
-								$ID("profile_list").innerHTML = ""
-								for (var i = 0; i < ls_file_farmer.length; i++) {
-									// println(ls_file_farmer[i])
-									get_profile(ls_file_farmer[i], ls_file_farmer.length, ls_file_farmer)
-								}
-							}
-						})
-					}
 				</script>
 				<!-- <div id="conso1_chart"></div>
 				<span class="x-tiny" id="res"></span> -->

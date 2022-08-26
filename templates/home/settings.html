@@ -1,0 +1,62 @@
+				<div class="x-container">
+					
+					<div class="x-container x-col l2 x-leftbar x-border-teal">
+						<div>
+							<span class=" x-text-grey">
+								<b class="x-text-teal fa fa-cog"></b>Settigns<br>
+							</span>
+							<span class="x-large">Settings, Options and Configurations</span>
+						</div>
+						<hr>
+						<div class="x-row">
+							<button class="settings_top_tab x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="dcf_go_tab(0)">
+								<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
+								User Accounts
+							</button>
+						</div>
+					</div>
+
+					<div class="x-container x-col l10">
+						<div class="x-container x-round">
+							<div class="settings_body_content x-white x-padding x-round x-animate-top" style="display:block;">
+								{% include 'home/profiling/ls_users.html' %}
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<script type="text/javascript">
+					get_list_file() // For Inititalizing list in profiling/profiling_farmers.html
+
+					settings_go_tab(0)
+					function settings_go_tab(_index){
+						var tabs = $CLASS("settings_top_tab")
+						var settings_body_content = $CLASS("settings_body_content")  // FOR BODY CONTENT
+						for (var i = 0; i < tabs.length; i++) {
+							tabs[i].classList.remove("x-leftbar","x-border-teal")
+							settings_body_content[i].style.display = "none"  // FOR BODY CONTENT
+						}
+						tabs[_index].classList.add("x-leftbar","x-border-teal")
+						settings_body_content[_index].style.display = "block" // FOR BODY CONTENT
+					}
+
+
+					function get_list_file(){ // For Inititalizing list in profiling/profiling_farmers.html
+						$ID("profile_list").innerHTML = ""
+						println(" * Getting List of Profiles")
+						$send({
+							action:"/list_all_profile",
+							method: POST,
+							func : function(res){
+								ls_file_farmer = JSON.parse(res)
+								// println(ls_file_farmer)
+								$ID("profile_list").innerHTML = ""
+								for (var i = 0; i < ls_file_farmer.length; i++) {
+									// println(ls_file_farmer[i])
+									get_profile(ls_file_farmer[i], ls_file_farmer.length, ls_file_farmer)
+								}
+							}
+						})
+					}
+				</script>

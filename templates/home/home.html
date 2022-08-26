@@ -38,11 +38,14 @@
 				<button class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(5)">
 					<b class="x-text-teal fa fa-book"></b>&nbsp;&nbsp; Documents/Archive
 				</button>
-				<button class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(6)">
+				<button style="display:none" class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(6)">
 					<b class="x-text-teal fa fa-newspaper-o"></b>&nbsp;&nbsp; Newsletters
 				</button>
 				<button class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(7)">
 					<b class="x-text-teal fa fa-newspaper-o"></b>&nbsp;&nbsp; Data Capture Forms
+				</button>
+				<button class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(8)">
+					<b class="x-text-teal fa fa-cog"></b>&nbsp;&nbsp; Settings
 				</button>
 			</span>
 			<span class="x-right x-padding">
@@ -82,6 +85,10 @@
 			</div>
 			<div class="body_content x-padding x-round" style="display:none;">
 				{% include 'home/data_capture_forms.html' %}		
+				<!-- {% include 'home/maintenance.html' %} -->
+			</div>
+			<div class="body_content x-padding x-round" style="display:none;">
+				{% include 'home/settings.html' %}		
 				<!-- {% include 'home/maintenance.html' %} -->
 			</div>
 		</div>

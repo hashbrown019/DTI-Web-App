@@ -230,13 +230,29 @@
 								}
 
 								if(_form_data.id=="" || _form_data.id==null){
-								}else{
+									var exit_ka = $dialog({
+										title : "New Account",
+										buttons : ["Stay on this page", "logout"],
+										content : "If you are trying to create a new account, you can do it by signing out and click register on the login page",
+										buttons_actions : [
+											function(){
+												exit_ka.hide()
+											},
+											function(){
+												redirectto("/logout")
+											}
+										]
+									})
+									exit_ka.show()
+								}
+								else{
 									$send({
 										action : "/api/edit_user_acc",
 										data : $DATA(_form_data),
 										method : POST,
 										func : function (res){
 											// var resp = JSON.parse(res)
+											println("FROM SERVER")
 											println(res)
 											load_users()
 											acc_clear()

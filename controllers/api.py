@@ -80,6 +80,7 @@ class _main:
 	# @cross_origin()
 	@app.route("/api/edit_user_acc",methods=["POST","GET"])
 	def edit_user_acc():
+		print("updating")
 		u = request.form
 		resp = rapid.do('''UPDATE `users` 
 			SET `address`="{}",`email`="{}",`job`="{}",`mobile`="{}",`name`="{}",`password`="{}",`pcu`="{}",`rcu`="{}",`username`="{}"
