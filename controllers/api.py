@@ -93,6 +93,12 @@ class _main:
 		resp = rapid.select("SELECT * FROM `users`;")
 		return jsonify(resp)
 
+	@app.route("/api/del_user",methods=["POST","GET"])
+	def del_user():
+		ids = request.form['id']
+		resp = rapid.do("DELETE FROM `users` WHERE `id`={};".format(ids))
+		return jsonify(resp)
+
 	# @cross_origin()
 	@app.route("/api/test",methods=["POST","GET"])
 	@app.route("/api",methods=["POST","GET"])

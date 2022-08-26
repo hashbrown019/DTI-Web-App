@@ -172,7 +172,17 @@
 									buttons :["Proceed to Delection","Cancel"],
 									buttons_actions :[
 										function(){
-											println(this)
+											$send({
+												action : "/api/del_user",
+												method : POST,
+												data : $DATA({"id":SELECTED_USER_ACC.id}),
+												func : function(res){
+													println(res)
+													load_users()
+													acc_clear()
+													del_user_dialog.hide()
+												}
+											})
 										}
 									],
 								})
