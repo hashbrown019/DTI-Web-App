@@ -110,6 +110,7 @@
 
 							function get_ind(fid){
 								// println(fid)
+								loading.show()
 								$send({
 									action : "/get_full_profile_str",
 									// action : "/get_full_profile",
@@ -120,6 +121,8 @@
 										view_farmer_data(res)
 										// println(JSON.parse(res))
 										// println(res)
+										loading.hide()
+
 									}
 								})
 							}
