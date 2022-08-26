@@ -11,7 +11,7 @@
 					<div class="x-container">
 						<img src="../static/img/user.png" class="x-img x-circle x-right" style="max-width:7%">
 						<span class="x-container x-right">
-							<button class="x-btn x-border x-round"> <span class="x-text-red fa fa-power-off"></span> Logout</button>
+							<button class="x-btn x-border x-round" onclick="logout()"> <span class="x-text-red fa fa-power-off"></span> Logout</button>
 							<button class="x-btn x-border x-round"> <span class="x-text-yellow fa fa-cog"></span> Settings</button>
 						</span>
 					</div>
@@ -96,6 +96,9 @@
 		let ALL_DATA = undefined
 		let ALL_DATA_CONSO = {}
 
+		function logout() {
+			redirectto("/logout")
+		}
 
 		function __init__(){
 			// conso()

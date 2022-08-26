@@ -41,11 +41,12 @@ LOCAL_USER = "root"
 LOCAL_PASSWORD = ""
 LOCAL_DATABASE = "dti_rapidxi"
 
+
 SERVER_PORT=3306
-SERVER_HOST = "172.26.158.126"
+SERVER_HOST = "dtirapid.mysql.pythonanywhere-services.com"
 SERVER_USER = "rapid_apps"
-SERVER_PASSWORD = "none"
-SERVER_DATABASE = "dti_rapidxi"
+SERVER_PASSWORD = "ruralagro2022"
+SERVER_DATABASE = "dtirapid2022"
 
 # SAMPLE
 # {
