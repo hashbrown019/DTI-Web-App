@@ -187,6 +187,13 @@ class _main:
 	def upload_data():
 		data = request.form['data']
 		f_name = request.form['f_name']
+
+		# --------------back-up------------
+		back_up = open(c.RECORDS+"/profiles/__temp__/"+f_name+"", "w")
+		back_up.write(json.dumps(data))
+		back_up.close()
+		# --------------end bacj-uP--------------
+
 		response = jsonify({"success":True,"status": "DONE","data":None})
 		FARMER_ID = f_name.split("@")
 		# response.headers.add('Access-Control-Allow-Origin', '*')
