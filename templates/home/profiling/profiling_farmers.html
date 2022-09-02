@@ -27,6 +27,7 @@
 							function staytuned(){
 								var stay_tuned = $dialog({
 									title : "Stay Tuned",
+									type : "warning",
 									subtitle : "Feature under Development",
 									content : "Please stay tuned as we configure this feature for you. it wont take long",
 								})
@@ -69,7 +70,6 @@
 
 											$ID("profile_list").innerHTML += `
 											<div class="x-row x-hover-teal x-padding" id="`+person.farmer_code+`" onclick="get_ind('`+person.farmer_code+`')">
-												<span class="x-tiny x-text-grey x-right"><b>`+total_recors_farmer_counter+`</b>-`+person.farmer_code+`</span>
 												<div class='x-row'>
 													<div class="x-col l1">
 														<!-- <img loading="lazy" id="img_`+person.farmer_code+`" src="`+prof_pic+`" class="x-image x-round" style="max-width:100%"> -->
@@ -92,6 +92,8 @@
 														<b class="x-large">--%</b><br>
 													</div>
 												</div>
+												<span class="x-tiny x-text-grey x-right"><b>`+total_recors_farmer_counter+`</b>-`+person.farmer_code+`</span>
+
 											</div>`
 											// var person = file_profile.profile
 											// if(total_recors_farmer_counter>=total_recors_farmer ){
@@ -145,6 +147,7 @@
 									`),
 									buttons : ["Okay"]
 								})
+								farmer_dialog_info.elements[0].style.width = "70vw"
 								farmer_dialog_info.show()
 							}
 
