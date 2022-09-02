@@ -53,8 +53,9 @@
 											return
 										}
 										try{
-											var alldata_farmer = JSON.parse(res)
-											var file_profile = alldata_farmer['profile']
+											var alldata_farmer = JSON.parse(JSON.parse(res))
+											// var file_profile = alldata_farmer['profile']
+											var file_profile = alldata_farmer
 											var person = file_profile
 											var prof_pic = "../static/img/user.png"
 
@@ -116,10 +117,9 @@
 								$send({
 									action : "/get_full_profile_str",
 									// action : "/get_full_profile",
-									data : $DATA({"profile_file_name":fid+".json"}),
+									data : $DATA({"profile_file_name":fid+"@profile"}),
 									method : POST,
 									func : function (res) {
-										res = res.replace(`}}"post_harv-phcropothers":`,`},"post_harv-phcropothers":`)
 										view_farmer_data(res)
 										// println(JSON.parse(res))
 										// println(res)
@@ -130,7 +130,7 @@
 							}
 
 							function view_farmer_data(res){
-								var person = JSON.parse(res).profile
+								var person = JSON.parse(JSON.parse(res))
 								println(person)
 								var farmer_dialog_info = $dialog({
 									title : person.farmer_name,

@@ -6,6 +6,7 @@ import os
 import json
 from flask_cors import CORS,cross_origin
 import base64
+import sys
 
 app = Blueprint("api",__name__)
 cors = CORS(app)
@@ -23,17 +24,19 @@ class _main:
 	@app.route("/list_all_profile",methods=["POST","GET"])
 	def list_all_profile():
 		res = []
-		dir_path = c.RECORDS+"/profiles/form_a/"
+		dir_path = c.RECORDS+"/profiles/__temp__/"
+
 		for path in os.listdir(dir_path):
 			if os.path.isfile(os.path.join(dir_path, path)):
-				res.append(path)
+				if(path.find("@profile")>=0):
+					res.append(path)
 		return jsonify(res)
 
 	# @cross_origin()
 	@app.route("/get_profile",methods=["POST","GET"]) # GET ONLY PROFILE FORM INFIO
 	def get_profile():
 		FILE = request.form["profile_file_name"]
-		f = open(c.RECORDS+"/profiles/form_a/"+ FILE, "r")
+		f = open(c.RECORDS+"/profiles/__temp__/"+ FILE, "r")
 		strsd = f.read()
 		f.close()
 		print(FILE)
@@ -49,7 +52,7 @@ class _main:
 	@app.route("/get_full_profile",methods=["POST","GET"]) # GETS the Fulll data of Farmer
 	def get_full_profile():
 		FILE = request.form["profile_file_name"]
-		f = open(c.RECORDS+"/profiles/form_a/"+ FILE, "r")
+		f = open(c.RECORDS+"/profiles/__temp__/"+ FILE, "r")
 
 		res = json.loads(f.read())
 		f.close()
@@ -58,7 +61,7 @@ class _main:
 	@app.route("/get_full_profile_str",methods=["POST","GET"]) # GETS the Fulll data of Farmer
 	def get_full_profile_str():
 		FILE = request.form["profile_file_name"]
-		f = open(c.RECORDS+"/profiles/form_a/"+ FILE, "r")
+		f = open(c.RECORDS+"/profiles/__temp__/"+ FILE, "r")
 		res = f.read()
 		# res = json.loads(f.read())
 		f.close()
@@ -67,7 +70,7 @@ class _main:
 	# @cross_origin()
 	@app.route("/api/get_imgProf/<ids>",methods=["POST","GET"]) # GET ONLY PROFILE FORM INFIO
 	def get_imgProf(ids):
-		f = open(c.RECORDS+"/profiles/form_a/"+ ids, "r")
+		f = open(c.RECORDS+"/profiles/__temp__/"+ ids, "r")
 		prof__ = f.read()
 		f.close()
 		try:
@@ -197,31 +200,30 @@ class _main:
 		response = jsonify({"success":True,"status": "DONE","data":None})
 		FARMER_ID = f_name.split("@")
 		# response.headers.add('Access-Control-Allow-Origin', '*')
-		try:
-			old_data = open(c.RECORDS+"/profiles/form_a/"+ FARMER_ID[0]+".json", "r");
-			old_data_read = old_data.read()
-			old_data.close()
-		except Exception as e:
-			old_data_read = "{}"
-			# f = open(c.RECORDS+"/profiles/form_a/"+ FARMER_ID[0]+".json", "w")
-			# f.write(json.dumps({}))
-			# f.close()
-			# raise e
-		print(type(old_data_read))
-		try:
-			old_data_read = json.loads(old_data_read)
-			old_data_read[FARMER_ID[1]] = json.loads(data)
-		except Exception as e:
-			# raise e
-			print(" * ERROR IN FORM : "+FARMER_ID[1])
-			return f_name
+		# try:
+		# 	old_data = open(c.RECORDS+"/profiles/form_a/"+ FARMER_ID[0]+".json", "r");
+		# 	old_data_read = old_data.read()
+		# 	old_data.close()
+		# except Exception as e:
+		# 	old_data_read = "{}"
+		# 	# f = open(c.RECORDS+"/profiles/form_a/"+ FARMER_ID[0]+".json", "w")
+		# 	# f.write(json.dumps({}))
+		# 	# f.close()
+		# 	# raise e
+		# print(type(old_data_read))
+		# try:
+		# 	old_data_read = json.loads(old_data_read)
+		# 	old_data_read[FARMER_ID[1]] = json.loads(data)
+		# except Exception as e:
+		# 	# raise e
+		# 	print(" * ERROR IN FORM : "+FARMER_ID[1])
+		# 	return f_name
 
-		print(FARMER_ID[1])
-		f = open(c.RECORDS+"/profiles/form_a/"+ FARMER_ID[0]+".json", "w")
-		f.write(json.dumps(old_data_read))
-		f.close()
+		# print(FARMER_ID[1])
+		# f = open(c.RECORDS+"/profiles/form_a/"+ FARMER_ID[0]+".json", "w")
+		# f.write(json.dumps(old_data_read))
+		# f.close()
 		return f_name
-
 
 	@app.route("/api/download_zip_app",methods=["POST","GET"])
 	def downloadFile ():
@@ -283,7 +285,64 @@ class _main:
 			'''.format(crop))
 		return "done"
 
+	@app.route("/lsprn",methods=["POST","GET"])
+	def list_all_profile_new():
+		res = []
+		dir_path = c.RECORDS+"profiles/__temp__/"
+		print(dir_path)
+		for path in os.listdir(dir_path):
+			if os.path.isfile(os.path.join(dir_path, path)):
+				if(path.find("@profile")>=0):
+					fr_s = open(dir_path+path,"r")
+					raw_strs = fr_s.read()
+					_data = json.loads(json.loads(raw_strs))
+					fr_s.close()
+					# # print(_data[])
+					# print(type(_data))
 
+					print(_data["farmer_name"])
+					# return "0"
+					res.append(path)
+
+		print(len(res))
+		return jsonify(res)
+		
+	@app.route("/migrate",methods=["POST","GET"])
+	def migrate():
+		res = []
+		dir_path = c.RECORDS+"profiles/form_a/"
+		print(dir_path)
+		for path in os.listdir(dir_path):
+			if os.path.isfile(os.path.join(dir_path, path)):
+				fr_s = open(dir_path+path,"r")
+				raw_strs = fr_s.read()
+				try:
+					_data = json.loads(raw_strs)
+					fr_s.close()
+					res.append(path)
+				except:
+					print("error : [{}]====\n{}".format(path,sys.exc_info()[0]))
+					continue
+				for datum in _data:
+					# print(datum)
+					__names_new = path.split(".json")[0]+"@"+datum
+					# print(">>>>>>"+__names_new)
+					new_data_lkasd = open(c.RECORDS+"/profiles/__temp__/"+__names_new+"", "w")
+					new_data_lkasd.write(json.dumps(json.dumps(_data[datum])))
+					new_data_lkasd.close()
+					print(__names_new)
+
+					if os.path.exists(dir_path+path):
+						os.remove(dir_path+path)
+						# print(dir_path+path)
+						pass
+					else:
+						print("The file does not exist")
+
+		lens_ = (len(res))
+
+		res.append(lens_)
+		return jsonify(res)
 		
 
 
