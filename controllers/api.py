@@ -39,14 +39,13 @@ class _main:
 		f = open(c.RECORDS+"/profiles/__temp__/"+ FILE, "r")
 		strsd = f.read()
 		f.close()
-		print(FILE)
 		prof_1 = "ERROR"
-		try:
-			prof_1 = json.loads(strsd)
-			prof_1['profile']['farmer_img_base64'] = ""
-		except:
-			pass
-		return json.dumps(prof_1)
+		# try:
+		prof_1 = json.loads(json.loads(strsd))
+		prof_1['farmer_img_base64'] = ""
+		# except:
+		# 	print(" ERROR :"+FILE)
+		return json.dumps(json.dumps(prof_1))
 
 
 	@app.route("/get_full_profile",methods=["POST","GET"]) # GETS the Fulll data of Farmer

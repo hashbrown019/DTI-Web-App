@@ -1,9 +1,65 @@
 						<div class=" x-row x-white">
 							<div>
 								<h3 class="x-padding x-text-teal">Dashboard</h3>
+								<span class="x-padding x-text-teal">Profiling</h3>
+								<div class="x-container">
+									<select id="dash_sel_region" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" onchange="get_ls_prov(this.value)">
+										<option type="" value="all" selected>All Region</option>
+									</select>
+									<select id="dash_sel_prov" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" disabled onchange="get_ls_city(this.value)">
+										<option type="" value="all" selected>All Provinces</option>
+									</select>
+									<select id="dash_sel_city" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" disabled onchange="get_ls_brgy(this.value)">
+										<option type="" value="all" selected>All Cities/Municipalities</option>
+									</select>
+									<select id="dash_sel_brgy" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" disabled  onchange="get_ls_all_area(this.value)">
+										<option type="" value="all" selected>All Brgy</option>
+									</select>
+									<button class="x-input x-btn x-col l1 x-green x-round-xlarge" onclick="conso_area()">
+										Filter <span class="fa fa-filter"></span>
+									</button>
+								</div>
 							</div>
 						</div>
 
-						<script type="text/javascript">
 
+						<script type="text/javascript">
+							let SEL_REG, SEL_PROV, SEL_CITY, SEL_BRGY
+							get_ls_region()
+							function get_ls_region(){
+								var ls_all_reg = '<option type="" value="all" selected>All Regions</option>'
+								for(key in ALL_LOCATION){
+									ls_all_reg += '<option value="'+key+'">'+key+'</option>'
+								}
+								$ID("dash_sel_region").innerHTML = ls_all_reg
+							}
+
+							function get_ls_prov(reg){
+								var ls_all_prov = '<option type="" value="all" selected>All Provinces</option>'
+								SEL_REG = reg
+								for(key in ALL_LOCATION[reg]["province_list"]){ls_all_prov += '<option value="'+key+'">'+key+'</option>'}
+								$ID("dash_sel_prov").innerHTML = ls_all_prov;$ID("dash_sel_prov").disabled = false
+
+							}
+
+							function get_ls_city(prov){
+								var ls_all_city = '<option type="" value="all" selected>All Cities/Municipalities</option>'
+								SEL_PROV = prov
+								for(key in ALL_LOCATION[SEL_REG]["province_list"][prov]['municipality_list']){ls_all_city += '<option value="'+key+'">'+key+'</option>'}
+								$ID("dash_sel_city").innerHTML = ls_all_city;$ID("dash_sel_city").disabled = false
+							}
+
+							function get_ls_brgy(city){
+								var ls_all_brgy = '<option type="" value="all" selected>All Barangay</option>'
+								SEL_CITY = city
+								var brgys = ALL_LOCATION[SEL_REG]["province_list"][SEL_PROV]['municipality_list'][city]["barangay_list"]
+								for (var i = 0; i < brgys.length; i++) {ls_all_brgy += '<option value="'+brgys[i]+'">'+brgys[i]+'</option>'}
+								$ID("dash_sel_brgy").innerHTML = ls_all_brgy;$ID("dash_sel_brgy").disabled = false
+							}
+
+							function get_ls_all_area(brgy){SEL_BRGY=brgy}
+
+							function conso_area(){
+								println(SEL_REG, SEL_PROV, SEL_CITY, SEL_BRGY)
+							}
 						</script>
