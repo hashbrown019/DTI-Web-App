@@ -29,7 +29,7 @@
 									<div class="x-container x-padding x-round-larg">
 										<b class="x-text-grey">Male :<span class="x-text-black" id="count_all_male">00</span></b><br>
 										<b class="x-text-grey">Female :<span class="x-text-black" id="count_all_female">00</span></b><br>
-										<!-- <b class="x-text-grey">Untagged :<span class="x-text-black" id="count_all_sex_untagged">00</span></b><br> -->
+										<b class="x-text-grey">Untagged :<span class="x-text-black" id="count_all_sex_untagged">00</span></b><br>
 									</div>
 								</div>
 							</div>
@@ -93,7 +93,7 @@
 								}
 							$ID("count_all_male").innerHTML = count_all_male - 1
 							$ID("count_all_female").innerHTML = count_all_female -1
-							// $ID("count_all_sex_untagged").innerHTML = count_all_male - count_all_female
+							$ID("count_all_sex_untagged").innerHTML = (count_all_male -1 )- (count_all_female-1)
 							// $ID("count_all_sex_untagged").innerHTML = count_all_female
 							}
 						</script>
