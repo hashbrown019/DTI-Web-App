@@ -1,5 +1,5 @@
 						<div class=" x-row x-white">
-							<div>
+							<div class="x-container x-row">
 								<h3 class="x-padding x-text-teal">Dashboard</h3>
 								<span class="x-padding x-text-teal">Profiling</h3>
 								<div class="x-container">
@@ -18,6 +18,19 @@
 									<button class="x-input x-btn x-col l1 x-green x-round-xlarge" onclick="conso_area()">
 										Filter <span class="fa fa-filter"></span>
 									</button>
+								</div>
+							</div>
+							<div class="x-container x-row">
+								<div class="x-container x-col l2 x-padding">
+									<div class="x-container x-center x-padding x-round-large x-teal">
+										<b id="total_num_farmer" class="x-xxlarge">00</b><br>
+										<span class="x-small">Number of Profiles in New-Platform</span>
+									</div>
+									<div class="x-container x-padding x-round-larg">
+										<b class="x-text-grey">Male :<span class="x-text-black" id="count_all_male">00</span></b><br>
+										<b class="x-text-grey">Female :<span class="x-text-black" id="count_all_female">00</span></b><br>
+										<!-- <b class="x-text-grey">Untagged :<span class="x-text-black" id="count_all_sex_untagged">00</span></b><br> -->
+									</div>
 								</div>
 							</div>
 						</div>
@@ -61,5 +74,26 @@
 
 							function conso_area(){
 								println(SEL_REG, SEL_PROV, SEL_CITY, SEL_BRGY)
+							}
+
+							function conso_all(){
+								var count_all_male = 0
+								var count_all_female = 0
+								var count_all_sex_untagged = 0
+								for (var count = 0; count < ALL_FARMERS.length+1; count++) {
+									$ID("total_num_farmer").innerHTML = count
+									try{
+										if(ALL_FARMERS[count]['farmer_sex']=='Female'){count_all_female += 1}
+										if(ALL_FARMERS[count]['farmer_sex']=='Male'){count_all_male += 1}
+									}
+									catch(e){
+										println()
+										count_all_sex_untagged += 1
+									}
+								}
+							$ID("count_all_male").innerHTML = count_all_male - 1
+							$ID("count_all_female").innerHTML = count_all_female -1
+							// $ID("count_all_sex_untagged").innerHTML = count_all_male - count_all_female
+							// $ID("count_all_sex_untagged").innerHTML = count_all_female
 							}
 						</script>

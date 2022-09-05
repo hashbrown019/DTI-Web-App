@@ -35,7 +35,7 @@
 								stay_tuned.show()
 							}
 
-
+							let ALL_FARMERS = []
 							function get_profile(_file_name,total_recors_farmer, f_FILE){
 								var total_recors_farmer_counter = 1
 								$send({
@@ -54,6 +54,7 @@
 										}
 										try{
 											var alldata_farmer = JSON.parse(JSON.parse(res))
+											ALL_FARMERS.push(alldata_farmer)
 											// var file_profile = alldata_farmer['profile']
 											var file_profile = alldata_farmer
 											var person = file_profile
@@ -96,17 +97,17 @@
 												<span class="x-tiny x-text-grey x-right"><b>`+total_recors_farmer_counter+`</b>-`+person.farmer_code+`</span>
 
 											</div>`
-											// var person = file_profile.profile
-											// if(total_recors_farmer_counter>=total_recors_farmer ){
-											// 	println(" Getting Picures")
-											// 	alert("Done Loading ["+total_recors_farmer_counter+"] files")
-											// 	get_prof_imgs(f_FILE)
-											// }
-											total_recors_farmer_counter+= 1
+											var person = file_profile.profile
+											if(total_recors_farmer_counter>=total_recors_farmer ){
+												// alert("Done Loading ["+total_recors_farmer_counter+"] files")
+												// get_prof_imgs(f_FILE)
+												conso_all() // IF DONE in POPULATING list . CREATING DASHBOARD @ profiling_dashboard.html
+											}
 											$ID("prof_farmer_count").innerHTML = total_recors_farmer_counter
 										}catch(e){
 											println(" Error in data = "+e)
 										}
+										total_recors_farmer_counter+= 1
 									}
 								})
 							}
