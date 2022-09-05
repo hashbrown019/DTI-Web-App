@@ -91,11 +91,11 @@
 										count_all_sex_untagged += 1
 									}
 								}
-							var ff = count_all_female -1
-							var mm = count_all_male - 1
-							$ID("count_all_male").innerHTML = mm
-							$ID("count_all_female").innerHTML = ff
-							$ID("count_all_sex_untagged").innerHTML = mm-ff
-							// $ID("count_all_sex_untagged").innerHTML = count_all_female
+								var ff = count_all_female -1
+								var mm = count_all_male - 1
+								$ID("count_all_male").innerHTML = mm
+								$ID("count_all_female").innerHTML = ff
+								$ID("count_all_sex_untagged").innerHTML = (""+((mm+ff) -(ALL_FARMERS.length))).replace("-","")
+								// $ID("count_all_sex_untagged").innerHTML = count_all_female
 							}
 						</script>
