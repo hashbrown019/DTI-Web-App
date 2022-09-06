@@ -46,7 +46,7 @@ SERVER_PORT=3306
 SERVER_HOST = "dtirapid.mysql.pythonanywhere-services.com"
 SERVER_USER = "dtirapid"
 SERVER_PASSWORD = "ruralagro"
-SERVER_DATABASE = "$dti_rapidxi"
+SERVER_DATABASE = "dtirapid$dti_rapidxi"
 
 _SERVER_PORT=3306
 _HOST = "not initialized"
