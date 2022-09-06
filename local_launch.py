@@ -2,6 +2,13 @@ import Configurations as c
 c.SQLITE_DB = c.SQLITE_DB_LOCAL
 c.RECORDS = c.RECORDS_LOCAL
 c.M_APPVER = c.M_APPVER_LOCAL
+
+c._SERVER_PORT = c.LOCAL_PORT
+c._HOST = c.LOCAL_HOST
+c._USER = c.LOCAL_USER
+c._PASSWORD = c.LOCAL_PASSWORD
+c._DATABASE = c.LOCAL_DATABASE
+
 print(" * LOCAL Launch")
 
 from flask import Flask, session, jsonify, request, redirect

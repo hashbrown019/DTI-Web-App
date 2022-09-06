@@ -48,6 +48,19 @@ SERVER_USER = "dtirapid"
 SERVER_PASSWORD = "ruralagro"
 SERVER_DATABASE = "dti_rapidxi"
 
+_SERVER_PORT=3306
+_HOST = "not initialized"
+_USER = "not initialized"
+_PASSWORD = "not initialized"
+_DATABASE = "not initialized"
+
+
+# _PORT
+# _HOST
+# _USER
+# _PASSWORD
+# _DATABASE
+
 # SAMPLE
 # {
 # 	"font_size": 8,

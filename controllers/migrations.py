@@ -13,11 +13,15 @@ cors = CORS(app)
 
 rapid= sqlite(c.SQLITE_DB)
 
+mysqldb = mysql(c._HOST,c._USER,c._PASSWORD,c._DATABASE)
 
 class _main:
 	@app.route("/migrationtest",methods=["POST","GET"])
 	def migrationtest():
-		return "migration module ready"
+		resp = "database : {}".format(str(mysqldb.select("SELECT VERSION()") ))
+		note = resp + " || end DB"
+		print(note)
+		return note
 
 	@app.route("/json_checker",methods=["POST","GET"])
 	def json_checker():

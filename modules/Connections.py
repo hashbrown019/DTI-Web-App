@@ -47,7 +47,10 @@ class mysql:
 		self.user=user
 		self.password=password
 		self.database=database
-		
+
+	def info(self):
+		return connects
+
 	def init_db(self):
 		hostname = socket.gethostname()
 		ip_address = socket.gethostbyname(hostname)
