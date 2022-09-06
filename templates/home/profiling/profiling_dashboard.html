@@ -1,3 +1,10 @@
+						<style>
+							#chartdiv {
+								width: 100%;
+								height: 500px;
+							}
+						</style>
+
 						<div class=" x-row x-white">
 							<div class="x-container x-row">
 								<h3 class="x-padding x-text-teal">Dashboard</h3>
@@ -23,14 +30,17 @@
 							<div class="x-container x-row">
 								<div class="x-container x-col l2 x-padding">
 									<div class="x-container x-center x-padding x-round-large x-teal">
-										<b id="total_num_farmer" class="x-xxlarge">00</b><br>
+										<b id="total_num_farmer" class="x-xxlarge"><span class="fa fa-notch fa spin"></span></b><br>
 										<span class="x-small">Number of Profiles in New-Platform</span>
 									</div>
 									<div class="x-container x-padding x-round-larg">
-										<b class="x-text-grey">Male :<span class="x-text-black" id="count_all_male">00</span></b><br>
-										<b class="x-text-grey">Female :<span class="x-text-black" id="count_all_female">00</span></b><br>
-										<b class="x-text-grey">Untagged :<span class="x-text-black" id="count_all_sex_untagged">00</span></b><br>
+										<b class="x-text-grey">Male :<span class="x-text-black" id="count_all_male"><span class="fa fa-notch fa spin"></span></span></b><br>
+										<b class="x-text-grey">Female :<span class="x-text-black" id="count_all_female"><span class="fa fa-notch fa spin"></span></span></b><br>
+										<b class="x-text-grey">Untagged :<span class="x-text-black" id="count_all_sex_untagged"><span class="fa fa-notch fa spin"></span></span></b><br>
 									</div>
+								</div>
+								<div class="x-container x-col l10 x-padding">
+									<div id="chartdiv"></div>
 								</div>
 							</div>
 						</div>
@@ -80,16 +90,45 @@
 								var count_all_male = 0
 								var count_all_female = 0
 								var count_all_sex_untagged = 0
+								var dash_conso = {}
 								for (var count = 0; count < ALL_FARMERS.length+1; count++) {
+									var FARMER = ALL_FARMERS[count]
 									$ID("total_num_farmer").innerHTML = count
+
 									try{
-										if(ALL_FARMERS[count]['farmer_sex']=='Female'){count_all_female += 1}
-										if(ALL_FARMERS[count]['farmer_sex']=='Male'){count_all_male += 1}
+										if(FARMER['farmer-primary_crop'] in dash_conso){}
+										else{
+											dash_conso[FARMER['farmer-primary_crop']] = {
+												"category":FARMER['farmer-primary_crop'],
+												"male":0,
+												"__male":0,
+												"female":0,
+												"__female":0
+											}
+										}
+									}catch(e){
+										println(e)
+									}
+
+
+									try{
+										if(FARMER['farmer_sex']=='Female'){
+											count_all_female += 1
+											dash_conso[FARMER['farmer-primary_crop']]['female'] += 1
+										}
+										if(FARMER['farmer_sex']=='Male'){
+											count_all_male += 1
+											dash_conso[FARMER['farmer-primary_crop']]['male'] += 1
+										}
+
 									}
 									catch(e){
-										println()
+										println(e)
 										count_all_sex_untagged += 1
 									}
+
+
+
 								}
 								var ff = count_all_female -1
 								var mm = count_all_male - 1
@@ -97,5 +136,152 @@
 								$ID("count_all_female").innerHTML = ff
 								$ID("count_all_sex_untagged").innerHTML = (""+((mm+ff) -(ALL_FARMERS.length))).replace("-","")
 								// $ID("count_all_sex_untagged").innerHTML = count_all_female
+
+								var data_for_chart = []
+								for(key in dash_conso){
+									data_for_chart.push(dash_conso[key])
+								}
+								chart_gender_vc(data_for_chart)
+							}
+
+
+							function chart_gender_vc(__data){
+
+								am5.ready(function() {
+									// Create root element
+									// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+									var root = am5.Root.new("chartdiv");
+
+
+									// Set themes
+									// https://www.amcharts.com/docs/v5/concepts/themes/
+									root.setThemes([
+										am5themes_Animated.new(root)
+									]);
+
+
+									// Create chart
+									// https://www.amcharts.com/docs/v5/charts/xy-chart/
+									var chart = root.container.children.push(am5xy.XYChart.new(root, {
+										panX: false,
+										panY: false,
+										wheelX: "panX",
+										wheelY: "zoomX",
+										layout: root.verticalLayout
+									}));
+
+
+									// Add legend
+									// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+									var legend = chart.children.push(am5.Legend.new(root, {
+										centerX: am5.p50,
+										x: am5.p50
+									}))
+
+
+									// Data
+									var data = __data
+
+
+									// Create axes
+									// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+									var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
+										categoryField: "category",
+										renderer: am5xy.AxisRendererY.new(root, {
+											inversed: true,
+											cellStartLocation: 0.1,
+											cellEndLocation: 0.9
+										})
+									}));
+
+									yAxis.data.setAll(data);
+
+									var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
+										renderer: am5xy.AxisRendererX.new(root, {}),
+										min: 0
+									}));
+
+
+									// Add series
+									// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+									function createSeries(field, name) {
+										var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+											name: name,
+											xAxis: xAxis,
+											yAxis: yAxis,
+											valueXField: field,
+											categoryYField: "category",
+											sequencedInterpolation: true,
+											tooltip: am5.Tooltip.new(root, {
+												pointerOrientation: "horizontal",
+												labelText: "[bold]{name}[/]\n{categoryY}: {valueX}"
+											})
+										}));
+
+										series.columns.template.setAll({
+											height: am5.p100
+										});
+
+
+										series.bullets.push(function() {
+											return am5.Bullet.new(root, {
+												locationX: 1,
+												locationY: 0.5,
+												sprite: am5.Label.new(root, {
+													centerY: am5.p50,
+													text: "{valueX}",
+													populateText: true
+												})
+											});
+										});
+
+										series.bullets.push(function() {
+											return am5.Bullet.new(root, {
+												locationX: 1,
+												locationY: 0.5,
+												sprite: am5.Label.new(root, {
+													centerX: am5.p100,
+													centerY: am5.p50,
+													text: "{name}",
+													fill: am5.color(0xffffff),
+													populateText: true
+												})
+											});
+										});
+
+										series.data.setAll(data);
+										series.appear();
+
+										return series;
+									}
+
+									createSeries("male", "male");
+									createSeries("female", "female");
+
+
+									// Add legend
+									// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+									var legend = chart.children.push(am5.Legend.new(root, {
+										centerX: am5.p50,
+										x: am5.p50
+									}));
+
+									legend.data.setAll(chart.series.values);
+
+
+									// Add cursor
+									// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+									var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
+										behavior: "zoomY"
+									}));
+									cursor.lineY.set("forceHidden", true);
+									cursor.lineX.set("forceHidden", true);
+
+
+									// Make stuff animate on load
+									// https://www.amcharts.com/docs/v5/concepts/animations/
+									chart.appear(1000, 100);
+
+								}); // end am5.ready()
 							}
 						</script>

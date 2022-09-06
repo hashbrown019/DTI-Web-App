@@ -25,6 +25,6 @@ class _main:
 	@app.route("/homepage",methods=["POST","GET"])
 	def homepage():
 		if(_main.is_on_session()):
-			return render_template("home/home.html")
+			return render_template("home/home.html",USER_DATA = session["USER_DATA"][0])
 		else:
 			return redirect("/login?force_url=1")

@@ -30,7 +30,7 @@ class _main:
 		if(len(log_res)!=0):
 			log_res[0]['password'] = "********"
 			session["USER_DATA"] = log_res
-			return jsonify({"success":True})
+			return jsonify({"success":True,"user":session["USER_DATA"]})
 		else:
 			return jsonify({"success":False})
 
