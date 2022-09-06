@@ -8,7 +8,7 @@
 						<div class=" x-row x-white">
 							<div class="x-container x-row">
 								<h3 class="x-padding x-text-teal">Dashboard</h3>
-								<span class="x-padding x-text-teal">Profiling</h3>
+								<b class="x-padding x-text-teal">Profiling</b>
 								<div class="x-container">
 									<select id="dash_sel_region" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" onchange="get_ls_prov(this.value)">
 										<option type="" value="all" selected>All Region</option>
@@ -27,16 +27,17 @@
 									</button>
 								</div>
 							</div>
+							<hr>
 							<div class="x-container x-row">
 								<div class="x-container x-col l2 x-padding">
 									<div class="x-container x-center x-padding x-round-large x-teal">
 										<b id="total_num_farmer" class="x-xxlarge"><span class="fa fa-notch fa spin"></span></b><br>
-										<span class="x-small">Number of Profiles in New-Platform</span>
+										<span class="x-small">Number of Profiles in New Platform</span>
 									</div>
 									<div class="x-container x-padding x-round-larg">
-										<b class="x-text-grey">Male :<span class="x-text-black" id="count_all_male"><span class="fa fa-notch fa spin"></span></span></b><br>
-										<b class="x-text-grey">Female :<span class="x-text-black" id="count_all_female"><span class="fa fa-notch fa spin"></span></span></b><br>
-										<b class="x-text-grey">Untagged :<span class="x-text-black" id="count_all_sex_untagged"><span class="fa fa-notch fa spin"></span></span></b><br>
+										<span class="x-text-grey">Male :<span class="x-text-black" id="count_all_male"><span class="fa fa-notch fa spin"></span></span></span><br>
+										<span class="x-text-grey">Female :<span class="x-text-black" id="count_all_female"><span class="fa fa-notch fa spin"></span></span></span><br>
+										<span class="x-text-grey">Untagged :<span class="x-text-black" id="count_all_sex_untagged"><span class="fa fa-notch fa spin"></span></span></span><br>
 									</div>
 								</div>
 								<div class="x-container x-col l10 x-padding">
@@ -47,7 +48,8 @@
 
 
 						<script type="text/javascript">
-							let SEL_REG, SEL_PROV, SEL_CITY, SEL_BRGY
+							let SEL_REG, SEL_PROV, SEL_CITY, SEL_BRGY;
+							
 							get_ls_region()
 							function get_ls_region(){
 								var ls_all_reg = '<option type="" value="all" selected>All Regions</option>'
@@ -109,7 +111,6 @@
 									}catch(e){
 										println(e)
 									}
-
 
 									try{
 										if(FARMER['farmer_sex']=='Female'){
@@ -255,8 +256,8 @@
 										return series;
 									}
 
-									createSeries("male", "male");
-									createSeries("female", "female");
+									createSeries("male", "Male");
+									createSeries("female", "Female");
 
 
 									// Add legend
@@ -275,7 +276,7 @@
 										behavior: "zoomY"
 									}));
 									cursor.lineY.set("forceHidden", true);
-									cursor.lineX.set("forceHidden", true);
+									// cursor.lineX.set("forceHidden", true);
 
 
 									// Make stuff animate on load
