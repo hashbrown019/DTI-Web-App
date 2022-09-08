@@ -48,7 +48,7 @@
 
 								for (var count = 0; count < ALL_FARMERS.length+1; count++) {
 									var FARMER = ALL_FARMERS[count]
-									$ID("total_num_farmer").innerHTML = count
+									$ID("total_num_farmer").innerHTML = count -1
 									try{
 										FARMER['addr_region'] = FARMER['addr_region'].replace(" ","")
 										if(FARMER['addr_region']==""){
@@ -81,7 +81,7 @@
 										category[FARMER['farmer-primary_crop']] = 'none'
 									}catch(e){}
 
-									
+
 									try{
 										if(FARMER['farmer_sex']=='Female'){
 											count_all_female += 1

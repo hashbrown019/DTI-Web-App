@@ -242,13 +242,13 @@
 													// get_prof_imgs(f_FILE)
 													conso_all() // IF DONE in POPULATING list . CREATING DASHBOARD @ profiling_dashboard.html
 												}
-												$ID("prof_farmer_count").innerHTML = FILTER_total_recors_farmer_counter
+												$ID("prof_farmer_count").innerHTML = FILTER_total_recors_farmer_counter -1
 												FILTER_total_recors_farmer_counter += 1
 
 											}
 
 											ALL_FARMERS.push(alldata_farmer) // Appended list of farmers for dashboarding
-											$ID("total_num_farmer").innerHTML = total_recors_farmer_counter
+											$ID("total_num_farmer").innerHTML = total_recors_farmer_counter -1 
 
 
 										}catch(e){
