@@ -40,13 +40,8 @@
 							let ALL_FARMERS = []
 							let FILTER_SEL_REG, FILTER_SEL_PROV, FILTER_SEL_CITY, FILTER_SEL_BRGY;
 
-							function export_farmer_excel(argument) {
-								staytuned()
-							}
-
-							function import_farmer_excel(argument) {
-								staytuned()
-							}
+							function export_farmer_excel(argument) {staytuned()}
+							function import_farmer_excel(argument) {staytuned()}
 
 							
 							get_ls_region()
@@ -278,8 +273,24 @@
 							}
 
 							function view_farmer_data(res){
+								var form_selection_btn = ""
 								var person = JSON.parse(JSON.parse(res))
+
+								for (var i = 0; i < FORM_A_LS.length; i++) {
+									form_selection_btn +=(`
+										<button class="x-btn x-block x-border"
+										onclick="get_farmer_form('`+person.farmer_code+`@`+FORM_A_LS[i].file+`')">
+											`+FORM_A_LS[i].label+`
+										</button>		
+									`)
+									println()
+								}
 								println(person)
+
+								var prof_pic = person.farmer_img_base64
+								if(prof_pic=="" || prof_pic==" " || prof_pic==undefined){
+									prof_pic = "../static/img/user.png"
+								}
 								var farmer_dialog_info = $dialog({
 									title : person.farmer_name,
 									subtitle :( `
@@ -291,12 +302,81 @@
 										</span>
 									`),
 									content : (`
-										<h1><i>Under Development</i></h1>
+										<div class="x-container x-row">
+											<div class="x-col l3">
+												<div class="x-padding">
+													<img loading="lazy" id="img_`+person.farmer_code+`" src="`+prof_pic+`" class="x-image x-round" style="max-width:100%">
+												</div>
+												`+form_selection_btn+`
+											</div>
+											<div id="form_farmer_a_`+person.farmer_code+`" class="x-col l9 x-padding" style=";overflow-y:scroll;height: 70vh;">
+												<div class="x-container x-center">
+													<br><br><br>
+													<h3>Please Select Form</h3>
+												</div>
+											</div>
+										</div>
 									`),
 									buttons : ["Okay"]
 								})
 								farmer_dialog_info.elements[0].style.width = "70vw"
 								farmer_dialog_info.show()
+							}
+
+							function get_farmer_form(file_farmer){ // GET SUBform of selected farmer
+								var f_fname = file_farmer.split("@")
+								$ID("form_farmer_a_"+f_fname[0]).innerHTML = file_farmer
+								$send({
+									action : "/get_sub_form_a_template",
+									data : $DATA({"subform_temp":f_fname[1]}),
+									method : POST,
+									func : function (res) {
+										$ID("form_farmer_a_"+f_fname[0]).innerHTML = res
+										
+										$send({
+											action : "/get_sub_form_a",
+											data : $DATA({"subform":file_farmer}),
+											method : POST,
+											func : function (res) {
+												var form_ = JSON.parse(JSON.parse(res))
+												println(form_) 
+												refill_data_forms__(form_)
+
+
+
+											}
+										})
+									}
+								})
+							}
+
+
+							function refill_data_forms__(form_){ /////////// REFILLING FOR HAS DATA 
+								var form_data_refill = form_
+								var form_data = $CLASS("form_data_a")
+
+								for (var i = 0; i < form_data.length; i++) {
+									form_data[i].disabled = true // TEMPORARY WHILE ON DEV FOPRMS
+									// println(form_data[i].id)
+									if(form_data[i].type==='checkbox'){
+										// form_data[i].checked = form_data_refill[form_data[i].id] // DIRECT VALUE Transfer 
+										try{
+											if(form_data_refill[form_data[i].id]){// Simulate Clicked
+												form_data[i].click() // Simulate Clicked
+											}
+										}catch(e){
+											println(" error in refill data")
+										}
+									}
+									else{
+										try{
+											if (form_data_refill[form_data[i].id]==undefined) {form_data_refill[form_data[i].id] = ""}
+											form_data[i].value = form_data_refill[form_data[i].id]
+										}
+										catch(e){println("ERROR in refill_data_forms__ :: "+e)}
+									}
+								}
+
 							}
 
 							function get_prof_imgs(ls_file){  // Lazy Load for Profile Images After profrile list completely lodaded
@@ -326,44 +406,20 @@
 							}
 
 
-							// function get_user(_file_name){
-							// 	$send({
-							// 		action:"/get_profile",
-							// 		method: POST,
-							// 		data : $DATA({"profile_file_name":_file_name}),
-							// 		func : function(res){
-							// 			var file_profile = JSON.parse(res)
-							// 			println(file_profile)
-							// 			var person = file_profile.profile
-							// 			var prof_pic = person.farmer_img_base64
-							// 			if(prof_pic=="" || prof_pic==" " || prof_pic==undefined){
-							// 				prof_pic = "../static/img/user.png"
-							// 			}
-							// 			println(person)
-							// 			$ID("profile_list").innerHTML += `
-							// 			<div class="x-row x-padding" id="`+person.farmer_code+`">
-							// 				<div class="x-col l1">
-							// 					<img loading="lazy" src="`+prof_pic+`" class="x-image" style="max-width:100%">
-							// 				</div>
-							// 				<div class="x-col l3 x-container">
-							// 					<b class="">`+person.farmer_name+`</b><br>
-							// 					<span class="x-tiny">
-							// 						<span>`+person.addr_street_purok_sitio+`</span> 
-							// 						<span>`+person.addr_city+`</span> 
-							// 						<span>`+person.addr_prov+`</span> 
-							// 						<span>R:`+person.addr_region+`</span> 
-							// 					</span><br>
-							// 				</div>
-							// 				<div class="x-col l3 x-container">
-							// 					<i class=""><span>`+person["farmer-primary_crop"]+`</span> </i><br>
-							// 					<span class="x-tiny">-----</span><br>
-							// 				</div>
-							// 				<div class="x-col l4 x-container x-center">
-							// 					<span class="x-tiny">Form Completion</span><br>
-							// 					<b class="x-large">--%</b><br>
-							// 				</div>
-							// 			</div>`
-							// 		}
-							// 	})
-							// }
+							// ==========================Profile=====================================
+
+							function not_head_hh(sel){
+								if(!sel){
+									$ID("not_head_hh").style.display = "block"
+								}else{
+									$ID("not_head_hh").style.display = "none"
+								}
+							}
+
+							// ==========================Access to financial=====================================
+
+							function trigger_check(chbox,_ids){
+								if (chbox.checked) {$ID(_ids).style.display = "block"}
+								else{$ID(_ids).style.display = "none"}
+							}
 						</script>

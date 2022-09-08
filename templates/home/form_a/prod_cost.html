@@ -1,78 +1,36 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title> ---- </title><meta name="format-detection" content="telephone=no">
-		<!-- <meta http-equiv="Content-Security-Policy" content="img-src * data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval';"> -->
-		<meta name="msapplication-tap-highlight" content="no">
-		<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-		<!-- <meta name="color-scheme" content="light dark"> -->
-        <script src="../cordova.js"></script>
 
-		<script type="text/javascript" src="../js/Brorn.min.js"></script>
-		<script type="text/javascript" src="../js/Modules/saveform.js"></script> 
-		<script type="text/javascript" src="../js/Variables.js"></script>
-		<script type="text/javascript" src="../js/modules/autocomplete.js"></script>
-		<script type="text/javascript" src="../js/Modules/File_Module.js"></script> 
-		<script type="text/javascript" src="../js/Modules/Utility.js"></script> 
-
-
-		<link rel="stylesheet" href="../css/x.css">
-		<link rel="stylesheet" href="../css/un_x.css">
-		<link rel="stylesheet" href="../css/other.css">
-		<link rel="stylesheet" href="../css/loader.css">
-		<link rel="stylesheet" href="../css/css">
-		<link rel="stylesheet" href="../css/chip.css">
-		<link rel="stylesheet" href="../css/dropzone.css">
-		<link rel="stylesheet" href="../css/font-awesome.min.css">
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-				integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-				crossorigin=""/>
-		<script src="../js/leaflet/jquery.min.js"></script>
-		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-				integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-				crossorigin=""></script>
-		<script src="https://apis.google.com/js/platform.js" async defer></script>
-		<style type="text/css">
-			#mapid { height: 180px; }
-		</style>
-	</head>
-	<body class=" center-bg" style=" height: 100vh;">
-		<header id="offline" class="x-header x-red x-center" style="display:none">Offline Mode</header>
-		<header id="localhostversion" class="x-header x-yellow x-center" style="display:block">This is a Localhost Version, do not use outside NPCO</header>
-		<form action="" method="POST" id="form0" class="" style="display:block;padding: 0px;margin: 0px;">
 			<div class="">
 				<header class="-header gr_body x-blue x-padding">
-					<span onclick="back_to_home()" class="x-button x-display-topright x-red"><b>close</b></span>
+					
 					<b id="is_form_filled">Profiling</b>
 				</header>
-				<input type="hidden" id="farmer_code" name="farmer_code" class="form_data">
-				<input type="hidden" id="is_synced" name="farmer-is_synced" class="form_data" value="0">
-				<input type="hidden" id="datetime" name="farmer-is_synced" class="form_data">
+				<input type="hidden" id="farmer_code" name="farmer_code" class="form_data_a">
+				<input type="hidden" id="is_synced" name="farmer-is_synced" class="form_data_a" value="0">
+				<input type="hidden" id="datetime" name="farmer-is_synced" class="form_data_a">
 				<div class="x-container  x-padding">
 					<b class="x-text-green">Production Cost Per Crop/commodity</b><hr>
 					<span class="x-text-grey">Do you keep a record of your farm activities?<span class="x-text-grey"></span>
-					<select name="prodcost-is_keep_record" id="prodcost-is_keep_record" class="form_data x-select x-border" >
+					<select name="prodcost-is_keep_record" id="prodcost-is_keep_record" class="form_data_a x-select x-border" >
 						<option disabled selected value="none">Please select</option>
 						<option  selected value='yes'>Yes</option>
 						<option  selected value='no  '>No</option>
 					</select>
 					<span class="x-text-grey">Crop Cycle per Year<span class="x-text-grey"></span>
-					<input placeholder="" onkeyup="__cal()" type="number" id="prodcost-crop_cycle_year" name="prodcost-crop_cycle_year" class="form_data x-input x-border x-round ">
+					<input placeholder="" onkeyup="__cal()" type="number" id="prodcost-crop_cycle_year" name="prodcost-crop_cycle_year" class="form_data_a x-input x-border x-round ">
 					<i class="x-text-grey">if Crop Cycle per Year is undefined or blank, the annual cost per year will be treated as 1 Cycle</i>
 
 					<hr>
 					<b class="x-text-grey">LABOR COST PER CYCLE<span class="x-text-grey"></b><br>
-					<!-- <input disabled value="0" placeholder="" type="number" id="prodcost-total_labor" name="prodcost-rsbsa_no" class="form_data x-input x-border x-round "> -->
+					<!-- <input disabled value="0" placeholder="" type="number" id="prodcost-total_labor" name="prodcost-rsbsa_no" class="form_data_a x-input x-border x-round "> -->
 
 					<span class="x-text-grey">Land Development/Preparation<span class="x-text-grey"></span>
-					<input onkeyup="__cal()" placeholder="" type="number" id="prodcost-labor_land_dev_prep" name="prodcost-labor_land_dev_prep" class="cost_labor form_data x-input x-border x-round ">
+					<input onkeyup="__cal()" placeholder="" type="number" id="prodcost-labor_land_dev_prep" name="prodcost-labor_land_dev_prep" class="cost_labor form_data_a x-input x-border x-round ">
 					<span class="x-text-grey">Crop Maintenance Activities<span class="x-text-grey"></span>
-					<input onkeyup="__cal()" placeholder="" type="number" id="prodcost-labor_crop_maintenance_act" name="prodcost-labor_crop_maintenance_act" class="cost_labor form_data x-input x-border x-round ">
+					<input onkeyup="__cal()" placeholder="" type="number" id="prodcost-labor_crop_maintenance_act" name="prodcost-labor_crop_maintenance_act" class="cost_labor form_data_a x-input x-border x-round ">
 					<span class="x-text-grey">Crop Harvesting<span class="x-text-grey"></span>
-					<input onkeyup="__cal()" placeholder="" type="number" id="prodcost-labor_crop_harvest" name="prodcost-labor_crop_harvest" class="cost_labor form_data x-input x-border x-round ">
+					<input onkeyup="__cal()" placeholder="" type="number" id="prodcost-labor_crop_harvest" name="prodcost-labor_crop_harvest" class="cost_labor form_data_a x-input x-border x-round ">
 					<span class="x-text-grey">Post-harvest Activities<span class="x-text-grey"></span>
-					<input onkeyup="__cal()" placeholder="" type="number" id="prodcost-labor_post_harvest_act" name="prodcost-labor_post_harvest_act" class="cost_labor form_data x-input x-border x-round ">
+					<input onkeyup="__cal()" placeholder="" type="number" id="prodcost-labor_post_harvest_act" name="prodcost-labor_post_harvest_act" class="cost_labor form_data_a x-input x-border x-round ">
 					<script type="text/javascript">
 						function total_labor(val){
 							if(val==""){val=0}
@@ -81,16 +39,16 @@
 					</script>
 					<hr>
 					<b class="x-text-grey">COSTS OF MATERIALS AND INPUTS PER CYCLE<span class="x-text-grey"></b><br>
-					<!-- <input disabled value="0" placeholder="" type="number" id="prodcost-cost_mateials" name="prodcost-rsbsa_no" class="form_data x-input x-border x-round "> -->
+					<!-- <input disabled value="0" placeholder="" type="number" id="prodcost-cost_mateials" name="prodcost-rsbsa_no" class="form_data_a x-input x-border x-round "> -->
 
 					<span class="x-text-grey">Land Development/Preparation<span class="x-text-grey"></span>
-					<input onkeyup="__cal()" placeholder="" type="number" id="prodcost-materials_land_dev_prep" name="prodcost-materials_land_dev_prep" class="cost_materryals form_data x-input x-border x-round ">
+					<input onkeyup="__cal()" placeholder="" type="number" id="prodcost-materials_land_dev_prep" name="prodcost-materials_land_dev_prep" class="cost_materryals form_data_a x-input x-border x-round ">
 					<span class="x-text-grey">Crop Maintenance Activities<span class="x-text-grey"></span>
-					<input onkeyup="__cal()" placeholder="" type="number" id="prodcost-materials__act" name="prodcost-materials__act" class="cost_materryals form_data x-input x-border x-round ">
+					<input onkeyup="__cal()" placeholder="" type="number" id="prodcost-materials__act" name="prodcost-materials__act" class="cost_materryals form_data_a x-input x-border x-round ">
 					<span class="x-text-grey">Crop Harvesting<span class="x-text-grey"></span>
-					<input onkeyup="__cal()" placeholder="" type="number" id="prodcost-crop_harvest" name="prodcost-crop_harvest" class="cost_materryals form_data x-input x-border x-round ">
+					<input onkeyup="__cal()" placeholder="" type="number" id="prodcost-crop_harvest" name="prodcost-crop_harvest" class="cost_materryals form_data_a x-input x-border x-round ">
 					<span class="x-text-grey">Post-harvest Activities<span class="x-text-grey"></span>
-					<input onkeyup="__cal()" placeholder="" type="number" id="prodcost-post_harvest_act" name="prodcost-post_harvest_act" class="cost_materryals form_data x-input x-border x-round ">
+					<input onkeyup="__cal()" placeholder="" type="number" id="prodcost-post_harvest_act" name="prodcost-post_harvest_act" class="cost_materryals form_data_a x-input x-border x-round ">
 					<hr>
 
 					<div class="x-container">
@@ -120,216 +78,9 @@
 					
 					<hr>
 					<b class="x-text-grey">Remarks (For Enumerator)</b><br>
-					<input placeholder="" type="text" id="form-remarks" name="feedback-rsbsa_no" class="form_data x-input x-border x-round ">
+					<input placeholder="" type="text" id="form-remarks" name="feedback-rsbsa_no" class="form_data_a x-input x-border x-round ">
 					<hr>
-					<span class="x-text-grey">
-						
-						Before Clicking next, pls make sure to check all fields as they cannot be undone while the profiling is not yet finished
-					</span><br>
-					<button type="button" class="x-btn x-round-large x-block x-green" onclick="save_form()">Next Form <span class="fa fa-arrow-right"></span></button>
+
 				</div>
 			</div>
-		</form>
-
-	</body>
-	<script type="text/javascript">
-		try{
-			document.addEventListener("deviceready", onDeviceReady, false);
-			function onDeviceReady() {
-				console.log(cordova.file);
-				println(" * File Module Ready ================================");
-				window.setInterval(function () {
-					if(isOnline()){$ID("offline").style.display="none"}
-					else{$ID("offline").style.display="block"}
-				}, 1000)
-			}
-		}catch(err){println(err)}
-
-		// window.setTimeout(function() {
-		// 	println("Calculating . . . ")
-		// 	calcu('cost_materials','cost_materryals')
-		// 	calcu('labor','cost_labor')
-		// 	// __cal()
-		// }, 2000);
-
-		function __cal(){
-			var cycle = $ID("prodcost-crop_cycle_year").value
-			var COST_MAN = calcu('cost_materials','cost_materryals')
-			var COSt_ =calcu('labor','cost_labor')
-			println(" ====== "+cycle+" =======")
-
-			if(cycle=="" || cycle==" " || cycle==undefined){
-				$ID("labor").innerHTML = COSt_
-				$ID("cost_materials").innerHTML = COST_MAN 
-				println(" no CYCLE")
-			}else{
-				$ID("labor").innerHTML = COSt_ * parseInt(cycle)
-				$ID("cost_materials").innerHTML = COST_MAN  * parseInt(cycle)
-				println(" HAS CYCLE "+cycle)
-			}
-			println(" 1 Cost >> "+COST_MAN+" * "+ cycle +" = = "+COST_MAN*parseInt(cycle))
-			println(" 2 Cost >> "+COSt_+" * "+ cycle +" = = "+COSt_*parseInt(cycle))
-		}
-
-		// ---------------------------------------------------------------------------------------
-		function save_form(){
-			var FILE_NAME = url_args['farmer_id']+"@"+page+".txt"
-			$ID('farmer_code').value = url_args['farmer_id']
-			$ID('datetime').value = $datetime()
-
-			create_formdata(FILE_NAME,function(){
-				redirectto("workers_laborers.html?user_id="+url_args['user_id']+"&farmer_id="+url_args['farmer_id'])
-			})
-		}
-
-		// ONLOAD_RE_EXEC = true
-		// NO_ONLOADDATA()
-		function AFTER_LOAD_DATA(){
-			// var opt_g = $CLASS("optg")
-			// for (var i = 0; i < opt_g.length; i++) {
-			// 	opt_g[i].style.display = "none"
-			// }
-			// alert(" Proceed in new Data?")
-			var farmer_prof_file = url_args['farmer_id'] + "@add_farm.txt"
-			_readFileEntry(farmer_prof_file,function(res){
-				try{
-					var f_info = JSON.parse(res)
-					println(" >>>>> CYCLE SELECTED >> "+f_info["farm-primary_crop_cycle_year"])
-					if(f_info["farm-primary_crop_cycle_year"]==undefined || f_info["farm-primary_crop_cycle_year"]=="" || f_info["farm-primary_crop_cycle_year"]==" "){
-						throw "no Cycle"
-					}
-					$ID("prodcost-crop_cycle_year").value = f_info["farm-primary_crop_cycle_year"]
-				}
-				catch{
-					alert(` * In order to successfully complete this form, you must finish the [FARM INFORMATION] form and indicate the number of Primary crop cycle per year`)
-				 /// Reload Field again for Slow Loading Image and contmaienrs
-				}
-				__cal()
-			})
-			// check_for_data(function(data_){println("Data Recollected ")})
-		}
-
-		// load_dropdowns()
-		function load_dropdowns(){
-			for (const [key, value] of Object.entries(ALL_LOCATION)) {
-				$ID("prodcost-region").innerHTML += "<option value='"+key+"'>Region: "+key+"</option>"
-			}
-			var region = $ID("prodcost-region").value = `<option disabled selected value=''>Please select entry</option>`
-			var prov = $ID("prodcost-province").value = `<option disabled selected value=''>Please select entry</option>`
-			var municipality = $ID("prodcost-municipality").value = `<option disabled selected value=''>Please select entry</option>`
-		}
-		function ls_prov(selregion){
-			$ID("prodcost-province").disabled = false
-			for (const [key, value] of Object.entries(ALL_LOCATION[selregion]['province_list'])) {
-				$ID("prodcost-province").innerHTML += "<option value='"+key+"'>"+key+"</option>"
-			}
-		}
-		function ls_muni(selprov){
-			$ID("prodcost-municipality").disabled = false
-			var region = $ID("prodcost-region").value
-			var prov = $ID("prodcost-province").value
-			for (const [key, value] of Object.entries(ALL_LOCATION[region]['province_list'][prov]['municipality_list'])) {
-				$ID("prodcost-municipality").innerHTML += "<option value='"+key+"'>"+key+"</option>"
-			}
-		}
-		function ls_brgy(selprov){
-			$ID("prodcost-brgy").disabled = false
-			var region = $ID("prodcost-region").value
-			var prov = $ID("prodcost-province").value
-			var municipality = $ID("prodcost-municipality").value
-			for (var i = 0; i < ALL_LOCATION[region]['province_list'][prov]['municipality_list'][municipality]['barangay_list'].length; i++) {
-				var key = ALL_LOCATION[region]['province_list'][prov]['municipality_list'][municipality]['barangay_list'][i]
-				$ID("prodcost-brgy").innerHTML += "<option value='"+key+"'>"+key+"</option>"
-			}
-		}
-
-		function cal_age(bday){
-			var parts2 = bday.split('-');
-			// var todate = new Date(parts[0], parts[1] - 1, parts[2]);
-			var todate = $date()
-			var sbday = new Date(parts2[0], parts2[1] - 1, parts2[2]); 
-			println(todate)
-			println(sbday)
-			const diffTime = Math.abs(todate - sbday);
-			var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-			var age = diffDays/365
-			$ID("prodcost-age").value = (""+age).split(".")[0];
-			if(age<=18.0){
-				alert("oops you are profiling a minor with the age of ["+(""+age).split(".")[0]+"]\nPlease select a legal age by selecting the correct birthday")
-				
-			}
-			if(age <=30 && age >=18){
-				$ID("prodcost-isyouth").checked = true
-			}else{
-				$ID("prodcost-isyouth").checked = false
-			}
-
-		}
-		function foposition_change(val){
-			if(val=="Officer"){
-				$ID("prodcost-fo_designation").disabled = false
-			}else{
-				$ID("prodcost-fo_designation").disabled = true
-			}
-		}
-		// offline
-
-		// ===============================================================
-
-		// var marker = undefined
-		// try{
-		// 	var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-		// 	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-		// 		attribution: 'DTI RAPID GROWTH',
-		// 		maxZoom: 18,
-		// 		id: 'mapbox/streets-v11',
-		// 		tileSize: 512,
-		// 		zoomOffset: -1,
-		// 		accessToken: 'pk.eyJ1IjoiZGlvYW1lIiwiYSI6ImNrbGo1ZDc1aDAxZTQybnBoc2tpZGcxOWoifQ.90lp0SPxVC4Kz113q_Wn9g'
-		// 	}).addTo(mymap);
-		// 	let samp = {"lat":8.945209,"lng":125.538939}
-		// 	mymap.setView([samp.lat, samp.lng], 13);
-
-
-		// 	// var popup = L.popup();
-
-		// 	function onMapClick(e) {
-		// 		if(marker != undefined){mymap.removeLayer(marker)}
-		// 		// popup
-		// 		// 	.setLatLng(e.latlng)
-		// 		// 	.setContent("You clicked the map at " + e.latlng.toString())
-		// 		// 	.openOn(mymap);
-
-		// 		marker = L.marker(e.latlng).addTo(mymap);
-		// 		// println(e.latlng.lat)
-		// 		$.get('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+e.latlng.lat+'&lon='+e.latlng.lng, function(data){
-		// 			console.log(data.address);
-		// 			// $ID("reg_business_address").value = data.address.region + ', ' +data.address.state
-		// 			// $ID("reg_muni").value = data.address.city
-		// 			var addr = data.address.village + "," 
-		// 				+data.address.road + "," 
-		// 				+data.address.neighbourhood+","
-		// 				+data.address.quarter+","
-		// 				+data.address.suburb+","
-		// 				+data.address.tourism + ","
-		// 				+data.address.leisure + ","
-		// 				+data.address.state + ","
-		// 				+data.address.city + ","
-		// 				+data.address.region + " || "
-		// 				+e.latlng.lat +","+e.latlng.lng+ ","
-		// 			// $ID("reg_brgy").value = addr.split("undefined ,").join("")
-		// 			$ID("prodcost-full_address").value = addr.replaceAll("undefined,","")
-		// 		});
-		// 	}
-		// 	mymap.on('click', onMapClick);
-		// }
-		// catch(e){
-		// 	try{
-		// 		$ID("map_cont").style.display = "none"
-		// 	}
-		// 	catch(e){println(e)}
-		// }
-
-
-	</script>
-</html>
+		

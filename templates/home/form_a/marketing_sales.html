@@ -1,56 +1,15 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title> ---- </title><meta name="format-detection" content="telephone=no">
-		<!-- <meta http-equiv="Content-Security-Policy" content="img-src * data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval';"> -->
-		<meta name="msapplication-tap-highlight" content="no">
-		<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-		<!-- <meta name="color-scheme" content="light dark"> -->
-        <script src="../cordova.js"></script>
 
-		<script type="text/javascript" src="../js/Brorn.min.js"></script>
-		<script type="text/javascript" src="../js/Variables.js"></script>
-		<script type="text/javascript" src="../js/modules/autocomplete.js"></script>
-		<script type="text/javascript" src="../js/Modules/File_Module.js"></script> 
-		<script type="text/javascript" src="../js/Modules/saveform.js"></script> 
-
-
-		<link rel="stylesheet" href="../css/x.css">
-		<link rel="stylesheet" href="../css/un_x.css">
-		<link rel="stylesheet" href="../css/other.css">
-		<link rel="stylesheet" href="../css/loader.css">
-		<link rel="stylesheet" href="../css/css">
-		<link rel="stylesheet" href="../css/chip.css">
-		<link rel="stylesheet" href="../css/dropzone.css">
-		<link rel="stylesheet" href="../css/font-awesome.min.css">
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-				integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-				crossorigin=""/>
-
-		<script src="../js/leaflet/jquery.min.js"></script>
-		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-				integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-				crossorigin=""></script>
-		<script src="https://apis.google.com/js/platform.js" async defer></script>
-		<style type="text/css">
-			#mapid { height: 180px; }
-		</style>
-	</head>
-	<body class=" center-bg" style=" height: 100vh;">
-		<header id="offline" class="x-header x-red x-center" style="display:none">Offline Mode</header>
-<header id="localhostversion" class="x-header x-yellow x-center" style="display:block">This is a Localhost Version, do not use outside NPCO</header>
-			<input type="hidden" placeholder="record_num" id="record_num" name="record_num" class="form_data" value="0">
+			<input type="hidden" placeholder="record_num" id="record_num" name="record_num" class="form_data_a" value="0">
 		<!-- <form action="" method="POST" id="form0" class="" style="display:block;padding: 0px;margin: 0px;"> -->
 			<div class="">
 				<header class="-header gr_body x-blue x-padding">
-					<span onclick="back_to_home()" class="x-button x-display-topright x-red"><b>close</b></span>
+					
 					<b id="is_form_filled">Profiling</b>
 				</header>
 
-				<input type="hidden" id="farmer_code" name="farmer_code" class="form_data">
-				<input type="hidden" id="is_synced" name="farmer-is_synced" class="form_data" value="0">
-				<input type="hidden" id="datetime" name="farmer-is_synced" class="form_data">
+				<input type="hidden" id="farmer_code" name="farmer_code" class="form_data_a">
+				<input type="hidden" id="is_synced" name="farmer-is_synced" class="form_data_a" value="0">
+				<input type="hidden" id="datetime" name="farmer-is_synced" class="form_data_a">
 
 				<div id="board" class="x-container  x-padding">
 					<h4 class="x-text-blue">Marketing Sales</h4>
@@ -60,21 +19,21 @@
 								<hr>
 								<span><b class="post_num">1</b> - Marketing Sales</span><br>
 								<span class="x-text-grey">Primary Crop Product Type</span>
-								<input type="text" id="market-primary_crop_type" name="market-primary_crop_type" class="form_data x-input x-border x-round ">
+								<input type="text" id="market-primary_crop_type" name="market-primary_crop_type" class="form_data_a x-input x-border x-round ">
 								<span class="x-text-grey">Primary Crop Volume (Delivery)</span>
-								<input type="text" id="market-primary_vol_del" name="market-primary_vol_del" class="form_data x-input x-border x-round ">
+								<input type="text" id="market-primary_vol_del" name="market-primary_vol_del" class="form_data_a x-input x-border x-round ">
 
 								<span class="x-text-grey">Primary Crop Distribution Point/Location</span><br>
 								
-								<input id="market-is_coop" class="form_data dis_check x-check" type="checkbox" onchange="interc('coop','dis_in')" >
+								<input id="market-is_coop" class="form_data_a dis_check x-check" type="checkbox" onchange="interc('coop','dis_in')" >
 								<label>FO/Coop</label><br>
-								<input id="market-is_sme" class="form_data dis_check x-check" type="checkbox" onchange="interc('sme','dis_in')" >
+								<input id="market-is_sme" class="form_data_a dis_check x-check" type="checkbox" onchange="interc('sme','dis_in')" >
 								<label>SME</label><br>
-								<input id="market-is_anchor_firm" class="form_data dis_check x-check" type="checkbox" onchange="interc('afirm','dis_in')" >
+								<input id="market-is_anchor_firm" class="form_data_a dis_check x-check" type="checkbox" onchange="interc('afirm','dis_in')" >
 								<label>Anchor Firm</label><br>
-								<input id="market-is_negosyo_center" class="form_data x-check" type="checkbox">
+								<input id="market-is_negosyo_center" class="form_data_a x-check" type="checkbox">
 								<label>Negosyo Center</label><br>
-								<input id="market-is_others" class="form_data dis_check x-check" type="checkbox" onchange="interc('others','dis_in')" >
+								<input id="market-is_others" class="form_data_a dis_check x-check" type="checkbox" onchange="interc('others','dis_in')" >
 								<label>Others</label><br>
 								<script type="text/javascript">
 									function interc(tag,class__){
@@ -89,43 +48,43 @@
 									}
 								</script>
 								<hr>
-								<!-- <input style="display: none;" placeholder="Name of Coop" type="text" id="market-name_coop" name="" class="form_data dis_in x-input x-border x-round "> -->
+								<!-- <input style="display: none;" placeholder="Name of Coop" type="text" id="market-name_coop" name="" class="form_data_a dis_in x-input x-border x-round "> -->
 								<div class="autocomplete x-block">
-									<input id="market-name_coop" class="form_data dis_in x-input x-border x-round require_f" placeholder="Name of Coop" onkeyup="get_fo_ls(this)"  style="display: none;">
+									<input id="market-name_coop" class="form_data_a dis_in x-input x-border x-round require_f" placeholder="Name of Coop" onkeyup="get_fo_ls(this)"  style="display: none;">
 								</div>
-								<input style="display: none;" placeholder="Name of SME" type="text" id="market-name_sme" name="" class="form_data dis_in x-input x-border x-round ">
-								<input style="display: none;" placeholder="Name of Anchor Firm" type="text" id="market-name_anchor_firm" name="" class="form_data dis_in x-input x-border x-round ">
-								<input style="display: none;" placeholder="If Others, please specify" type="text" id="market-name_others" name="" class="form_data dis_in x-input x-border x-round ">
+								<input style="display: none;" placeholder="Name of SME" type="text" id="market-name_sme" name="" class="form_data_a dis_in x-input x-border x-round ">
+								<input style="display: none;" placeholder="Name of Anchor Firm" type="text" id="market-name_anchor_firm" name="" class="form_data_a dis_in x-input x-border x-round ">
+								<input style="display: none;" placeholder="If Others, please specify" type="text" id="market-name_others" name="" class="form_data_a dis_in x-input x-border x-round ">
 								<hr>
 								<span class="x-text-grey">Primary Crop Distribution Payment Terms</span>
-								<select name="market-primary_crop_dist_point" id="market-primary_crop_dist_point" class="form_data x-select x-border">
+								<select name="market-primary_crop_dist_point" id="market-primary_crop_dist_point" class="form_data_a x-select x-border">
 									<option selected value='consignment'>Consignment</option>
 									<option selected value='cash'>Cash</option>
 									<option selected value='credit'>Credit</option>
 									<option selected value='others'>Others</option>
 								</select>
 								<span class="x-text-grey">If Others, please specify</span>
-								<input type="text" id="market-primary_crop_dist_others" class="form_data x-input x-border x-round dist"><br>
+								<input type="text" id="market-primary_crop_dist_others" class="form_data_a x-input x-border x-round dist"><br>
 
 								<span class="x-text-grey">Primary Crop Type of Buyer</span>
-								<select name="market-primary_crop_type_buyer" id="market-primary_crop_type_buyer" class="form_data x-select x-border">
+								<select name="market-primary_crop_type_buyer" id="market-primary_crop_type_buyer" class="form_data_a x-select x-border">
 									<option selected value='Trader'>Trader</option>
 									<option selected value='Consolidator'>Consolidator</option>
 									<option selected value='Processor'>Processor</option>
 									<option selected value='Others'>Others</option>
 								</select>
 								<span class="x-text-grey">If Others, please specify</span>
-								<input type="text" id="market-primary_crop_buyer_others" class="form_data x-input x-border x-round dist">
+								<input type="text" id="market-primary_crop_buyer_others" class="form_data_a x-input x-border x-round dist">
 								<hr>
 
 								<div class="x-row">
 									<div class="x-col s6">
 										<span class="x-text-grey">Farm-Gate-Price in Php (fgp)</span>
-										<input placeholder="FGP in Php" type="text" id="market-primary_crop_product_fgp" class="form_data x-input x-border x-round dist">
+										<input placeholder="FGP in Php" type="text" id="market-primary_crop_product_fgp" class="form_data_a x-input x-border x-round dist">
 									</div>
 									<div class="x-col s6">
 										<span class="x-text-grey">Unit</span>
-										<select class="x-select x-border form_data" id="market-primary_crop_product_fgp_unit">
+										<select class="x-select x-border form_data_a" id="market-primary_crop_product_fgp_unit">
 											<option value="kg">Kg</option>
 											<option value="metric tons">Metric Tons</option>
 										</select>
@@ -141,219 +100,12 @@
 					<div class="">
 						<hr>
 						<b class="x-text-grey">Remarks (For Enumerator)</b><br>
-						<input placeholder="" type="text" id="form-remarks" name="feedback-rsbsa_no" class="form_data x-input x-border x-round ">
+						<input placeholder="" type="text" id="form-remarks" name="feedback-rsbsa_no" class="form_data_a x-input x-border x-round ">
 						<hr>
 						<button class="x-blue x-block x-btn x-round-large" onclick="duplicate()">Add More Product <span class="fa fa-plus"></span></button>
 						<hr>
-						<span class="x-text-grey">
-							
-							Before Clicking next, pls make sure to check all fields as they cannot be undone while the profiling is not yet finished
-						</span><br>
-						<div class="x-container">
-							<button type="button" class="x-col s6 x-btn x-round-large x-block x-yellow" onclick="window.history.go(-1)">Previous Form<span class="fa fa-arrow-lef"></span></button>
-							<button type="button" class="x-col s6 x-btn x-round-large x-block x-green" onclick="save_form()">Save and Proceed <span class="fa fa-arrow-right"></span></button>
-						</div>
+					
 					</div>
 				</div>
 			</div>
 		<!-- </form> -->
-
-
-	</body>
-	<!-- <script type="text/javascript" src="../js/Modules/saveform.js"></script>  -->
-
-	<script type="text/javascript">
-
-		try{
-			document.addEventListener("deviceready", onDeviceReady, false);
-			function onDeviceReady() {
-				console.log(cordova.file);
-				println(" * File Module Ready ================================");
-				window.setInterval(function () {
-					if(isOnline()){$ID("offline").style.display="none"}
-					else{$ID("offline").style.display="block"}
-				}, 1000)
-			}
-		}catch(err){println(err)}
-
-		function ONLOADDATA(data){
-			var incs_ = data.record_num
-			println("Number of Increment is .. "+data.record_num)
-			for (var i = 0; i < parseInt(incs_); i++) {
-				duplicate()
-			}
-			// check_for_data(
-			// function(fn_,data_){
-			// 	println("Data Recollected >>>>>>>> "+fn_);
-			// 	// println(JSON.stringify(data_))
-			// })
-		}
-
-
-		var iii = 0;
-		function duplicate() {
-			println('post_harvest' + iii)
-			var original = $ID('post_harvest' + iii);
-			var clone = original.cloneNode(true); 		// "deep" clone
-			clone.id = "post_harvest" + ++ iii; 		// there can only be one element with an ID
-			// clone.onclick = duplicate; 					// event handlers are not cloned
-			var elemets_ = clone.querySelectorAll(".form_data");
-			for (var i = 0; i < elemets_.length; i++) {
-				elemets_[i].id = elemets_[i].id + iii
-				println(elemets_[i].id)
-			}
-
-			original.parentNode.appendChild(clone);
-			$ID('record_num').value = iii
-			for (var i = 0; i < $CLASS('post_num').length; i++) {
-				$CLASS('post_num')[i].innerHTML = i+1
-			}
-			
-		}
-		// ----------------------------------------------------------------------------------
-		function save_form(){
-
-			var FILE_NAME = url_args['farmer_id']+"@"+page+".txt"
-
-			$ID('farmer_code').value = url_args['farmer_id']
-			$ID('datetime').value = $datetime()
-
-			create_formdata(FILE_NAME,function(){
-				redirectto("access_financial.html?user_id="+url_args['user_id']+"&farmer_id="+url_args['farmer_id'])
-			})
-		}
-
-		// load_dropdowns()
-		function load_dropdowns(){
-			for (const [key, value] of Object.entries(ALL_LOCATION)) {
-				$ID("market-region").innerHTML += "<option value='"+key+"'>Region: "+key+"</option>"
-			}
-			var region = $ID("market-region").value = `<option disabled selected value=''>Please select entry</option>`
-			var prov = $ID("market-province").value = `<option disabled selected value=''>Please select entry</option>`
-			var municipality = $ID("market-municipality").value = `<option disabled selected value=''>Please select entry</option>`
-		}
-		function ls_prov(selregion){
-			$ID("market-province").disabled = false
-			for (const [key, value] of Object.entries(ALL_LOCATION[selregion]['province_list'])) {
-				$ID("market-province").innerHTML += "<option value='"+key+"'>"+key+"</option>"
-			}
-		}
-		function ls_muni(selprov){
-			$ID("market-municipality").disabled = false
-			var region = $ID("market-region").value
-			var prov = $ID("market-province").value
-			for (const [key, value] of Object.entries(ALL_LOCATION[region]['province_list'][prov]['municipality_list'])) {
-				$ID("market-municipality").innerHTML += "<option value='"+key+"'>"+key+"</option>"
-			}
-		}
-		function ls_brgy(selprov){
-			$ID("market-brgy").disabled = false
-			var region = $ID("market-region").value
-			var prov = $ID("market-province").value
-			var municipality = $ID("market-municipality").value
-			for (var i = 0; i < ALL_LOCATION[region]['province_list'][prov]['municipality_list'][municipality]['barangay_list'].length; i++) {
-				var key = ALL_LOCATION[region]['province_list'][prov]['municipality_list'][municipality]['barangay_list'][i]
-				$ID("market-brgy").innerHTML += "<option value='"+key+"'>"+key+"</option>"
-			}
-		}
-
-		function cal_age(bday){
-			var parts2 = bday.split('-');
-			// var todate = new Date(parts[0], parts[1] - 1, parts[2]);
-			var todate = $date()
-			var sbday = new Date(parts2[0], parts2[1] - 1, parts2[2]); 
-			println(todate)
-			println(sbday)
-			const diffTime = Math.abs(todate - sbday);
-			var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-			var age = diffDays/365
-			$ID("market-age").value = (""+age).split(".")[0];
-			if(age<=18.0){
-				alert("oops you are profiling a minor with the age of ["+(""+age).split(".")[0]+"]\nPlease select a legal age by selecting the correct birthday")
-			}
-			if(age <=30 && age >=18){
-				$ID("market-isyouth").checked = true
-			}else{
-				$ID("market-isyouth").checked = false
-			}
-		}
-
-		function foposition_change(val){
-			if(val=="Officer"){
-				$ID("market-fo_designation").disabled = false
-			}else{
-				$ID("market-fo_designation").disabled = true
-			}
-		}
-
-		function rsbsa_change(val){
-			if(val=="yes"){
-				$ID("market-rsbsa_no").disabled = false
-			}
-			else{
-				$ID("market-rsbsa_no").disabled = true
-			}
-		}
-
-		
-		// offline
-
-		// ===============================================================
-
-		// var marker = undefined
-		// try{
-		// 	var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-		// 	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-		// 		attribution: 'DTI RAPID GROWTH',
-		// 		maxZoom: 18,
-		// 		id: 'mapbox/streets-v11',
-		// 		tileSize: 512,
-		// 		zoomOffset: -1,
-		// 		accessToken: 'pk.eyJ1IjoiZGlvYW1lIiwiYSI6ImNrbGo1ZDc1aDAxZTQybnBoc2tpZGcxOWoifQ.90lp0SPxVC4Kz113q_Wn9g'
-		// 	}).addTo(mymap);
-		// 	let samp = {"lat":8.945209,"lng":125.538939}
-		// 	mymap.setView([samp.lat, samp.lng], 13);
-
-
-		// 	// var popup = L.popup();
-
-		// 	function onMapClick(e) {
-		// 		if(marker != undefined){mymap.removeLayer(marker)}
-		// 		// popup
-		// 		// 	.setLatLng(e.latlng)
-		// 		// 	.setContent("You clicked the map at " + e.latlng.toString())
-		// 		// 	.openOn(mymap);
-
-		// 		marker = L.marker(e.latlng).addTo(mymap);
-		// 		// println(e.latlng.lat)
-		// 		$.get('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+e.latlng.lat+'&lon='+e.latlng.lng, function(data){
-		// 			console.log(data.address);
-		// 			// $ID("reg_business_address").value = data.address.region + ', ' +data.address.state
-		// 			// $ID("reg_muni").value = data.address.city
-		// 			var addr = data.address.village + "," 
-		// 				+data.address.road + "," 
-		// 				+data.address.neighbourhood+","
-		// 				+data.address.quarter+","
-		// 				+data.address.suburb+","
-		// 				+data.address.tourism + ","
-		// 				+data.address.leisure + ","
-		// 				+data.address.state + ","
-		// 				+data.address.city + ","
-		// 				+data.address.region + " || "
-		// 				+e.latlng.lat +","+e.latlng.lng+ ","
-		// 			// $ID("reg_brgy").value = addr.split("undefined ,").join("")
-		// 			$ID("market-full_address").value = addr.replaceAll("undefined,","")
-		// 		});
-		// 	}
-		// 	mymap.on('click', onMapClick);
-		// }
-		// catch(e){
-		// 	try{
-		// 		$ID("map_cont").style.display = "none"
-		// 	}
-		// 	catch(e){println("Map Error");println(e)}
-		// }
-
-
-	</script>
-</html>

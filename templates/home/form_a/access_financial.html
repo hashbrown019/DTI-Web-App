@@ -1,384 +1,179 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title> ---- </title><meta name="format-detection" content="telephone=no">
-		<!-- <meta http-equiv="Content-Security-Policy" content="img-src * data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval';"> -->
-		<meta name="msapplication-tap-highlight" content="no">
-		<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-		<!-- <meta name="color-scheme" content="light dark"> -->
-        <script src="../cordova.js"></script>
 
-		<script type="text/javascript" src="../js/Brorn.min.js"></script>
-		<script type="text/javascript" src="../js/Modules/saveform.js"></script> 
-		<script type="text/javascript" src="../js/Variables.js"></script>
-		<script type="text/javascript" src="../js/modules/autocomplete.js"></script>
-		<script type="text/javascript" src="../js/Modules/File_Module.js"></script> 
+<div class="">
+	<header class="-header gr_body x-blue x-padding">
+		
+		<b id="is_form_filled">Profiling</b>
+	</header>
+	<input type="hidden" id="farmer_code" name="farmer_code" class="form_data_a">
+	<input type="hidden" id="is_synced" name="farmer-is_synced" class="form_data_a" value="0">
+	<input type="hidden" id="datetime" name="farmer-is_synced" class="form_data_a">
 
-		<link rel="stylesheet" href="../css/x.css">
-		<link rel="stylesheet" href="../css/un_x.css">
-		<link rel="stylesheet" href="../css/other.css">
-		<link rel="stylesheet" href="../css/loader.css">
-		<link rel="stylesheet" href="../css/css">
-		<link rel="stylesheet" href="../css/chip.css">
-		<link rel="stylesheet" href="../css/dropzone.css">
-		<link rel="stylesheet" href="../css/font-awesome.min.css">
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-			integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-			crossorigin=""/>
-		<script src="../js/leaflet/jquery.min.js"></script>
-		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-			integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-			crossorigin=""></script>
-		<script src="https://apis.google.com/js/platform.js" async defer></script>
-		<style type="text/css">
-			#mapid { height: 180px; }
-		</style>
-	</head>
-	<body class=" center-bg" style=" height: 100vh;">
-		<header id="offline" class="x-header x-red x-center" style="display:none">Offline Mode</header>
-		<header id="localhostversion" class="x-header x-yellow x-center" style="display:block">This is a Localhost Version, do not use outside NPCO</header>
-		<!-- <header class="x-text-red x-padding x-leftbar x-pale-red x-border-red">FORM UNDER MAINTENANCE</header> -->
-		<form action="" method="POST" id="form0" class="" style="display:block;padding: 0px;margin: 0px;">
-			<div class="">
-				<header class="-header gr_body x-blue x-padding">
-					<span onclick="back_to_home()" class="x-button x-display-topright x-red"><b>close</b></span>
-					<b id="is_form_filled">Profiling</b>
-				</header>
-				<input type="hidden" id="farmer_code" name="farmer_code" class="form_data">
-				<input type="hidden" id="is_synced" name="farmer-is_synced" class="form_data" value="0">
-				<input type="hidden" id="datetime" name="farmer-is_synced" class="form_data">
+	<div class="x-container  x-padding">
 
-				<div class="x-container  x-padding">
+		<b class="x-text-green">Access to Financial Services and Products</b><br>
+		<span class="x-text-grey">Primary Crop Distribution Point/Location</span><br>
+		<hr>
 
-					<b class="x-text-green">Access to Financial Services and Products</b><br>
-					<span class="x-text-grey">Primary Crop Distribution Point/Location</span><br>
-					<hr>
+		<div class="">
+			<div class="x-leftbar">
+				<input id="financial-is_loan" class="form_data_a x-check" type="checkbox">
+				<label>Crop Insurance</label><br>
+			</div>
+			<hr>
 
-					<div class="">
-						<div class="x-leftbar">
-							<input id="financial-is_loan" class="form_data x-check" type="checkbox">
-							<label>Crop Insurance</label><br>
-						</div>
-						<hr>
+			<!-- -------------------------------------- -->
 
-						<!-- -------------------------------------- -->
+			<div class="x-leftbar" id="c_is_loan">
+				<input id="financial-is_primary_crop_distribution" class="form_data_a x-check" type="checkbox" onclick="trigger_check(this,'c_is_primary_crop_distribution')">
+				<label>Loan</label><br>
+				<div class="x-container" id="c_is_primary_crop_distribution" style="display:none;">
 
-						<div class="x-leftbar" id="c_is_loan">
-							<input id="financial-is_primary_crop_distribution" class="form_data x-check" type="checkbox" onclick="trigger_check(this,'c_is_primary_crop_distribution')">
-							<label>Loan</label><br>
-							<div class="x-container" id="c_is_primary_crop_distribution" style="display:none;">
+					<input id="financial-if_loan_bank" class="form_data_a x-check" type="checkbox" onchange="trigger_check(this,'c_if_loan_bank')">
+					<label>Bank</label><br>
 
-								<input id="financial-if_loan_bank" class="form_data x-check" type="checkbox" onchange="trigger_check(this,'c_if_loan_bank')">
-								<label>Bank</label><br>
-
-								<div class="x-container" id="c_if_loan_bank" style="display:none;">
-									<!-- <select id="financial-type_loan" class="form_data x-select x-border">
-										<option value="Government">Government</option>
-										<option value="Private">Private</option>
-									</select>
- -->
-									<div class="x-container">
-										<label>Name of Government Bank</label><br>
-										<div>
-											<select id="financial-loan_govbank_name" class="form_data x-col s6 x-select x-border">
-												<option value="LBP">LandBank of the Philippines</option>
-												<option value="DBP">Development Bank of the Philippines</option>
-											</select>
-											<input type="text" id="financial-loan_govbank_type" class="form_data x-col s6 x-input x-border" placeholder="Type of loan">
-											
-										</div>
-										<br>
-
-										<label>Name of Private</label><br>
-										<div>
-											<input id="financial-loan_private_name" type="text" class="form_data x-col s6 x-input x-border" placeholder="Name of Private">
-											<input id="financial-loan_private_type" type="text" class="form_data x-col s6 x-input x-border" placeholder="Type of loan">
-										</div>
-
-									</div>
-								</div>
-
-								<hr>
-								<input id="financial-if_loan_non_bank" class="form_data x-check" type="checkbox" onchange="trigger_check(this,'c_if_loan_non_bank')" >
-								<label>Non-Bank</label><br>
-								<div class="x-container" id="c_if_loan_non_bank" style="display:none;">
-									<span class="x-text-grey">Name of Farmers' Organization/Cooperative<span class="x-text-grey"></span>
-									<div>
-										<!-- <input placeholder="" type="text" id="financial-loan_name_fo" class="form_data x-input x-border x-round  x-col s6"> -->
-										<div class="autocomplete x-block   x-col s6">
-											<input id="financial-loan_name_fo" class="form_data dis_in x-input x-border x-round" placeholder="Name of FO" onkeyup="get_fo_ls(this)">
-										</div>
-										<input type="text" class="form_data x-input x-border x-col s6" id="financial-loan_type_fo" placeholder="Type of Loan">
-									</div>
-									<span class="x-text-grey">Name of NGO<span class="x-text-grey"></span>
-									<div>
-										<input placeholder="" type="text" id="financial-loan_name_ngo" class="form_data x-input x-border x-round  x-col s6">
-										<input type="text" class="form_data x-input x-border x-col s6" id="financial-loan_type_ngo" placeholder="Type of Loan">
-									</div>
-									<span class="x-text-grey">Name of Lending Investor<span class="x-text-grey"></span>
-									<div>
-										<input placeholder="" type="text" id="financial-loan_name_lending" class="form_data x-input x-border x-round  x-col s6">
-										<input type="text" class="form_data x-input x-border x-col s6" id="financial-loan_type_lending" placeholder="Type of Loan">
-									</div>
-									
-								</div>
-
-								<hr>
-								<input id="financial-loan_if_nonbank_others" class="form_data x-check" type="checkbox" onclick="trigger_check(this,'c_loan_if_nonbank_others')">
-								<label>Others</label><br>
-								<div class="x-container" id="c_loan_if_nonbank_others" style="display:none;">
-									<label>Loan Initiative</label><br>
-									<div>
-										<select class="form_data x-select x-border  x-col s6" id="financial-loan_name_others">
-											<option value="Government">Relatives</option>
-											<option value="Private">Informal Lenders</option>
-										</select>
-										<input type="text" class="form_data x-input x-border x-col s6" id="financial-loan_type_others" placeholder="Type of Loan">
-									</div>
-								</div>
+					<div class="x-container" id="c_if_loan_bank" style="display:none;">
+						<!-- <select id="financial-type_loan" class="form_data_a x-select x-border">
+							<option value="Government">Government</option>
+							<option value="Private">Private</option>
+						</select>
+-->
+						<div class="x-container">
+							<label>Name of Government Bank</label><br>
+							<div>
+								<select id="financial-loan_govbank_name" class="form_data_a x-col s6 x-select x-border">
+									<option value="LBP">LandBank of the Philippines</option>
+									<option value="DBP">Development Bank of the Philippines</option>
+								</select>
+								<input type="text" id="financial-loan_govbank_type" class="form_data_a x-col s6 x-input x-border" placeholder="Type of loan">
+								
 							</div>
-						</div>
-						<hr>
-						<!-- --------------------------------------------------------------------------- -->
+							<br>
 
-						<div class="x-leftbar">
-							<input id="financial-is_crop_deposit" class="form_data x-check" type="checkbox" onclick="trigger_check(this,'c_is_crop_deposit')">
-							<label>Deposits</label><br>
-							<div class="x-container" id="c_is_crop_deposit" style="display:none;">
-								<input type="text" class="form_data x-input x-border" id="financial-type_deposit" placeholder="Type of Deposit">
-
-								<label>Input the name of the bank If the FSP is BANK</label><br>
-								<input type="text" class="form_data x-input x-border" id="financial-type_deposit_bank" placeholder="Name of Bank">
-
-								<label>Input the Name of Non-Bank FSP If the FSP is NON-BANK</label><br>
-								<input type="text" class="form_data x-input x-border" id="financial-type_deposit_non_bank" placeholder="Name of Non-Bank">
+							<label>Name of Private</label><br>
+							<div>
+								<input id="financial-loan_private_name" type="text" class="form_data_a x-col s6 x-input x-border" placeholder="Name of Private">
+								<input id="financial-loan_private_type" type="text" class="form_data_a x-col s6 x-input x-border" placeholder="Type of loan">
 							</div>
+
 						</div>
-						<hr>
-
-
-						<div class="x-leftbar">
-							<input id="financial-is_crop_insurance" class="form_data x-check" type="checkbox" onclick="trigger_check(this,'c_is_crop_insurance')">
-							<label>Insurance</label><br>
-							<div class="x-container" id="c_is_crop_insurance" style="display:none;">
-								<input type="text" class="form_data x-input x-border" id="financial-type_insurance" placeholder="Type of insurance">
-
-								<label>Input the name of the bank If the FSP is BANK</label><br>
-								<input type="text" class="form_data x-input x-border" id="financial-type_insurance_bank" placeholder="Name of Bank">
-
-								<label>Input the Name of Non-Bank FSP If the FSP is NON-BANK</label><br>
-								<input type="text" class="form_data x-input x-border" id="financial-type_insurance_non_bank" placeholder="Name of Non-Bank">
-							</div>
-						</div>
-						<hr>
-
-						<div class="x-leftbar">
-							<input id="financial-is_crop_payments" class="form_data x-check" type="checkbox" onclick="trigger_check(this,'c_is_crop_payments')">
-							<label>Payments (utilities)</label><br>
-							<div class="x-container" id="c_is_crop_payments" style="display:none;">
-								<input type="text" class="form_data x-input x-border" id="financial-type_payments" placeholder="Type of payments">
-
-								<label>Input the name of the bank If the FSP is BANK</label><br>
-								<input type="text" class="form_data x-input x-border" id="financial-type_payments_bank" placeholder="Name of Bank">
-
-								<label>Input the Name of Non-Bank FSP If the FSP is NON-BANK</label><br>
-								<input type="text" class="form_data x-input x-border" id="financial-type_payments_non_bank" placeholder="Name of Non-Bank">
-							</div>
-						</div>
-						<hr>
-
-						<div class="x-leftbar">
-							<input id="financial-is_remmitances" class="form_data x-check" type="checkbox" onclick="trigger_check(this,'c_is_remmitances')">
-							<label>Remittances (OFW)</label><br>
-							<div class="x-container" id="c_is_remmitances" style="display:none;">
-								<input type="text" class="form_data x-input x-border" id="financial-type_remmittance_name" placeholder="Name of Non-Bank FSP">
-							</div>
-						</div>
-						<hr>
-
-						<div class="x-leftbar">
-							<input id="financial-is_crop_others" class="form_data x-check" type="checkbox" onclick="trigger_check(this,'c_is_crop_others')">
-							<label>Others</label><br>
-							<div class="x-container" id="c_is_crop_others" style="display:none;">
-								<label>Input the name of the bank If the FSP is BANK</label><br>
-								<input type="text" class="form_data x-input x-border" id="financial-type_others_bank" placeholder="Name of Bank">
-
-								<label>Input the Name of Non-Bank FSP If the FSP is NON-BANK</label><br>
-								<input type="text" class="form_data x-input x-border" id="financial-type_others_non_bank" placeholder="Name of Non-Bank">
-							</div>
-						</div>
-						<hr>
 					</div>
 
 					<hr>
-					<b class="x-text-grey">Remarks (For Enumerator)</b><br>
-					<input placeholder="" type="text" id="form-remarks" name="feedback-rsbsa_no" class="form_data x-input x-border x-round ">
-					<hr>
-					<hr>
-					<span class="x-text-grey">
+					<input id="financial-if_loan_non_bank" class="form_data_a x-check" type="checkbox" onchange="trigger_check(this,'c_if_loan_non_bank')" >
+					<label>Non-Bank</label><br>
+					<div class="x-container" id="c_if_loan_non_bank" style="display:none;">
+						<span class="x-text-grey">Name of Farmers' Organization/Cooperative<span class="x-text-grey"></span>
+						<div>
+							<!-- <input placeholder="" type="text" id="financial-loan_name_fo" class="form_data_a x-input x-border x-round  x-col s6"> -->
+							<div class="autocomplete x-block   x-col s6">
+								<input id="financial-loan_name_fo" class="form_data_a dis_in x-input x-border x-round" placeholder="Name of FO" onkeyup="get_fo_ls(this)">
+							</div>
+							<input type="text" class="form_data_a x-input x-border x-col s6" id="financial-loan_type_fo" placeholder="Type of Loan">
+						</div>
+						<span class="x-text-grey">Name of NGO<span class="x-text-grey"></span>
+						<div>
+							<input placeholder="" type="text" id="financial-loan_name_ngo" class="form_data_a x-input x-border x-round  x-col s6">
+							<input type="text" class="form_data_a x-input x-border x-col s6" id="financial-loan_type_ngo" placeholder="Type of Loan">
+						</div>
+						<span class="x-text-grey">Name of Lending Investor<span class="x-text-grey"></span>
+						<div>
+							<input placeholder="" type="text" id="financial-loan_name_lending" class="form_data_a x-input x-border x-round  x-col s6">
+							<input type="text" class="form_data_a x-input x-border x-col s6" id="financial-loan_type_lending" placeholder="Type of Loan">
+						</div>
 						
-						Before Clicking next, pls make sure to check all fields as they cannot be undone while the profiling is not yet finished
-					</span><br>
-					<div class="x-container">
-						<button type="button" class="x-col s6 x-btn x-round-large x-block x-yellow" onclick="window.history.go(-1)">Previous Form<span class="fa fa-arrow-lef"></span></button>
-						<button type="button" class="x-col s6 x-btn x-round-large x-block x-green" onclick="save_form()">Save and Proceed <span class="fa fa-arrow-right"></span></button>
+					</div>
+
+					<hr>
+					<input id="financial-loan_if_nonbank_others" class="form_data_a x-check" type="checkbox" onclick="trigger_check(this,'c_loan_if_nonbank_others')">
+					<label>Others</label><br>
+					<div class="x-container" id="c_loan_if_nonbank_others" style="display:none;">
+						<label>Loan Initiative</label><br>
+						<div>
+							<select class="form_data_a x-select x-border  x-col s6" id="financial-loan_name_others">
+								<option value="Government">Relatives</option>
+								<option value="Private">Informal Lenders</option>
+							</select>
+							<input type="text" class="form_data_a x-input x-border x-col s6" id="financial-loan_type_others" placeholder="Type of Loan">
+						</div>
 					</div>
 				</div>
 			</div>
-		</form>
+			<hr>
+			<!-- --------------------------------------------------------------------------- -->
 
-	</body>
-	<script type="text/javascript">
-		try{
-			document.addEventListener("deviceready", onDeviceReady, false);
-			function onDeviceReady() {
-				console.log(cordova.file);
-				println(" * File Module Ready ================================");
-				window.setInterval(function () {
-					if(isOnline()){$ID("offline").style.display="none"}
-					else{$ID("offline").style.display="block"}
-				}, 1000)
-			}
-		}catch(err){println(err)}
+			<div class="x-leftbar">
+				<input id="financial-is_crop_deposit" class="form_data_a x-check" type="checkbox" onclick="trigger_check(this,'c_is_crop_deposit')">
+				<label>Deposits</label><br>
+				<div class="x-container" id="c_is_crop_deposit" style="display:none;">
+					<input type="text" class="form_data_a x-input x-border" id="financial-type_deposit" placeholder="Type of Deposit">
+
+					<label>Input the name of the bank If the FSP is BANK</label><br>
+					<input type="text" class="form_data_a x-input x-border" id="financial-type_deposit_bank" placeholder="Name of Bank">
+
+					<label>Input the Name of Non-Bank FSP If the FSP is NON-BANK</label><br>
+					<input type="text" class="form_data_a x-input x-border" id="financial-type_deposit_non_bank" placeholder="Name of Non-Bank">
+				</div>
+			</div>
+			<hr>
 
 
-		// ---------------------------------------------------------------------------------------
-		function save_form(){
-			var FILE_NAME = url_args['farmer_id']+"@"+page+".txt"
-			
-			$ID('farmer_code').value = url_args['farmer_id']
-			$ID('datetime').value = $datetime()
+			<div class="x-leftbar">
+				<input id="financial-is_crop_insurance" class="form_data_a x-check" type="checkbox" onclick="trigger_check(this,'c_is_crop_insurance')">
+				<label>Insurance</label><br>
+				<div class="x-container" id="c_is_crop_insurance" style="display:none;">
+					<input type="text" class="form_data_a x-input x-border" id="financial-type_insurance" placeholder="Type of insurance">
 
-			create_formdata(FILE_NAME,function(){
-				goto("feedback.html?user_id="+url_args['user_id']+"&farmer_id="+url_args['farmer_id'])
-			})
-		}
+					<label>Input the name of the bank If the FSP is BANK</label><br>
+					<input type="text" class="form_data_a x-input x-border" id="financial-type_insurance_bank" placeholder="Name of Bank">
 
-		// load_dropdowns()
-		function load_dropdowns(){
-			for (const [key, value] of Object.entries(ALL_LOCATION)) {
-				$ID("financial-region").innerHTML += "<option value='"+key+"'>Region: "+key+"</option>"
-			}
-			var region = $ID("financial-region").value = `<option disabled selected value=''>Please select entry</option>`
-			var prov = $ID("financial-province").value = `<option disabled selected value=''>Please select entry</option>`
-			var municipality = $ID("financial-municipality").value = `<option disabled selected value=''>Please select entry</option>`
-		}
-		function ls_prov(selregion){
-			$ID("financial-province").disabled = false
-			for (const [key, value] of Object.entries(ALL_LOCATION[selregion]['province_list'])) {
-				$ID("financial-province").innerHTML += "<option value='"+key+"'>"+key+"</option>"
-			}
-		}
-		function ls_muni(selprov){
-			$ID("financial-municipality").disabled = false
-			var region = $ID("financial-region").value
-			var prov = $ID("financial-province").value
-			for (const [key, value] of Object.entries(ALL_LOCATION[region]['province_list'][prov]['municipality_list'])) {
-				$ID("financial-municipality").innerHTML += "<option value='"+key+"'>"+key+"</option>"
-			}
-		}
-		function ls_brgy(selprov){
-			$ID("financial-brgy").disabled = false
-			var region = $ID("financial-region").value
-			var prov = $ID("financial-province").value
-			var municipality = $ID("financial-municipality").value
-			for (var i = 0; i < ALL_LOCATION[region]['province_list'][prov]['municipality_list'][municipality]['barangay_list'].length; i++) {
-				var key = ALL_LOCATION[region]['province_list'][prov]['municipality_list'][municipality]['barangay_list'][i]
-				$ID("financial-brgy").innerHTML += "<option value='"+key+"'>"+key+"</option>"
-			}
-		}
+					<label>Input the Name of Non-Bank FSP If the FSP is NON-BANK</label><br>
+					<input type="text" class="form_data_a x-input x-border" id="financial-type_insurance_non_bank" placeholder="Name of Non-Bank">
+				</div>
+			</div>
+			<hr>
 
-		function cal_age(bday){
-			var parts2 = bday.split('-');
-			// var todate = new Date(parts[0], parts[1] - 1, parts[2]);
-			var todate = $date()
-			var sbday = new Date(parts2[0], parts2[1] - 1, parts2[2]); 
-			println(todate)
-			println(sbday)
-			const diffTime = Math.abs(todate - sbday);
-			var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-			var age = diffDays/365
-			$ID("financial-age").value = (""+age).split(".")[0];
-			if(age<=18.0){
-				alert("oops you are profiling a minor with the age of ["+(""+age).split(".")[0]+"]\nPlease select a legal age by selecting the correct birthday")
-			}
-			if(age <=30 && age >=18){
-				$ID("financial-isyouth").checked = true
-			}else{
-				$ID("financial-isyouth").checked = false
-			}
+			<div class="x-leftbar">
+				<input id="financial-is_crop_payments" class="form_data_a x-check" type="checkbox" onclick="trigger_check(this,'c_is_crop_payments')">
+				<label>Payments (utilities)</label><br>
+				<div class="x-container" id="c_is_crop_payments" style="display:none;">
+					<input type="text" class="form_data_a x-input x-border" id="financial-type_payments" placeholder="Type of payments">
 
-		}
-		function foposition_change(val){
-			if(val=="Officer"){
-				$ID("financial-fo_designation").disabled = false
-			}else{
-				$ID("financial-fo_designation").disabled = true
-			}
-		}
-		function rsbsa_change(val){
-			if(val=="yes"){
-				$ID("financial-rsbsa_no").disabled = false
-			}else{
-				$ID("financial-rsbsa_no").disabled = true
-			}
-		}
+					<label>Input the name of the bank If the FSP is BANK</label><br>
+					<input type="text" class="form_data_a x-input x-border" id="financial-type_payments_bank" placeholder="Name of Bank">
 
+					<label>Input the Name of Non-Bank FSP If the FSP is NON-BANK</label><br>
+					<input type="text" class="form_data_a x-input x-border" id="financial-type_payments_non_bank" placeholder="Name of Non-Bank">
+				</div>
+			</div>
+			<hr>
+
+			<div class="x-leftbar">
+				<input id="financial-is_remmitances" class="form_data_a x-check" type="checkbox" onclick="trigger_check(this,'c_is_remmitances')">
+				<label>Remittances (OFW)</label><br>
+				<div class="x-container" id="c_is_remmitances" style="display:none;">
+					<input type="text" class="form_data_a x-input x-border" id="financial-type_remmittance_name" placeholder="Name of Non-Bank FSP">
+				</div>
+			</div>
+			<hr>
+
+			<div class="x-leftbar">
+				<input id="financial-is_crop_others" class="form_data_a x-check" type="checkbox" onclick="trigger_check(this,'c_is_crop_others')">
+				<label>Others</label><br>
+				<div class="x-container" id="c_is_crop_others" style="display:none;">
+					<label>Input the name of the bank If the FSP is BANK</label><br>
+					<input type="text" class="form_data_a x-input x-border" id="financial-type_others_bank" placeholder="Name of Bank">
+
+					<label>Input the Name of Non-Bank FSP If the FSP is NON-BANK</label><br>
+					<input type="text" class="form_data_a x-input x-border" id="financial-type_others_non_bank" placeholder="Name of Non-Bank">
+				</div>
+			</div>
+			<hr>
+		</div>
+
+		<hr>
+		<b class="x-text-grey">Remarks (For Enumerator)</b><br>
+		<input placeholder="" type="text" id="form-remarks" name="feedback-rsbsa_no" class="form_data_a x-input x-border x-round ">
+		<hr>
 		
-		// offline
-
-		// ===============================================================
-
-		// var marker = undefined
-		// try{
-		// 	var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-		// 	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-		// 		attribution: 'DTI RAPID GROWTH',
-		// 		maxZoom: 18,
-		// 		id: 'mapbox/streets-v11',
-		// 		tileSize: 512,
-		// 		zoomOffset: -1,
-		// 		accessToken: 'pk.eyJ1IjoiZGlvYW1lIiwiYSI6ImNrbGo1ZDc1aDAxZTQybnBoc2tpZGcxOWoifQ.90lp0SPxVC4Kz113q_Wn9g'
-		// 	}).addTo(mymap);
-		// 	let samp = {"lat":8.945209,"lng":125.538939}
-		// 	mymap.setView([samp.lat, samp.lng], 13);
-
-
-		// 	// var popup = L.popup();
-
-		// 	function onMapClick(e) {
-		// 		if(marker != undefined){mymap.removeLayer(marker)}
-		// 		marker = L.marker(e.latlng).addTo(mymap);
-		// 		// println(e.latlng.lat)
-		// 		$.get('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+e.latlng.lat+'&lon='+e.latlng.lng, function(data){
-		// 			console.log(data.address);
-		// 			// $ID("reg_business_address").value = data.address.region + ', ' +data.address.state
-		// 			// $ID("reg_muni").value = data.address.city
-		// 			var addr = data.address.village + "," 
-		// 				+data.address.road + "," 
-		// 				+data.address.neighbourhood+","
-		// 				+data.address.quarter+","
-		// 				+data.address.suburb+","
-		// 				+data.address.tourism + ","
-		// 				+data.address.leisure + ","
-		// 				+data.address.state + ","
-		// 				+data.address.city + ","
-		// 				+data.address.region + " || "
-		// 				+e.latlng.lat +","+e.latlng.lng+ ","
-		// 			// $ID("reg_brgy").value = addr.split("undefined ,").join("")
-		// 			$ID("financial-full_address").value = addr.replaceAll("undefined,","")
-		// 		});
-		// 	}
-		// 	mymap.on('click', onMapClick);
-		// }
-		// catch(e){
-		// 	try{
-		// 		$ID("map_cont").style.display = "none"
-		// 	}
-		// 	catch(e){println(e)}
-		// }
-
-
-	</script>
-</html>
+	</div>
+</div>

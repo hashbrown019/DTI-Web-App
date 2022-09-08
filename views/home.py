@@ -28,3 +28,9 @@ class _main:
 			return render_template("home/home.html",USER_DATA = session["USER_DATA"][0])
 		else:
 			return redirect("/login?force_url=1")
+
+
+	@app.route("/get_sub_form_a_template",methods=["POST","GET"]) # GETS the Fulll data of Farmer
+	def get_sub_form_a_template():
+		page = request.form['subform_temp']
+		return render_template("home/form_a/{}.html".format(page))

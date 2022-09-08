@@ -1,4 +1,14 @@
-
+let FORM_A_LS = [
+	{"file":"profile" , "label":"Farmer Basic Info" },
+	{"file":"add_farm" , "label":"Farm Information" },
+	{"file":"hh_profile" , "label":"Household Profiles" },
+	{"file":"prod_cost" , "label":"Production Cost" },
+	{"file":"workers_laborers" , "label":"Farm Workers and Labors" },
+	{"file":"post_harvest" , "label":"Post Harvest" },
+	{"file":"marketing_sales" , "label":"Marketing/Sales Distribution Channels" },
+	{"file":"access_financial" , "label":"Access to Financial Services and Products" },
+	{"file":"feedback" , "label":"Industry Feedback" },
+]
 	
 // ---------------------------------------------------------------------
 let RCU_PCU = {

@@ -66,6 +66,20 @@ class _main:
 		f.close()
 		return res
 
+	@app.route("/get_sub_form_a",methods=["POST","GET"]) # GETS the Fulll data of Farmer
+	def get_sub_form_a():
+		FILE = request.form["subform"]
+		print(FILE)
+		f = open(c.RECORDS+"/profiles/__temp__/"+ FILE, "r")
+		res = f.read()
+		f.close()
+
+		res_ = json.loads(json.loads(res))
+		for rrr in res_:
+			print(rrr)
+
+		return res
+
 	# @cross_origin()
 	@app.route("/api/get_imgProf/<ids>",methods=["POST","GET"]) # GET ONLY PROFILE FORM INFIO
 	def get_imgProf(ids):
