@@ -317,6 +317,17 @@
 											</div>
 										</div>
 									`),
+									footer_content :(`
+										<div class="x-row">
+											<span>
+												Encoded by: 
+												<b>
+													`+person.input_by.name+` | 
+													`+person.input_by.email+`
+												</b>
+											</span>
+										</div>
+									`),
 									buttons : ["Okay"]
 								})
 								farmer_dialog_info.elements[0].style.width = "70vw"
@@ -356,7 +367,6 @@
 								var form_data = $CLASS("form_data_a")
 
 								for (var i = 0; i < form_data.length; i++) {
-									form_data[i].disabled = true // TEMPORARY WHILE ON DEV FOPRMS
 									// println(form_data[i].id)
 									if(form_data[i].type==='checkbox'){
 										// form_data[i].checked = form_data_refill[form_data[i].id] // DIRECT VALUE Transfer 
@@ -375,6 +385,7 @@
 										}
 										catch(e){println("ERROR in refill_data_forms__ :: "+e)}
 									}
+									form_data[i].disabled = true // TEMPORARY WHILE ON DEV FOPRMS
 								}
 
 							}

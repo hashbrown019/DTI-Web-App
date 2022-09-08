@@ -43,8 +43,14 @@ class _main:
 		# try:
 		prof_1 = json.loads(json.loads(strsd))
 		prof_1['farmer_img_base64'] = ""
-		# except:
-		# 	print(" ERROR :"+FILE)
+
+		USER = rapid.select("SELECT * FROM `users` WHERE `id`={}; ".format(prof_1["USER_ID"]))
+		if(len(USER)<=0):
+			prof_1["input_by"] = {"name":"none"}
+		else:
+			prof_1["input_by"] = {}
+			USER[0]["password"] = "CONFIDENTIAL"
+			prof_1["input_by"] = USER[0]
 		return json.dumps(json.dumps(prof_1))
 
 
@@ -64,7 +70,15 @@ class _main:
 		res = f.read()
 		# res = json.loads(f.read())
 		f.close()
-		return res
+		res_ = json.loads(json.loads(res))
+		USER = rapid.select("SELECT * FROM `users` WHERE `id`={}; ".format(res_["USER_ID"]))
+		if(len(USER)<=0):
+			res_["input_by"] = {"name":"none"}
+		else:
+			res_["input_by"] = {}
+			USER[0]["password"] = "CONFIDENTIAL"
+			res_["input_by"] = USER[0]
+		return json.dumps(json.dumps(res_))
 
 	@app.route("/get_sub_form_a",methods=["POST","GET"]) # GETS the Fulll data of Farmer
 	def get_sub_form_a():
@@ -75,10 +89,15 @@ class _main:
 		f.close()
 
 		res_ = json.loads(json.loads(res))
-		for rrr in res_:
-			print(rrr)
+		USER = rapid.select("SELECT * FROM `users` WHERE `id`={}; ".format(res_["USER_ID"]))
+		if(len(USER)<=0):
+			res_["input_by"] = {"name":"none"}
+		else:
+			res_["input_by"] = {}
+			USER[0]["password"] = "CONFIDENTIAL"
+			res_["input_by"] = USER[0]
 
-		return res
+		return json.dumps(json.dumps(res_))
 
 	# @cross_origin()
 	@app.route("/api/get_imgProf/<ids>",methods=["POST","GET"]) # GET ONLY PROFILE FORM INFIO
