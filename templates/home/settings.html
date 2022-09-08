@@ -42,21 +42,5 @@
 					}
 
 
-					function get_list_file(){ // For Inititalizing list in profiling/profiling_farmers.html
-						$ID("profile_list").innerHTML = ""
-						println(" * Getting List of Profiles")
-						$send({
-							action:"/list_all_profile",
-							method: POST,
-							func : function(res){
-								ls_file_farmer = JSON.parse(res)
-								// println(ls_file_farmer)
-								$ID("profile_list").innerHTML = ""
-								for (var i = 0; i < ls_file_farmer.length; i++) {
-									// println(ls_file_farmer[i])
-									get_profile(ls_file_farmer[i], ls_file_farmer.length, ls_file_farmer)
-								}
-							}
-						})
-					}
+
 				</script>

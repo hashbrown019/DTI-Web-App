@@ -9,23 +9,6 @@
 							<div class="x-container x-row">
 								<h3 class="x-padding x-text-teal">Dashboard</h3>
 								<b class="x-padding x-text-teal">Profiling</b>
-								<div class="x-container">
-									<select id="dash_sel_region" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" onchange="get_ls_prov(this.value)">
-										<option type="" value="all" selected>All Region</option>
-									</select>
-									<select id="dash_sel_prov" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" disabled onchange="get_ls_city(this.value)">
-										<option type="" value="all" selected>All Provinces</option>
-									</select>
-									<select id="dash_sel_city" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" disabled onchange="get_ls_brgy(this.value)">
-										<option type="" value="all" selected>All Cities/Municipalities</option>
-									</select>
-									<select id="dash_sel_brgy" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" disabled  onchange="get_ls_all_area(this.value)">
-										<option type="" value="all" selected>All Brgy</option>
-									</select>
-									<button class="x-input x-btn x-col l1 x-green x-round-xlarge" onclick="conso_area()">
-										Filter <span class="fa fa-filter"></span>
-									</button>
-								</div>
 							</div>
 							<hr>
 							<div class="x-container x-row">
@@ -48,86 +31,50 @@
 
 
 						<script type="text/javascript">
-							let SEL_REG, SEL_PROV, SEL_CITY, SEL_BRGY;
-							
-							get_ls_region()
-							function get_ls_region(){
-								var ls_all_reg = '<option type="" value="all" selected>All Regions</option>'
-								for(key in ALL_LOCATION){
-									ls_all_reg += '<option value="'+key+'">'+key+'</option>'
-								}
-								$ID("dash_sel_region").innerHTML = ls_all_reg
-							}
 
-							function get_ls_prov(reg){
-								var ls_all_prov = '<option type="" value="all" selected>All Provinces</option>'
-								SEL_REG = reg
-								for(key in ALL_LOCATION[reg]["province_list"]){ls_all_prov += '<option value="'+key+'">'+key+'</option>'}
-								$ID("dash_sel_prov").innerHTML = ls_all_prov;$ID("dash_sel_prov").disabled = false
-
-							}
-
-							function get_ls_city(prov){
-								var ls_all_city = '<option type="" value="all" selected>All Cities/Municipalities</option>'
-								SEL_PROV = prov
-								for(key in ALL_LOCATION[SEL_REG]["province_list"][prov]['municipality_list']){ls_all_city += '<option value="'+key+'">'+key+'</option>'}
-								$ID("dash_sel_city").innerHTML = ls_all_city;$ID("dash_sel_city").disabled = false
-							}
-
-							function get_ls_brgy(city){
-								var ls_all_brgy = '<option type="" value="all" selected>All Barangay</option>'
-								SEL_CITY = city
-								var brgys = ALL_LOCATION[SEL_REG]["province_list"][SEL_PROV]['municipality_list'][city]["barangay_list"]
-								for (var i = 0; i < brgys.length; i++) {ls_all_brgy += '<option value="'+brgys[i]+'">'+brgys[i]+'</option>'}
-								$ID("dash_sel_brgy").innerHTML = ls_all_brgy;$ID("dash_sel_brgy").disabled = false
-							}
-
-							function get_ls_all_area(brgy){SEL_BRGY=brgy}
-
-							function conso_area(){
-								println(SEL_REG, SEL_PROV, SEL_CITY, SEL_BRGY)
-							}
 
 							function conso_all(){
 								var count_all_male = 0
 								var count_all_female = 0
 								var count_all_sex_untagged = 0
 								var dash_conso = {}
+								var category = {}
+
+								// $ID("count_all_male").innerHTML = 0
+								// $ID("count_all_female").innerHTML = 0
+								// $ID("count_all_sex_untagged").innerHTML = 0
+
+								$ID("total_num_farmer").innerHTML = 0
+
 								for (var count = 0; count < ALL_FARMERS.length+1; count++) {
 									var FARMER = ALL_FARMERS[count]
 									$ID("total_num_farmer").innerHTML = count
-
 									try{
-										if(FARMER['farmer-primary_crop'] in dash_conso){}
+										if(FARMER['addr_region'] in dash_conso){} //if wala pay region sa list
 										else{
-											dash_conso[FARMER['farmer-primary_crop']] = {
-												"category":FARMER['farmer-primary_crop'],
-												"male":0,
-												"__male":0,
-												"female":0,
-												"__female":0
-											}
+											dash_conso[FARMER['addr_region']] = {}
 										}
 									}catch(e){
 										println(e)
 									}
 
 									try{
-										if(FARMER['farmer_sex']=='Female'){
-											count_all_female += 1
-											dash_conso[FARMER['farmer-primary_crop']]['female'] += 1
+										if(FARMER['farmer-primary_crop'] in dash_conso[FARMER['addr_region']] ) {} //if wala pay VC sa list
+										else{
+											dash_conso[FARMER['addr_region']][FARMER['farmer-primary_crop']] = 0
+											dash_conso[FARMER['addr_region']]["category"] = FARMER['addr_region']
 										}
-										if(FARMER['farmer_sex']=='Male'){
-											count_all_male += 1
-											dash_conso[FARMER['farmer-primary_crop']]['male'] += 1
-										}
-
-									}
-									catch(e){
+									}catch(e){
 										println(e)
-										count_all_sex_untagged += 1
 									}
 
+									try{
+										dash_conso[FARMER['addr_region']][FARMER['farmer-primary_crop']] +=1
+									}catch(e){}
+
+									try{
+										category[FARMER['farmer-primary_crop']] = 'none'
+									}catch(e){}
 
 
 								}
@@ -138,20 +85,36 @@
 								$ID("count_all_sex_untagged").innerHTML = (""+((mm+ff) -(ALL_FARMERS.length))).replace("-","")
 								// $ID("count_all_sex_untagged").innerHTML = count_all_female
 
+								println(dash_conso)
 								var data_for_chart = []
 								for(key in dash_conso){
 									data_for_chart.push(dash_conso[key])
 								}
-								chart_gender_vc(data_for_chart)
+								chart.dispose()
+								root.dispose()
+								chart = undefined
+								root = undefined
+								chart_gender_vc(data_for_chart,category)
+
 							}
 
+							let chart, root
+							chart_gender_vc([{
+								category : "Loading",
+								male : "100",
+								female : "100",
+								_male : "100",
+								_female : "100",
 
-							function chart_gender_vc(__data){
+							}])
 
+							function chart_gender_vc(__data,__category){
+								println(__data)
 								am5.ready(function() {
+
 									// Create root element
 									// https://www.amcharts.com/docs/v5/getting-started/#Root_element
-									var root = am5.Root.new("chartdiv");
+									root = am5.Root.new("chartdiv");
 
 
 									// Set themes
@@ -163,24 +126,20 @@
 
 									// Create chart
 									// https://www.amcharts.com/docs/v5/charts/xy-chart/
-									var chart = root.container.children.push(am5xy.XYChart.new(root, {
+									chart = root.container.children.push(am5xy.XYChart.new(root, {
 										panX: false,
 										panY: false,
-										wheelX: "panX",
-										wheelY: "zoomX",
+										wheelX: "panY",
+										wheelY: "zoomY",
 										layout: root.verticalLayout
 									}));
 
+									// Add scrollbar
+									// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+									chart.set("scrollbarY", am5.Scrollbar.new(root, {
+										orientation: "vertical"
+									}));
 
-									// Add legend
-									// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
-									var legend = chart.children.push(am5.Legend.new(root, {
-										centerX: am5.p50,
-										x: am5.p50
-									}))
-
-
-									// Data
 									var data = __data
 
 
@@ -188,76 +147,16 @@
 									// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
 									var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
 										categoryField: "category",
-										renderer: am5xy.AxisRendererY.new(root, {
-											inversed: true,
-											cellStartLocation: 0.1,
-											cellEndLocation: 0.9
-										})
+										renderer: am5xy.AxisRendererY.new(root, {}),
+										tooltip: am5.Tooltip.new(root, {})
 									}));
 
 									yAxis.data.setAll(data);
 
 									var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
-										renderer: am5xy.AxisRendererX.new(root, {}),
-										min: 0
+										min: 0,
+										renderer: am5xy.AxisRendererX.new(root, {})
 									}));
-
-
-									// Add series
-									// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-									function createSeries(field, name) {
-										var series = chart.series.push(am5xy.ColumnSeries.new(root, {
-											name: name,
-											xAxis: xAxis,
-											yAxis: yAxis,
-											valueXField: field,
-											categoryYField: "category",
-											sequencedInterpolation: true,
-											tooltip: am5.Tooltip.new(root, {
-												pointerOrientation: "horizontal",
-												labelText: "[bold]{name}[/]\n{categoryY}: {valueX}"
-											})
-										}));
-
-										series.columns.template.setAll({
-											height: am5.p100
-										});
-
-
-										series.bullets.push(function() {
-											return am5.Bullet.new(root, {
-												locationX: 1,
-												locationY: 0.5,
-												sprite: am5.Label.new(root, {
-													centerY: am5.p50,
-													text: "{valueX}",
-													populateText: true
-												})
-											});
-										});
-
-										series.bullets.push(function() {
-											return am5.Bullet.new(root, {
-												locationX: 1,
-												locationY: 0.5,
-												sprite: am5.Label.new(root, {
-													centerX: am5.p100,
-													centerY: am5.p50,
-													text: "{name}",
-													fill: am5.color(0xffffff),
-													populateText: true
-												})
-											});
-										});
-
-										series.data.setAll(data);
-										series.appear();
-
-										return series;
-									}
-
-									createSeries("male", "Male");
-									createSeries("female", "Female");
 
 
 									// Add legend
@@ -267,16 +166,48 @@
 										x: am5.p50
 									}));
 
-									legend.data.setAll(chart.series.values);
 
+									// Add series
+									// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+									function makeSeries(name, fieldName) {
+										var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+											name: name,
+											stacked: true,
+											xAxis: xAxis,
+											yAxis: yAxis,
+											baseAxis: yAxis,
+											valueXField: fieldName,
+											categoryYField: "category"
+										}));
 
-									// Add cursor
-									// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
-									var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
-										behavior: "zoomY"
-									}));
-									cursor.lineY.set("forceHidden", true);
-									// cursor.lineX.set("forceHidden", true);
+										series.columns.template.setAll({
+											tooltipText: "{name}, {categoryY}: {valueX}",
+											tooltipY: am5.percent(90)
+										});
+										series.data.setAll(data);
+
+										// Make stuff animate on load
+										// https://www.amcharts.com/docs/v5/concepts/animations/
+										series.appear();
+
+										series.bullets.push(function () {
+											return am5.Bullet.new(root, {
+												sprite: am5.Label.new(root, {
+													text: "{valueX}",
+													fill: root.interfaceColors.get("alternativeText"),
+													centerY: am5.p50,
+													centerX: am5.p50,
+													populateText: true
+												})
+											});
+										});
+
+										legend.data.push(series);
+									}
+
+									for(key in __category){
+										makeSeries(key, key);
+									}
 
 
 									// Make stuff animate on load
