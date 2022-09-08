@@ -190,71 +190,65 @@
 											println(res)
 											return
 										}
-										try{
-											var alldata_farmer = JSON.parse(JSON.parse(res))
-											
-											if(filterByArea(alldata_farmer)){
-												// var file_profile = alldata_farmer['profile']
-												var file_profile = alldata_farmer
-												var person = file_profile
-												var prof_pic = "../static/img/user.png"
+										var alldata_farmer = JSON.parse(JSON.parse(res))
+										
+										if(filterByArea(alldata_farmer)){
+											// var file_profile = alldata_farmer['profile']
+											var file_profile = alldata_farmer
+											var person = file_profile
+											var prof_pic = "../static/img/user.png"
 
-												try{
-													prof_pic = person.farmer_img_base64
-													if(prof_pic=="" || prof_pic==" " || prof_pic==undefined || prof_pic==null || prof_pic=="null"){
-														prof_pic = "../static/img/user.png"
-													}
-												}catch(e){
-													console.log(" - Error in base64 images ")
+											try{
+												prof_pic = person.farmer_img_base64
+												if(prof_pic=="" || prof_pic==" " || prof_pic==undefined || prof_pic==null || prof_pic=="null"){
+													prof_pic = "../static/img/user.png"
 												}
-												// println(person)
-
-												$ID("profile_list").innerHTML += `
-												<div class="x-row x-hover-teal x-padding" id="`+person.farmer_code+`" onclick="get_ind('`+person.farmer_code+`')">
-													<div class='x-row'>
-														<div class="x-col l1">
-															<!-- <img loading="lazy" id="img_`+person.farmer_code+`" src="`+prof_pic+`" class="x-image x-round" style="max-width:100%"> -->
-														</div>
-														<div class="x-col l3 x-container">
-															<b class="">`+person.farmer_name+`</b><br>
-															<span class="x-tiny">
-																<span>`+person.addr_street_purok_sitio+`</span> 
-																<span>`+person.addr_city+`</span> 
-																<span>`+person.addr_prov+`</span> 
-																<span>R:`+person.addr_region+`</span> 
-															</span><br>
-														</div>
-														<div class="x-col l3 x-container">
-															<i class=""><span>`+person["farmer-primary_crop"]+`</span> </i><br>
-															<span class="x-tiny">-----</span><br>
-														</div>
-														<div class="x-col l4 x-container x-center">
-															<span class="x-tiny">Form Completion</span><br>
-															<b class="x-large">--%</b><br>
-														</div>
-													</div>
-													<span class="x-tiny x-text-grey x-right"><b>`+total_recors_farmer_counter+`</b>-`+person.farmer_code+`</span>
-
-												</div>`
-												var person = file_profile.profile
-												if(total_recors_farmer_counter>=total_recors_farmer-1 ){
-													// alert("Done Loading ["+total_recors_farmer_counter+"] files")
-													// get_prof_imgs(f_FILE)
-													conso_all() // IF DONE in POPULATING list . CREATING DASHBOARD @ profiling_dashboard.html
-												}
-												$ID("prof_farmer_count").innerHTML = FILTER_total_recors_farmer_counter
-												FILTER_total_recors_farmer_counter += 1
-
+											}catch(e){
+												console.log(" - Error in base64 images ")
 											}
+											// println(person)
 
-											ALL_FARMERS.push(alldata_farmer) // Appended list of farmers for dashboarding
-											$ID("total_num_farmer").innerHTML = total_recors_farmer_counter
+											$ID("profile_list").innerHTML += `
+											<div class="x-row x-hover-teal x-padding" id="`+person.farmer_code+`" onclick="get_ind('`+person.farmer_code+`')">
+												<div class='x-row'>
+													<div class="x-col l1">
+														<!-- <img loading="lazy" id="img_`+person.farmer_code+`" src="`+prof_pic+`" class="x-image x-round" style="max-width:100%"> -->
+													</div>
+													<div class="x-col l3 x-container">
+														<b class="">`+person.farmer_name+`</b><br>
+														<span class="x-tiny">
+															<span>`+person.addr_street_purok_sitio+`</span> 
+															<span>`+person.addr_city+`</span> 
+															<span>`+person.addr_prov+`</span> 
+															<span>R:`+person.addr_region+`</span> 
+														</span><br>
+													</div>
+													<div class="x-col l3 x-container">
+														<i class=""><span>`+person["farmer-primary_crop"]+`</span> </i><br>
+														<span class="x-tiny">-----</span><br>
+													</div>
+													<div class="x-col l4 x-container x-center">
+														<span class="x-tiny">Form Completion</span><br>
+														<b class="x-large">--%</b><br>
+													</div>
+												</div>
+												<span class="x-tiny x-text-grey x-right"><b>`+total_recors_farmer_counter+`</b>-`+person.farmer_code+`</span>
 
+											</div>`
+											var person = file_profile.profile
+											if(total_recors_farmer_counter>=total_recors_farmer-1 ){
+												// alert("Done Loading ["+total_recors_farmer_counter+"] files")
+												// get_prof_imgs(f_FILE)
+												conso_all() // IF DONE in POPULATING list . CREATING DASHBOARD @ profiling_dashboard.html
+											}
+											FILTER_total_recors_farmer_counter += 1
+											$ID("prof_farmer_count").innerHTML = FILTER_total_recors_farmer_counter
 
-										}catch(e){
-											println(" Error in data = "+e)
 										}
+
+										ALL_FARMERS.push(alldata_farmer) // Appended list of farmers for dashboarding
 										total_recors_farmer_counter+= 1
+										$ID("total_num_farmer").innerHTML = total_recors_farmer_counter
 									}
 								})
 							}
