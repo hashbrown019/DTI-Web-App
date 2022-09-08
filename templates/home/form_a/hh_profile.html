@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title> ---- </title><meta name="format-detection" content="telephone=no">
+		<!-- <meta http-equiv="Content-Security-Policy" content="img-src * data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval';"> -->
+		<meta name="msapplication-tap-highlight" content="no">
+		<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+		<!-- <meta name="color-scheme" content="light dark"> -->
+        <script src="../cordova.js"></script>
+
+		<script type="text/javascript" src="../js/Brorn.min.js"></script>
+		<script type="text/javascript" src="../js/Modules/saveform.js"></script> 
+		<script type="text/javascript" src="../js/Variables.js"></script>
+		<script type="text/javascript" src="../js/modules/autocomplete.js"></script>
+		<script type="text/javascript" src="../js/Modules/File_Module.js"></script> 
+
+
+		<link rel="stylesheet" href="../css/x.css">
+		<link rel="stylesheet" href="../css/un_x.css">
+		<link rel="stylesheet" href="../css/other.css">
+		<link rel="stylesheet" href="../css/loader.css">
+		<link rel="stylesheet" href="../css/css">
+		<link rel="stylesheet" href="../css/chip.css">
+		<link rel="stylesheet" href="../css/dropzone.css">
+		<link rel="stylesheet" href="../css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+				integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+				crossorigin=""/>
+
+		<script src="../js/leaflet/jquery.min.js"></script>
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+				integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+				crossorigin=""></script>
+		<script src="https://apis.google.com/js/platform.js" async defer></script>
+		<style type="text/css">
+			#mapid { height: 180px; }
+		</style>
+	</head>
+	<body class=" center-bg" style=" height: 100vh;">
+		<header id="offline" class="x-header x-red x-center" style="display:none">Offline Mode</header>
+<header id="localhostversion" class="x-header x-yellow x-center" style="display:block">This is a Localhost Version, do not use outside NPCO</header>
+		<form action="" method="POST" id="form0" class="" style="display:block;padding: 0px;margin: 0px;">
+			<div class="">
+				<header class="-header gr_body x-blue x-padding">
+					<span onclick="back_to_home()" class="x-button x-display-topright x-red"><b>close</b></span>
+					<b id="is_form_filled">Profiling</b>
+				</header>
+
+				<input type="hidden" id="farmer_code" name="farmer_code" class="form_data">
+				<input type="hidden" id="is_synced" name="farmer-is_synced" class="form_data" value="0">
+				<input type="hidden" id="datetime" name="farmer-is_synced" class="form_data">
+
+				<div class="x-container  x-padding">
+					<b class="x-text-green">Household Profile</b><br>
+					<span class="x-text-grey">members (Age 0 - 14)<span class="x-text-grey"></span>
+					<div class="x-container">
+						<input placeholder="Male" type="number" id="hh-total_hh_mem_0_17_m" name="hh-total_hh_mem_0_17_m" class="form_data x-input x-border x-round x-col s6 hh_mm_count" onkeyup="mm_count()">
+						<input placeholder="Female" type="number" id="hh-total_hh_mem_0_17_f" name="hh-total_hh_mem_0_17_f" class="form_data x-input x-border x-round x-col s6 hh_mm_count" onkeyup="mm_count()">
+					</div>
+
+					<span class="x-text-grey">members (Age 15 - 30)<i> youth</i><span class="x-text-grey"></span>
+					<div class="x-container">
+						<input placeholder="Male" type="number" id="hh-total_hh_mem_18_30_m" name="hh-total_hh_mem_18_30_m" class="form_data x-input x-border x-round x-col s6 hh_mm_count" onkeyup="mm_count()">
+						<input placeholder="Female" type="number" id="hh-total_hh_mem_18_30_f" name="hh-total_hh_mem_18_30_f" class="form_data x-input x-border x-round x-col s6 hh_mm_count" onkeyup="mm_count()">
+					</div>
+					<span class="x-text-grey">members (Age 31 - 59)<span class="x-text-grey"></span>
+					<div class="x-container">
+						<input placeholder="Male" type="number" id="hh-total_hh_mem_31_59_m" name="hh-total_hh_mem_31_59_m" class="form_data x-input x-border x-round x-col s6 hh_mm_count" onkeyup="mm_count()">
+						<input placeholder="Female" type="number" id="hh-total_hh_mem_31_59_f" name="hh-total_hh_mem_31_59_f" class="form_data x-input x-border x-round x-col s6 hh_mm_count" onkeyup="mm_count()">
+					</div>
+					<span class="x-text-grey">members (Age 60 and above) <i>Senior</i><span class="x-text-grey"></span>
+					<div class="x-container">
+						<input placeholder="Male" type="number" id="hh-total_hh_mem_60_up_m" name="hh-total_hh_mem_60_up_m" class="form_data x-input x-border x-round x-col s6 hh_mm_count" onkeyup="mm_count()">
+						<input placeholder="Female" type="number" id="hh-total_hh_mem_60_up_f" name="hh-total_hh_mem_60_up_f" class="form_data x-input x-border x-round x-col s6 hh_mm_count" onkeyup="mm_count()">
+					</div>
+					<div class="x-container x-padding">
+						<hr>
+						<span class="x-col s3 x-center x-xxlarge x-text-black">
+							<b class="total_mem_" id="total_mem__">0</b>
+						</span>
+						<b class="x-col s9 x-leftbar x-border-green">Total number oF Household Members</b><br>
+					</div>
+					<script type="text/javascript">
+						let TOTAL_MEM_ = 0
+						function mm_count(){
+							var hh_mm_count = $CLASS("hh_mm_count")
+							var total = 0
+							for (var i = 0; i < hh_mm_count.length; i++) {
+								var val_ =parseInt(hh_mm_count[i].value)
+								if(hh_mm_count[i].value==""){val_=0}
+								total += val_
+							}
+							$ID("total_mem__").innerHTML = total
+							TOTAL_MEM_ = total
+
+
+						}
+					</script>
+					<hr>
+<!-- 					<span class="x-text-grey">Number of Senior Citizen Household member/s (if any)<span class="x-text-grey"></span>
+					<div class="x-container">
+						<input placeholder="Male" type="number" id="hh-mem_sr_m" name="hh-mem_sr_m" class="form_data x-input x-border x-round x-col s6 hh_mm_type" onkeyup="mm_type_count()">
+						<input placeholder="Female" type="number" id="hh-mem_sr_f" name="hh-mem_sr_f" class="form_data x-input x-border x-round x-col s6 hh_mm_type" onkeyup="mm_type_count()">
+					</div> -->
+					<span class="x-text-grey">Number of PWD Household member/s (if any)<span class="x-text-grey"></span>
+					<div class="x-container">
+						<input placeholder="Male" type="number" id="hh-mem_pwd_m" name="hh-mem_pwd_m" class="form_data x-input x-border x-round x-col s6 hh_mm_type" onkeyup="mm_type_count()">
+						<input placeholder="Female" type="number" id="hh-mem_pwd_f" name="hh-mem_pwd_f" class="form_data x-input x-border x-round x-col s6 hh_mm_type" onkeyup="mm_type_count()">
+					</div>
+					<span class="x-text-grey">Number of OFW Household member/s (if any)<span class="x-text-grey"></span>
+					<div class="x-container">
+						<input placeholder="Male" type="number" id="hh-mem_ofw_m" name="hh-mem_ofw_m" class="form_data x-input x-border x-round x-col s6 hh_mm_type" onkeyup="mm_type_count()">
+						<input placeholder="Female" type="number" id="hh-mem_ofw_f" name="hh-mem_ofw_f" class="form_data x-input x-border x-round x-col s6 hh_mm_type" onkeyup="mm_type_count()">
+					</div>
+<!-- 					<span class="x-text-grey">Number of Youth Household member/s (if any)<span class="x-text-grey"></span>
+					<div class="x-container">
+						<input placeholder="Male" type="number" id="hh-mem_youth_m" name="hh-mem_youth_m" class="form_data x-input x-border x-round x-col s6 hh_mm_type" onkeyup="mm_type_count()">
+						<input placeholder="Female" type="number" id="hh-mem_youth_f" name="hh-mem_youth_f" class="form_data x-input x-border x-round x-col s6 hh_mm_type" onkeyup="mm_type_count()">
+					</div> -->
+					<span class="x-text-grey">Number of IP Household member/s (if any)<span class="x-text-grey"></span>
+					<div class="x-container">
+						<input placeholder="Male" type="number" id="hh-mem_ip_m" name="hh-mem_ip_m" class="form_data x-input x-border x-round x-col s6 hh_mm_type" onkeyup="mm_type_count()">
+						<input placeholder="Female" type="number" id="hh-mem_ip_f" name="hh-mem_ip_f" class="form_data x-input x-border x-round x-col s6 hh_mm_type" onkeyup="mm_type_count()">
+					</div>
+					<div class="x-container">
+						<hr>
+						<div class="x-col s3">
+							<div class="x-container x-center">
+								<b class="x-center x-xxlarge x-text-black" id=""><span class="total_mem_" id="total_type">0</span></b>
+							</div>
+						</div>
+						<div class="x-col s9">
+							<b class="x-leftbar x-border-green">Total number oF Household Members per Sector</b><br>
+						</div>
+						<hr>
+					</div>
+					<script type="text/javascript">
+						// mm_type_count()
+						function mm_type_count(){
+							var hh_mm_type = $CLASS("hh_mm_type")
+							var total_ = 0
+							for (var i = 0; i < hh_mm_type.length; i++) {
+								var val_ =parseInt(hh_mm_type[i].value)
+								if(hh_mm_type[i].value==""){val_=0}
+								total_ += val_
+							}
+							$ID("total_type").innerHTML = total_
+						}
+					</script>
+
+					<hr>
+					<b class="x-text-green">Household Source of Funds</b><br>
+					<span class="x-text-grey">Estimated Total Annual Income from Primary Crop (in PhP)<span class="x-text-grey"></span>
+					<input placeholder="" type="number" id="hh-est_total_income_primary_crop" name="hh-est_total_income_primary_crop" onkeyup="amount_s_()" class="form_data x-input x-border amounts__ x-round">
+
+					<span class="x-text-grey">Estimated Total Annual Income from Secondary Crop (in PhP)<span class="x-text-grey"></span>
+					<input placeholder="" type="number" id="hh-est_total_income_secondary_crop" name="hh-est_total_income_secondary_crop" onkeyup="amount_s_()" class="form_data x-input x-border amounts__ x-round">
+
+					<span class="x-text-grey">Estimated Total Annual Income from Livestock/Fishing etc. (in PhP)<span class="x-text-grey"></span>
+					<input placeholder="Leave Blank if None" type="number" id="hh-est_total_income_livestock" name="hh-est_total_income_secondary_crop" onkeyup="amount_s_()" class="form_data x-input x-border amounts__ x-round">
+
+					<hr>
+					<span class="x-text-grey">Other non-farming income sources <i>(Monthly estimate)</i></span><br>
+					<input id="hh-non_farm_remittance" onkeyup="amount_s()" class="form_data x-border amounts_" style="width:30vw"  type="number">
+					<label>Family Remittances</label><br>
+					<input id="hh-non_farm_income_employment" onkeyup="amount_s()" class="form_data x-border amounts_" style="width:30vw"  type="number">
+					<label>Employment</label><br>
+					<input id="hh-non_farm_income_skilled" onkeyup="amount_s()" class="form_data x-border amounts_" style="width:30vw"  type="number">
+					<label>Skilled Labor</label><br>
+					<input id="hh-non_farm_income_business" onkeyup="amount_s()" class="form_data x-border amounts_" style="width:30vw"  type="number">
+					<label>Business</label><br>
+					<input id="hh-non_farm_income_pension" onkeyup="amount_s()" class="form_data x-border amounts_" style="width:30vw"  type="number">
+					<label>Social Pension</label><br>
+					<input id="hh-non_farm_income_pantawid" onkeyup="amount_s()" class="form_data x-border amounts_" style="width:30vw"  type="number">
+					<label>Pantawid beneficiary</label><br>
+					<input id="hh-non_farm_income_others" onkeyup="amount_s()" class="form_data x-border amounts_" style="width:30vw"  type="number">
+					<label>Other subsidies</label><br>
+					<hr>
+					
+					<span class="x-text-grey">Other subsidies, please specify<span class="x-text-grey"></span>
+					<input placeholder="" type="text" id="hh-rsbsa_no" name="hh-rsbsa_no" onkeyup="amount_s()" class="form_data x-input x-border x-round ">
+					
+<!-- 					<span class="x-text-grey">Average Annual Income from NON-FARMING sources (in PhP)<span class="x-text-grey"></span>
+					<input placeholder="" type="number" id="hh-rsbsa_no" name="hh-rsbsa_no" onkeyup="amount_s()" class="form_data x-input x-border x-round "> -->
+					<div class="x-container">
+						<hr>
+						<div class="x-col s6">
+							<div class="">
+								<div class="x-container x-center">
+									<b class="x-center x-large x-text-black" id=""><span class="amounts__ss" id="amounts__ss">0</span></b>
+								</div>
+							</div>
+							<div class="">
+								<b class="x-leftbar x-border-green">Average Annual Income from FARMING sources (in PhP)</b><br>
+							</div>
+						</div>
+						<div class="x-col s6">
+							<div class="">
+								<div class="x-container x-center">
+									<b class="x-center x-large x-text-black" id=""><span class="" id="amounts_">0</span></b>
+								</div>
+							</div>
+							<div class="">
+								<b class="x-leftbar x-border-green">Average Annual Income from NON-FARMING sources (in PhP)</b><br>
+							</div>
+						</div>
+						<hr>
+					</div>
+					<script type="text/javascript">
+						// mm_type_count()
+						function amount_s(){
+							var amounts_ = $CLASS("amounts_")
+							var total_ = 0
+							for (var i = 0; i < amounts_.length; i++) {
+								var val_ =parseInt(amounts_[i].value)
+								if(amounts_[i].value==""){val_=0}
+								total_ += val_*12
+							}
+							$ID("amounts_").innerHTML = Money(total_)
+							// $ID("av_gross_year_hh_income").innerHTML = total_
+						}
+						function amount_s_(){
+							var amounts_ = $CLASS("amounts__")
+							var total_ = 0
+							for (var i = 0; i < amounts_.length; i++) {
+								var val_ =parseInt(amounts_[i].value)
+								if(amounts_[i].value==""){val_=0}
+								total_ += val_
+							}
+							$ID("amounts__ss").innerHTML = Money(total_)
+							// $ID("av_gross_year_hh_income").innerHTML = total_
+						}
+					</script>
+
+					<hr>
+					
+					<hr>
+					<b class="x-text-grey">Remarks (For Enumerator)</b><br>
+					<input placeholder="" type="text" id="form-remarks" name="feedback-rsbsa_no" class="form_data x-input x-border x-round ">
+					<hr>
+					<span class="x-text-grey">
+						
+						Before Clicking next, pls make sure to check all fields as they cannot be undone while the profiling is not yet finished
+					</span><br>
+					<div class="x-container">
+						<button type="button" class="x-col s6 x-btn x-round-large x-block x-yellow" onclick="history.back()">Previous Form<span class="fa fa-arrow-lef"></span></button>
+						<button type="button" class="x-col s6 x-btn x-round-large x-block x-green" onclick="save_form()">Save and Proceed <span class="fa fa-arrow-right"></span></button>
+					</div>
+				</div>
+			</div>
+		</form>
+
+	<script type="text/javascript">
+
+		
+		try{
+			document.addEventListener("deviceready", onDeviceReady, false);
+			function onDeviceReady() {
+				console.log(cordova.file);
+				println(" * File Module Ready ================================");
+				window.setInterval(function () {
+					if(isOnline()){$ID("offline").style.display="none"}
+					else{$ID("offline").style.display="block"}
+				}, 1000)
+			}
+		}catch(err){println(err)}
+		
+		window.setTimeout(function() {
+			println("Calculating . . . ")
+			mm_type_count()
+			mm_count()
+			amount_s_()
+			amount_s()
+		}, 2000);
+
+
+		// ---------------------------------------------------------------------------------------
+		function save_form(){
+			var FILE_NAME = url_args['farmer_id']+"@"+page+".txt"
+			
+
+			$ID('farmer_code').value = url_args['farmer_id']
+			$ID('datetime').value = $datetime()
+
+
+			create_formdata(FILE_NAME,function(){
+				goto("prod_cost.html?user_id="+url_args['user_id']+"&farmer_id="+url_args['farmer_id'])
+			})
+		}
+
+		// load_dropdowns()
+		function load_dropdowns(){
+			for (const [key, value] of Object.entries(ALL_LOCATION)) {
+				$ID("hh-region").innerHTML += "<option value='"+key+"'>Region: "+key+"</option>"
+			}
+			var region = $ID("hh-region").value = `<option disabled selected value=''>Please select entry</option>`
+			var prov = $ID("hh-province").value = `<option disabled selected value=''>Please select entry</option>`
+			var municipality = $ID("hh-municipality").value = `<option disabled selected value=''>Please select entry</option>`
+		}
+		function ls_prov(selregion){
+			$ID("hh-province").disabled = false
+			for (const [key, value] of Object.entries(ALL_LOCATION[selregion]['province_list'])) {
+				$ID("hh-province").innerHTML += "<option value='"+key+"'>"+key+"</option>"
+			}
+		}
+		function ls_muni(selprov){
+			$ID("hh-municipality").disabled = false
+			var region = $ID("hh-region").value
+			var prov = $ID("hh-province").value
+			for (const [key, value] of Object.entries(ALL_LOCATION[region]['province_list'][prov]['municipality_list'])) {
+				$ID("hh-municipality").innerHTML += "<option value='"+key+"'>"+key+"</option>"
+			}
+		}
+		function ls_brgy(selprov){
+			$ID("hh-brgy").disabled = false
+			var region = $ID("hh-region").value
+			var prov = $ID("hh-province").value
+			var municipality = $ID("hh-municipality").value
+			for (var i = 0; i < ALL_LOCATION[region]['province_list'][prov]['municipality_list'][municipality]['barangay_list'].length; i++) {
+				var key = ALL_LOCATION[region]['province_list'][prov]['municipality_list'][municipality]['barangay_list'][i]
+				$ID("hh-brgy").innerHTML += "<option value='"+key+"'>"+key+"</option>"
+			}
+		}
+
+		function cal_age(bday){
+			var parts2 = bday.split('-');
+			// var todate = new Date(parts[0], parts[1] - 1, parts[2]);
+			var todate = $date()
+			var sbday = new Date(parts2[0], parts2[1] - 1, parts2[2]); 
+			println(todate)
+			println(sbday)
+			const diffTime = Math.abs(todate - sbday);
+			var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+			var age = diffDays/365
+			$ID("hh-age").value = (""+age).split(".")[0];
+			if(age<=18.0){
+				alert("oops you are profiling a minor with the age of ["+(""+age).split(".")[0]+"]\nPlease select a legal age by selecting the correct birthday")
+				
+			}
+			if(age <=30 && age >=18){
+				$ID("hh-isyouth").checked = true
+			}else{
+				$ID("hh-isyouth").checked = false
+			}
+
+		}
+		function foposition_change(val){
+			if(val=="Officer"){
+				$ID("hh-fo_designation").disabled = false
+			}else{
+				$ID("hh-fo_designation").disabled = true
+			}
+		}
+		function rsbsa_change(val){
+			if(val=="yes"){
+				$ID("hh-rsbsa_no").disabled = false
+			}else{
+				$ID("hh-rsbsa_no").disabled = true
+			}
+		}
+
+		
+		// offline
+
+		// ===============================================================
+
+		// var marker = undefined
+		// try{
+		// 	var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+		// 	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+		// 		attribution: 'DTI RAPID GROWTH',
+		// 		maxZoom: 18,
+		// 		id: 'mapbox/streets-v11',
+		// 		tileSize: 512,
+		// 		zoomOffset: -1,
+		// 		accessToken: 'pk.eyJ1IjoiZGlvYW1lIiwiYSI6ImNrbGo1ZDc1aDAxZTQybnBoc2tpZGcxOWoifQ.90lp0SPxVC4Kz113q_Wn9g'
+		// 	}).addTo(mymap);
+		// 	let samp = {"lat":8.945209,"lng":125.538939}
+		// 	mymap.setView([samp.lat, samp.lng], 13);
+
+
+		// 	// var popup = L.popup();
+
+		// 	function onMapClick(e) {
+		// 		if(marker != undefined){mymap.removeLayer(marker)}
+		// 		// popup
+		// 		// 	.setLatLng(e.latlng)
+		// 		// 	.setContent("You clicked the map at " + e.latlng.toString())
+		// 		// 	.openOn(mymap);
+
+		// 		marker = L.marker(e.latlng).addTo(mymap);
+		// 		// println(e.latlng.lat)
+		// 		$.get('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+e.latlng.lat+'&lon='+e.latlng.lng, function(data){
+		// 			console.log(data.address);
+		// 			// $ID("reg_business_address").value = data.address.region + ', ' +data.address.state
+		// 			// $ID("reg_muni").value = data.address.city
+		// 			var addr = data.address.village + "," 
+		// 				+data.address.road + "," 
+		// 				+data.address.neighbourhood+","
+		// 				+data.address.quarter+","
+		// 				+data.address.suburb+","
+		// 				+data.address.tourism + ","
+		// 				+data.address.leisure + ","
+		// 				+data.address.state + ","
+		// 				+data.address.city + ","
+		// 				+data.address.region + " || "
+		// 				+e.latlng.lat +","+e.latlng.lng+ ","
+		// 			// $ID("reg_brgy").value = addr.split("undefined ,").join("")
+		// 			$ID("hh-full_address").value = addr.replaceAll("undefined,","")
+		// 		});
+		// 	}
+		// 	mymap.on('click', onMapClick);
+		// }
+		// catch(e){
+		// 	try{
+		// 		$ID("map_cont").style.display = "none"
+		// 	}
+		// 	catch(e){println(e)}
+		// }
+
+
+	</script>
+</html>

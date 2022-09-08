@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title> ---- </title><meta name="format-detection" content="telephone=no">
+		<!-- <meta http-equiv="Content-Security-Policy" content="img-src * data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval';"> -->
+		<meta name="msapplication-tap-highlight" content="no">
+		<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+		<!-- <meta name="color-scheme" content="light dark"> -->
+        <script src="../cordova.js"></script>
+
+		<script type="text/javascript" src="../js/Brorn.min.js"></script>
+		<script type="text/javascript" src="../js/Modules/saveform.js"></script> 
+		<script type="text/javascript" src="../js/Variables.js"></script>
+		<script type="text/javascript" src="../js/modules/autocomplete.js"></script>
+		<script type="text/javascript" src="../js/Modules/File_Module.js"></script> 
+
+
+		<link rel="stylesheet" href="../css/x.css">
+		<link rel="stylesheet" href="../css/un_x.css">
+		<link rel="stylesheet" href="../css/other.css">
+		<link rel="stylesheet" href="../css/loader.css">
+		<link rel="stylesheet" href="../css/css">
+		<link rel="stylesheet" href="../css/chip.css">
+		<link rel="stylesheet" href="../css/dropzone.css">
+		<link rel="stylesheet" href="../css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+				integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+				crossorigin=""/>
+
+		<script src="../js/leaflet/jquery.min.js"></script>
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+				integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+				crossorigin=""></script>
+		<script src="https://apis.google.com/js/platform.js" async defer></script>
+		<style type="text/css">
+			#mapid { height: 180px; }
+		</style>
+	</head>
+	<body class=" center-bg" style=" height: 100vh;">
+		<header id="offline" class="x-header x-red x-center" style="display:none">Offline Mode</header>
+<header id="localhostversion" class="x-header x-yellow x-center" style="display:block">This is a Localhost Version, do not use outside NPCO</header>
+		
+		<div class="">
+			<header class="-header gr_body x-blue x-padding">
+				<span onclick="back_to_home()" class="x-button x-display-topright x-red"><b>close</b></span>
+				<b id="is_form_filled">Profiling<
+			</header>
+
+			<div class="x-container  x-padding">
+				<input type="hidden" id="record_num" name="record_num" class="form_data" >
+				<input type="hidden" id="farmer_code" name="farmer_code" class="form_data">
+				<input type="hidden" id="is_synced" name="farmer-is_synced" class="form_data" value="0">
+				<input type="hidden" id="datetime" name="farmer-is_synced" class="form_data">
+
+				<!-- ------------------------------------------------------------------ -->
+
+				<b class="x-text-green">Core Competency</b><br>
+				<span class="x-text-grey">Number of farm-related trainings attended in the last 2-3 years</span><br>
+				<input placeholder="" type="number" id="feedback-num_of_trainings_2_3_years" class="form_data x-input x-border x-round ">
+				<span class="x-text-grey">Value Chain</span><br>
+				<input id="farmer-Cacao" class="form_data x-check" type="checkbox"><label value="Cacao">Cacao</label><br>
+				<input id="farmer-Coffee" class="form_data x-check" type="checkbox"><label value="Coffee">Coffee</label><br>
+				<input id="farmer-Coconut" class="form_data x-check" type="checkbox"><label value="Coconut">Coconut</label><br>
+				<input id="farmer-Banana" class="form_data x-check" type="checkbox"><label value="Banana">Banana</label><br>
+				<input id="farmer-Calamansi" class="form_data x-check" type="checkbox"><label value="Calamansi">Calamansi</label><br>
+				<input id="farmer-Jackfruit" class="form_data x-check" type="checkbox"><label value="Jackfruit">Jackfruit</label><br>
+				<input id="farmer-Mango" class="form_data x-check" type="checkbox"><label value="Mango">Mango</label><br>
+				<input id="farmer-Pili_Nut" class="form_data x-check" type="checkbox"><label value="Pili Nut">Pili Nut</label><br>
+				<input id="farmer-Other_fruits_nuts" class="form_data x-check" type="checkbox"><label value="Mango">Other fruits and nuts</label><br>
+				<input id="farmer-Others" class="form_data x-check" type="checkbox"><label value="Pili Nut">Others</label><br>
+
+				<span class="x-text-grey">Farm Certification acquired</span><br>
+				<input placeholder="Input Title, Leave blank if none" type="text" id="feedback-cert_acquired" class="form_data x-input x-border x-round ">
+
+				<span class="x-text-grey">Support Needed to improve productivity</span><br>
+				<input placeholder="Leave blank if none" type="text" id="feedback-support_need" class="form_data x-input x-border x-round ">
+
+				<!-- ------------------------------------------------------ -->
+				<hr>
+				<b class="x-text-green">Industry Feedback and Support Needed</b><br>
+				<span class="x-text-grey">Sources of Information<span class="x-text-grey"><br><span class="x-tiny">Where do you hear about current events and local news?</span></span><br>
+				<div class="x-row">
+					<div class="x-col s10">
+						<div id="tobe_copy0" class="x-row">
+							<div class="x-col s5 x-padding">
+								<span>Medium</span>
+								<select id="feedback[]-media" class="form_data x-select x-border">
+									<option value="None">None</option>
+									<option value="AM Radio">AM Radio</option>
+									<option value="FM Radio">FM Radio</option>
+									<option value="Television">Television</option>
+									<option value="Newspaper">Newspaper</option>
+									<option value="Newsletter/Flyer">Newsletter/Flyer</option>
+									<option value="Community Bulletin Board">Community Bulletin Board</option>
+									<option value="Neighbor">Neighbor</option>
+									<option value="Family Member">Family Member</option>
+									<option value="Local Officials">Local Officials</option>
+									<option value="Barangay. Social Media">Barangay. Social Media </option>
+									<option value="None">None</option>
+								</select>
+							</div>
+							<div class="x-col s7 x-padding">
+								<span>Frequency</span>
+								<select name="feedback-" id="feedback[]-freq" class="form_data x-select x-border">
+									<option selected value='none'>Not updated</option>
+									<option value='Everyday'>Everyday</option>
+									<option value='Every other day'>Every other day</option>
+									<option value='2 - 3 times a week'>2 - 3 times a week</option>
+									<option value='Every Week'>Every Week</option>
+									<option value='Every Month'>Every Month</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="x-col s2 x-padding">
+						<span>Add</span><br>
+						<button class="x-btn x-blue x-round" onclick="duplicate()">
+							<span class="fa fa-plus"></span>
+						</button>
+					</div>
+				</div>
+				<hr>
+
+				<span class="x-text-grey">Owns what type of mobile phone</span>
+				<select name="feedback-" id="feedback-type_mobile" class="form_data x-select x-border">
+					<option selected value=''>Smartphone</option>
+					<option selected value=''>Legacy Phone</option>
+					<option selected value=''>None</option>
+				</select>
+				<!-- ------------------------------------------------------ -->
+				<hr>
+				<b class="x-text-grey">Other comments (about RAPID Project)</b><br>
+				<input placeholder="" type="text" id="feedback-commnets" name="feedback-rsbsa_no" class="form_data x-input x-border x-round ">
+				<hr>
+				<b class="x-text-grey">Remarks (For Enumerator)</b><br>
+				<input placeholder="" type="text" id="feedback-remarks" name="feedback-rsbsa_no" class="form_data x-input x-border x-round ">
+				<hr>
+				<span class="x-text-grey">
+					Before Clicking next, pls make sure to check all fields as they cannot be undone while the profiling is not yet finished
+				</span><br>
+				<hr>
+				<button type="button" class="x-btn x-round-large x-block x-green" onclick="save_form()">Finalize Form<span class="fa fa-arrow-right"></span></button>
+			</div>
+		</div>
+
+
+		<div id="modal_login_loading" class="x-modal" style="display:none" onclick="$ID('modal_login_loading').style.display='none';$ID('modal_done').style.display='block';">
+			<div class="x-modal-content x-padding x-margin x-round-large">
+				<div class="x-container x-center x-padding">
+					<span class="x-xxxlarge fa fa-circle-o-notch fa-spin x-text-blue"></span><br>
+					<h2><b>Finalizing Form</b></h2>
+					<span class="x-text-gray">Loading. please wait</span>
+				</div>
+			</div>
+		</div>
+
+		<div id="modal_done" class="x-modal" style="">
+			<div class="x-modal-content x-padding x-margin x-round-large">
+				<div class="x-container x-center x-padding">
+					<span onclick="$ID('modal_done').style.display='none'"
+					class="x-button x-display-topright">&times;</span>
+					<span class="x-xxxlarge fa fa-thumbs-o-up x-text-blue"></span><br>
+					<span class="x-text-green x-xlarge">Finalizing Forms Done</span><br>
+					<!-- <button type="button" class="x-col s6 x-btn x-round-large x-block x-green" onclick="save_form()">Save and Proceed <span class="fa fa-arrow-right"></span></button> -->
+					<button class="x-green x-round-xlarge x-btn" onclick="done_forms()">Continue</button>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		try{
+			document.addEventListener("deviceready", onDeviceReady, false);
+			function onDeviceReady() {
+				console.log(cordova.file);
+				println(" * File Module Ready ================================");
+				window.setInterval(function () {
+					if(isOnline()){$ID("offline").style.display="none"}
+					else{$ID("offline").style.display="block"}
+				}, 1000)
+			}
+		}catch(err){println(err)}
+
+		// ---------------------------------------------------------------------------------------
+		function done_forms(){
+			$ID('modal_done').style.display='none';
+			redirectto("../home_screen.html?user_id="+url_args['user_id']+"&farmer_id="+url_args['farmer_id'])
+			// redirectto("../home_screen_new.html?user_id="+url_args['user_id']+"&farmer_id="+url_args['farmer_id'])
+			
+		}
+		function ONLOADDATA(data){
+			var incs_ = data.record_num
+			println("Number of Increment is .. "+data.record_num)
+			for (var i = 0; i < incs_; i++) {
+				duplicate()
+			}
+
+			// check_for_data(function(data_){println("Data Recollected ")})
+		}
+		var iii = 0;
+		function duplicate() {
+			var original = $ID('tobe_copy' + iii);
+			println(original.id)
+			var clone = original.cloneNode(true); // "deep" clone
+			clone.id = "tobe_copy" + ++ iii; // there can only be one element with an ID
+			// clone.onclick = duplicate; // event handlers are not cloned
+			var elemets_ = clone.querySelectorAll(".form_data");
+			for (var i = 0; i < elemets_.length; i++) {
+				elemets_[i].id = elemets_[i].id + iii
+				// println(elemets_[i].id)
+			}
+
+			original.parentNode.appendChild(clone);
+			$ID('record_num').value = iii
+			for (var i = 0; i < $CLASS('post_num').length; i++) {
+				$CLASS('post_num')[i].innerHTML = i+1
+			}
+		}
+
+		function save_form(){
+			// goto("wala.html?user_id="+url_args['user_id']+"&farmer_id="+url_args['farmer_id'])
+			
+			var FILE_NAME = url_args['farmer_id']+"@"+page+".txt"
+			
+
+			$ID('farmer_code').value = url_args['farmer_id']
+			$ID('datetime').value = $datetime()
+
+
+			create_formdata(FILE_NAME,function(){
+				$ID("modal_login_loading").style.display="block"
+				var myTimeout = setTimeout(ncbdfauhgf, 2000);
+				function ncbdfauhgf(){
+					$ID('modal_login_loading').style.display='none';$ID('modal_done').style.display='block';
+				}
+			})
+		}
+
+		// load_dropdowns()
+		function load_dropdowns(){
+			for (const [key, value] of Object.entries(ALL_LOCATION)) {
+				$ID("feedback-region").innerHTML += "<option value='"+key+"'>Region: "+key+"</option>"
+			}
+			var region = $ID("feedback-region").value = `<option disabled selected value=''>Please select entry</option>`
+			var prov = $ID("feedback-province").value = `<option disabled selected value=''>Please select entry</option>`
+			var municipality = $ID("feedback-municipality").value = `<option disabled selected value=''>Please select entry</option>`
+		}
+		function ls_prov(selregion){
+			$ID("feedback-province").disabled = false
+			for (const [key, value] of Object.entries(ALL_LOCATION[selregion]['province_list'])) {
+				$ID("feedback-province").innerHTML += "<option value='"+key+"'>"+key+"</option>"
+			}
+		}
+		function ls_muni(selprov){
+			$ID("feedback-municipality").disabled = false
+			var region = $ID("feedback-region").value
+			var prov = $ID("feedback-province").value
+			for (const [key, value] of Object.entries(ALL_LOCATION[region]['province_list'][prov]['municipality_list'])) {
+				$ID("feedback-municipality").innerHTML += "<option value='"+key+"'>"+key+"</option>"
+			}
+		}
+		function ls_brgy(selprov){
+			$ID("feedback-brgy").disabled = false
+			var region = $ID("feedback-region").value
+			var prov = $ID("feedback-province").value
+			var municipality = $ID("feedback-municipality").value
+			for (var i = 0; i < ALL_LOCATION[region]['province_list'][prov]['municipality_list'][municipality]['barangay_list'].length; i++) {
+				var key = ALL_LOCATION[region]['province_list'][prov]['municipality_list'][municipality]['barangay_list'][i]
+				$ID("feedback-brgy").innerHTML += "<option value='"+key+"'>"+key+"</option>"
+			}
+		}
+
+		function cal_age(bday){
+			var parts2 = bday.split('-');
+			// var todate = new Date(parts[0], parts[1] - 1, parts[2]);
+			var todate = $date()
+			var sbday = new Date(parts2[0], parts2[1] - 1, parts2[2]); 
+			println(todate)
+			println(sbday)
+			const diffTime = Math.abs(todate - sbday);
+			var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+			var age = diffDays/365
+			$ID("feedback-age").value = (""+age).split(".")[0];
+			if(age<=18.0){
+				alert("oops you are profiling a minor with the age of ["+(""+age).split(".")[0]+"]\nPlease select a legal age by selecting the correct birthday")
+				
+			}
+			if(age <=30 && age >=18){
+				$ID("feedback-isyouth").checked = true
+			}else{
+				$ID("feedback-isyouth").checked = false
+			}
+
+		}
+		function foposition_change(val){
+			if(val=="Officer"){
+				$ID("feedback-fo_designation").disabled = false
+			}else{
+				$ID("feedback-fo_designation").disabled = true
+			}
+		}
+		function rsbsa_change(val){
+			if(val=="yes"){
+				$ID("feedback-rsbsa_no").disabled = false
+			}else{
+				$ID("feedback-rsbsa_no").disabled = true
+			}
+		}
+
+		
+		// offline
+
+		// ===============================================================
+
+		// var marker = undefined
+		// try{
+		// 	var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+		// 	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+		// 		attribution: 'DTI RAPID GROWTH',
+		// 		maxZoom: 18,
+		// 		id: 'mapbox/streets-v11',
+		// 		tileSize: 512,
+		// 		zoomOffset: -1,
+		// 		accessToken: 'pk.eyJ1IjoiZGlvYW1lIiwiYSI6ImNrbGo1ZDc1aDAxZTQybnBoc2tpZGcxOWoifQ.90lp0SPxVC4Kz113q_Wn9g'
+		// 	}).addTo(mymap);
+		// 	let samp = {"lat":8.945209,"lng":125.538939}
+		// 	mymap.setView([samp.lat, samp.lng], 13);
+
+
+		// 	// var popup = L.popup();
+
+		// 	function onMapClick(e) {
+		// 		if(marker != undefined){mymap.removeLayer(marker)}
+		// 		// popup
+		// 		// 	.setLatLng(e.latlng)
+		// 		// 	.setContent("You clicked the map at " + e.latlng.toString())
+		// 		// 	.openOn(mymap);
+
+		// 		marker = L.marker(e.latlng).addTo(mymap);
+		// 		// println(e.latlng.lat)
+		// 		$.get('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+e.latlng.lat+'&lon='+e.latlng.lng, function(data){
+		// 			console.log(data.address);
+		// 			// $ID("reg_business_address").value = data.address.region + ', ' +data.address.state
+		// 			// $ID("reg_muni").value = data.address.city
+		// 			var addr = data.address.village + "," 
+		// 				+data.address.road + "," 
+		// 				+data.address.neighbourhood+","
+		// 				+data.address.quarter+","
+		// 				+data.address.suburb+","
+		// 				+data.address.tourism + ","
+		// 				+data.address.leisure + ","
+		// 				+data.address.state + ","
+		// 				+data.address.city + ","
+		// 				+data.address.region + " || "
+		// 				+e.latlng.lat +","+e.latlng.lng+ ","
+		// 			// $ID("reg_brgy").value = addr.split("undefined ,").join("")
+		// 			$ID("feedback-full_address").value = addr.replaceAll("undefined,","")
+		// 		});
+		// 	}
+		// 	mymap.on('click', onMapClick);
+		// }
+		// catch(e){
+		// 	try{
+		// 		$ID("map_cont").style.display = "none"
+		// 	}
+		// 	catch(e){println(e)}
+		// }
+
+
+	</script>
+</html>

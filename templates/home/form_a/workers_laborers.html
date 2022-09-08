@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title> ---- </title><meta name="format-detection" content="telephone=no">
+		<!-- <meta http-equiv="Content-Security-Policy" content="img-src * data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval';"> -->
+		<meta name="msapplication-tap-highlight" content="no">
+		<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+		<!-- <meta name="color-scheme" content="light dark"> -->
+        <script src="../cordova.js"></script>
+
+		<script type="text/javascript" src="../js/Brorn.min.js"></script>
+		<script type="text/javascript" src="../js/Modules/saveform.js"></script> 
+		<script type="text/javascript" src="../js/Variables.js"></script>
+		<script type="text/javascript" src="../js/modules/autocomplete.js"></script>
+		<script type="text/javascript" src="../js/Modules/File_Module.js"></script> 
+
+
+		<link rel="stylesheet" href="../css/x.css">
+		<link rel="stylesheet" href="../css/un_x.css">
+		<link rel="stylesheet" href="../css/other.css">
+		<link rel="stylesheet" href="../css/loader.css">
+		<link rel="stylesheet" href="../css/css">
+		<link rel="stylesheet" href="../css/chip.css">
+		<link rel="stylesheet" href="../css/dropzone.css">
+		<link rel="stylesheet" href="../css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+				integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+				crossorigin=""/>
+
+		<script src="../js/leaflet/jquery.min.js"></script>
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+				integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+				crossorigin=""></script>
+		<script src="https://apis.google.com/js/platform.js" async defer></script>
+		<style type="text/css">
+			#mapid { height: 180px; }
+		</style>
+	</head>
+	<body class=" center-bg" style=" height: 100vh;">
+		<header id="offline" class="x-header x-red x-center" style="display:none">Offline Mode</header>
+<header id="localhostversion" class="x-header x-yellow x-center" style="display:block">This is a Localhost Version, do not use outside NPCO</header>
+		<form action="" method="POST" id="form0" class="" style="display:block;padding: 0px;margin: 0px;">
+			<div class="">
+				<header class="-header gr_body x-blue x-padding">
+					<span onclick="back_to_home()" class="x-button x-display-topright x-red"><b>close</b></span>
+					<b id="is_form_filled">Profiling</b>
+				</header>
+				<input type="hidden" id="farmer_code" name="farmer_code" class="form_data">
+				<input type="hidden" id="is_synced" name="farmer-is_synced" class="form_data" value="0">
+				<input type="hidden" id="datetime" name="farmer-is_synced" class="form_data">
+				<div class="x-container  x-padding">
+					<b class="x-text-green">Workers and Laborers</b><hr>
+					<span class="x-text-grey">TYPE OF LABORERS<span class="x-text-grey"></span><br>
+					<!-- <select name="workers-brgy" id="workers-brgy" class="form_data x-select x-border">
+						<option selected value=''>Family</option>
+						<option selected value=''>Non-Family</option>
+					</select> -->
+					<input id="workers-fam_isfarmer" class="form_data x-check" onchange="fam(this)" type="checkbox">
+					<label>Family</label><br>
+					<input id="workers-fam_isyouth" class="form_data x-check" onchange="non_fam(this)" type="checkbox">
+					<label>Non-Family</label><br>
+					<script type="text/javascript">
+						function non_fam(tag){
+							if(tag.checked){$ID("non_fam").style.display = "block";$ID('seb_btn').style.display="block"}
+							else{$ID("non_fam").style.display = "none";$ID('seb_btn').style.display="none"}
+						}
+						function fam(tag){
+							if(tag.checked){$ID("fam").style.display = "block";$ID('seb_btn').style.display="block"}
+							else{$ID("fam").style.display = "none";$ID('seb_btn').style.display="none"}
+						}
+					</script>
+					<hr>
+					<br>
+					<div id="fam" style="display:none">
+						<b class="x-text-">FAMILY LABORERS<span class="x-text-grey"></b>
+						<br>
+						<span class="x-text-grey">Sectoral Group of per FAMILY laborer<span class="x-text-grey"></span><br>
+						<input id="workers-isfarmer" class="form_data x-check" type="checkbox" checked="checked" disabled>
+						<label>Farmer</label><br>
+						<input id="workers-fam_isyouth" class="form_data x-check" type="checkbox">
+						<label> Youth (18 - 30 yo)</label><br>
+						<input id="workers-fam_srcitizen" class="form_data x-check" type="checkbox">
+						<label>Senior Citizen</label><br>
+						<input id="workers-fam_ispwd" class="form_data x-check" type="checkbox">
+						<label>PWD</label><br>
+						<input id="workers-fam_isofw" class="form_data x-check" type="checkbox">
+						<label>OFW</label><br>
+						<input id="workers-fam_is_ip" class="form_data x-check" type="checkbox" onchange="ips_(this)">
+						<label>IP</label><br><hr>
+						<script type="text/javascript">
+							function ips_(tag){
+								$ID('workers-fam_ls_ip').disabled= !tag.checked
+								$ID('workers-fam_ls_ip_f').disabled= !tag.checked
+							}
+						</script>
+						<hr>
+
+						<div class="x-row">
+							<div class="x-col s6">
+								<b>MALE Family Workers/Laborers</b><br><hr>
+								<b class="x-text-grey">Total Number of Male Family Workers/Laborers<span class="x-text-grey"></span></b>
+								<input placeholder="" type="number" id="workers-fam_total_male" name="workers-fam_num_sr" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">No. of MALE YOUTH family laborers<span class="x-text-grey"></span></span>
+								<input placeholder="" type="number" id="workers-fam_num_youth_m" name="workers-non_fam_num_youth_f" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">No. of MALE SENIOR CITIZEN family laborers<span class="x-text-grey"></span></span>
+								<input placeholder="" type="number" id="workers-fam_num_sr" name="workers-fam_num_sr" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">No. of MALE PWD family laborers<span class="x-text-grey"></span></span>
+								<input placeholder="" type="number" id="workers-fam_num_pwd" name="workers-fam_num_pwd" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">No. of MALE OFW family laborers<span class="x-text-grey"></span></span>
+								<input placeholder="" type="number" id="workers-fam_num_ofw" name="workers-fam_num_ofw" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">No. of MALE IP family laborers<span class="x-text-grey"></span></span>
+								<input placeholder="" type="number" id="workers-fam_num_ip" name="workers-fam_num_ip" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">IP Group of MALE IP family laborers<span class="x-text-grey"></span></span>
+								<select name="workers-fam_ls_ip" id="workers-fam_ls_ip" class="form_data x-select x-border" disabled onchange="println(this.value)">
+									<option disabled selected value='none'>Please select entry</option>
+									<option value="Aromanon">Aromanon</option>
+									<option value="Ata">Ata</option>
+									<option value="'laan">B'laan</option>
+									<option value="Badjao">Badjao</option>
+									<option value="Badjao, Sama Laut">Badjao, Sama Laut</option>
+									<option value="Bagobo">Bagobo</option>
+									<option value="Banwaon">Banwaon</option>
+									<option value="Dibabawon">Dibabawon</option>
+									<option value="Dulangan">Dulangan</option>
+									<option value="Higaonon">Higaonon</option>
+									<option value="Iranon">Iranon</option>
+									<option value="Iranun">Iranun</option>
+									<option value="Jama Mapon">Jama Mapon</option>
+									<option value="Kagan">Kagan</option>
+									<option value="Kalagan">Kalagan</option>
+									<option value="Kalibugan">Kalibugan</option>
+									<option value="Kamigin">Kamigin</option>
+									<option value="Karintik">Karintik</option>
+									<option value="Klata-Guiangan">Klata-Guiangan</option>
+									<option value="Kongking">Kongking</option>
+									<option value="Lambangian">Lambangian</option>
+									<option value="Maguindanaon">Maguindanaon</option>
+									<option value="Mamanwa">Mamanwa</option>
+									<option value="Mandaya">Mandaya</option>
+									<option value="Manobo">Manobo</option>
+									<option value="Manobo B'lit">Manobo B'lit</option>
+									<option value="Mansaka">Mansaka</option>
+									<option value="Maranao">Maranao</option>
+									<option value="Matigsalog">Matigsalog</option>
+									<option value="Sama">Sama</option>
+									<option value="Sama-Bangingi">Sama-Bangingi</option>
+									<option value="Samal">Samal</option>
+									<option value="Sangil">Sangil</option>
+									<option value="Subanen">Subanen</option>
+									<option value="Subanon">Subanon</option>
+									<option value="T-boli">T-boli</option>
+									<option value="Tagabawa">Tagabawa</option>
+									<option value="Tagakaolo">Tagakaolo</option>
+									<option value="Talaandig">Talaandig</option>
+									<option value="Talaingod, Langilan">Talaingod, Langilan</option>
+									<option value="Tausug">Tausug</option>
+									<option value="Tigawahanon">Tigawahanon</option>
+									<option value="Tiruray">Tiruray</option>
+									<option value="Ubo Manobo">Ubo Manobo</option>
+									<option value="Umayamnon">Umayamnon</option>
+									<option value="Yakan">Yakan</option>
+									<option value="others">others</option>
+								</select>
+								<b class="x-text-grey">Yearly Salary Wage for Male Family Workers/Laborers<span class="x-text-grey"></span></b>
+								<input onkeyup="salary_total(this)" placeholder="" type="number" id="workers-fam_year_salary_male" name="workers-fam_num_sr" class="form_data x-input x-border x-round sal_male">
+							</div>
+							<div class="x-col s6">
+								<b>FEMALE Family Workers/Laborers</b><hr>
+								<b class="x-text-grey">Total Number of Female Family Workers/Laborers<span class="x-text-grey"></span></b>
+								<input placeholder="" type="number" id="workers-fam_total_female" name="workers-fam_num_sr" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">No. of FEMALE YOUTH Family laborers<span class="x-text-grey"></span></span>
+								<input placeholder="" type="number" id="workers-fam_num_youth_f" name="workers-non_fam_num_youth_f" class="form_data x-input x-border x-round ">
+
+								<span class="x-text-grey">No. of FEMALE SENIOR CITIZEN family laborers<span class="x-text-grey"></span></span>
+								<input placeholder="" type="number" id="workers-fam_num_ip_f" name="workers-fam_num_ip_f" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">No. of FEMALE PWD family laborers<span class="x-text-grey"></span></span>
+								<input placeholder="" type="number" id="workers-fam_num_pwd_f" name="workers-fam_num_pwd_f" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">No. of FEMALE OFW family laborers<span class="x-text-grey"></span></span>
+								<input placeholder="" type="number" id="workers-fam_num_ofw_f" name="workers-fam_num_ofw_f" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">No. of FEMALE IP family laborers<span class="x-text-grey"></span></span>
+								<input placeholder="" type="number" id="workers-fam_num_ip_f" name="workers-fam_num_ip_f" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">IP Group of FEMALE IP family laborers<span class="x-text-grey"></span></span>
+								<select name="workers-fam_ls_ip_f" id="workers-fam_ls_ip_f" class="form_data x-select x-border" disabled onchange="println(this.value)">
+									<option disabled selected value='none'>Please select entry</option>
+									<option value="Aromanon">Aromanon</option>
+									<option value="Ata">Ata</option>
+									<option value="'laan">B'laan</option>
+									<option value="Badjao">Badjao</option>
+									<option value="Badjao, Sama Laut">Badjao, Sama Laut</option>
+									<option value="Bagobo">Bagobo</option>
+									<option value="Banwaon">Banwaon</option>
+									<option value="Dibabawon">Dibabawon</option>
+									<option value="Dulangan">Dulangan</option>
+									<option value="Higaonon">Higaonon</option>
+									<option value="Iranon">Iranon</option>
+									<option value="Iranun">Iranun</option>
+									<option value="Jama Mapon">Jama Mapon</option>
+									<option value="Kagan">Kagan</option>
+									<option value="Kalagan">Kalagan</option>
+									<option value="Kalibugan">Kalibugan</option>
+									<option value="Kamigin">Kamigin</option>
+									<option value="Karintik">Karintik</option>
+									<option value="Klata-Guiangan">Klata-Guiangan</option>
+									<option value="Kongking">Kongking</option>
+									<option value="Lambangian">Lambangian</option>
+									<option value="Maguindanaon">Maguindanaon</option>
+									<option value="Mamanwa">Mamanwa</option>
+									<option value="Mandaya">Mandaya</option>
+									<option value="Manobo">Manobo</option>
+									<option value="Manobo B'lit">Manobo B'lit</option>
+									<option value="Mansaka">Mansaka</option>
+									<option value="Maranao">Maranao</option>
+									<option value="Matigsalog">Matigsalog</option>
+									<option value="Sama">Sama</option>
+									<option value="Sama-Bangingi">Sama-Bangingi</option>
+									<option value="Samal">Samal</option>
+									<option value="Sangil">Sangil</option>
+									<option value="Subanen">Subanen</option>
+									<option value="Subanon">Subanon</option>
+									<option value="T-boli">T-boli</option>
+									<option value="Tagabawa">Tagabawa</option>
+									<option value="Tagakaolo">Tagakaolo</option>
+									<option value="Talaandig">Talaandig</option>
+									<option value="Talaingod, Langilan">Talaingod, Langilan</option>
+									<option value="Tausug">Tausug</option>
+									<option value="Tigawahanon">Tigawahanon</option>
+									<option value="Tiruray">Tiruray</option>
+									<option value="Ubo Manobo">Ubo Manobo</option>
+									<option value="Umayamnon">Umayamnon</option>
+									<option value="Yakan">Yakan</option>
+									<option value="others">others</option>
+								</select>
+								<b class="x-text-grey">Yearly Salary Wage for Female Family Workers/Laborers<span class="x-text-grey"></span></b>
+								<input onkeyup="salary_total(this)" placeholder="" type="number" id="workers-fam_year_salary_female" name="workers-fam_num_sr" class="form_data x-input x-border x-round sal_female">
+							</div>
+						</div>
+						<div class="x-row x-padding">
+							<hr>
+							<span class="x-col s3 x-center x-xxlarge x-text-black">
+								<b class="total_salary" id="">0</b>
+							</span>
+							<b class="x-col s9 x-leftbar x-border-green">Total Yearly Salary Wage of Family Workers and Laborers</b><br>
+						</div>
+						<!-- <span class="x-text-grey">Average Salary/Wage per year (Family)<span class="x-text-grey"></span>
+						<input placeholder="" type="number" id="workers-fam_ave_salary_year" name="workers-fam_ave_salary_year" class="form_data x-input x-border x-round "> -->
+					</div>
+
+					<hr>
+					<div id="non_fam" style="display:none">
+						<b class="x-text-grey">NON-FAMILY LABORERS<span class="x-text-grey"></b><br>
+						<span class="x-text-grey">Sectoral Group of per NON-FAMILY laborer<span class="x-text-grey"></span><br>
+						<input id="workers-non_fam_isfarmer" class="form_data x-check" type="checkbox" checked="checked">
+						<label>Farmer</label><br>
+						<input id="workers-non_fam_isyouth" class="form_data x-check" type="checkbox">
+						<label> Youth (18 - 30 yo)</label><br>
+						<input id="workers-non_fam_srcitizen" class="form_data x-check" type="checkbox">
+						<label>Senior Citizen</label><br>
+						<input id="workers-non_fam_pwd" class="form_data x-check" type="checkbox">
+						<label>PWD</label><br>
+						<input id="workers-non_fam_ofw" class="form_data x-check" type="checkbox">
+						<label>OFW</label><br>
+						<input id="workers-non_fam_is_ip" class="form_data x-check" type="checkbox" onchange="isp_n(this)">
+						<label>IP</label><br><hr>
+						<script type="text/javascript">
+							function isp_n(tag){
+								$ID('workers-non_fam_ls_ip').disabled= !tag.checked
+								$ID('workers-non_fam_ls_ip_f').disabled= !tag.checked
+							}
+						</script>
+						<div class="x-row">
+							<div class="x-col s6">
+								<b>MALE Non-Family Workers/Laborers</b><hr>
+								<b class="x-text-grey">Total Number of Male Non-Family Workers/Laborers<span class="x-text-grey"></span></b>
+								<input placeholder="" type="number" id="workers-non_fam_total_male" name="workers-fam_num_sr" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">No. of MALE YOUTH non-family laborers<span class="x-text-grey"></span></span>
+								<input placeholder="" type="number" id="workers-non_fam_num_youth" name="workers-non_fam_num_youth" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">No. of MALE SENIOR CITIZEN non-family laborers<span class="x-text-grey"></span></span>
+								<input placeholder="" type="number" id="workers-non_fam_num_sr" name="workers-non_fam_num_sr" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">No. of MALE PWD non-family laborers<span class="x-text-grey"></span></span>
+								<input placeholder="" type="number" id="workers-non_fam_num_pwd" name="workers-non_fam_num_pwd" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">No. of MALE OFW non-family laborers<span class="x-text-grey"></span></span>
+								<input placeholder="" type="number" id="workers-non_fam_num_ofw" name="workers-non_fam_num_ofw" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">No. of MALE IP non-family laborers<span class="x-text-grey"></span></span>
+								<input placeholder="" type="number" id="workers-non_fam_num_ip" name="workers-non_fam_num_ip" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">IP Group of MALE IP non-family laborers<span class="x-text-grey"></span></span>
+								<select name="workers-non_fam_ip" id="workers-non_fam_ls_ip" class="form_data x-select x-border" disabled onchange="println(this.value)">
+									<option disabled selected value='none'>Please select entry</option>
+									<option value="Aromanon">Aromanon</option>
+									<option value="Ata">Ata</option>
+									<option value="'laan">B'laan</option>
+									<option value="Badjao">Badjao</option>
+									<option value="Badjao, Sama Laut">Badjao, Sama Laut</option>
+									<option value="Bagobo">Bagobo</option>
+									<option value="Banwaon">Banwaon</option>
+									<option value="Dibabawon">Dibabawon</option>
+									<option value="Dulangan">Dulangan</option>
+									<option value="Higaonon">Higaonon</option>
+									<option value="Iranon">Iranon</option>
+									<option value="Iranun">Iranun</option>
+									<option value="Jama Mapon">Jama Mapon</option>
+									<option value="Kagan">Kagan</option>
+									<option value="Kalagan">Kalagan</option>
+									<option value="Kalibugan">Kalibugan</option>
+									<option value="Kamigin">Kamigin</option>
+									<option value="Karintik">Karintik</option>
+									<option value="Klata-Guiangan">Klata-Guiangan</option>
+									<option value="Kongking">Kongking</option>
+									<option value="Lambangian">Lambangian</option>
+									<option value="Maguindanaon">Maguindanaon</option>
+									<option value="Mamanwa">Mamanwa</option>
+									<option value="Mandaya">Mandaya</option>
+									<option value="Manobo">Manobo</option>
+									<option value="Manobo B'lit">Manobo B'lit</option>
+									<option value="Mansaka">Mansaka</option>
+									<option value="Maranao">Maranao</option>
+									<option value="Matigsalog">Matigsalog</option>
+									<option value="Sama">Sama</option>
+									<option value="Sama-Bangingi">Sama-Bangingi</option>
+									<option value="Samal">Samal</option>
+									<option value="Sangil">Sangil</option>
+									<option value="Subanen">Subanen</option>
+									<option value="Subanon">Subanon</option>
+									<option value="T-boli">T-boli</option>
+									<option value="Tagabawa">Tagabawa</option>
+									<option value="Tagakaolo">Tagakaolo</option>
+									<option value="Talaandig">Talaandig</option>
+									<option value="Talaingod, Langilan">Talaingod, Langilan</option>
+									<option value="Tausug">Tausug</option>
+									<option value="Tigawahanon">Tigawahanon</option>
+									<option value="Tiruray">Tiruray</option>
+									<option value="Ubo Manobo">Ubo Manobo</option>
+									<option value="Umayamnon">Umayamnon</option>
+									<option value="Yakan">Yakan</option>
+									<option value="others">others</option>
+								</select>
+								<b class="x-text-grey">Yearly Salary Wage for Male Non-Family Workers/Laborers<span class="x-text-grey"></span></b>
+								<input onkeyup="salary_total(this)" placeholder="" type="number" id="workers-non_fam_year_salary_male" name="workers-fam_num_sr" class="form_data x-input x-border x-round sal_male">
+							</div>
+							<div class="x-col s6">
+								<b>FEMALE Non-Family Workers/Laborers</b><hr>
+								<b class="x-text-grey">Total Number of Female Non-Family Workers/Laborers<span class="x-text-grey"></span></b>
+								<input placeholder="" type="number" id="workers-non_fam_total_female" name="workers-fam_num_sr" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">No. of FEMALE YOUTH non-family laborers<span class="x-text-grey"></span></span>
+								<input placeholder="" type="number" id="workers-non_fam_num_youth_f" name="workers-non_fam_num_youth_f" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">FEMALE SENIOR CITIZEN non-family laborers<span class="x-text-grey"></span></span>
+								<input placeholder="" type="number" id="workers-non_fam_num_sr_f" name="workers-non_fam_num_sr_f" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">FEMALE PWD non-family laborers<span class="x-text-grey"></span></span>
+								<input placeholder="" type="number" id="workers-non_fam_num_pwd_f" name="workers-non_fam_num_pwd_f" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">FEMALE OFW non-family laborers<span class="x-text-grey"></span></span>
+								<input placeholder="" type="number" id="workers-non_fam_num__ofw_f" name="workers-non_fam_num__ofw_f" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">FEMALE IP non-family laborers<span class="x-text-grey"></span></span>
+								<input placeholder="" type="number" id="workers-non_fam_num_ip_f" name="workers-non_fam_num_ip_f" class="form_data x-input x-border x-round ">
+								<span class="x-text-grey">IP Group of FEMALE IP non-family laborers<span class="x-text-grey"></span></span>
+								<select name="workers-non_fam_ip" id="workers-non_fam_ls_ip_f" class="form_data x-select x-border" disabled onchange="println(this.value)">
+									<option disabled selected value='none'>Please select entry</option>
+									<option value="Aromanon">Aromanon</option>
+									<option value="Ata">Ata</option>
+									<option value="'laan">B'laan</option>
+									<option value="Badjao">Badjao</option>
+									<option value="Badjao, Sama Laut">Badjao, Sama Laut</option>
+									<option value="Bagobo">Bagobo</option>
+									<option value="Banwaon">Banwaon</option>
+									<option value="Dibabawon">Dibabawon</option>
+									<option value="Dulangan">Dulangan</option>
+									<option value="Higaonon">Higaonon</option>
+									<option value="Iranon">Iranon</option>
+									<option value="Iranun">Iranun</option>
+									<option value="Jama Mapon">Jama Mapon</option>
+									<option value="Kagan">Kagan</option>
+									<option value="Kalagan">Kalagan</option>
+									<option value="Kalibugan">Kalibugan</option>
+									<option value="Kamigin">Kamigin</option>
+									<option value="Karintik">Karintik</option>
+									<option value="Klata-Guiangan">Klata-Guiangan</option>
+									<option value="Kongking">Kongking</option>
+									<option value="Lambangian">Lambangian</option>
+									<option value="Maguindanaon">Maguindanaon</option>
+									<option value="Mamanwa">Mamanwa</option>
+									<option value="Mandaya">Mandaya</option>
+									<option value="Manobo">Manobo</option>
+									<option value="Manobo B'lit">Manobo B'lit</option>
+									<option value="Mansaka">Mansaka</option>
+									<option value="Maranao">Maranao</option>
+									<option value="Matigsalog">Matigsalog</option>
+									<option value="Sama">Sama</option>
+									<option value="Sama-Bangingi">Sama-Bangingi</option>
+									<option value="Samal">Samal</option>
+									<option value="Sangil">Sangil</option>
+									<option value="Subanen">Subanen</option>
+									<option value="Subanon">Subanon</option>
+									<option value="T-boli">T-boli</option>
+									<option value="Tagabawa">Tagabawa</option>
+									<option value="Tagakaolo">Tagakaolo</option>
+									<option value="Talaandig">Talaandig</option>
+									<option value="Talaingod, Langilan">Talaingod, Langilan</option>
+									<option value="Tausug">Tausug</option>
+									<option value="Tigawahanon">Tigawahanon</option>
+									<option value="Tiruray">Tiruray</option>
+									<option value="Ubo Manobo">Ubo Manobo</option>
+									<option value="Umayamnon">Umayamnon</option>
+									<option value="Yakan">Yakan</option>
+									<option value="others">others</option>
+								</select>
+								<b class="x-text-grey">Yearly Salary Wage for Female Non-Family Workers/Laborers<span class="x-text-grey"></span></b>
+								<input onkeyup="salary_total(this)" placeholder="" type="number" id="workers-non_fam_year_salary_female" name="workers-fam_num_sr" class="form_data x-input x-border x-round sal_female">
+							</div>
+						</div>
+
+						<div class="x-row x-padding">
+							<hr>
+							<span class="x-col s3 x-center x-xxlarge x-text-black">
+								<b class="total_salary" id="">0</b>
+							</span>
+							<b class="x-col s9 x-leftbar x-border-green">Total Yearly Salary Wage of Family Workers and Laborers</b><br>
+						</div>
+						<!-- <span class="x-text-grey">Average Salary/Wage per year (Non-Family)<span class="x-text-grey"></span>
+						<input placeholder="" type="number" id="workers-non_fam_ave_salary_year" name="workers-non_fam_ave_salary_year" class="form_data x-input x-border x-round "> -->
+						<hr>
+					</div>
+					
+					<hr>
+					<b class="x-text-grey">Remarks (For Enumerator)</b><br>
+					<input placeholder="" type="text" id="form-remarks" name="feedback-rsbsa_no" class="form_data x-input x-border x-round ">
+					<hr>
+					<div id="seb_btn" style="display:none">
+						<span class="x-text-grey">
+							
+							Before Clicking next, pls make sure to check all fields as they cannot be undone while the profiling is not yet finished
+						</span><br>
+						<div class="x-container">
+							<button type="button" class="x-col s6 x-btn x-round-large x-block x-yellow" onclick="history.back()">Previous Form<span class="fa fa-arrow-lef"></span></button>
+							<button type="button" class="x-col s6 x-btn x-round-large x-block x-green" onclick="save_form()">Save and Proceed <span class="fa fa-arrow-right"></span></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+
+	</body>
+	<script type="text/javascript">
+		try{
+			document.addEventListener("deviceready", onDeviceReady, false);
+			function onDeviceReady() {
+				console.log(cordova.file);
+				println(" * File Module Ready ================================");
+				window.setInterval(function () {
+					if(isOnline()){$ID("offline").style.display="none"}
+					else{$ID("offline").style.display="block"}
+				}, 1000)
+			}
+		}catch(err){println(err)}
+
+
+		// ---------------------------------------------------------------------------------------
+		function save_form(){
+			var FILE_NAME = url_args['farmer_id']+"@"+page+".txt"
+			$ID('farmer_code').value = url_args['farmer_id']
+			$ID('datetime').value = $datetime()
+
+			create_formdata(FILE_NAME,function(){
+				redirectto("post_harvest.html?user_id="+url_args['user_id']+"&farmer_id="+url_args['farmer_id'])
+			})
+		}
+
+		// load_dropdowns()
+		function load_dropdowns(){
+			for (const [key, value] of Object.entries(ALL_LOCATION)) {
+				$ID("workers-region").innerHTML += "<option value='"+key+"'>Region: "+key+"</option>"
+			}
+			var region = $ID("workers-region").value = `<option disabled selected value=''>Please select entry</option>`
+			var prov = $ID("workers-province").value = `<option disabled selected value=''>Please select entry</option>`
+			var municipality = $ID("workers-municipality").value = `<option disabled selected value=''>Please select entry</option>`
+		}
+		function ls_prov(selregion){
+			$ID("workers-province").disabled = false
+			for (const [key, value] of Object.entries(ALL_LOCATION[selregion]['province_list'])) {
+				$ID("workers-province").innerHTML += "<option value='"+key+"'>"+key+"</option>"
+			}
+		}
+		function ls_muni(selprov){
+			$ID("workers-municipality").disabled = false
+			var region = $ID("workers-region").value
+			var prov = $ID("workers-province").value
+			for (const [key, value] of Object.entries(ALL_LOCATION[region]['province_list'][prov]['municipality_list'])) {
+				$ID("workers-municipality").innerHTML += "<option value='"+key+"'>"+key+"</option>"
+			}
+		}
+		function ls_brgy(selprov){
+			$ID("workers-brgy").disabled = false
+			var region = $ID("workers-region").value
+			var prov = $ID("workers-province").value
+			var municipality = $ID("workers-municipality").value
+			for (var i = 0; i < ALL_LOCATION[region]['province_list'][prov]['municipality_list'][municipality]['barangay_list'].length; i++) {
+				var key = ALL_LOCATION[region]['province_list'][prov]['municipality_list'][municipality]['barangay_list'][i]
+				$ID("workers-brgy").innerHTML += "<option value='"+key+"'>"+key+"</option>"
+			}
+		}
+
+
+		function AFTER_LOAD_DATA(_data){ // Called from saveform.js
+			salary_total($ID("workers-non_fam_year_salary_female"))
+			salary_total($ID("workers-fam_year_salary_female"))
+		}
+		function salary_total(tag){
+			var __selector = tag.parentNode.parentNode.parentNode
+			var val1 = __selector.querySelectorAll(".sal_female")[0].value
+			var val2 = __selector.querySelectorAll(".sal_male")[0].value
+			if(val1 == ""){val1 = 0}else{val1 = parseInt(val1)}
+			if(val2 == ""){val2 = 0}else{val2 = parseInt(val2)}
+			println(val2)
+			__selector.querySelectorAll(".total_salary")[0].innerHTML = val1 + val2
+		}
+
+		function cal_age(bday){
+			var parts2 = bday.split('-');
+			// var todate = new Date(parts[0], parts[1] - 1, parts[2]);
+			var todate = $date()
+			var sbday = new Date(parts2[0], parts2[1] - 1, parts2[2]); 
+			println(todate)
+			println(sbday)
+			const diffTime = Math.abs(todate - sbday);
+			var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+			var age = diffDays/365
+			$ID("workers-age").value = (""+age).split(".")[0];
+			if(age<=18.0){
+				alert("oops you are profiling a minor with the age of ["+(""+age).split(".")[0]+"]\nPlease select a legal age by selecting the correct birthday")
+				
+			}
+			if(age <=30 && age >=18){
+				$ID("workers-isyouth").checked = true
+			}else{
+				$ID("workers-isyouth").checked = false
+			}
+
+		}
+		function foposition_change(val){
+			if(val=="Officer"){
+				$ID("workers-fo_designation").disabled = false
+			}else{
+				$ID("workers-fo_designation").disabled = true
+			}
+		}
+		function rsbsa_change(val){
+			if(val=="yes"){
+				$ID("workers-rsbsa_no").disabled = false
+			}else{
+				$ID("workers-rsbsa_no").disabled = true
+			}
+		}
+
+		
+		// offline
+
+		// ===============================================================
+
+		// var marker = undefined
+		// try{
+		// 	var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+		// 	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+		// 		attribution: 'DTI RAPID GROWTH',
+		// 		maxZoom: 18,
+		// 		id: 'mapbox/streets-v11',
+		// 		tileSize: 512,
+		// 		zoomOffset: -1,
+		// 		accessToken: 'pk.eyJ1IjoiZGlvYW1lIiwiYSI6ImNrbGo1ZDc1aDAxZTQybnBoc2tpZGcxOWoifQ.90lp0SPxVC4Kz113q_Wn9g'
+		// 	}).addTo(mymap);
+		// 	let samp = {"lat":8.945209,"lng":125.538939}
+		// 	mymap.setView([samp.lat, samp.lng], 13);
+
+
+		// 	// var popup = L.popup();
+
+		// 	function onMapClick(e) {
+		// 		if(marker != undefined){mymap.removeLayer(marker)}
+		// 		// popup
+		// 		// 	.setLatLng(e.latlng)
+		// 		// 	.setContent("You clicked the map at " + e.latlng.toString())
+		// 		// 	.openOn(mymap);
+
+		// 		marker = L.marker(e.latlng).addTo(mymap);
+		// 		// println(e.latlng.lat)
+		// 		$.get('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+e.latlng.lat+'&lon='+e.latlng.lng, function(data){
+		// 			console.log(data.address);
+		// 			// $ID("reg_business_address").value = data.address.region + ', ' +data.address.state
+		// 			// $ID("reg_muni").value = data.address.city
+		// 			var addr = data.address.village + "," 
+		// 				+data.address.road + "," 
+		// 				+data.address.neighbourhood+","
+		// 				+data.address.quarter+","
+		// 				+data.address.suburb+","
+		// 				+data.address.tourism + ","
+		// 				+data.address.leisure + ","
+		// 				+data.address.state + ","
+		// 				+data.address.city + ","
+		// 				+data.address.region + " || "
+		// 				+e.latlng.lat +","+e.latlng.lng+ ","
+		// 			// $ID("reg_brgy").value = addr.split("undefined ,").join("")
+		// 			$ID("workers-full_address").value = addr.replaceAll("undefined,","")
+		// 		});
+		// 	}
+		// 	mymap.on('click', onMapClick);
+		// }
+		// catch(e){
+		// 	try{
+		// 		$ID("map_cont").style.display = "none"
+		// 	}
+		// 	catch(e){println(e)}
+		// }
+
+
+	</script>
+</html>
