@@ -119,6 +119,7 @@
 							}
 
 							function get_list_file(){ // For Inititalizing list in profiling/profiling_farmers.html
+								SPINNER_LOADER.show()
 								$ID("profile_list").innerHTML = ""
 								println(" * Getting List of Profiles")
 								$send({
