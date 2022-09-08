@@ -34,80 +34,58 @@
 
 
 							function conso_all(){
-								var count_all_male = 0
-								var count_all_female = 0
-								var count_all_sex_untagged = 0
+								var sex = {}
 								var dash_conso = {}
 								var category = {}
 
-								// $ID("count_all_male").innerHTML = 0
-								// $ID("count_all_female").innerHTML = 0
-								// $ID("count_all_sex_untagged").innerHTML = 0
+								$ID("count_all_male").innerHTML = 0
+								$ID("count_all_female").innerHTML = 0
+								$ID("count_all_sex_untagged").innerHTML = 0
 
 								$ID("total_num_farmer").innerHTML = 0
 
 								for (var count = 0; count < ALL_FARMERS.length+1; count++) {
 									var FARMER = ALL_FARMERS[count]
-									$ID("total_num_farmer").innerHTML = count -1
-									try{
-										FARMER['addr_region'] = FARMER['addr_region'].replace(" ","")
-										if(FARMER['addr_region']==""){
-											FARMER['addr_region'] = "Untagged"
-										}
-
-										if(("Region: "+FARMER['addr_region']) in dash_conso){} //if wala pay region sa list
-										else{
-											dash_conso[("Region: "+FARMER['addr_region'])] = {}
-										}
-									}catch(e){
-										println(e)
+									$ID("total_num_farmer").innerHTML = count
+									if(typeof(FARMER)=='undefined'){
+										continue;
 									}
 
-									try{
-										if(FARMER['farmer-primary_crop'] in dash_conso[("Region: "+FARMER['addr_region'])] ) {} //if wala pay VC sa list
-										else{
-											dash_conso[("Region: "+FARMER['addr_region'])][FARMER['farmer-primary_crop']] = 0
-											dash_conso[("Region: "+FARMER['addr_region'])]["category"] = ("Region: "+FARMER['addr_region'])
-										}
-									}catch(e){
-										println(e)
+
+									FARMER['addr_region'] = FARMER['addr_region'].replace(" ","")
+									if(FARMER['addr_region']==""){
+										FARMER['addr_region'] = "Untagged"
 									}
 
-									try{
-										dash_conso[("Region: "+FARMER['addr_region'])][FARMER['farmer-primary_crop']] +=1
-									}catch(e){}
-
-									try{
-										category[FARMER['farmer-primary_crop']] = 'none'
-									}catch(e){}
-
-
-									try{
-										if(FARMER['farmer_sex']=='Female'){
-											count_all_female += 1
-											dash_conso[FARMER['farmer-primary_crop']]['female'] += 1
-										}
-										if(FARMER['farmer_sex']=='Male'){
-											count_all_male += 1
-											dash_conso[FARMER['farmer-primary_crop']]['male'] += 1
-										}
-
-									}
-									catch(e){
-										println(e)
-										count_all_sex_untagged += 1
+									if(("Region: "+FARMER['addr_region']) in dash_conso){} //if wala pay region sa list
+									else{
+										dash_conso[("Region: "+FARMER['addr_region'])] = {}
 									}
 
+									if(FARMER['farmer-primary_crop'] in dash_conso[("Region: "+FARMER['addr_region'])] ) {} //if wala pay VC sa list
+									else{
+										dash_conso[("Region: "+FARMER['addr_region'])][FARMER['farmer-primary_crop']] = 0
+										dash_conso[("Region: "+FARMER['addr_region'])]["category"] = ("Region: "+FARMER['addr_region'])
+									}
+
+									dash_conso[("Region: "+FARMER['addr_region'])][FARMER['farmer-primary_crop']] +=1
+
+									category[FARMER['farmer-primary_crop']] = 'none'
+
+									if(!sex.hasOwnProperty(FARMER['farmer_sex'])){
+										println("was xx")
+										sex[FARMER['farmer_sex']] = 0
+									}
+									sex[FARMER['farmer_sex']] += 1
 
 								}
-								var ff = count_all_female -1
-								var mm = count_all_male - 1
-								$ID("count_all_male").innerHTML = mm
-								$ID("count_all_female").innerHTML = ff
-								$ID("count_all_sex_untagged").innerHTML = (""+((mm+ff) -(ALL_FARMERS.length))).replace("-","")
-								// $ID("count_all_sex_untagged").innerHTML = count_all_female
 
-								println(dash_conso)
+
+								$ID("count_all_male").innerHTML = sex["Male"]
+								$ID("count_all_female").innerHTML = sex["Female"]
+								var diff = ""+((sex["Male"] + sex["Female"]) - count)
+								$ID("count_all_sex_untagged").innerHTML = diff.replace("-","")
+
 								var data_for_chart = []
 								for(key in dash_conso){
 									data_for_chart.push(dash_conso[key])

@@ -172,8 +172,8 @@
 							}
 
 							function get_profile(_file_name,total_recors_farmer, f_FILE){
-								var total_recors_farmer_counter = 1
-								var FILTER_total_recors_farmer_counter = 1
+								var total_recors_farmer_counter = 0
+								var FILTER_total_recors_farmer_counter = 0
 								ALL_FARMERS = []
 
 								$send({
@@ -237,18 +237,18 @@
 
 												</div>`
 												var person = file_profile.profile
-												if(total_recors_farmer_counter>=total_recors_farmer ){
+												if(total_recors_farmer_counter>=total_recors_farmer-1 ){
 													// alert("Done Loading ["+total_recors_farmer_counter+"] files")
 													// get_prof_imgs(f_FILE)
 													conso_all() // IF DONE in POPULATING list . CREATING DASHBOARD @ profiling_dashboard.html
 												}
-												$ID("prof_farmer_count").innerHTML = FILTER_total_recors_farmer_counter -1
+												$ID("prof_farmer_count").innerHTML = FILTER_total_recors_farmer_counter
 												FILTER_total_recors_farmer_counter += 1
 
 											}
 
 											ALL_FARMERS.push(alldata_farmer) // Appended list of farmers for dashboarding
-											$ID("total_num_farmer").innerHTML = total_recors_farmer_counter -1 
+											$ID("total_num_farmer").innerHTML = total_recors_farmer_counter
 
 
 										}catch(e){
