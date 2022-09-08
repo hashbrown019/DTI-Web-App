@@ -50,26 +50,31 @@
 									var FARMER = ALL_FARMERS[count]
 									$ID("total_num_farmer").innerHTML = count
 									try{
-										if(FARMER['addr_region'] in dash_conso){} //if wala pay region sa list
+										FARMER['addr_region'] = FARMER['addr_region'].replace(" ","")
+										if(FARMER['addr_region']==""){
+											FARMER['addr_region'] = "Untagged"
+										}
+
+										if(("Region: "+FARMER['addr_region']) in dash_conso){} //if wala pay region sa list
 										else{
-											dash_conso[FARMER['addr_region']] = {}
+											dash_conso[("Region: "+FARMER['addr_region'])] = {}
 										}
 									}catch(e){
 										println(e)
 									}
 
 									try{
-										if(FARMER['farmer-primary_crop'] in dash_conso[FARMER['addr_region']] ) {} //if wala pay VC sa list
+										if(FARMER['farmer-primary_crop'] in dash_conso[("Region: "+FARMER['addr_region'])] ) {} //if wala pay VC sa list
 										else{
-											dash_conso[FARMER['addr_region']][FARMER['farmer-primary_crop']] = 0
-											dash_conso[FARMER['addr_region']]["category"] = FARMER['addr_region']
+											dash_conso[("Region: "+FARMER['addr_region'])][FARMER['farmer-primary_crop']] = 0
+											dash_conso[("Region: "+FARMER['addr_region'])]["category"] = ("Region: "+FARMER['addr_region'])
 										}
 									}catch(e){
 										println(e)
 									}
 
 									try{
-										dash_conso[FARMER['addr_region']][FARMER['farmer-primary_crop']] +=1
+										dash_conso[("Region: "+FARMER['addr_region'])][FARMER['farmer-primary_crop']] +=1
 									}catch(e){}
 
 									try{
@@ -181,7 +186,8 @@
 										}));
 
 										series.columns.template.setAll({
-											tooltipText: "{name}, {categoryY}: {valueX}",
+											tooltipText: "{name} {valueX}",
+											// tooltipText: "{name}, {categoryY}: {valueX}",
 											tooltipY: am5.percent(90)
 										});
 										series.data.setAll(data);
