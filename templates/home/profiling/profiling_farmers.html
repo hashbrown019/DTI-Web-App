@@ -3,7 +3,11 @@
 							<div class="x-row">
 								<div class="x-bottombar x-border-teal x-row">
 									<div class="x-btn x-left x-container ">
-										<i class="x-text-grey">Displaying <b id="prof_farmer_count">0</b> File/s</i>
+										<i class="x-text-grey">
+											Displaying <b id="prof_farmer_count">0</b> Profiles of
+											 <span id="scan_view"><span id="scan_item"></span>/</span>
+											<b id="prof_farmer_count_all">0</b> total records
+										</i>
 									</div>
 									<div class="x-button x-right x-text-orange x-hover-orange" onclick="export_farmer_excel()">
 										<b>Export Data</b> | <span class="fa fa-download"></span>
@@ -96,7 +100,7 @@
 								var _reg = person.addr_region
 								var _brg = person.addr_brgy
 
-								if(FILTER_SEL_REG=="all" ||FILTER_SEL_REG==undefined){return true}
+								if(FILTER_SEL_REG=="all" ||FILTER_SEL_REG==undefined){SPINNER_LOADER.show();return true}
 
 								if(_reg==FILTER_SEL_REG){
 									if(FILTER_SEL_PROV=="all" ||FILTER_SEL_PROV==undefined){return true}
@@ -245,13 +249,15 @@
 										conso_all() // IF DONE in POPULATING list . CREATING DASHBOARD @ profiling_dashboard.html
 									}
 									FILTER_total_recors_farmer_counter += 1
-									$ID("prof_farmer_count").innerHTML = FILTER_total_recors_farmer_counter
+									$ID("prof_farmer_count").innerHTML = FILTER_total_recors_farmer_counter;
+									$ID("scan_item").innerHTML = FILTER_total_recors_farmer_counter;
 
 								}
 
 								ALL_FARMERS.push(alldata_farmer) // Appended list of farmers for dashboarding
 								total_recors_farmer_counter+= 1
-								$ID("total_num_farmer").innerHTML = total_recors_farmer_counter
+								$ID("total_num_farmer").innerHTML = total_recors_farmer_counter;
+								$ID("prof_farmer_count_all").innerHTML = total_recors_farmer_counter;
 								// println(total_recors_farmer_counter)
 							}
 
