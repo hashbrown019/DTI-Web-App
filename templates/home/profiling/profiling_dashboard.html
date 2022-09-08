@@ -81,6 +81,23 @@
 										category[FARMER['farmer-primary_crop']] = 'none'
 									}catch(e){}
 
+									
+									try{
+										if(FARMER['farmer_sex']=='Female'){
+											count_all_female += 1
+											dash_conso[FARMER['farmer-primary_crop']]['female'] += 1
+										}
+										if(FARMER['farmer_sex']=='Male'){
+											count_all_male += 1
+											dash_conso[FARMER['farmer-primary_crop']]['male'] += 1
+										}
+
+									}
+									catch(e){
+										println(e)
+										count_all_sex_untagged += 1
+									}
+
 
 								}
 								var ff = count_all_female -1
