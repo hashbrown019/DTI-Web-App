@@ -74,13 +74,14 @@
 							}
 
 							function upload_excel(){
+								SPINNER_LOADER.show()
 								var uploader_id  = ("{{USER_DATA['id']}}")
 								$send({
 									action : "/excel_upload",
 									data : $DATA({"uploader" : uploader_id}).appendFile($ID("excel_file")),
 									method : POST,
 									func : function(res){
-										$ID("ls_uploaded_excel").innerHTML = res
+										get_uploaded_excel()
 									}
 								})
 							}
@@ -103,6 +104,7 @@
 										}
 
 										$ID("ls_uploaded_excel").innerHTML = ls_excel_card
+										SPINNER_LOADER.hide()
 									}
 								})
 							}
