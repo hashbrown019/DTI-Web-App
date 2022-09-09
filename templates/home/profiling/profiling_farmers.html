@@ -45,8 +45,67 @@
 							let FILTER_SEL_REG, FILTER_SEL_PROV, FILTER_SEL_CITY, FILTER_SEL_BRGY;
 
 							function export_farmer_excel(argument) {staytuned()}
-							function import_farmer_excel(argument) {staytuned()}
 
+
+							function import_farmer_excel(argument) {
+								var excel_upload_dialog = $dialog({
+									title : "import",
+									subtitle : "Spreadsheet Uploader for Farmer's Profiles",
+									content :(`
+										<div class="x-container">
+											<div class="x-row">
+												<input id="excel_file" type="file" class="x-col l8 x-input x-file x-border"  accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" multiple>
+												<button class="x-input x-btn x-green x-col l4" onclick="upload_excel()">
+													Upload
+												</button>
+											</div>
+											<div class="x-padding x-container">
+												<hr>
+												<b class="x-text-teal">Uploaded Spreadsheets</b><br>
+												<div id="ls_uploaded_excel" class="x-container">
+												</div>
+											</div>
+											<hr>
+										</div>
+									`)
+								})
+								excel_upload_dialog.show()
+								get_uploaded_excel()
+							}
+
+							function upload_excel(){
+								var uploader_id  = ("{{USER_DATA['id']}}")
+								$send({
+									action : "/excel_upload",
+									data : $DATA({"uploader" : uploader_id}).appendFile($ID("excel_file")),
+									method : POST,
+									func : function(res){
+										$ID("ls_uploaded_excel").innerHTML = res
+									}
+								})
+							}
+							function get_uploaded_excel(){
+								var uploader_id  = ("{{USER_DATA['id']}}")
+								$send({
+									action : "/get_uploaded_excel",
+									method : POST,
+									func : function(res){
+										var ls_excel = JSON.parse(res)
+										var ls_excel_card = ""
+
+										for (var i = 0; i < ls_excel.length; i++) {
+											ls_excel_card += (`
+												<div class="x-row">
+													<span class="x-pale-yellow x-text-yellow x-leftbar x-border-yellow">[On System Checking]</span>
+													<span>`+ls_excel[i]+`</span>
+												</div>
+											`)
+										}
+
+										$ID("ls_uploaded_excel").innerHTML = ls_excel_card
+									}
+								})
+							}
 							
 							get_ls_region()
 							function get_ls_region(){
@@ -299,7 +358,7 @@
 									prof_pic = "../static/img/user.png"
 								}
 								var farmer_dialog_info = $dialog({
-									title : person.farmer_name + "|| <span class='x-small'>[This feature is under Development]</span>",
+									title : person.farmer_name + "|| <span class='x-small x-text'>[This feature is under Development]</span>",
 									subtitle :( `
 										<span class="x-tiny">
 											<span>`+person.addr_street_purok_sitio+`</span> 
@@ -326,7 +385,7 @@
 									`),
 									footer_content :(`
 										<div class="x-row">
-											<span>
+											<span onclick = "get_form_data()">
 												Encoded by: 
 												<b>
 													`+person.input_by.name+` | 
@@ -366,6 +425,17 @@
 										})
 									}
 								})
+							}
+							let form_f_names = []
+							function get_form_data(){
+								var form_data_a = $CLASS("form_data_a")
+								var f_list = []
+
+								for (var i = 0; i < form_data_a.length; i++) {
+									f_list.push(form_data_a[i].id)
+								}
+								form_f_names.push(f_list)
+								println(f_list)
 							}
 
 
