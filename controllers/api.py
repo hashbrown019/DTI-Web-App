@@ -286,9 +286,6 @@ class _main:
 
 
 
-
-
-
 	@app.route("/api/todbdti",methods=["POST","GET"])
 	def todbdti():
 		data = json.loads(request.form["data"])
