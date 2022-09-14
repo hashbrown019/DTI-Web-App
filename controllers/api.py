@@ -328,7 +328,6 @@ class _main:
 					fr_s.close()
 					# # print(_data[])
 					# print(type(_data))
-
 					print(_data["farmer_name"])
 					# return "0"
 					res.append(path)

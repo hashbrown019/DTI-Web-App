@@ -36,8 +36,16 @@
 								</div>
 							</div>
 							<hr>
-							<div id="profile_list" class="x-row" style=";overflow-y:scroll;height: 60vh;">
-								------- List Of Profiles ------
+							<div class="x-row">
+								<div id="profile_list" class="x-row x-col l9" style=";overflow-y:scroll;height: 60vh;">
+									------- List Of Profiles ------
+								</div>
+								<div class="x-row x-col l3" style=";overflow-y:scroll;height: 60vh;">
+									<b class="x-text-teal">Enumerators</b>
+									<div id="ls_enumerators" class="x-container x-row">
+										
+									</div>
+								</div>
 							</div>
 						</div>
 						<script type="text/javascript">
@@ -115,6 +123,7 @@
 								for(key in ALL_LOCATION){
 									ls_all_reg += '<option value="'+key+'">'+key+'</option>'
 								}
+								ls_all_reg += '<option value="">Untagged</option>'
 								$ID("dash_sel_region").innerHTML = ls_all_reg
 							}
 
@@ -215,6 +224,8 @@
 
 								$ID("total_num_farmer").innerHTML = 0 // DASHBOARD
 
+								enumerator_encoded_num = {}
+
 								println(FILTER_SEL_REG, FILTER_SEL_PROV, FILTER_SEL_CITY, FILTER_SEL_BRGY)
 
 								total_recors_farmer_counter = 0
@@ -233,9 +244,11 @@
 
 							let total_recors_farmer_counter = 0
 							let FILTER_total_recors_farmer_counter = 0
+							let enumerator_encoded_num = {}
 							function get_profile(_file_name,total_recors_farmer, f_FILE){
 								total_recors_farmer_counter = 0
 								FILTER_total_recors_farmer_counter = 0
+								enumerator_encoded_num = {}
 								ALL_FARMERS = []
 
 								$send({
@@ -259,7 +272,7 @@
 							}
 
 							function make_ls_farmer(alldata_farmer,total_recors_farmer){
-								println(total_recors_farmer)
+								// println(total_recors_farmer)
 								if(filterByArea(alldata_farmer)){
 									// var file_profile = alldata_farmer['profile']
 									var file_profile = alldata_farmer
@@ -274,7 +287,12 @@
 									}catch(e){
 										console.log(" - Error in base64 images ")
 									}
-									// println(person)
+									var enc_name = (person.input_by.name)
+									
+									if(enumerator_encoded_num[enc_name]==undefined){
+										enumerator_encoded_num[enc_name]= 0
+									}
+									enumerator_encoded_num[enc_name] += 1
 
 									$ID("profile_list").innerHTML += `
 									<div class="x-row x-hover-teal x-padding" id="`+person.farmer_code+`" onclick="get_ind('`+person.farmer_code+`')">
@@ -319,7 +337,23 @@
 								total_recors_farmer_counter+= 1
 								$ID("total_num_farmer").innerHTML = total_recors_farmer_counter;
 								$ID("prof_farmer_count_all").innerHTML = total_recors_farmer_counter;
+								num_enumerator_encoded()
 								// println(total_recors_farmer_counter)
+							}
+
+							function num_enumerator_encoded(){
+								var skrt = ""
+								for(key in enumerator_encoded_num){
+									skrt += (`
+										<span class="x-text-grey">
+											`+key+` : 
+											<b class="x-text-black">
+												`+enumerator_encoded_num[key]+`
+											</b>
+										</span><br>
+									`)
+								}
+								$ID("ls_enumerators").innerHTML = skrt
 							}
 
 							function get_ind(fid){
@@ -397,6 +431,7 @@
 										</div>
 									`),
 									buttons : ["Okay"]
+
 								})
 								farmer_dialog_info.elements[0].style.width = "70vw"
 								farmer_dialog_info.show()
