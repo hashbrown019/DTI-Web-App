@@ -40,6 +40,9 @@ class _main:
 		prof_1 = "ERROR"
 		# try:
 		prof_1 = json.loads(json.loads(strsd))
+		if(prof_1['addr_region']==""):
+			prof_1['addr_region'] = 'Untagged'
+		prof_1['addr_region'] = prof_1['addr_region'].replace(" ","")
 		prof_1['farmer_img_base64'] = ""
 
 		USER = rapid.select("SELECT * FROM `users` WHERE `id`={} ORDER BY `name` ASC; ".format(prof_1["USER_ID"]))
@@ -62,6 +65,9 @@ class _main:
 		prof_1 = "ERROR"
 		# try:
 		prof_1 = json.loads(json.loads(strsd))
+		if(prof_1['addr_region']==""):
+			prof_1['addr_region'] = 'Untagged'
+		prof_1['addr_region'] = prof_1['addr_region'].replace(" ","")
 		# prof_1['farmer_img_base64'] = "" # REMOVES BASE64 Data
 
 		USER = rapid.select("SELECT * FROM `users` WHERE `id`={} ORDER BY `name` ASC; ".format(prof_1["USER_ID"]))

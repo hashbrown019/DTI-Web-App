@@ -37,7 +37,7 @@
 
 
 						<script type="text/javascript">
-
+							let CONSO_LISTED_REGIONS = {}
 
 							function conso_all(___ALL_FARMERS){
 								var sex = {}
@@ -56,12 +56,11 @@
 									if(typeof(FARMER)=='undefined'){
 										continue;
 									}
-
-
+									CONSO_LISTED_REGIONS[FARMER['addr_region']] = {}
 									FARMER['addr_region'] = FARMER['addr_region'].replace(" ","")
-									if(FARMER['addr_region']==""){
-										FARMER['addr_region'] = "Untagged"
-									}
+									// if(FARMER['addr_region']==""){
+									// 	FARMER['addr_region'] = "Untagged"
+									// }
 
 									if(("Region: "+FARMER['addr_region']) in dash_conso){} //if wala pay region sa list
 									else{
@@ -102,6 +101,7 @@
 								root = undefined
 								SPINNER_LOADER.hide()
 								chart_gender_vc(data_for_chart,category)
+								get_ls_region()
 							}
 
 							let chart, root

@@ -41,7 +41,9 @@
 			<div id="profile_list" class="x-row" style="overflow-y:scroll;height: 60vh;">
 				<div class="x-container x-center">
 					<br>
-					Please select and filter area using the selection above to view the list of Farmers
+					<span class="x-large x-text-teal">
+						Please select and filter area using the selection above to view the list of Farmers
+					</span>
 				</div>
 			</div>
 		</div>
@@ -124,13 +126,15 @@
 		})
 	}
 	
-	get_ls_region()
 	function get_ls_region(){
 		var ls_all_reg = '<option type="" value="all" selected>All Regions</option>'
 		for(key in ALL_LOCATION){
 			ls_all_reg += '<option value="'+key+'">'+key+'</option>'
+			delete CONSO_LISTED_REGIONS[key]
 		}
-		ls_all_reg += '<option value="">Untagged</option>'
+		for(key_untagg in CONSO_LISTED_REGIONS){
+			ls_all_reg += '<option class="x-pale-red" value="'+key_untagg+'">untagged : '+key_untagg+'♦</option>'
+		}
 		$ID("dash_sel_region").innerHTML = ls_all_reg
 	}
 
@@ -214,11 +218,14 @@
 
 				ALL_FARMERS=ls_file_farmer
 				conso_all(ALL_FARMERS)
+				populate_farm_list_for_numbers(ALL_FARMERS)
 			}
 		})
 	}
 
+
 	function populate_farm_list_for_numbers(ALL_FARMERS____){
+		LS_FARMER_VIEW =""
 		var FILTER_total_recors_farmer_counter = 0
 		$ID("profile_list").innerHTML = ""
 		async_num_farmer_count= 0
@@ -236,6 +243,11 @@
 		SPINNER_LOADER.hide()
 	}
 
+	let LS_FARMER_VIEW =""
+	function post_farmer_ls(){
+		$ID("profile_list").innerHTML =LS_FARMER_VIEW
+	}
+
 	let async_num_farmer_count = 0
 	async function make_ls_farmer(alldata_farmer,total_recors_farmer,total_recors_farmer_counter){
 		await new Promise(resolve => setTimeout(SKKKR, 10)); // WAIT FOR n.. SECONDS
@@ -243,9 +255,9 @@
 			async_num_farmer_count += 1
 			$ID("prof_farmer_count").innerHTML = async_num_farmer_count
 			var person = alldata_farmer
-			var ls_farmer_view =""
 			var prof_pic = ""
-			$ID("profile_list").innerHTML = `
+			// $ID("profile_list").innerHTML = `
+			LS_FARMER_VIEW = `
 			<div class="x-row x-hover-teal x-padding" id="`+person.farmer_code+`" onclick="get_ind('`+person.farmer_code+`')">
 				<div class='x-row'>
 					<div class="x-col l1">
@@ -269,8 +281,14 @@
 						<b class="x-large">--%</b><br>
 					</div>
 				</div>
-				<span class="x-tiny x-text-grey x-right"><b>`+total_recors_farmer_counter+`</b>-`+person.farmer_code+`</span>
-			</div>` + $ID("profile_list").innerHTML
+				<span class="x-tiny x-text-grey x-right">
+					<b>`+async_num_farmer_count+`:`+total_recors_farmer_counter+`</b>-`+person.farmer_code+`
+				</span>
+			</div>` + LS_FARMER_VIEW
+
+			if(async_num_farmer_count >= parseInt($ID("scan_item").innerHTML)){
+				post_farmer_ls()
+			}
 		}
 	}
 
@@ -281,22 +299,29 @@
 		var skrt = ""
 		for(key in enumerator_encoded_num){
 			skrt += (`
-				<span class="x-text-grey">
-					`+key+` : 
-					<b class="x-text-black">
-						`+enumerator_encoded_num[key]+`
-					</b>
-				</span><br>
+				<div class="x-text-grey x-row x-padding x-border-dashed">
+					<div class="x-col l2 x-text-black x-padding">
+						<b class="x-large x-right">`+enumerator_encoded_num[key].num+`</b>
+					</div>
+					<div class="x-col l8">
+						`+key+` : 
+						<br>
+						<span class="x-tiny">`+enumerator_encoded_num[key].user.rcu+`</span> | 
+						<span class="x-tiny">`+enumerator_encoded_num[key].user.pcu+`</span>
+					</div>
+				</div>
 			`)
 		}
 		$ID("ls_enumerators").innerHTML = skrt
+		return skrt
 	}
 
 	function popu_enumerator_encoded(farmer){
 		if(enumerator_encoded_num[farmer.input_by.name]==undefined){
-			enumerator_encoded_num[farmer.input_by.name] = 0
+			enumerator_encoded_num[farmer.input_by.name] = {"num":0 , "user":{}}
 		}
-		enumerator_encoded_num[farmer.input_by.name] += 1
+		enumerator_encoded_num[farmer.input_by.name].num += 1
+		enumerator_encoded_num[farmer.input_by.name].user = farmer.input_by
 	}
 
 
