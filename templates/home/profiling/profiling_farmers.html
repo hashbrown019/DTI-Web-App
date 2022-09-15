@@ -1,552 +1,503 @@
-						<div class=" x-container x-white">
-							<h3 class="x-padding x-text-teal">Profile List</h3>
-							<div class="x-row">
-								<div class="x-bottombar x-border-teal x-row">
-									<div class="x-btn x-left x-container ">
-										<i class="x-text-grey">
-											Displaying <b id="prof_farmer_count">0</b> Profiles of
-											 <span id="scan_view"><span id="scan_item"></span>/</span>
-											<b id="prof_farmer_count_all">0</b> total records
-										</i>
-									</div>
-									<div class="x-button x-right x-text-orange x-hover-orange" onclick="export_farmer_excel()">
-										<b>Export Data</b> | <span class="fa fa-download"></span>
-									</div>
-									<div class="x-button x-right x-text-blue x-hover-blue" onclick="import_farmer_excel()">
-										<b>Import Spreadsheet</b> | <span class="fa fa-upload"></span>
-									</div>
-								</div>
+<div class=" x-container x-white">
+	<h3 class="x-padding x-text-teal">Profile List</h3>
+	<div class="x-row">
+		<div class="x-bottombar x-border-teal x-row">
+			<div class="x-btn x-left x-container ">
+				<i class="x-text-grey">
+					Displaying <b id="prof_farmer_count">0</b> Profiles of
+					 <span id="scan_view"><span id="scan_item"></span>/</span>
+					<b id="prof_farmer_count_all">0</b> total records
+				</i>
+			</div>
+			<div class="x-button x-right x-text-orange x-hover-orange" onclick="export_farmer_excel()">
+				<b>Export Data</b> | <span class="fa fa-download"></span>
+			</div>
+			<div class="x-button x-right x-text-blue x-hover-blue" onclick="import_farmer_excel()">
+				<b>Import Spreadsheet</b> | <span class="fa fa-upload"></span>
+			</div>
+		</div>
 
-								<div class="x-container x-padding">
-									<select id="dash_sel_region" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" onchange="get_ls_prov(this.value)">
-										<option type="" value="all" selected>All Region</option>
-									</select>
-									<select id="dash_sel_prov" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" disabled onchange="get_ls_city(this.value)">
-										<option type="" value="all" selected>All Provinces</option>
-									</select>
-									<select id="dash_sel_city" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" disabled onchange="get_ls_brgy(this.value)">
-										<option type="" value="all" selected>All Cities/Municipalities</option>
-									</select>
-									<select id="dash_sel_brgy" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" disabled  onchange="get_ls_all_area(this.value)">
-										<option type="" value="all" selected>All Brgy</option>
-									</select>
-									<button class="x-input x-btn x-col l1 x-green x-round-xlarge" onclick="conso_area()">
-										Filter <span class="fa fa-filter"></span>
-									</button>
-								</div>
-							</div>
-							<hr>
-							<div class="x-row">
-								<div id="profile_list" class="x-row x-col l8" style=";overflow-y:scroll;height: 60vh;">
-									------- List Of Profiles ------
-								</div>
-								<div class="x-row x-padding x-bottombar x-col l4" style=";overflow-y:scroll;height: 60vh;">
-									<b class="x-text-teal">Enumerators</b><br>
-									<i class="x-small">This numbers are based on the records that has been <b class="x-pale-blue">SYNCED</b> from the Mobile App to the System and all <b class="x-pale-blue">VERIFIED</b> records from the uploaded Spreadsheet files. any <b class="x-pale-red">Unsynced</b> records on the mobile app and all records from <b class="x-pale-red">'On-System-Checking'</b> Spreadsheet files will not be counted</i>
-									<div id="ls_enumerators" class="x-container x-row">
-										
-									</div>
-									<hr>
-								</div>
-							</div>
+		<div class="x-container x-padding">
+			<select id="dash_sel_region" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" onchange="get_ls_prov(this.value)">
+				<option type="" value="all" selected>All Region</option>
+			</select>
+			<select id="dash_sel_prov" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" disabled onchange="get_ls_city(this.value)">
+				<option type="" value="all" selected>All Provinces</option>
+			</select>
+			<select id="dash_sel_city" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" disabled onchange="get_ls_brgy(this.value)">
+				<option type="" value="all" selected>All Cities/Municipalities</option>
+			</select>
+			<select id="dash_sel_brgy" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" disabled  onchange="get_ls_all_area(this.value)">
+				<option type="" value="all" selected>All Brgy</option>
+			</select>
+			<button class="x-input x-btn x-col l1 x-green x-round-xlarge" onclick="conso_area()">
+				Filter <span class="fa fa-filter"></span>
+			</button>
+		</div>
+	</div>
+	<hr>
+	<div class="x-row">
+		<div class=" x-col l8">
+			<div id="profile_list" class="x-row" style="overflow-y:scroll;height: 60vh;">
+				<div class="x-display-container">
+					<div class="x-display-middle">
+						no Data
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="x-row x-padding x-bottombar x-col l4" style=";overflow-y:scroll;height: 60vh;">
+			<b class="x-text-teal">Enumerators</b><br>
+			<i class="x-small">This numbers are based on the records that has been <b class="x-pale-blue">SYNCED</b> from the Mobile App to the System and all <b class="x-pale-blue">VERIFIED</b> records from the uploaded Spreadsheet files. any <b class="x-pale-red">Unsynced</b> records on the mobile app and all records from <b class="x-pale-red">'On-System-Checking'</b> Spreadsheet files will not be counted</i>
+			<div id="ls_enumerators" class="x-container x-row">
+				
+			</div>
+			<hr>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	let ALL_FARMERS = [], enumerator_encoded_num
+	let FILTER_SEL_REG, FILTER_SEL_PROV, FILTER_SEL_CITY, FILTER_SEL_BRGY;
+
+	function export_farmer_excel(argument) {staytuned()}
+
+
+	function import_farmer_excel(argument) {
+		var excel_upload_dialog = $dialog({
+			title : "import",
+			subtitle : "Spreadsheet Uploader for Farmer's Profiles",
+			content :(`
+				<div class="x-container">
+					<div class="x-row">
+						<input id="excel_file" type="file" class="x-col l8 x-input x-file x-border"  accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" multiple>
+						<button class="x-input x-btn x-green x-col l4" onclick="upload_excel()">
+							Upload
+						</button>
+					</div>
+					<div class="x-padding x-container">
+						<hr>
+						<b class="x-text-teal">Uploaded Spreadsheets</b><br>
+						<div id="ls_uploaded_excel" class="x-container">
 						</div>
-						<script type="text/javascript">
-							let ALL_FARMERS = []
-							let FILTER_SEL_REG, FILTER_SEL_PROV, FILTER_SEL_CITY, FILTER_SEL_BRGY;
+					</div>
+					<hr>
+				</div>
+			`)
+		})
+		excel_upload_dialog.show()
+		get_uploaded_excel()
+	}
 
-							function export_farmer_excel(argument) {staytuned()}
+	function upload_excel(){
+		SPINNER_LOADER.show()
+		var uploader_id  = ("{{USER_DATA['id']}}")
+		$send({
+			action : "/excel_upload",
+			data : $DATA({"uploader" : uploader_id}).appendFile($ID("excel_file")),
+			method : POST,
+			func : function(res){
+				get_uploaded_excel()
+			}
+		})
+	}
+	function get_uploaded_excel(){
+		var uploader_id  = ("{{USER_DATA['id']}}")
+		$send({
+			action : "/get_uploaded_excel",
+			method : POST,
+			func : function(res){
+				var ls_excel = JSON.parse(res)
+				var ls_excel_card = ""
 
+				for (var i = 0; i < ls_excel.length; i++) {
+					ls_excel_card += (`
+						<div class="x-row">
+							<b class="x-pale-yellow x-text-yellow x-leftbar x-border-yellow">[On System Checking]</b>
+							<span>`+ls_excel[i]+`</span>
+						</div>
+					`)
+				}
 
-							function import_farmer_excel(argument) {
-								var excel_upload_dialog = $dialog({
-									title : "import",
-									subtitle : "Spreadsheet Uploader for Farmer's Profiles",
-									content :(`
-										<div class="x-container">
-											<div class="x-row">
-												<input id="excel_file" type="file" class="x-col l8 x-input x-file x-border"  accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" multiple>
-												<button class="x-input x-btn x-green x-col l4" onclick="upload_excel()">
-													Upload
-												</button>
-											</div>
-											<div class="x-padding x-container">
-												<hr>
-												<b class="x-text-teal">Uploaded Spreadsheets</b><br>
-												<div id="ls_uploaded_excel" class="x-container">
-												</div>
-											</div>
-											<hr>
-										</div>
-									`)
-								})
-								excel_upload_dialog.show()
-								get_uploaded_excel()
-							}
+				$ID("ls_uploaded_excel").innerHTML = ls_excel_card
+				SPINNER_LOADER.hide()
+			}
+		})
+	}
+	
+	get_ls_region()
+	function get_ls_region(){
+		var ls_all_reg = '<option type="" value="all" selected>All Regions</option>'
+		for(key in ALL_LOCATION){
+			ls_all_reg += '<option value="'+key+'">'+key+'</option>'
+		}
+		ls_all_reg += '<option value="">Untagged</option>'
+		$ID("dash_sel_region").innerHTML = ls_all_reg
+	}
 
-							function upload_excel(){
-								SPINNER_LOADER.show()
-								var uploader_id  = ("{{USER_DATA['id']}}")
-								$send({
-									action : "/excel_upload",
-									data : $DATA({"uploader" : uploader_id}).appendFile($ID("excel_file")),
-									method : POST,
-									func : function(res){
-										get_uploaded_excel()
-									}
-								})
-							}
-							function get_uploaded_excel(){
-								var uploader_id  = ("{{USER_DATA['id']}}")
-								$send({
-									action : "/get_uploaded_excel",
-									method : POST,
-									func : function(res){
-										var ls_excel = JSON.parse(res)
-										var ls_excel_card = ""
+	function get_ls_prov(reg){
+		var ls_all_prov = '<option type="" value="all" selected>All Provinces</option>'
+		SEL_REG = reg
+		for(key in ALL_LOCATION[reg]["province_list"]){ls_all_prov += '<option value="'+key+'">'+key+'</option>'}
+		$ID("dash_sel_prov").innerHTML = ls_all_prov;$ID("dash_sel_prov").disabled = false
 
-										for (var i = 0; i < ls_excel.length; i++) {
-											ls_excel_card += (`
-												<div class="x-row">
-													<b class="x-pale-yellow x-text-yellow x-leftbar x-border-yellow">[On System Checking]</b>
-													<span>`+ls_excel[i]+`</span>
-												</div>
-											`)
-										}
+	}
 
-										$ID("ls_uploaded_excel").innerHTML = ls_excel_card
-										SPINNER_LOADER.hide()
-									}
-								})
-							}
-							
-							get_ls_region()
-							function get_ls_region(){
-								var ls_all_reg = '<option type="" value="all" selected>All Regions</option>'
-								for(key in ALL_LOCATION){
-									ls_all_reg += '<option value="'+key+'">'+key+'</option>'
-								}
-								ls_all_reg += '<option value="">Untagged</option>'
-								$ID("dash_sel_region").innerHTML = ls_all_reg
-							}
+	function get_ls_city(prov){
+		var ls_all_city = '<option type="" value="all" selected>All Cities/Municipalities</option>'
+		SEL_PROV = prov
+		for(key in ALL_LOCATION[SEL_REG]["province_list"][prov]['municipality_list']){ls_all_city += '<option value="'+key+'">'+key+'</option>'}
+		$ID("dash_sel_city").innerHTML = ls_all_city;$ID("dash_sel_city").disabled = false
+	}
 
-							function get_ls_prov(reg){
-								var ls_all_prov = '<option type="" value="all" selected>All Provinces</option>'
-								SEL_REG = reg
-								for(key in ALL_LOCATION[reg]["province_list"]){ls_all_prov += '<option value="'+key+'">'+key+'</option>'}
-								$ID("dash_sel_prov").innerHTML = ls_all_prov;$ID("dash_sel_prov").disabled = false
+	function get_ls_brgy(city){
+		var ls_all_brgy = '<option type="" value="all" selected>All Barangay</option>'
+		SEL_CITY = city
+		var brgys = ALL_LOCATION[SEL_REG]["province_list"][SEL_PROV]['municipality_list'][city]["barangay_list"]
+		for (var i = 0; i < brgys.length; i++) {ls_all_brgy += '<option value="'+brgys[i]+'">'+brgys[i]+'</option>'}
+		$ID("dash_sel_brgy").innerHTML = ls_all_brgy;$ID("dash_sel_brgy").disabled = false
+	}
 
-							}
+	function get_ls_all_area(brgy){SEL_BRGY=brgy}
 
-							function get_ls_city(prov){
-								var ls_all_city = '<option type="" value="all" selected>All Cities/Municipalities</option>'
-								SEL_PROV = prov
-								for(key in ALL_LOCATION[SEL_REG]["province_list"][prov]['municipality_list']){ls_all_city += '<option value="'+key+'">'+key+'</option>'}
-								$ID("dash_sel_city").innerHTML = ls_all_city;$ID("dash_sel_city").disabled = false
-							}
+	function filterByArea(person){
+		var _prk= person.addr_street_purok_sitio 
+		var _city = person.addr_city
+		var _prov= person.addr_prov
+		var _reg = person.addr_region
+		var _brg = person.addr_brgy
 
-							function get_ls_brgy(city){
-								var ls_all_brgy = '<option type="" value="all" selected>All Barangay</option>'
-								SEL_CITY = city
-								var brgys = ALL_LOCATION[SEL_REG]["province_list"][SEL_PROV]['municipality_list'][city]["barangay_list"]
-								for (var i = 0; i < brgys.length; i++) {ls_all_brgy += '<option value="'+brgys[i]+'">'+brgys[i]+'</option>'}
-								$ID("dash_sel_brgy").innerHTML = ls_all_brgy;$ID("dash_sel_brgy").disabled = false
-							}
+		if(FILTER_SEL_REG=="all" ||FILTER_SEL_REG==undefined){SPINNER_LOADER.show();return true}
 
-							function get_ls_all_area(brgy){SEL_BRGY=brgy}
-
-							function staytuned(){
-								var stay_tuned = $dialog({
-									title : "Stay Tuned",
-									type : "warning",
-									subtitle : "Feature under Development",
-									content : "Please stay tuned as we configure this feature for you. it wont take long",
-								})
-
-								stay_tuned.show()
-							}
-
-							function filterByArea(person){
-								var _prk= person.addr_street_purok_sitio 
-								var _city = person.addr_city
-								var _prov= person.addr_prov
-								var _reg = person.addr_region
-								var _brg = person.addr_brgy
-
-								if(FILTER_SEL_REG=="all" ||FILTER_SEL_REG==undefined){SPINNER_LOADER.show();return true}
-
-								if(_reg==FILTER_SEL_REG){
-									if(FILTER_SEL_PROV=="all" ||FILTER_SEL_PROV==undefined){return true}
-									else{
-										if(_prov==FILTER_SEL_PROV){
-											if(FILTER_SEL_CITY=="all" ||FILTER_SEL_CITY==undefined){return true}
-											else{
-												if(_city==FILTER_SEL_CITY){
-													if(FILTER_SEL_BRGY=="all" ||FILTER_SEL_BRGY==undefined){return true}
-													else{
-														if(_brg==FILTER_SEL_BRGY){return true}
-														else{return false}
-													}
-												}
-											}
-										}
-									}
-								}
+		if(_reg==FILTER_SEL_REG){
+			if(FILTER_SEL_PROV=="all" ||FILTER_SEL_PROV==undefined){return true}
+			else{
+				if(_prov==FILTER_SEL_PROV){
+					if(FILTER_SEL_CITY=="all" ||FILTER_SEL_CITY==undefined){return true}
+					else{
+						if(_city==FILTER_SEL_CITY){
+							if(FILTER_SEL_BRGY=="all" ||FILTER_SEL_BRGY==undefined){return true}
+							else{
+								if(_brg==FILTER_SEL_BRGY){return true}
 								else{return false}
 							}
+						}
+					}
+				}
+			}
+		}
+		else{return false}
+	}
 
-							function get_list_file(){ // For Inititalizing list in profiling/profiling_farmers.html
-								SPINNER_LOADER.show()
-								$ID("profile_list").innerHTML = ""
-								println(" * Getting List of Profiles")
-								$send({
-									action:"/api/list_all_profile",
-									method: POST,
-									func : function(res){
-										ls_file_farmer = JSON.parse(res)
-										println(ls_file_farmer)
-										$ID("profile_list").innerHTML = ""
-										for (var i = 0; i < ls_file_farmer.length; i++) {
-											// println(ls_file_farmer[i])
-											get_profile(ls_file_farmer[i], ls_file_farmer.length, ls_file_farmer)
-										}
-									}
-								})
-							}
+	async function conso_area(){
+		SPINNER_LOADER.show()
+		await new Promise(resolve => setTimeout(resolve, 1000)); // WAIT FOR 1 SECONDS
+		FILTER_SEL_REG = $ID("dash_sel_region").value
+		FILTER_SEL_PROV = $ID("dash_sel_prov").value
+		FILTER_SEL_CITY = $ID("dash_sel_city").value
+		FILTER_SEL_BRGY = $ID("dash_sel_brgy").value
+		enumerator_encoded_num = {}
+		total_recors_farmer_counter = 0
+		populate_farm_list_for_numbers(ALL_FARMERS)
+	}
 
+	function get_list_file(){ // For Inititalizing list in profiling/profiling_farmers.html
+		SPINNER_LOADER.show()
+		println(" * Getting List of Profiles")
+		$send({
+			action:"/api/list_all_profile",
+			method: POST,
+			func : function(res){
+				ls_file_farmer = JSON.parse(res)
+				println(ls_file_farmer)
+				$ID("prof_farmer_count_all").innerHTML = ls_file_farmer.length
+				enumerator_encoded_num = {}
+				
+				ALL_FARMERS=ls_file_farmer
+				conso_all(ALL_FARMERS)
+				// populate_farm_list_for_numbers(ALL_FARMERS)
+				// for (var f_counter = 0; f_counter < ls_file_farmer.length; f_counter++) {
+				// 	ALL_FARMERS.push(ls_file_farmer[f_counter])
+				// 	popu_enumerator_encoded(ls_file_farmer[f_counter])
+				// 	// println(ls_file_farmer[i])
+				// 	// make_ls_farmer(ls_file_farmer[f_counter], ls_file_farmer.length, f_counter)
+				// }
+				// $ID("scan_item").innerHTML = f_counter
+				// $ID("profile_list").style.display = "block"
+				// conso_all(ALL_FARMERS)
+				// num_enumerator_encoded()
+				// SPINNER_LOADER.hide()
+			}
+		})
+	}
 
+	function populate_farm_list_for_numbers(ALL_FARMERS____){
+		var FILTER_total_recors_farmer_counter = 0
+		$ID("profile_list").innerHTML = ""
+		async_num_farmer_count= 0
+		for (var f_counter = 0;f_counter < ALL_FARMERS____.length;f_counter++) {
+			if(filterByArea(ALL_FARMERS____[f_counter])){
+				make_ls_farmer(ALL_FARMERS____[f_counter],ALL_FARMERS____.length,f_counter)
+				popu_enumerator_encoded(ALL_FARMERS____[f_counter])
+				$ID("scan_item").innerHTML = FILTER_total_recors_farmer_counter
+				FILTER_total_recors_farmer_counter += 1
+			}
+		}
+		$ID("scan_item").innerHTML = FILTER_total_recors_farmer_counter
+		$ID("profile_list").style.display = "block"
+		num_enumerator_encoded()
+		SPINNER_LOADER.hide()
+	}
 
-							function conso_area(){
-								$ID("profile_list").innerHTML = ""
-								FILTER_SEL_REG = $ID("dash_sel_region").value
-								FILTER_SEL_PROV = $ID("dash_sel_prov").value
-								FILTER_SEL_CITY = $ID("dash_sel_city").value
-								FILTER_SEL_BRGY = $ID("dash_sel_brgy").value
-
-								$ID("prof_farmer_count").innerHTML = 0 // LIST NUMBER
-
-								$ID("total_num_farmer").innerHTML = 0 // DASHBOARD
-
-								enumerator_encoded_num = {}
-
-								println(FILTER_SEL_REG, FILTER_SEL_PROV, FILTER_SEL_CITY, FILTER_SEL_BRGY)
-
-								total_recors_farmer_counter = 0
-								FILTER_total_recors_farmer_counter = 0
-
-								var temp_data_farmer = ALL_FARMERS
-								ALL_FARMERS = []
-								for (var i = 0; i < temp_data_farmer.length; i++) {
-									make_ls_farmer(temp_data_farmer[i],temp_data_farmer.length)
-									// println(temp_data_farmer[i].farmer_name)
-									// println(temp_data_farmer.length)
-								}	
-								// get_list_file()
-								// conso_all()
-							}
-
-							let total_recors_farmer_counter = 0
-							let FILTER_total_recors_farmer_counter = 0
-							let enumerator_encoded_num = {}
-							function get_profile(_file_name,total_recors_farmer, f_FILE){
-								total_recors_farmer_counter = 0
-								FILTER_total_recors_farmer_counter = 0
-								enumerator_encoded_num = {}
-								ALL_FARMERS = []
-
-								$send({
-									action:"/get_profile",
-									method: POST,
-									// a_sync : true,
-									data : $DATA({"profile_file_name":_file_name}),
-									err : function (e){
-										// println("error")
-									},
-									func : function(res){
-										if(res == `"ERROR"`){
-											println("res oh")
-											println(res)
-											return
-										}
-										var alldata_farmer = JSON.parse(JSON.parse(res))
-										// make_ls_farmer(alldata_farmer,total_recors_farmer)
-									}
-								})
-							}
-
-							function make_ls_farmer(alldata_farmer,total_recors_farmer){
-								// println(total_recors_farmer)
-								if(filterByArea(alldata_farmer)){
-									// var file_profile = alldata_farmer['profile']
-									var file_profile = alldata_farmer
-									var person = file_profile
-									var prof_pic = "../static/img/user.png"
-
-									try{
-										prof_pic = person.farmer_img_base64
-										if(prof_pic=="" || prof_pic==" " || prof_pic==undefined || prof_pic==null || prof_pic=="null"){
-											prof_pic = "../static/img/user.png"
-										}
-									}catch(e){
-										console.log(" - Error in base64 images ")
-									}
-									var enc_name = (person.input_by.name)
-									
-									if(enumerator_encoded_num[enc_name]==undefined){
-										enumerator_encoded_num[enc_name]= 0
-									}
-									enumerator_encoded_num[enc_name] += 1
-
-									$ID("profile_list").innerHTML += `
-									<div class="x-row x-hover-teal x-padding" id="`+person.farmer_code+`" onclick="get_ind('`+person.farmer_code+`')">
-										<div class='x-row'>
-											<div class="x-col l1">
-												<!-- <img loading="lazy" id="img_`+person.farmer_code+`" src="`+prof_pic+`" class="x-image x-round" style="max-width:100%"> -->
-											</div>
-											<div class="x-col l3 x-container">
-												<b class="">`+person.farmer_name+`</b><br>
-												<span class="x-tiny">
-													<span>`+person.addr_street_purok_sitio+`</span> 
-													<span>`+person.addr_city+`</span> 
-													<span>`+person.addr_prov+`</span> 
-													<span>R:`+person.addr_region+`</span> 
-												</span><br>
-											</div>
-											<div class="x-col l3 x-container">
-												<i class=""><span>`+person["farmer-primary_crop"]+`</span> </i><br>
-												<span class="x-tiny">-----</span><br>
-											</div>
-											<div class="x-col l4 x-container x-center">
-												<span class="x-tiny">Form Completion</span><br>
-												<b class="x-large">--%</b><br>
-											</div>
-										</div>
-										<span class="x-tiny x-text-grey x-right"><b>`+total_recors_farmer_counter+`</b>-`+person.farmer_code+`</span>
-
-									</div>`
-									var person = file_profile.profile
-									if(total_recors_farmer_counter>=total_recors_farmer-1 ){
-										// alert("Done Loading ["+total_recors_farmer_counter+"] files")
-										// get_prof_imgs(f_FILE)
-										conso_all() // IF DONE in POPULATING list . CREATING DASHBOARD @ profiling_dashboard.html
-									}
-									FILTER_total_recors_farmer_counter += 1
-									$ID("prof_farmer_count").innerHTML = FILTER_total_recors_farmer_counter;
-									$ID("scan_item").innerHTML = FILTER_total_recors_farmer_counter;
-
-								}
-
-								ALL_FARMERS.push(alldata_farmer) // Appended list of farmers for dashboarding
-								total_recors_farmer_counter+= 1
-								$ID("total_num_farmer").innerHTML = total_recors_farmer_counter;
-								$ID("prof_farmer_count_all").innerHTML = total_recors_farmer_counter;
-								num_enumerator_encoded()
-								// println(total_recors_farmer_counter)
-							}
-
-							function num_enumerator_encoded(){
-								var skrt = ""
-								for(key in enumerator_encoded_num){
-									skrt += (`
-										<span class="x-text-grey">
-											`+key+` : 
-											<b class="x-text-black">
-												`+enumerator_encoded_num[key]+`
-											</b>
-										</span><br>
-									`)
-								}
-								$ID("ls_enumerators").innerHTML = skrt
-							}
-
-							function get_ind(fid){
-								// println(fid)
-								loading.show()
-								$send({
-									// action : "/get_full_profile_str",
-									action : "/get_full_profile",
-									data : $DATA({"profile_file_name":fid+"@profile"}),
-									method : POST,
-									func : function (res) {
-										view_farmer_data(res)
-										// println(JSON.parse(res))
-										// println(res)
-										loading.hide()
-
-									}
-								})
-							}
-
-							function view_farmer_data(res){
-								var form_selection_btn = ""
-								var person = JSON.parse(JSON.parse(res))
-
-								for (var i = 0; i < FORM_A_LS.length; i++) {
-									form_selection_btn +=(`
-										<button class="x-btn x-block x-border"
-										onclick="get_farmer_form('`+person.farmer_code+`@`+FORM_A_LS[i].file+`')">
-											`+FORM_A_LS[i].label+`
-										</button>		
-									`)
-									println()
-								}
-								println(person)
-
-								var prof_pic = person.farmer_img_base64
-								if(prof_pic=="" || prof_pic==" " || prof_pic==undefined){
-									prof_pic = "../static/img/user.png"
-								}
-								var farmer_dialog_info = $dialog({
-									title : person.farmer_name + "|| <span class='x-small x-text'>[This feature is under Development]</span>",
-									subtitle :( `
-										<span class="x-tiny">
-											<span>`+person.addr_street_purok_sitio+`</span> 
-											<span>`+person.addr_city+`</span> 
-											<span>`+person.addr_prov+`</span> 
-											<span>R:`+person.addr_region+`</span> 
-										</span>
-									`),
-									content : (`
-										<div class="x-container x-row">
-											<div class="x-col l3">
-												<div class="x-padding">
-													<img loading="lazy" id="img_`+person.farmer_code+`" src="`+prof_pic+`" class="x-image x-round" style="max-width:100%">
-												</div>
-												`+form_selection_btn+`
-											</div>
-											<div id="form_farmer_a_`+person.farmer_code+`" class="x-col l9 x-padding" style=";overflow-y:scroll;height: 70vh;">
-												<div class="x-container x-center">
-													<br><br><br>
-													<h3>Please Select Form</h3>
-												</div>
-											</div>
-										</div>
-									`),
-									footer_content :(`
-										<div class="x-row">
-											<span onclick = "get_form_data()">
-												Encoded by: 
-												<b>
-													`+person.input_by.name+` | 
-													`+person.input_by.email+`
-												</b>
-											</span>
-										</div>
-									`),
-									buttons : ["Okay"]
-
-								})
-								farmer_dialog_info.elements[0].style.width = "70vw"
-								farmer_dialog_info.show()
-							}
-
-							function get_farmer_form(file_farmer){ // GET SUBform of selected farmer
-								var f_fname = file_farmer.split("@")
-								$ID("form_farmer_a_"+f_fname[0]).innerHTML = file_farmer
-								$send({
-									action : "/get_sub_form_a_template",
-									data : $DATA({"subform_temp":f_fname[1]}),
-									method : POST,
-									func : function (res) {
-										$ID("form_farmer_a_"+f_fname[0]).innerHTML = res
-										
-										$send({
-											action : "/get_sub_form_a",
-											data : $DATA({"subform":file_farmer}),
-											method : POST,
-											func : function (res) {
-												var form_ = JSON.parse(JSON.parse(res))
-												println(form_) 
-												refill_data_forms__(form_)
+	let async_num_farmer_count = 1
+	async function make_ls_farmer(alldata_farmer,total_recors_farmer,total_recors_farmer_counter){
+		await new Promise(resolve => setTimeout(SKKKR, 10)); // WAIT FOR n.. SECONDS
+		function SKKKR() {
+			$ID("prof_farmer_count").innerHTML = async_num_farmer_count
+			var person = alldata_farmer
+			var ls_farmer_view =""
+			var prof_pic = ""
+			$ID("profile_list").innerHTML = `
+			<div class="x-row x-hover-teal x-padding" id="`+person.farmer_code+`" onclick="get_ind('`+person.farmer_code+`')">
+				<div class='x-row'>
+					<div class="x-col l1">
+						<!-- <img loading="lazy" id="img_`+person.farmer_code+`" src="`+prof_pic+`" class="x-image x-round" style="max-width:100%"> -->
+					</div>
+					<div class="x-col l3 x-container">
+						<b class="">`+person.farmer_name+`</b><br>
+						<span class="x-tiny">
+							<span>`+person.addr_street_purok_sitio+`</span> 
+							<span>`+person.addr_city+`</span> 
+							<span>`+person.addr_prov+`</span> 
+							<span>R:`+person.addr_region+`</span> 
+						</span><br>
+					</div>
+					<div class="x-col l3 x-container">
+						<i class=""><span>`+person["farmer-primary_crop"]+`</span> </i><br>
+						<span class="x-tiny">-----</span><br>
+					</div>
+					<div class="x-col l4 x-container x-center">
+						<span class="x-tiny">Form Completion</span><br>
+						<b class="x-large">--%</b><br>
+					</div>
+				</div>
+				<span class="x-tiny x-text-grey x-right"><b>`+total_recors_farmer_counter+`</b>-`+person.farmer_code+`</span>
+			</div>` + $ID("profile_list").innerHTML
+			async_num_farmer_count += 1
+		}
+	}
 
 
 
-											}
-										})
-									}
-								})
-							}
-							let form_f_names = []
-							function get_form_data(){
-								var form_data_a = $CLASS("form_data_a")
-								var f_list = []
+	// ==================================================
+	function num_enumerator_encoded(){
+		var skrt = ""
+		for(key in enumerator_encoded_num){
+			skrt += (`
+				<span class="x-text-grey">
+					`+key+` : 
+					<b class="x-text-black">
+						`+enumerator_encoded_num[key]+`
+					</b>
+				</span><br>
+			`)
+		}
+		$ID("ls_enumerators").innerHTML = skrt
+	}
 
-								for (var i = 0; i < form_data_a.length; i++) {
-									f_list.push(form_data_a[i].id)
-								}
-								form_f_names.push(f_list)
-								println(f_list)
-							}
-
-
-							function refill_data_forms__(form_){ /////////// REFILLING FOR HAS DATA 
-								var form_data_refill = form_
-								var form_data = $CLASS("form_data_a")
-
-								for (var i = 0; i < form_data.length; i++) {
-									// println(form_data[i].id)
-									if(form_data[i].type==='checkbox'){
-										// form_data[i].checked = form_data_refill[form_data[i].id] // DIRECT VALUE Transfer 
-										try{
-											if(form_data_refill[form_data[i].id]){// Simulate Clicked
-												form_data[i].click() // Simulate Clicked
-											}
-										}catch(e){
-											println(" error in refill data")
-										}
-									}
-									else{
-										try{
-											if (form_data_refill[form_data[i].id]==undefined) {form_data_refill[form_data[i].id] = ""}
-											form_data[i].value = form_data_refill[form_data[i].id]
-										}
-										catch(e){println("ERROR in refill_data_forms__ :: "+e)}
-									}
-									form_data[i].disabled = true // TEMPORARY WHILE ON DEV FOPRMS
-								}
-
-							}
-
-							function get_prof_imgs(ls_file){  // Lazy Load for Profile Images After profrile list completely lodaded
-								// if(ls_file[i]==null){}
-								for (var i = 0; i < ls_file.length; i++) {
-									$send({
-										action : "/api/get_imgProf/"+ls_file[i],
-										method : POST,
-										func : function(res) {
-											try{
-												var im_res = JSON.parse(res)
-												// println(im_res)
-												var ids_ = (im_res.f_name).split(".")[0]
-												var prof_pic = im_res.base_64
-												if(prof_pic=="" || prof_pic==" " || prof_pic==undefined){
-													prof_pic = "../static/img/user.png"
-												}
-											// println("img_"+ids_)
-												$ID("img_"+ids_).src = prof_pic
-											}
-											catch(e){
-												println(" ERROR in getting image for img_"+ids_ +" || ERROR : "+e)
-											}
-										}
-									})
-								}
-							}
+	function popu_enumerator_encoded(farmer){
+		if(enumerator_encoded_num[farmer.input_by.name]==undefined){
+			enumerator_encoded_num[farmer.input_by.name] = 0
+		}
+		enumerator_encoded_num[farmer.input_by.name] += 1
+	}
 
 
-							// ==========================Profile=====================================
+	// ==========================================================
+	function get_ind(fid){
+		loading.show()
+		$send({
+			action : "/get_profile",
+			data : $DATA({"profile_file_name":fid+"@profile"}),
+			method : POST,
+			func : function (res) {
+				view_farmer_data(res)
+				loading.hide()
 
-							function not_head_hh(sel){
-								if(!sel){
-									$ID("not_head_hh").style.display = "block"
-								}else{
-									$ID("not_head_hh").style.display = "none"
-								}
-							}
+			}
+		})
+	}
+	// =========================================================
+	function view_farmer_data(res){
+		var form_selection_btn = ""
+		var person = JSON.parse(JSON.parse(res))
 
-							// ==========================Access to financial=====================================
+		for (var i = 0; i < FORM_A_LS.length; i++) {
+			form_selection_btn +=(`
+				<button class="x-btn x-block x-border"
+				onclick="get_farmer_form('`+person.farmer_code+`@`+FORM_A_LS[i].file+`')">
+					`+FORM_A_LS[i].label+`
+				</button>		
+			`)
+			println()
+		}
+		println(person)
 
-							function trigger_check(chbox,_ids){
-								if (chbox.checked) {$ID(_ids).style.display = "block"}
-								else{$ID(_ids).style.display = "none"}
-							}
-						</script>
+		var prof_pic = person.farmer_img_base64
+		if(prof_pic=="" || prof_pic==" " || prof_pic==undefined){
+			prof_pic = "../static/img/user.png"
+		}
+		var farmer_dialog_info = $dialog({
+			title : person.farmer_name + "|| <span class='x-small x-text'>[This feature is under Development]</span>",
+			subtitle :( `
+				<span class="x-tiny">
+					<span>`+person.addr_street_purok_sitio+`</span> 
+					<span>`+person.addr_city+`</span> 
+					<span>`+person.addr_prov+`</span> 
+					<span>R:`+person.addr_region+`</span> 
+				</span>
+			`),
+			content : (`
+				<div class="x-container x-row">
+					<div class="x-col l3">
+						<div class="x-padding">
+							<img loading="lazy" id="img_`+person.farmer_code+`" src="`+prof_pic+`" class="x-image x-round" style="max-width:100%">
+						</div>
+						`+form_selection_btn+`
+					</div>
+					<div id="form_farmer_a_`+person.farmer_code+`" class="x-col l9 x-padding" style=";overflow-y:scroll;height: 70vh;">
+						<div class="x-container x-center">
+							<br><br><br>
+							<h3>Please Select Form</h3>
+						</div>
+					</div>
+				</div>
+			`),
+			footer_content :(`
+				<div class="x-row">
+					<span onclick = "get_form_data()">
+						Encoded by: 
+						<b>
+							`+person.input_by.name+` | 
+							`+person.input_by.email+`
+						</b>
+					</span>
+				</div>
+			`),
+			buttons : ["Okay"]
+
+		})
+		farmer_dialog_info.elements[0].style.width = "70vw"
+		farmer_dialog_info.show()
+	}
+
+
+	// ===================================================================================
+	function get_farmer_form(file_farmer){ // GET SUBform of selected farmer
+		var f_fname = file_farmer.split("@")
+		$ID("form_farmer_a_"+f_fname[0]).innerHTML = file_farmer
+		$send({
+			action : "/get_sub_form_a_template",
+			data : $DATA({"subform_temp":f_fname[1]}),
+			method : POST,
+			func : function (res) {
+				$ID("form_farmer_a_"+f_fname[0]).innerHTML = res
+				
+				$send({
+					action : "/get_sub_form_a",
+					data : $DATA({"subform":file_farmer}),
+					method : POST,
+					func : function (res) {
+						var form_ = JSON.parse(JSON.parse(res))
+						println(form_) 
+						refill_data_forms__(form_)
+					}
+				})
+			}
+		})
+	}
+	let form_f_names = []
+	function get_form_data(){
+		var form_data_a = $CLASS("form_data_a")
+		var f_list = []
+
+		for (var i = 0; i < form_data_a.length; i++) {
+			f_list.push(form_data_a[i].id)
+		}
+		form_f_names.push(f_list)
+		println(f_list)
+	}
+
+
+	function refill_data_forms__(form_){ /////////// REFILLING FOR HAS DATA 
+		var form_data_refill = form_
+		var form_data = $CLASS("form_data_a")
+
+		for (var i = 0; i < form_data.length; i++) {
+			// println(form_data[i].id)
+			if(form_data[i].type==='checkbox'){
+				// form_data[i].checked = form_data_refill[form_data[i].id] // DIRECT VALUE Transfer 
+				try{
+					if(form_data_refill[form_data[i].id]){// Simulate Clicked
+						form_data[i].click() // Simulate Clicked
+					}
+				}catch(e){
+					println(" error in refill data")
+				}
+			}
+			else{
+				try{
+					if (form_data_refill[form_data[i].id]==undefined) {form_data_refill[form_data[i].id] = ""}
+					form_data[i].value = form_data_refill[form_data[i].id]
+				}
+				catch(e){println("ERROR in refill_data_forms__ :: "+e)}
+			}
+			form_data[i].disabled = true // TEMPORARY WHILE ON DEV FOPRMS
+		}
+
+	}
+
+	function get_prof_imgs(ls_file){  // Lazy Load for Profile Images After profrile list completely lodaded
+		// if(ls_file[i]==null){}
+		for (var i = 0; i < ls_file.length; i++) {
+			$send({
+				action : "/api/get_imgProf/"+ls_file[i],
+				method : POST,
+				func : function(res) {
+					try{
+						var im_res = JSON.parse(res)
+						// println(im_res)
+						var ids_ = (im_res.f_name).split(".")[0]
+						var prof_pic = im_res.base_64
+						if(prof_pic=="" || prof_pic==" " || prof_pic==undefined){
+							prof_pic = "../static/img/user.png"
+						}
+					// println("img_"+ids_)
+						$ID("img_"+ids_).src = prof_pic
+					}
+					catch(e){
+						println(" ERROR in getting image for img_"+ids_ +" || ERROR : "+e)
+					}
+				}
+			})
+		}
+	}
+
+
+	// ==========================Profile=====================================
+
+	function not_head_hh(sel){
+		if(!sel){
+			$ID("not_head_hh").style.display = "block"
+		}else{
+			$ID("not_head_hh").style.display = "none"
+		}
+	}
+
+	// ==========================Access to financial=====================================
+
+	function trigger_check(chbox,_ids){
+		if (chbox.checked) {$ID(_ids).style.display = "block"}
+		else{$ID(_ids).style.display = "none"}
+	}
+</script>

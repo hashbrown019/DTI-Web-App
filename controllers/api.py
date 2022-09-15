@@ -29,8 +29,28 @@ class _main:
 		for path in os.listdir(dir_path):
 			if os.path.isfile(os.path.join(dir_path, path)):
 				if(path.find("@profile")>=0):
-					res.append(path)
+					# res.append(path)
+					res.append(_main.profile_info_farmer(path))
 		return jsonify(res)
+
+	def profile_info_farmer(path):
+		f = open(c.RECORDS+"/profiles/__temp__/"+ path, "r")
+		strsd = f.read()
+		f.close()
+		prof_1 = "ERROR"
+		# try:
+		prof_1 = json.loads(json.loads(strsd))
+		prof_1['farmer_img_base64'] = ""
+
+		USER = rapid.select("SELECT * FROM `users` WHERE `id`={}; ".format(prof_1["USER_ID"]))
+		if(len(USER)<=0):
+			prof_1["input_by"] = {"name":"none"}
+		else:
+			prof_1["input_by"] = {}
+			USER[0]["password"] = "CONFIDENTIAL"
+			prof_1["input_by"] = USER[0]
+		return prof_1
+		# return json.dumps(json.dumps(prof_1))
 
 	# @cross_origin()
 	@app.route("/get_profile",methods=["POST","GET"]) # GET ONLY PROFILE FORM INFIO
@@ -42,7 +62,7 @@ class _main:
 		prof_1 = "ERROR"
 		# try:
 		prof_1 = json.loads(json.loads(strsd))
-		prof_1['farmer_img_base64'] = ""
+		# prof_1['farmer_img_base64'] = "" # REMOVES BASE64 Data
 
 		USER = rapid.select("SELECT * FROM `users` WHERE `id`={}; ".format(prof_1["USER_ID"]))
 		if(len(USER)<=0):

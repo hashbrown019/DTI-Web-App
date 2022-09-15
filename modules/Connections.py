@@ -8,12 +8,12 @@ class sqlite:
 		self.database=database
 
 	def init_db(self):
-		print(self)
+		# print(self)
 		conn = None
-		print("----------- SQLITE INITIALIZATION STARTED -----------")
+		# print("----------- SQLITE INITIALIZATION STARTED -----------")
 		try:
 			conn = sqlite3.connect(self.database)
-			print("<<<<<<<<< SQLITE INITIALIZATION COMPLETE <<<<<<<<<")
+			# print("<<<<<<<<< SQLITE INITIALIZATION COMPLETE <<<<<<<<<")
 		except Exception as e:
 			print(e)
 			print("xxxxxxxx ERROR IN SQLITE INITIALIZATION  xxxxxxxx")

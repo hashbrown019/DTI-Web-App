@@ -39,7 +39,7 @@
 						<script type="text/javascript">
 
 
-							function conso_all(){
+							function conso_all(___ALL_FARMERS){
 								var sex = {}
 								var dash_conso = {}
 								var category = {}
@@ -49,9 +49,9 @@
 								$ID("count_all_sex_untagged").innerHTML = 0
 
 								$ID("total_num_farmer").innerHTML = 0
-
-								for (var count = 0; count < ALL_FARMERS.length+1; count++) {
-									var FARMER = ALL_FARMERS[count]
+ 
+								for (var count = 0; count < ___ALL_FARMERS.length+1; count++) {
+									var FARMER = ___ALL_FARMERS[count]
 									$ID("total_num_farmer").innerHTML = count
 									if(typeof(FARMER)=='undefined'){
 										continue;
