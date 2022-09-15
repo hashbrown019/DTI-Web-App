@@ -44,7 +44,7 @@
 								<br>
 								<div class="x-container x-border-dashed">
 									<div class="x-col l1 s1 m1" style="padding-top:7px">
-										<input disabled type="text" id="id" class="form_data x-black x-center x-input x-border x-round " style="max-height:100%">
+										<input type="text" id="id" class="form_data x-black x-center x-input x-border x-round " style="max-height:100%">
 									</div>
 									<span class="x-col l11 m11 s11 x-padding">
 										<div class="">
@@ -192,7 +192,7 @@
 							function get_acc_info(indx){
 								$ID('delete_user_acc_btn').style.display = "inline"
 								$ID("id").value = indx
-								set_ls_rcu()
+								// set_ls_rcu()
 								SELECTED_USER_ACC = (USER_ACC_LS[indx])
 								refill_data_forms(USER_ACC_LS[indx],function(data_){
 									set_ls_pcu(data_.rcu)
@@ -202,7 +202,7 @@
 
 							get_key_events()
 							function get_key_events(){
-								set_ls_rcu()
+								// set_ls_rcu()
 								var fdata = $CLASS("form_data")
 								for (var i = 0; i < fdata.length; i++) {
 									var EVENT_ = "keyup"
@@ -262,11 +262,15 @@
 								println(_form_data)
 							}
 
+							set_ls_rcu()
 							function set_ls_rcu(){
+								$ID("rcu").innerHTML = ""
+								var rcu_ls_ = ""
 								for(var key in RCU_PCU){
-									$ID("rcu").innerHTML += "<option value='"+key+"'>"+key+"</option>"
+									rcu_ls_ += "<option value='"+key+"'>"+key+"</option>"
 
 								}
+								$ID("rcu").innerHTML = rcu_ls_
 							}
 
 							function set_ls_pcu(sel_rcu){

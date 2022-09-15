@@ -199,11 +199,11 @@
 								$ID("profile_list").innerHTML = ""
 								println(" * Getting List of Profiles")
 								$send({
-									action:"/list_all_profile",
+									action:"/api/list_all_profile",
 									method: POST,
 									func : function(res){
 										ls_file_farmer = JSON.parse(res)
-										// println(ls_file_farmer)
+										println(ls_file_farmer)
 										$ID("profile_list").innerHTML = ""
 										for (var i = 0; i < ls_file_farmer.length; i++) {
 											// println(ls_file_farmer[i])
@@ -268,7 +268,7 @@
 											return
 										}
 										var alldata_farmer = JSON.parse(JSON.parse(res))
-										make_ls_farmer(alldata_farmer,total_recors_farmer)
+										// make_ls_farmer(alldata_farmer,total_recors_farmer)
 									}
 								})
 							}
@@ -362,8 +362,8 @@
 								// println(fid)
 								loading.show()
 								$send({
-									action : "/get_full_profile_str",
-									// action : "/get_full_profile",
+									// action : "/get_full_profile_str",
+									action : "/get_full_profile",
 									data : $DATA({"profile_file_name":fid+"@profile"}),
 									method : POST,
 									func : function (res) {

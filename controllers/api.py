@@ -21,7 +21,7 @@ class _main:
 		self.arg = arg
 
 	# @cross_origin()
-	@app.route("/list_all_profile",methods=["POST","GET"])
+	@app.route("/api/list_all_profile",methods=["POST","GET"])
 	def list_all_profile():
 		res = []
 		dir_path = c.RECORDS+"/profiles/__temp__/"
@@ -53,15 +53,6 @@ class _main:
 			prof_1["input_by"] = USER[0]
 		return json.dumps(json.dumps(prof_1))
 
-
-	@app.route("/get_full_profile",methods=["POST","GET"]) # GETS the Fulll data of Farmer
-	def get_full_profile():
-		FILE = request.form["profile_file_name"]
-		f = open(c.RECORDS+"/profiles/__temp__/"+ FILE, "r")
-
-		res = json.loads(f.read())
-		f.close()
-		return jsonify(res)
 
 	@app.route("/get_full_profile_str",methods=["POST","GET"]) # GETS the Fulll data of Farmer
 	def get_full_profile_str():
