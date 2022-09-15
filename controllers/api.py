@@ -42,7 +42,7 @@ class _main:
 		prof_1 = json.loads(json.loads(strsd))
 		prof_1['farmer_img_base64'] = ""
 
-		USER = rapid.select("SELECT * FROM `users` WHERE `id`={}; ".format(prof_1["USER_ID"]))
+		USER = rapid.select("SELECT * FROM `users` WHERE `id`={} ORDER BY `name` ASC; ".format(prof_1["USER_ID"]))
 		if(len(USER)<=0):
 			prof_1["input_by"] = {"name":"none"}
 		else:
@@ -64,7 +64,7 @@ class _main:
 		prof_1 = json.loads(json.loads(strsd))
 		# prof_1['farmer_img_base64'] = "" # REMOVES BASE64 Data
 
-		USER = rapid.select("SELECT * FROM `users` WHERE `id`={}; ".format(prof_1["USER_ID"]))
+		USER = rapid.select("SELECT * FROM `users` WHERE `id`={} ORDER BY `name` ASC; ".format(prof_1["USER_ID"]))
 		if(len(USER)<=0):
 			prof_1["input_by"] = {"name":"none"}
 		else:
@@ -82,7 +82,7 @@ class _main:
 		# res = json.loads(f.read())
 		f.close()
 		res_ = json.loads(json.loads(res))
-		USER = rapid.select("SELECT * FROM `users` WHERE `id`={}; ".format(res_["USER_ID"]))
+		USER = rapid.select("SELECT * FROM `users` WHERE `id`={} ORDER BY `name` ASC; ".format(res_["USER_ID"]))
 		if(len(USER)<=0):
 			res_["input_by"] = {"name":"none"}
 		else:
@@ -100,7 +100,7 @@ class _main:
 		f.close()
 
 		res_ = json.loads(json.loads(res))
-		USER = rapid.select("SELECT * FROM `users` WHERE `id`={}; ".format(res_["USER_ID"]))
+		USER = rapid.select("SELECT * FROM `users` WHERE `id`={} ORDER BY `name` ASC; ".format(res_["USER_ID"]))
 		if(len(USER)<=0):
 			res_["input_by"] = {"name":"none"}
 		else:
