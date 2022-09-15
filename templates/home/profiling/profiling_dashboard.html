@@ -38,6 +38,7 @@
 
 						<script type="text/javascript">
 							let CONSO_LISTED_REGIONS = {}
+							let CONSO_LISTED_PRIMARY_CROPS = {}
 
 							function conso_all(___ALL_FARMERS){
 								var sex = {}
@@ -57,6 +58,7 @@
 										continue;
 									}
 									CONSO_LISTED_REGIONS[FARMER['addr_region']] = {}
+									CONSO_LISTED_PRIMARY_CROPS[FARMER['farmer-primary_crop']] = {}
 									FARMER['addr_region'] = FARMER['addr_region'].replace(" ","")
 									// if(FARMER['addr_region']==""){
 									// 	FARMER['addr_region'] = "Untagged"
@@ -101,7 +103,9 @@
 								root = undefined
 								SPINNER_LOADER.hide()
 								chart_gender_vc(data_for_chart,category)
+								// == For Filtering
 								get_ls_region()
+								get_ls_crops()
 							}
 
 							let chart, root

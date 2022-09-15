@@ -17,9 +17,9 @@
 			</div>
 		</div>
 
-		<div class="x-container x-padding x-border-dashed x-border-grey">
+		<div class="x-container x-padding x-border-dashed x-border-grey x-pale-teal">
 			<div class="x-padding x-col l2 x-text-teal">
-				Area/Location
+				<b>Area/Location</b>
 			</div>
 			<select id="dash_sel_region" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" onchange="get_ls_prov(this.value)">
 				<option type="" value="all" selected>All Region</option>
@@ -33,7 +33,18 @@
 			<select id="dash_sel_brgy" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" disabled  onchange="get_ls_all_area(this.value)">
 				<option type="" value="all" selected>All Brgy</option>
 			</select>
-			<button class="x-input x-btn x-col l1 x-green x-round-xlarge" onclick="conso_area()">
+			<button class="x-input x-btn x-col l1 x-green x-round-xlarge" onclick="conso_filters()">
+				Filter <span class="fa fa-filter"></span>
+			</button>
+		</div>
+		<div class="x-container x-padding x-border-dashed x-border-grey x-pale-teal">
+			<div class="x-padding x-col l2 x-text-teal">
+				<b>Primary Crop</b>
+			</div>
+			<select id="dash_sel_crop_primary" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" onchange="get_ls_primary_crop(this.value)">
+				<option type="" value="all" selected>All Crop</option>
+			</select>
+			<button class="x-input x-btn x-col l1 x-green x-round-xlarge" onclick="conso_filters()">
 				Filter <span class="fa fa-filter"></span>
 			</button>
 		</div>
@@ -72,6 +83,7 @@
 <script type="text/javascript">
 	let ALL_FARMERS = [], enumerator_encoded_num
 	let FILTER_SEL_REG, FILTER_SEL_PROV, FILTER_SEL_CITY, FILTER_SEL_BRGY;
+	let FILTER_SEL_PRIMARY_CROP;
 
 	function export_farmer_excel(argument) {staytuned()}
 
@@ -138,6 +150,17 @@
 		})
 	}
 	
+	function get_ls_crops(){
+		var ls_all_crops_primary = '<option type="" value="all" selected>All Crops</option>'
+		for(key in VALUE_CHAIN_CROP){
+			ls_all_crops_primary += '<option value="'+VALUE_CHAIN_CROP[key]+'">'+VALUE_CHAIN_CROP[key]+'</option>'
+			delete CONSO_LISTED_PRIMARY_CROPS[VALUE_CHAIN_CROP[key]]
+		}
+		for(key_untagg in CONSO_LISTED_PRIMARY_CROPS){
+			ls_all_crops_primary += '<option class="x-pale-red" value="'+key_untagg+'">untagged : '+key_untagg+'♦</option>'
+		}
+		$ID("dash_sel_crop_primary").innerHTML = ls_all_crops_primary
+	}	
 	function get_ls_region(){
 		var ls_all_reg = '<option type="" value="all" selected>All Regions</option>'
 		for(key in ALL_LOCATION){
@@ -155,7 +178,6 @@
 		SEL_REG = reg
 		for(key in ALL_LOCATION[reg]["province_list"]){ls_all_prov += '<option value="'+key+'">'+key+'</option>'}
 		$ID("dash_sel_prov").innerHTML = ls_all_prov;$ID("dash_sel_prov").disabled = false
-
 	}
 
 	function get_ls_city(prov){
@@ -174,6 +196,10 @@
 	}
 
 	function get_ls_all_area(brgy){SEL_BRGY=brgy}
+
+	function get_ls_primary_crop(){
+
+	}
 
 	function filterByArea(person){
 		var _prk= person.addr_street_purok_sitio 
@@ -204,13 +230,27 @@
 		else{return false}
 	}
 
-	async function conso_area(){
+	function filterByPrimaryCrop(person){
+		var _primary_crop= person["farmer-primary_crop"]
+
+		if(FILTER_SEL_PRIMARY_CROP=="all" ||FILTER_SEL_PRIMARY_CROP==undefined){SPINNER_LOADER.show();return true}
+
+		if(_primary_crop==FILTER_SEL_PRIMARY_CROP){
+			return true
+		}
+		else{return false}
+	}
+
+	async function conso_filters(){
 		SPINNER_LOADER.show()
 		await new Promise(resolve => setTimeout(resolve, 1000)); // WAIT FOR 1 SECONDS
 		FILTER_SEL_REG = $ID("dash_sel_region").value
 		FILTER_SEL_PROV = $ID("dash_sel_prov").value
 		FILTER_SEL_CITY = $ID("dash_sel_city").value
 		FILTER_SEL_BRGY = $ID("dash_sel_brgy").value
+
+		FILTER_SEL_PRIMARY_CROP = $ID("dash_sel_crop_primary").value
+
 		enumerator_encoded_num = {}
 		total_recors_farmer_counter = 0
 		populate_farm_list_for_numbers(ALL_FARMERS)
@@ -235,14 +275,17 @@
 		})
 	}
 
-
 	function populate_farm_list_for_numbers(ALL_FARMERS____){
 		LS_FARMER_VIEW =""
 		var FILTER_total_recors_farmer_counter = 0
 		$ID("profile_list").innerHTML = ""
 		async_num_farmer_count= 0
 		for (var f_counter = 0;f_counter < ALL_FARMERS____.length;f_counter++) {
-			if(filterByArea(ALL_FARMERS____[f_counter])){
+			if(
+				filterByArea(ALL_FARMERS____[f_counter]) &&
+				filterByPrimaryCrop(ALL_FARMERS____[f_counter])
+
+				){
 				make_ls_farmer(ALL_FARMERS____[f_counter],ALL_FARMERS____.length,f_counter)
 				popu_enumerator_encoded(ALL_FARMERS____[f_counter])
 				$ID("scan_item").innerHTML = FILTER_total_recors_farmer_counter

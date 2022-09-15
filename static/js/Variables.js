@@ -1,3 +1,16 @@
+let VALUE_CHAIN_CROP = [
+  "Cacao",
+  "Coffee",
+  "Coconut",
+  "Banana",
+  "Calamansi",
+  "Jackfruit",
+  "Mango",
+  "Pili_Nut",
+  "Other fruits and nuts",
+  "Others"
+]
+
 let FORM_A_LS = [
 	{"file":"profile" , "label":"Farmer Basic Info" },
 	{"file":"add_farm" , "label":"Farm Information" },
