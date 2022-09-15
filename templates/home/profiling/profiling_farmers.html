@@ -17,7 +17,10 @@
 			</div>
 		</div>
 
-		<div class="x-container x-padding">
+		<div class="x-container x-padding x-border-dashed x-border-grey">
+			<div class="x-padding x-col l2 x-text-teal">
+				Area/Location
+			</div>
 			<select id="dash_sel_region" class="x-input x-select x-col l2 x-light-grey x-round-xlarge" onchange="get_ls_prov(this.value)">
 				<option type="" value="all" selected>All Region</option>
 			</select>
@@ -35,25 +38,34 @@
 			</button>
 		</div>
 	</div>
-	<hr>
+	
 	<div class="x-row">
-		<div class=" x-col l8">
-			<div id="profile_list" class="x-row" style="overflow-y:scroll;height: 60vh;">
-				<div class="x-container x-center">
-					<br>
-					<span class="x-large x-text-teal">
-						Please select and filter area using the selection above to view the list of Farmers
-					</span>
+		<div class="x-row x-padding">
+			<i class="">This numbers are based on the records that has been <b class="x-text-blue x-pale-blue">SYNCED</b> from the Mobile App to the System and all <b class="x-text-blue x-pale-blue">VERIFIED</b> records from the uploaded Spreadsheet files. any <b class="x-text-red x-pale-red">Unsynced</b> records on the mobile app and all records from <b class="x-text-red x-pale-red">'On-System-Checking'</b> Spreadsheet files will not be counted</i>
+		</div>
+		<hr>
+		<div class="x-row">
+			<div class=" x-col l8">
+				<b class="x-text-teal x-padding">Farmer Profiles</b><br>
+				<div id="profile_list" class="x-row" style="overflow-y:scroll;height: 60vh;">
+					<div class="x-container x-center">
+						<br>
+						<span class="x-large x-text-teal">
+							Please select and filter area using the selection above to view the list of Farmers
+						</span>
+					</div>
+					<hr>
 				</div>
 			</div>
-		</div>
-		<div class="x-row x-padding x-bottombar x-col l4" style=";overflow-y:scroll;height: 60vh;">
-			<b class="x-text-teal">Enumerators</b><br>
-			<i class="x-small">This numbers are based on the records that has been <b class="x-pale-blue">SYNCED</b> from the Mobile App to the System and all <b class="x-pale-blue">VERIFIED</b> records from the uploaded Spreadsheet files. any <b class="x-pale-red">Unsynced</b> records on the mobile app and all records from <b class="x-pale-red">'On-System-Checking'</b> Spreadsheet files will not be counted</i>
-			<div id="ls_enumerators" class="x-container x-row">
-				
+			<div class="x-col l4">
+				<b class="x-text-teal x-padding">Enumerators</b><br>
+				<div class="x-row x-padding x-bottombar " style=";overflow-y:scroll;height: 60vh;">
+					<div id="ls_enumerators" class="x-container x-row">
+						
+					</div>
+					<hr>
+				</div>
 			</div>
-			<hr>
 		</div>
 	</div>
 </div>
