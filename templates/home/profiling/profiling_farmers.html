@@ -39,10 +39,9 @@
 	<div class="x-row">
 		<div class=" x-col l8">
 			<div id="profile_list" class="x-row" style="overflow-y:scroll;height: 60vh;">
-				<div class="x-display-container">
-					<div class="x-display-middle">
-						no Data
-					</div>
+				<div class="x-container x-center">
+					<br>
+					Please select and filter area using the selection above to view the list of Farmers
 				</div>
 			</div>
 		</div>
@@ -212,21 +211,9 @@
 				println(ls_file_farmer)
 				$ID("prof_farmer_count_all").innerHTML = ls_file_farmer.length
 				enumerator_encoded_num = {}
-				
+
 				ALL_FARMERS=ls_file_farmer
 				conso_all(ALL_FARMERS)
-				// populate_farm_list_for_numbers(ALL_FARMERS)
-				// for (var f_counter = 0; f_counter < ls_file_farmer.length; f_counter++) {
-				// 	ALL_FARMERS.push(ls_file_farmer[f_counter])
-				// 	popu_enumerator_encoded(ls_file_farmer[f_counter])
-				// 	// println(ls_file_farmer[i])
-				// 	// make_ls_farmer(ls_file_farmer[f_counter], ls_file_farmer.length, f_counter)
-				// }
-				// $ID("scan_item").innerHTML = f_counter
-				// $ID("profile_list").style.display = "block"
-				// conso_all(ALL_FARMERS)
-				// num_enumerator_encoded()
-				// SPINNER_LOADER.hide()
 			}
 		})
 	}
@@ -249,10 +236,11 @@
 		SPINNER_LOADER.hide()
 	}
 
-	let async_num_farmer_count = 1
+	let async_num_farmer_count = 0
 	async function make_ls_farmer(alldata_farmer,total_recors_farmer,total_recors_farmer_counter){
 		await new Promise(resolve => setTimeout(SKKKR, 10)); // WAIT FOR n.. SECONDS
 		function SKKKR() {
+			async_num_farmer_count += 1
 			$ID("prof_farmer_count").innerHTML = async_num_farmer_count
 			var person = alldata_farmer
 			var ls_farmer_view =""
@@ -283,7 +271,6 @@
 				</div>
 				<span class="x-tiny x-text-grey x-right"><b>`+total_recors_farmer_counter+`</b>-`+person.farmer_code+`</span>
 			</div>` + $ID("profile_list").innerHTML
-			async_num_farmer_count += 1
 		}
 	}
 
