@@ -450,17 +450,31 @@
 
 	// ==========================================================
 	function get_ind(fid){
-		loading.show()
-		$send({
-			action : "/get_profile",
-			data : $DATA({"profile_file_name":fid+"@profile"}),
-			method : POST,
-			func : function (res) {
-				view_farmer_data(res)
-				loading.hide()
 
-			}
-		})
+		if(fid.search("#") >= 0){
+			var exc_dialog = $dialog({
+				title : "Spreadsheet Data",
+				subtitle : "Coming Soon !",
+				content : (`
+					<b>You are selecting a Profile From Spreadsheet Data</b><br>
+					Stay Tuned as we work on this feature.
+				`)
+			})
+			exc_dialog.show()
+		}else{
+			loading.show()
+			$send({
+				action : "/get_profile",
+				data : $DATA({"profile_file_name":fid+"@profile"}),
+				method : POST,
+				func : function (res) {
+					view_farmer_data(res)
+					loading.hide()
+
+				}
+			})
+		}
+
 	}
 	// =========================================================
 	function view_farmer_data(res){
