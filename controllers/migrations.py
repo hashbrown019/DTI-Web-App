@@ -61,7 +61,7 @@ class _main:
 				# file_name =  c.RECORDS+"/spreadsheets/93#2022-09-19#NSAMAR_vc_a_1.xlsx" # path to file + file name
 				sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
 				try:
-					df = pd.read_excel(io=file_name, sheet_name=sheet)
+					df = pd.read_excel(io=file_name, sheet_name=sheet, engine='openpyxl')
 				except Exception as e:
 					print(e)
 					continue
@@ -148,7 +148,7 @@ class _main:
 					# file_name =  c.RECORDS+"/spreadsheets/93#2022-09-19#NSAMAR_vc_a_1.xlsx" # path to file + file name
 					sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
 					try:
-						df = pd.read_excel(io=file_name, sheet_name=sheet)
+						df = pd.read_excel(io=file_name, sheet_name=sheet, engine='openpyxl')
 						ls_uploaded_excel.append({"file_name":path,"status": "Synced"})
 					except Exception as e:
 						print(e)
