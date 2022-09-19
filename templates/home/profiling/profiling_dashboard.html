@@ -52,9 +52,13 @@
 	let CONSO_LISTED_PRIMARY_CROPS = {}
 	let CONSO_LISTED_ENUMERATOR_AREA = {}
 
+	let data_for_chart_MOBILE = []
+	let data_for_chart_EXCEL = []
+	let dash_conso = {}
+
 	function conso_all(___ALL_FARMERS){
+		dash_conso = {}
 		var sex = {}
-		var dash_conso = {}
 		var category_MOBILE = {}
 		var category_EXCEL = {}
 
@@ -77,20 +81,22 @@
 			// if(FARMER['addr_region']==""){
 			// 	FARMER['addr_region'] = "Untagged"
 			// }
+			var region_cons = "Region: "
+			if(FARMER['SOURCE']=="NEW_EXCEL"){region_cons = "Region_ : "}
 
-			if(("Region: "+FARMER['addr_region']) in dash_conso){} //if wala pay region sa list
+			if((region_cons+" "+FARMER['addr_region']) in dash_conso){} //if wala pay region sa list
 			else{
-				dash_conso[("Region: "+FARMER['addr_region'])] = {}
+				dash_conso[(region_cons+" "+FARMER['addr_region'])] = {}
 			}
 
-			if(FARMER['farmer-primary_crop'] in dash_conso[("Region: "+FARMER['addr_region'])] ) {} //if wala pay VC sa list
+			if(FARMER['farmer-primary_crop'] in dash_conso[(region_cons+" "+FARMER['addr_region'])] ) {} //if wala pay VC sa list
 			else{
-				dash_conso[("Region: "+FARMER['addr_region'])][FARMER['farmer-primary_crop']] = 0
-				dash_conso[("Region: "+FARMER['addr_region'])]["category"] = ("Region: "+FARMER['addr_region'])
+				dash_conso[(region_cons+" "+FARMER['addr_region'])][FARMER['farmer-primary_crop']] = 0
+				dash_conso[(region_cons+" "+FARMER['addr_region'])]["category"] = (region_cons+" "+FARMER['addr_region'])
 			}
 
-			dash_conso[("Region: "+FARMER['addr_region'])][FARMER['farmer-primary_crop']] += 1
-			dash_conso[("Region: "+FARMER['addr_region'])]["SOURCE"] = FARMER['SOURCE']
+			dash_conso[(region_cons+" "+FARMER['addr_region'])][FARMER['farmer-primary_crop']] += 1
+			dash_conso[(region_cons+" "+FARMER['addr_region'])]["SOURCE"] = FARMER['SOURCE']
 
 			if(FARMER['SOURCE']=="MOBILE"){category_MOBILE[FARMER['farmer-primary_crop']] = 'none';}// IF dili gikan sa MOIBLE > SKIP
 			if(FARMER['SOURCE']=="NEW_EXCEL"){category_EXCEL[FARMER['farmer-primary_crop']] = 'none';}// IF dili gikan sa MOIBLE > SKIP
@@ -107,18 +113,14 @@
 		var diff = ""+((sex["Male"] + sex["Female"]) - count)
 		$ID("count_all_sex_untagged").innerHTML = diff.replace("-","")
 
-		var data_for_chart_MOBILE = []
-		var data_for_chart_EXCEL = []
-		for (var i = 0; i < dash_conso.length; i++) {
-			println(dash_conso[i])
-		}
-
 		for(key in dash_conso){
-			if(dash_conso[key]["SOURCE"] == "MOBILE"){
-				data_for_chart_MOBILE.push(dash_conso[key])
-			}
 			if(dash_conso[key]["SOURCE"] == "NEW_EXCEL"){
 				data_for_chart_EXCEL.push(dash_conso[key])
+			}
+			else{
+			// if(dash_conso[key]["SOURCE"] == "MOBILE"){
+				println(dash_conso[key])
+				data_for_chart_MOBILE.push(dash_conso[key])
 			}
 		}
 
