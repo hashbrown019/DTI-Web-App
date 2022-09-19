@@ -49,7 +49,7 @@ class _main:
 
 	@app.route("/excel_popu",methods=["POST","GET"])
 	def excel_popu():
-		file_name =  c.RECORDS+"/spreadsheets/vc_a_1.0.0_1662604608.xlsx" # path to file + file name
+		file_name =  c.RECORDS+"/spreadsheets/93#2022-09-19#NSAMAR_vc_a_1.xlsx" # path to file + file name
 		sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
 
 		df = pd.read_excel(io=file_name, sheet_name=sheet)
@@ -69,9 +69,11 @@ class _main:
 		t1 = None
 		t2 = None
 		t3 = None
+
 		# for colNames in df.head():
 		# 	# print(colNames.find("Unnamed"))
-		# 	if(colNames.find("Unnamed") != 0):
+		# 	if(colNames.find("Unnamed") == 0): pass
+		# 	else:
 		# 		new_struc[colNames] = {}
 		# 		t1 =colNames
 
@@ -81,10 +83,9 @@ class _main:
 
 		# 	new_struc[t1][t2][_result[1][counter] ]= _main.x_filed_get(_result,counter)
 		# 	counter = counter + 1
-		# return jsonify(new_struc)
-
-
-		return jsonify(_result[1])
+		# return new_struc
+		del _result[0]
+		return (_result)
 	
 	def x_filed_get(_result,counter):
 		row_counter = 0
@@ -93,8 +94,15 @@ class _main:
 			if row_counter >2 :
 				data.append(_result[_res][counter])
 			row_counter =  row_counter + 1
-		return []
+		return data
 		# return data
+
+	@app.route("/append_data_excel_mdata")
+	def append_data_excel_mdata():
+		datas = (_main.excel_popu())
+
+		return str(len(datas))
+
 	
 
 	@app.route("/excel_upload",methods=["POST","GET"])

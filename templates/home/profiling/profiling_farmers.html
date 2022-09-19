@@ -70,6 +70,12 @@
 			</div>
 			<div class="x-col l4">
 				<b class="x-text-teal x-padding">Enumerators</b><br>
+				<div class="x-padding x-row">
+					<select id="enumeartor_area" class="x-select x-border x-col l10"></select>
+					<button class="x-input x-btn x-col l2 x-green" onclick="conso_filters()">
+						Filter <span class="fa fa-filter"></span>
+					</button>
+				</div>
 				<div class="x-row x-padding x-bottombar " style=";overflow-y:scroll;height: 60vh;">
 					<div id="ls_enumerators" class="x-container x-row">
 						
@@ -84,6 +90,7 @@
 	let ALL_FARMERS = [], enumerator_encoded_num
 	let FILTER_SEL_REG, FILTER_SEL_PROV, FILTER_SEL_CITY, FILTER_SEL_BRGY;
 	let FILTER_SEL_PRIMARY_CROP;
+	let FILTER_SEL_ENUM_AREA;
 
 	function export_farmer_excel(argument) {staytuned()}
 
@@ -150,6 +157,16 @@
 		})
 	}
 	
+
+	function get_ls_enum_area(){
+		var ls_all_enum_area = '<option type="" value="all" selected>All RCU Level</option>'
+		for(key in CONSO_LISTED_ENUMERATOR_AREA){
+			ls_all_enum_area += '<option value="'+key+'">'+key+'</option>'
+		}
+		$ID("enumeartor_area").innerHTML = ls_all_enum_area
+
+	}	
+
 	function get_ls_crops(){
 		var ls_all_crops_primary = '<option type="" value="all" selected>All Crops</option>'
 		for(key in VALUE_CHAIN_CROP){
@@ -161,6 +178,7 @@
 		}
 		$ID("dash_sel_crop_primary").innerHTML = ls_all_crops_primary
 	}	
+
 	function get_ls_region(){
 		var ls_all_reg = '<option type="" value="all" selected>All Regions</option>'
 		for(key in ALL_LOCATION){
@@ -239,6 +257,17 @@
 		else{return false}
 	}
 
+	function filterByEnumArea(person){
+		var enum_area_= person["input_by"]["rcu"]
+
+		if(FILTER_SEL_ENUM_AREA=="all" ||FILTER_SEL_ENUM_AREA==undefined){SPINNER_LOADER.show();return true}
+
+		if(enum_area_==FILTER_SEL_ENUM_AREA){
+			return true
+		}
+		else{return false}
+	}
+
 	async function conso_filters(){
 		SPINNER_LOADER.show()
 		await new Promise(resolve => setTimeout(resolve, 1000)); // WAIT FOR 1 SECONDS
@@ -247,7 +276,8 @@
 		FILTER_SEL_CITY = $ID("dash_sel_city").value
 		FILTER_SEL_BRGY = $ID("dash_sel_brgy").value
 
-		FILTER_SEL_PRIMARY_CROP = $ID("dash_sel_crop_primary").value
+		FILTER_SEL_PRIMARY_CROP = $ID("dash_sel_crop_primary").value;
+		FILTER_SEL_ENUM_AREA = $ID("enumeartor_area").value;
 
 		enumerator_encoded_num = {}
 		total_recors_farmer_counter = 0
@@ -281,7 +311,8 @@
 		for (var f_counter = 0;f_counter < ALL_FARMERS____.length;f_counter++) {
 			if(
 				filterByArea(ALL_FARMERS____[f_counter]) &&
-				filterByPrimaryCrop(ALL_FARMERS____[f_counter])
+				filterByPrimaryCrop(ALL_FARMERS____[f_counter]) &&
+				filterByEnumArea(ALL_FARMERS____[f_counter])
 
 				){
 				make_ls_farmer(ALL_FARMERS____[f_counter],ALL_FARMERS____.length,f_counter)

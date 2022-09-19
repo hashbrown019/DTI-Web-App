@@ -25,7 +25,7 @@ class _main:
 	def list_all_profile():
 		res = []
 		dir_path = c.RECORDS+"/profiles/__temp__/"
-
+		
 		for path in os.listdir(dir_path):
 			if os.path.isfile(os.path.join(dir_path, path)):
 				if(path.find("@profile")>=0):
