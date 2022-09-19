@@ -1,343 +1,354 @@
-						<style>
-							#chartdiv, #_ph_map {
-								width: 100%;
-								height: 500px;
-							}
-						</style>
+<style>
+	#chartdiv_MOBILE,#chartdiv_EXCEL, #_ph_map {
+		width: 100%;
+		height: 500px;
+	}
+</style>
 
-						<div class=" x-row x-white">
-							<div class="x-container x-row">
-								<h3 class="x-padding x-text-teal">Dashboard</h3>
-								<b class="x-padding x-text-teal">Profiling</b>
-							</div>
-							<hr>
-							<div class="x-container x-row">
-								<div class="x-container x-col l2 x-padding">
-									<div class="x-container x-center x-padding x-round-large x-teal">
-										<b id="total_num_farmer" class="x-xxlarge"><span class="fa fa-notch fa spin"></span></b><br>
-										<span class="x-small">Number of Profiles in New Platform</span>
-									</div>
-									<div class="x-container x-padding x-round-larg">
-										<span class="x-text-grey">Male :<span class="x-text-black" id="count_all_male"><span class="fa fa-notch fa spin"></span></span></span><br>
-										<span class="x-text-grey">Female :<span class="x-text-black" id="count_all_female"><span class="fa fa-notch fa spin"></span></span></span><br>
-										<span class="x-text-grey">Untagged :<span class="x-text-black" id="count_all_sex_untagged"><span class="fa fa-notch fa spin"></span></span></span><br>
-									</div>
-								</div>
-								<div class="x-container x-col l10 x-padding">
-									<div id="chartdiv">
-										<!-- {% include 'home/loading.html' %} -->
-
-									</div>
-								</div>
-							</div>
-							<div>
-								<div id="_ph_map"></div>
-							</div>
-						</div>
-
-
-						<script type="text/javascript">
-							let CONSO_LISTED_REGIONS = {}
-							let CONSO_LISTED_PRIMARY_CROPS = {}
-							let CONSO_LISTED_ENUMERATOR_AREA = {}
-
-							function conso_all(___ALL_FARMERS){
-								var sex = {}
-								var dash_conso = {}
-								var category = {}
-
-								$ID("count_all_male").innerHTML = 0
-								$ID("count_all_female").innerHTML = 0
-								$ID("count_all_sex_untagged").innerHTML = 0
-
-								$ID("total_num_farmer").innerHTML = 0
- 
-								for (var count = 0; count < ___ALL_FARMERS.length+1; count++) {
-									var FARMER = ___ALL_FARMERS[count]
-									$ID("total_num_farmer").innerHTML = count
-									if(typeof(FARMER)=='undefined'){
-										continue;
-									}
-									CONSO_LISTED_REGIONS[FARMER['addr_region']] = {}
-									CONSO_LISTED_PRIMARY_CROPS[FARMER['farmer-primary_crop']] = {}
-									CONSO_LISTED_ENUMERATOR_AREA[FARMER['input_by']['rcu']] = {}
-									FARMER['addr_region'] = FARMER['addr_region'].replace(" ","")
-									// if(FARMER['addr_region']==""){
-									// 	FARMER['addr_region'] = "Untagged"
-									// }
-
-									if(("Region: "+FARMER['addr_region']) in dash_conso){} //if wala pay region sa list
-									else{
-										dash_conso[("Region: "+FARMER['addr_region'])] = {}
-									}
-
-									if(FARMER['farmer-primary_crop'] in dash_conso[("Region: "+FARMER['addr_region'])] ) {} //if wala pay VC sa list
-									else{
-										dash_conso[("Region: "+FARMER['addr_region'])][FARMER['farmer-primary_crop']] = 0
-										dash_conso[("Region: "+FARMER['addr_region'])]["category"] = ("Region: "+FARMER['addr_region'])
-									}
-
-									dash_conso[("Region: "+FARMER['addr_region'])][FARMER['farmer-primary_crop']] += 1
-
-									category[FARMER['farmer-primary_crop']] = 'none'
-
-									if(!sex.hasOwnProperty(FARMER['farmer_sex'])){
-										println("was xx")
-										sex[FARMER['farmer_sex']] = 0
-									}
-									sex[FARMER['farmer_sex']] += 1
-
-								}
+<div class=" x-row x-white">
+	<div class="x-container x-row">
+		<h3 class="x-padding x-text-teal">Dashboard</h3>
+		<b class="x-padding x-text-teal">Profiling</b>
+	</div>
+	<hr>
+	<div class="x-container x-row">
+		<div class="x-container x-col l2 x-padding">
+			<div class="x-container x-center x-padding x-round-large x-teal">
+				<b id="total_num_farmer" class="x-xxlarge"><span class="fa fa-notch fa spin"></span></b><br>
+				<span class="x-small">
+					Number of Profiles <br>
+					<b>New Excel Template</b> and 
+					<b>Mobile MIS</b>
+				</span>
+			</div>
+			<div class="x-container x-padding x-round-larg">
+				<span class="x-text-grey">Male :<span class="x-text-black" id="count_all_male"><span class="fa fa-notch fa spin"></span></span></span><br>
+				<span class="x-text-grey">Female :<span class="x-text-black" id="count_all_female"><span class="fa fa-notch fa spin"></span></span></span><br>
+				<span class="x-text-grey">Untagged :<span class="x-text-black" id="count_all_sex_untagged"><span class="fa fa-notch fa spin"></span></span></span><br>
+			</div>
+		</div>
+		<div class="x-container x-col l10 x-padding">
+			<div class="x-container x-row">
+				<h3 class="x-padding x-text-teal">Bar Chart for Farmer Profiles</h3>
+				<b class="x-padding x-text-teal">MIS Mobile App (AgriMismo)</b>
+				<div id="chartdiv_MOBILE"></div>
+			</div>
+			<hr>
+			<div>
+				<h3 class="x-padding x-text-teal">Bar Chart for Farmer Profiles</h3>
+				<b class="x-padding x-text-teal">Bulk Uploading <i>New Spreadsheet Template</i></b>
+				<div id="chartdiv_EXCEL"></div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<div id="_ph_map"></div>
+	</div>
+</div>
 
 
-								$ID("count_all_male").innerHTML = sex["Male"]
-								$ID("count_all_female").innerHTML = sex["Female"]
-								var diff = ""+((sex["Male"] + sex["Female"]) - count)
-								$ID("count_all_sex_untagged").innerHTML = diff.replace("-","")
+<script type="text/javascript">
+	let CONSO_LISTED_REGIONS = {}
+	let CONSO_LISTED_PRIMARY_CROPS = {}
+	let CONSO_LISTED_ENUMERATOR_AREA = {}
 
-								var data_for_chart = []
-								for(key in dash_conso){
-									data_for_chart.push(dash_conso[key])
-								}
-								chart.dispose()
-								root.dispose()
-								chart = undefined
-								root = undefined
-								SPINNER_LOADER.hide()
-								chart_gender_vc(data_for_chart,category)
-								// == For Filtering
-								get_ls_region()
-								get_ls_crops()
-								get_ls_enum_area()
-							}
+	function conso_all(___ALL_FARMERS){
+		var sex = {}
+		var dash_conso = {}
+		var category_MOBILE = {}
+		var category_EXCEL = {}
 
-							let chart, root
-							chart_gender_vc([{
-								category : "Loading",
-								male : "100",
-								female : "100",
-								_male : "100",
-								_female : "100",
+		$ID("count_all_male").innerHTML = 0
+		$ID("count_all_female").innerHTML = 0
+		$ID("count_all_sex_untagged").innerHTML = 0
 
-							}])
+		$ID("total_num_farmer").innerHTML = 0
 
-							function chart_gender_vc(__data,__category){
-								println(__data)
-								am5.ready(function() {
-									root = am5.Root.new("chartdiv");
-									root.setThemes([
-										am5themes_Animated.new(root)
-									]);
+		for (var count = 0; count < ___ALL_FARMERS.length+1; count++) {
+			var FARMER = ___ALL_FARMERS[count]
+			$ID("total_num_farmer").innerHTML = count
+			if(typeof(FARMER)=='undefined'){continue;} // IF UNDEFINED NAG ENTRY sa INDEX sa SKIP
+			CONSO_LISTED_REGIONS[FARMER['addr_region']] = {}
+			CONSO_LISTED_PRIMARY_CROPS[FARMER['farmer-primary_crop']] = {}
+			CONSO_LISTED_ENUMERATOR_AREA[FARMER['input_by']['rcu']] = {}
+			FARMER['addr_region'] = FARMER['addr_region'].replace(" ","")
 
-									chart = root.container.children.push(am5xy.XYChart.new(root, {
-										panX: false,
-										panY: false,
-										wheelX: "panY",
-										wheelY: "zoomY",
-										layout: root.verticalLayout
-									}));
+			// if(FARMER['SOURCE']!="MOBILE"){continue;}// IF dili gikan sa MOIBLE > SKIP
+			// if(FARMER['addr_region']==""){
+			// 	FARMER['addr_region'] = "Untagged"
+			// }
 
-									chart.set("scrollbarY", am5.Scrollbar.new(root, {
-										orientation: "vertical"
-									}));
+			if(("Region: "+FARMER['addr_region']) in dash_conso){} //if wala pay region sa list
+			else{
+				dash_conso[("Region: "+FARMER['addr_region'])] = {}
+			}
 
-									var data = __data
+			if(FARMER['farmer-primary_crop'] in dash_conso[("Region: "+FARMER['addr_region'])] ) {} //if wala pay VC sa list
+			else{
+				dash_conso[("Region: "+FARMER['addr_region'])][FARMER['farmer-primary_crop']] = 0
+				dash_conso[("Region: "+FARMER['addr_region'])]["category"] = ("Region: "+FARMER['addr_region'])
+			}
 
-									var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
-										categoryField: "category",
-										renderer: am5xy.AxisRendererY.new(root, {}),
-										tooltip: am5.Tooltip.new(root, {})
-									}));
+			dash_conso[("Region: "+FARMER['addr_region'])][FARMER['farmer-primary_crop']] += 1
+			dash_conso[("Region: "+FARMER['addr_region'])]["SOURCE"] = FARMER['SOURCE']
 
-									yAxis.data.setAll(data);
+			if(FARMER['SOURCE']=="MOBILE"){category_MOBILE[FARMER['farmer-primary_crop']] = 'none';}// IF dili gikan sa MOIBLE > SKIP
+			if(FARMER['SOURCE']=="NEW_EXCEL"){category_EXCEL[FARMER['farmer-primary_crop']] = 'none';}// IF dili gikan sa MOIBLE > SKIP
 
-									var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
-										min: 0,
-										renderer: am5xy.AxisRendererX.new(root, {})
-									}));
+			// category_MOBILE[FARMER['farmer-primary_crop']] = 'none'
+			if(!sex.hasOwnProperty(FARMER['farmer_sex'])){sex[FARMER['farmer_sex']] = 0}
+			sex[FARMER['farmer_sex']] += 1
 
-									var legend = chart.children.push(am5.Legend.new(root, {
-										centerX: am5.p50,
-										x: am5.p50
-									}));
-
-									function makeSeries(name, fieldName) {
-										var series = chart.series.push(am5xy.ColumnSeries.new(root, {
-											name: name,
-											stacked: true,
-											xAxis: xAxis,
-											yAxis: yAxis,
-											baseAxis: yAxis,
-											valueXField: fieldName,
-											categoryYField: "category"
-										}));
-
-										series.columns.template.setAll({
-											tooltipText: "{name} {valueX}",
-											// tooltipText: "{name}, {categoryY}: {valueX}",
-											tooltipY: am5.percent(90)
-										});
-										series.data.setAll(data);
-
-										series.appear();
-
-										series.bullets.push(function () {
-											return am5.Bullet.new(root, {
-												sprite: am5.Label.new(root, {
-													text: "{valueX}",
-													fill: root.interfaceColors.get("alternativeText"),
-													centerY: am5.p50,
-													centerX: am5.p50,
-													populateText: true
-												})
-											});
-										});
-
-										legend.data.push(series);
-									}
-
-									for(key in __category){
-										makeSeries(key, key);
-									}
-
-									// chart.appear(1000, 100);
-
-								}); 
-							}
+		}
 
 
-							// _ph_map() // MAP FOR DASHBOARD
-							function _ph_map(){
-								am5.ready(function() {
+		$ID("count_all_male").innerHTML = sex["Male"]
+		$ID("count_all_female").innerHTML = sex["Female"]
+		var diff = ""+((sex["Male"] + sex["Female"]) - count)
+		$ID("count_all_sex_untagged").innerHTML = diff.replace("-","")
 
-									// Create root element
-									// https://www.amcharts.com/docs/v5/getting-started/#Root_element
-									var root = am5.Root.new("_ph_map");
+		var data_for_chart_MOBILE = []
+		var data_for_chart_EXCEL = []
+		for (var i = 0; i < dash_conso.length; i++) {
+			println(dash_conso[i])
+		}
 
-									// Set themes
-									// https://www.amcharts.com/docs/v5/concepts/themes/
-									root.setThemes([
-										am5themes_Animated.new(root)
-									]);
+		for(key in dash_conso){
+			if(dash_conso[key]["SOURCE"] == "MOBILE"){
+				data_for_chart_MOBILE.push(dash_conso[key])
+			}
+			if(dash_conso[key]["SOURCE"] == "NEW_EXCEL"){
+				data_for_chart_EXCEL.push(dash_conso[key])
+			}
+		}
 
-									// Create the map chart
-									// https://www.amcharts.com/docs/v5/charts/map-chart/
-									var chart = root.container.children.push(am5map.MapChart.new(root, {
-										panX: "rotateX",
-										projection: am5map.geoMercator(),
-										layout: root.horizontalLayout
-									}));
+		SPINNER_LOADER.hide()
+		CHART_REGION_CROP_MOBILE(data_for_chart_MOBILE,category_MOBILE,"chartdiv_MOBILE")
+		CHART_REGION_CROP_MOBILE(data_for_chart_EXCEL,category_EXCEL,"chartdiv_EXCEL")
+		// == For Filtering
+		get_ls_region()
+		get_ls_crops()
+		get_ls_enum_area()
+	}
 
-									var __map_codfe = {"response":{"country_code":"PH","country_name":"Philippines"}}
-									var geo = am5.JSONParser.parse(__map_codfe.response);
-									loadGeodata(geo.country_code);
-									// Create polygon series for continents
-									// https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
-									var polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
-										calculateAggregates: true,
-										valueField: "value"
-									}));
+	function CHART_REGION_CROP_MOBILE(__data,__category,chartdiv){
+		println(__data)
+		var chart_MOBILE, root_MOBILE
+		am5.ready(function() {
+			root_MOBILE = am5.Root.new(chartdiv);
+			root_MOBILE.setThemes([
+				am5themes_Animated.new(root_MOBILE)
+			]);
 
-									polygonSeries.mapPolygons.template.setAll({
-										tooltipText: "{name}",
-										interactive: true
-									});
+			chart_MOBILE = root_MOBILE.container.children.push(am5xy.XYChart.new(root_MOBILE, {
+				panX: false,
+				panY: false,
+				wheelX: "panY",
+				wheelY: "zoomY",
+				layout: root_MOBILE.verticalLayout
+			}));
 
-									polygonSeries.mapPolygons.template.states.create("hover", {
-										fill: am5.color(0x677935)
-									});
+			chart_MOBILE.set("scrollbarY", am5.Scrollbar.new(root_MOBILE, {
+				orientation: "vertical"
+			}));
 
-									polygonSeries.set("heatRules", [{
-										target: polygonSeries.mapPolygons.template,
-										dataField: "value",
-										min: am5.color(0x8ab7ff),
-										max: am5.color(0x25529a),
-										key: "fill"
-									}]);
+			var data = __data
 
-									polygonSeries.mapPolygons.template.events.on("pointerover", function(ev) {
-										heatLegend.showValue(ev.target.dataItem.get("value"));
-									});
+			var yAxis = chart_MOBILE.yAxes.push(am5xy.CategoryAxis.new(root_MOBILE, {
+				categoryField: "category",
+				renderer: am5xy.AxisRendererY.new(root_MOBILE, {}),
+				tooltip: am5.Tooltip.new(root_MOBILE, {})
+			}));
 
-									function loadGeodata(country) {
+			yAxis.data.setAll(data);
 
-										// Default map
-										var defaultMap = "usaLow";
-										
-										if (country == "US") {
-											chart.set("projection", am5map.geoAlbersUsa());
-										}
-										else {
-											chart.set("projection", am5map.geoMercator());
-										}
+			var xAxis = chart_MOBILE.xAxes.push(am5xy.ValueAxis.new(root_MOBILE, {
+				min: 0,
+				renderer: am5xy.AxisRendererX.new(root_MOBILE, {})
+			}));
 
-										// calculate which map to be used
-										var currentMap = defaultMap;
-										var title = "";
-										if (am5geodata_data_countries2[country] !== undefined) {
-											currentMap = am5geodata_data_countries2[country]["maps"][0];
+			var legend = chart_MOBILE.children.push(am5.Legend.new(root_MOBILE, {
+				centerX: am5.p50,
+				x: am5.p50
+			}));
 
-											// add country title
-											if (am5geodata_data_countries2[country]["country"]) {
-												title = am5geodata_data_countries2[country]["country"];
-											}
-										}
-										
-										am5.net.load("https://cdn.amcharts.com/lib/5/geodata/json/" + currentMap + ".json", chart).then(function (result) {
-											var geodata = am5.JSONParser.parse(result.response);
-											var data = [];
-											for(var i = 0; i < geodata.features.length; i++) {
-												data.push({
-													id: geodata.features[i].id,
-													value: Math.round( Math.random() * 10000 )
-												});
-											}
+			function makeSeries(name, fieldName) {
+				var series = chart_MOBILE.series.push(am5xy.ColumnSeries.new(root_MOBILE, {
+					name: name,
+					stacked: true,
+					xAxis: xAxis,
+					yAxis: yAxis,
+					baseAxis: yAxis,
+					valueXField: fieldName,
+					categoryYField: "category"
+				}));
 
-											polygonSeries.set("geoJSON", geodata);
-											polygonSeries.data.setAll(data)
-											println("polygonSeries.data.setAll(data)")
-											println(data)
-										});
-										
-										chart.seriesContainer.children.push(am5.Label.new(root, {
-											x: 5,
-											y: 5,
-											text: title,
-											background: am5.RoundedRectangle.new(root, {
-												fill: am5.color(0xffffff),
-												fillOpacity: 0.2
-											})
-										}))
+				series.columns.template.setAll({
+					tooltipText: "{name} {valueX}",
+					// tooltipText: "{name}, {categoryY}: {valueX}",
+					tooltipY: am5.percent(90)
+				});
+				series.data.setAll(data);
 
-									}
+				series.appear();
 
-									var heatLegend = chart.children.push(
-										am5.HeatLegend.new(root, {
-											orientation: "vertical",
-											startColor: am5.color(0x8ab7ff),
-											endColor: am5.color(0x25529a),
-											startText: "Lowest",
-											endText: "Highest",
-											stepCount: 5
-										})
-									);
+				series.bullets.push(function () {
+					return am5.Bullet.new(root_MOBILE, {
+						sprite: am5.Label.new(root_MOBILE, {
+							text: "{valueX}",
+							fill: root_MOBILE.interfaceColors.get("alternativeText"),
+							centerY: am5.p50,
+							centerX: am5.p50,
+							populateText: true
+						})
+					});
+				});
 
-									heatLegend.startLabel.setAll({
-										fontSize: 12,
-										fill: heatLegend.get("startColor")
-									});
+				legend.data.push(series);
+			}
 
-									heatLegend.endLabel.setAll({
-										fontSize: 12,
-										fill: heatLegend.get("endColor")
-									});
+			for(key in __category){
+				makeSeries(key, key);
+			}
 
-									// change this to template when possible
-									polygonSeries.events.on("datavalidated", function () {
-										heatLegend.set("startValue", polygonSeries.getPrivate("valueLow"));
-										heatLegend.set("endValue", polygonSeries.getPrivate("valueHigh"));
-									});
+			// chart_MOBILE.appear(1000, 100);
 
-								}); // end am5.ready()
-							}
-						</script>
+		}); 
+	}
+
+// ===============================================================================
+	// _ph_map() // MAP FOR DASHBOARD
+	// function _ph_map(){
+	// 	am5.ready(function() {
+
+	// 		// Create root_MOBILE element
+	// 		// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+	// 		var root_MOBILE = am5.Root.new("_ph_map");
+
+	// 		// Set themes
+	// 		// https://www.amcharts.com/docs/v5/concepts/themes/
+	// 		root_MOBILE.setThemes([
+	// 			am5themes_Animated.new(root_MOBILE)
+	// 		]);
+
+	// 		// Create the map chart_MOBILE
+	// 		// https://www.amcharts.com/docs/v5/charts/map-chart_MOBILE/
+	// 		var chart_MOBILE = root_MOBILE.container.children.push(am5map.MapChart.new(root_MOBILE, {
+	// 			panX: "rotateX",
+	// 			projection: am5map.geoMercator(),
+	// 			layout: root_MOBILE.horizontalLayout
+	// 		}));
+
+	// 		var __map_codfe = {"response":{"country_code":"PH","country_name":"Philippines"}}
+	// 		var geo = am5.JSONParser.parse(__map_codfe.response);
+	// 		loadGeodata(geo.country_code);
+	// 		// Create polygon series for continents
+	// 		// https://www.amcharts.com/docs/v5/charts/map-chart_MOBILE/map-polygon-series/
+	// 		var polygonSeries = chart_MOBILE.series.push(am5map.MapPolygonSeries.new(root_MOBILE, {
+	// 			calculateAggregates: true,
+	// 			valueField: "value"
+	// 		}));
+
+	// 		polygonSeries.mapPolygons.template.setAll({
+	// 			tooltipText: "{name}",
+	// 			interactive: true
+	// 		});
+
+	// 		polygonSeries.mapPolygons.template.states.create("hover", {
+	// 			fill: am5.color(0x677935)
+	// 		});
+
+	// 		polygonSeries.set("heatRules", [{
+	// 			target: polygonSeries.mapPolygons.template,
+	// 			dataField: "value",
+	// 			min: am5.color(0x8ab7ff),
+	// 			max: am5.color(0x25529a),
+	// 			key: "fill"
+	// 		}]);
+
+	// 		polygonSeries.mapPolygons.template.events.on("pointerover", function(ev) {
+	// 			heatLegend.showValue(ev.target.dataItem.get("value"));
+	// 		});
+
+	// 		function loadGeodata(country) {
+
+	// 			// Default map
+	// 			var defaultMap = "usaLow";
+				
+	// 			if (country == "US") {
+	// 				chart_MOBILE.set("projection", am5map.geoAlbersUsa());
+	// 			}
+	// 			else {
+	// 				chart_MOBILE.set("projection", am5map.geoMercator());
+	// 			}
+
+	// 			// calculate which map to be used
+	// 			var currentMap = defaultMap;
+	// 			var title = "";
+	// 			if (am5geodata_data_countries2[country] !== undefined) {
+	// 				currentMap = am5geodata_data_countries2[country]["maps"][0];
+
+	// 				// add country title
+	// 				if (am5geodata_data_countries2[country]["country"]) {
+	// 					title = am5geodata_data_countries2[country]["country"];
+	// 				}
+	// 			}
+				
+	// 			am5.net.load("https://cdn.amcharts.com/lib/5/geodata/json/" + currentMap + ".json", chart_MOBILE).then(function (result) {
+	// 				var geodata = am5.JSONParser.parse(result.response);
+	// 				var data = [];
+	// 				for(var i = 0; i < geodata.features.length; i++) {
+	// 					data.push({
+	// 						id: geodata.features[i].id,
+	// 						value: Math.round( Math.random() * 10000 )
+	// 					});
+	// 				}
+
+	// 				polygonSeries.set("geoJSON", geodata);
+	// 				polygonSeries.data.setAll(data)
+	// 				println("polygonSeries.data.setAll(data)")
+	// 				println(data)
+	// 			});
+				
+	// 			chart_MOBILE.seriesContainer.children.push(am5.Label.new(root_MOBILE, {
+	// 				x: 5,
+	// 				y: 5,
+	// 				text: title,
+	// 				background: am5.RoundedRectangle.new(root_MOBILE, {
+	// 					fill: am5.color(0xffffff),
+	// 					fillOpacity: 0.2
+	// 				})
+	// 			}))
+
+	// 		}
+
+	// 		var heatLegend = chart_MOBILE.children.push(
+	// 			am5.HeatLegend.new(root_MOBILE, {
+	// 				orientation: "vertical",
+	// 				startColor: am5.color(0x8ab7ff),
+	// 				endColor: am5.color(0x25529a),
+	// 				startText: "Lowest",
+	// 				endText: "Highest",
+	// 				stepCount: 5
+	// 			})
+	// 		);
+
+	// 		heatLegend.startLabel.setAll({
+	// 			fontSize: 12,
+	// 			fill: heatLegend.get("startColor")
+	// 		});
+
+	// 		heatLegend.endLabel.setAll({
+	// 			fontSize: 12,
+	// 			fill: heatLegend.get("endColor")
+	// 		});
+
+	// 		// change this to template when possible
+	// 		polygonSeries.events.on("datavalidated", function () {
+	// 			heatLegend.set("startValue", polygonSeries.getPrivate("valueLow"));
+	// 			heatLegend.set("endValue", polygonSeries.getPrivate("valueHigh"));
+	// 		});
+
+	// 	}); // end am5.ready()
+	// }
+</script>

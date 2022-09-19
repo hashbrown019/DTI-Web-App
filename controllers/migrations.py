@@ -47,61 +47,76 @@ class _main:
 		
 		return jsonify(res)
 
-	@app.route("/excel_popu",methods=["POST","GET"])
+	@app.route("/api/excel_popu",methods=["POST","GET"])
 	def excel_popu():
-		file_name =  c.RECORDS+"/spreadsheets/93#2022-09-19#NSAMAR_vc_a_1.xlsx" # path to file + file name
-		sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
+		dir_path = c.RECORDS+"/spreadsheets/"
+		FROM_EXCEL_RPOFILES = []
 
-		df = pd.read_excel(io=file_name, sheet_name=sheet)
-		EXCEL_DATA = df.iterrows()
+		for path in os.listdir(dir_path):
+			PATH__ = os.path.join(dir_path, path)
+			if os.path.isfile(PATH__):
+				print(PATH__)
 
-		_result = {}
-		LLL = dict(EXCEL_DATA)
-		for key in LLL:
-			_result[key] = [] 
-			for val in LLL[key]:
-				_result[key].append(val)
+				file_name =  PATH__ # path to file + file name
+				# file_name =  c.RECORDS+"/spreadsheets/93#2022-09-19#NSAMAR_vc_a_1.xlsx" # path to file + file name
+				sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
+				try:
+					df = pd.read_excel(io=file_name, sheet_name=sheet)
+				except Exception as e:
+					print(e)
+					continue
 
-		counter = 0
-		new_struc = {}
-		__new_struc = []
+				EXCEL_DATA = df.iterrows()
 
-		t1 = None
-		t2 = None
-		t3 = None
+				_result = {}
+				LLL = dict(EXCEL_DATA)
+				for key in LLL:
+					_result[key] = [] 
+					for val in LLL[key]:
+						_result[key].append(val)
+				del _result[0]
+				FROM_EXCEL_RPOFILES = FROM_EXCEL_RPOFILES +_main.append_data_excel_mdata(_result,path)
 
-		# for colNames in df.head():
-		# 	# print(colNames.find("Unnamed"))
-		# 	if(colNames.find("Unnamed") == 0): pass
-		# 	else:
-		# 		new_struc[colNames] = {}
-		# 		t1 =colNames
+		return (FROM_EXCEL_RPOFILES)
+		# return jsonify(FROM_EXCEL_RPOFILES)
 
-		# 	if (str(_result[0][counter]).lower().find("nan")):
-		# 		new_struc[t1][_result[0][counter]] = {}
-		# 		t2 = _result[0][counter]
+	def append_data_excel_mdata(datas,path):
+		farmer_from_excel = []
+		# datas = (_main.excel_popu())
+		head  = datas[1]; del datas[1];
+		_ID_ = path.split("#")[0]
+		USER = rapid.select("SELECT * FROM `users` WHERE `id`={} ORDER BY `name` ASC; ".format(_ID_) )
+		if(len(USER)<=0):
+			USER = [{"name":"none","password":"CONFIDENTIAL"}]
+		for datum in datas:
+			_farmer = datas[datum]
+			for inc in range(len(_farmer)):
+				_farmer[inc] = "{}".format(_farmer[inc])
+				if _farmer[inc]  == "nan":
+					_farmer[inc] = ""
 
-		# 	new_struc[t1][t2][_result[1][counter] ]= _main.x_filed_get(_result,counter)
-		# 	counter = counter + 1
-		# return new_struc
-		del _result[0]
-		return (_result)
-	
-	def x_filed_get(_result,counter):
-		row_counter = 0
-		data = []
-		for _res in _result:
-			if row_counter >2 :
-				data.append(_result[_res][counter])
-			row_counter =  row_counter + 1
-		return data
-		# return data
 
-	@app.route("/append_data_excel_mdata")
-	def append_data_excel_mdata():
-		datas = (_main.excel_popu())
+			# print("{} >>> {}".format(type(_farmer[4]),_farmer[4] ))
+			farmer_from_excel.append({
+				'input_by': USER[0],
+				'SOURCE': "NEW_EXCEL",
+				'USER_ID':_farmer[1],
+				'farmer_code': path,
+				'f_name':_farmer[1],
+				'm_name':_farmer[2],
+				'l_name':_farmer[3],
+				'ext_name':_farmer[4],
+				'farmer_name': "{} {} {} {}".format(_farmer[1],_farmer[2],_farmer[3],_farmer[4],),
 
-		return str(len(datas))
+				'farmer_sex':_farmer[5],
+				'addr_region':_farmer[40],
+				'addr_prov':_farmer[41],
+				'addr_city':_farmer[42],
+				'addr_brgy':_farmer[43],
+				'farmer-primary_crop':_farmer[47]
+			})
+		# return str(len(datas))
+		return farmer_from_excel
 
 	
 
@@ -120,5 +135,27 @@ class _main:
 
 	@app.route("/get_uploaded_excel",methods=["POST","GET"])
 	def get_uploaded_excel():
-		return jsonify(os.listdir(c.RECORDS+"/spreadsheets/"))
+		ls_uploaded_excel = []
+		dir_path = c.RECORDS+"/spreadsheets/"
+
+		for path in os.listdir(dir_path):
+			PATH__ = os.path.join(dir_path, path)
+			if path.find("~$") != -1:
+				if os.path.isfile(PATH__):
+					print(PATH__)
+
+					file_name =  PATH__ # path to file + file name
+					# file_name =  c.RECORDS+"/spreadsheets/93#2022-09-19#NSAMAR_vc_a_1.xlsx" # path to file + file name
+					sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
+					try:
+						df = pd.read_excel(io=file_name, sheet_name=sheet)
+						ls_uploaded_excel.append({"file_name":path,"status": "Synced"})
+					except Exception as e:
+						print(e)
+						ls_uploaded_excel.append({"file_name":path,"status": "Failed"})
+
+						continue
+
+		return jsonify(ls_uploaded_excel);
+		# return jsonify(os.listdir(c.RECORDS+"/spreadsheets/"));
 		# return data

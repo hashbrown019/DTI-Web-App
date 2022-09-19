@@ -7,6 +7,9 @@ import json
 from flask_cors import CORS,cross_origin
 import base64
 import sys
+import random
+from controllers.migrations import _main as migrations
+
 
 app = Blueprint("api",__name__)
 cors = CORS(app)
@@ -25,12 +28,15 @@ class _main:
 	def list_all_profile():
 		res = []
 		dir_path = c.RECORDS+"/profiles/__temp__/"
-		
 		for path in os.listdir(dir_path):
 			if os.path.isfile(os.path.join(dir_path, path)):
 				if(path.find("@profile")>=0):
 					# res.append(path)
 					res.append(_main.profile_info_farmer(path))
+
+		# res = migrations.excel_popu()
+		res = res + migrations.excel_popu()
+		random.shuffle(res)
 		return jsonify(res)
 
 	def profile_info_farmer(path):
@@ -44,6 +50,7 @@ class _main:
 			prof_1['addr_region'] = 'Untagged'
 		prof_1['addr_region'] = prof_1['addr_region'].replace(" ","")
 		prof_1['farmer_img_base64'] = ""
+		prof_1['SOURCE'] = "MOBILE"
 
 		USER = rapid.select("SELECT * FROM `users` WHERE `id`={} ORDER BY `name` ASC; ".format(prof_1["USER_ID"]))
 		if(len(USER)<=0):
@@ -65,6 +72,8 @@ class _main:
 		prof_1 = "ERROR"
 		# try:
 		prof_1 = json.loads(json.loads(strsd))
+		prof_1['SOURCE'] = "MOBILE"
+
 		if(prof_1['addr_region']==""):
 			prof_1['addr_region'] = 'Untagged'
 		prof_1['addr_region'] = prof_1['addr_region'].replace(" ","")
@@ -88,6 +97,8 @@ class _main:
 		# res = json.loads(f.read())
 		f.close()
 		res_ = json.loads(json.loads(res))
+		res_['SOURCE'] = "MOBILE"
+
 		USER = rapid.select("SELECT * FROM `users` WHERE `id`={} ORDER BY `name` ASC; ".format(res_["USER_ID"]))
 		if(len(USER)<=0):
 			res_["input_by"] = {"name":"none"}
@@ -106,6 +117,7 @@ class _main:
 		f.close()
 
 		res_ = json.loads(json.loads(res))
+		res_['SOURCE'] = "MOBILE"
 		USER = rapid.select("SELECT * FROM `users` WHERE `id`={} ORDER BY `name` ASC; ".format(res_["USER_ID"]))
 		if(len(USER)<=0):
 			res_["input_by"] = {"name":"none"}
