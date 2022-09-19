@@ -159,10 +159,16 @@
 				var ls_excel_card = ""
 
 				for (var i = 0; i < ls_excel.length; i++) {
+					var colr  = "yellow"
+					var note  = "Failed to Sync"
+					if(ls_excel[i].status=="Synced"){
+						colr  = "green"
+						note  = "Synced To Database"
+					}
 					ls_excel_card += (`
 						<div class="x-row">
-							<b class="x-pale-yellow x-text-yellow x-leftbar x-border-yellow">[On System Checking]</b>
-							<span>`+ls_excel[i]+`</span>
+							<b class="x-pale-`+colr+` x-text-`+colr+` x-leftbar x-border-`+colr+`">[`+note+`]</b>
+							<span>`+ls_excel[i].file_name+`</span>
 						</div>
 					`)
 				}

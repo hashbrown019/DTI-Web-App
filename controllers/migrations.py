@@ -140,7 +140,7 @@ class _main:
 
 		for path in os.listdir(dir_path):
 			PATH__ = os.path.join(dir_path, path)
-			if path.find("~$") != -1:
+			if path.find("~$") == -1:
 				if os.path.isfile(PATH__):
 					print(PATH__)
 
