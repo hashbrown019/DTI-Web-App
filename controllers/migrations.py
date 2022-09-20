@@ -142,17 +142,29 @@ class _main:
 			PATH__ = os.path.join(dir_path, path)
 			if path.find("~$") == -1:
 				if os.path.isfile(PATH__):
-					print(PATH__)
-
+					file_details = (path.split("#"))
+					USER = rapid.select("SELECT * FROM `users` WHERE `id`='{}' ORDER BY `name` ASC; ".format(file_details[0]))[0]
+					if(len(USER)<=0):
+						USER= {"name":"none","id":"none"}
 					file_name =  PATH__ # path to file + file name
 					# file_name =  c.RECORDS+"/spreadsheets/93#2022-09-19#NSAMAR_vc_a_1.xlsx" # path to file + file name
 					sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
 					try:
 						df = pd.read_excel(io=file_name, sheet_name=sheet, engine='openpyxl')
-						ls_uploaded_excel.append({"file_name":path,"status": "Synced"})
+						ls_uploaded_excel.append({
+							"file_name":path,
+							"status": "Synced",
+							"name":USER["name"],
+							"id":USER["id"]
+							})
 					except Exception as e:
 						print(e)
-						ls_uploaded_excel.append({"file_name":path,"status": "Failed"})
+						ls_uploaded_excel.append({
+							"file_name":path,
+							"status": "Failed",
+							"name":USER["name"],
+							"id":USER["id"]
+							})
 
 						continue
 
