@@ -110,9 +110,9 @@
 
 	function export_farmer_excel(argument) {staytuned()}
 
-
+	let excel_upload_dialog
 	function import_farmer_excel(argument) {
-		var excel_upload_dialog = $dialog({
+		excel_upload_dialog = $dialog({
 			title : "import",
 			subtitle : "Spreadsheet Uploader for Farmer's Profiles",
 			content :(`
@@ -142,6 +142,7 @@
 	}
 
 	function upload_excel(){
+		excel_upload_dialog.hide()
 		SPINNER_LOADER.show()
 		var uploader_id  = ("{{USER_DATA['id']}}")
 		$send({
@@ -159,15 +160,20 @@
 			action : "/get_uploaded_excel",
 			method : POST,
 			func : function(res){
+				excel_upload_dialog.show()
 				var ls_excel = JSON.parse(res)
 				var ls_excel_card = ""
 
 				for (var i = 0; i < ls_excel.length; i++) {
 					var colr  = "yellow"
 					var note  = "Failed"
+					var del_ = ""
 					if(ls_excel[i].status=="Synced"){
 						colr  = "green"
 						note  = "Synced"
+					}
+					if(ls_excel[i].id=='{{USER_DATA["id"]}}' ){
+						del_ = `<b class="x-text-red">Delete <span class="fa fa-trash"></span></b>`
 					}
 					ls_excel_card += (`
 						<div class="x-row">
@@ -181,12 +187,11 @@
 								<span>`+ls_excel[i].name+`</span>
 							</div>
 							<div class="x-container x-col l3">
-								<b class="x-text-red">Delete <span class="fa fa-trash"></span></b>
+								`+del_+`
 							</div>
 						</div>
 					`)
 				}
-
 				$ID("ls_uploaded_excel").innerHTML = ls_excel_card
 				SPINNER_LOADER.hide()
 			}
