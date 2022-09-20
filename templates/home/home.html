@@ -100,6 +100,21 @@
 		}
 	</style>
 	<script type="text/javascript">
+
+		_INIT_()
+		async function _INIT_(){
+			println(" * Initialized")
+			await new Promise(init); // WAIT FOR n.. SECONDS
+			function init(){
+				load_users()
+				set_ls_rcu()
+				get_list_file() // For Inititalizing list in profiling/profiling_farmers.html
+			}
+		}
+		// ================================================
+
+
+
 		let ALL_DATA = undefined
 		let ALL_DATA_CONSO = {}
 

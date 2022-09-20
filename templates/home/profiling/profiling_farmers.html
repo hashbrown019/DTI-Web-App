@@ -274,34 +274,22 @@
 
 	function filterByPrimaryCrop(person){
 		var _primary_crop= person["farmer-primary_crop"]
-
 		if(FILTER_SEL_PRIMARY_CROP=="all" ||FILTER_SEL_PRIMARY_CROP==undefined){SPINNER_LOADER.show();return true}
-
-		if(_primary_crop==FILTER_SEL_PRIMARY_CROP){
-			return true
-		}
+		if(_primary_crop==FILTER_SEL_PRIMARY_CROP){	return true}
 		else{return false}
 	}
 
 	function filterByEnumArea(person){
 		var enum_area_= person["input_by"]["rcu"]
-
 		if(FILTER_SEL_ENUM_AREA=="all" ||FILTER_SEL_ENUM_AREA==undefined){SPINNER_LOADER.show();return true}
-
-		if(enum_area_==FILTER_SEL_ENUM_AREA){
-			return true
-		}
+		if(enum_area_==FILTER_SEL_ENUM_AREA){return true}
 		else{return false}
 	}
 
 	function filterByDataSource(person){
 		var data_source= person["SOURCE"]
-
 		if(FILTER_SEL_DATA_SOURCE=="all" ||FILTER_SEL_DATA_SOURCE==undefined){SPINNER_LOADER.show();return true}
-
-		if(data_source==FILTER_SEL_DATA_SOURCE){
-			return true
-		}
+		if(data_source==FILTER_SEL_DATA_SOURCE){return true}
 		else{return false}
 	}
 
@@ -322,6 +310,8 @@
 		populate_farm_list_for_numbers(ALL_FARMERS)
 	}
 
+	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 	function get_list_file(){ // For Inititalizing list in profiling/profiling_farmers.html
 		SPINNER_LOADER.show()
 		println(" * Getting List of Profiles")
@@ -340,12 +330,13 @@
 			}
 		})
 	}
+	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 	function populate_farm_list_for_numbers(ALL_FARMERS____){
-		LS_FARMER_VIEW =""
-		var FILTER_total_recors_farmer_counter = 0
-		$ID("profile_list").innerHTML = ""
-		async_num_farmer_count= 0
+		LS_FARMER_VIEW ="";
+		var FILTER_total_recors_farmer_counter = 0;
+		$ID("profile_list").innerHTML = "";
+		async_num_farmer_count= 0;
 		for (var f_counter = 0;f_counter < ALL_FARMERS____.length;f_counter++) {
 			if(
 				filterByArea(ALL_FARMERS____[f_counter]) &&
@@ -354,24 +345,24 @@
 				filterByDataSource(ALL_FARMERS____[f_counter])
 
 				){
-				make_ls_farmer(ALL_FARMERS____[f_counter],ALL_FARMERS____.length,f_counter)
-				popu_enumerator_encoded(ALL_FARMERS____[f_counter])
-				$ID("scan_item").innerHTML = FILTER_total_recors_farmer_counter
-				FILTER_total_recors_farmer_counter += 1
+				make_ls_farmer(ALL_FARMERS____[f_counter],ALL_FARMERS____.length,f_counter);
+				popu_enumerator_encoded(ALL_FARMERS____[f_counter]);
+				$ID("scan_item").innerHTML = FILTER_total_recors_farmer_counter;
+				FILTER_total_recors_farmer_counter += 1;
 			}
 		}
-		$ID("scan_item").innerHTML = FILTER_total_recors_farmer_counter
-		$ID("profile_list").style.display = "block"
-		num_enumerator_encoded()
-		SPINNER_LOADER.hide()
+		$ID("scan_item").innerHTML = FILTER_total_recors_farmer_counter;
+		$ID("profile_list").style.display = "block";
+		num_enumerator_encoded();
+		SPINNER_LOADER.hide();
 	}
 
 	let LS_FARMER_VIEW =""
 	function post_farmer_ls(){
-		$ID("profile_list").innerHTML =LS_FARMER_VIEW
+		$ID("profile_list").innerHTML =LS_FARMER_VIEW;
 	}
 
-	let async_num_farmer_count = 0
+	let async_num_farmer_count = 0;
 	async function make_ls_farmer(alldata_farmer,total_recors_farmer,total_recors_farmer_counter){
 		await new Promise(resolve => setTimeout(SKKKR, 10)); // WAIT FOR n.. SECONDS
 		function SKKKR() {
@@ -404,9 +395,14 @@
 						<b class="x-large">--%</b><br>
 					</div>
 				</div>
-				<span class="x-tiny x-text-grey x-right">
-					<b>`+async_num_farmer_count+`:`+total_recors_farmer_counter+`</b>-`+person.farmer_code+`
-				</span>
+				<div class="x-container x-row">
+					<span class="x-tiny x-text-grey x-left">
+						<b>Encoded by: `+person.input_by.name+` |  `+person.input_by.id+`</b>
+					</span>
+					<span class="x-tiny x-text-grey x-right">
+						<b>`+async_num_farmer_count+`:`+total_recors_farmer_counter+`</b>-`+person.farmer_code+`
+					</span>
+				</div>
 			</div>` + LS_FARMER_VIEW
 
 			if(async_num_farmer_count >= parseInt($ID("scan_item").innerHTML)){
