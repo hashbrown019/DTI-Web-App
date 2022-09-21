@@ -232,25 +232,14 @@
 	}
 
 	function download_excel(fff){
-		// window.open('/download_excel/'+fff, '_blank');
 		let a= document.createElement('a');
 		a.target= '_blank';
 		a.href= '/download_excel/'+fff.replace("#","@@").replace("#","@@");
 		a.click();
-		// $send({
-		// 	action : "/download_excel",
-		// 	method : POST,
-		// 	data : $DATA({"file":fff}),
-		// 	func : function(res){
-		// 		println(res)
-		// 	}
-		// })
 	}
 
 	function delete_excel(fff){
-		// alert("DELETE :"+ fff)
 		SPINNER_LOADER.show()
-		// del_dialog01.hide()
 		download_excel(fff)
 		$send({
 			action : "/delete_excel",
