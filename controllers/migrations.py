@@ -99,7 +99,7 @@ class _main:
 
 			# print("{} >>> {}".format(type(_farmer[4]),_farmer[4] ))
 			if(_farmer[3] == "" or _farmer[3] == " " or _farmer[3] == None):
-				break
+				continue;
 			farmer_from_excel.append({
 				'input_by': USER[0],
 				'SOURCE': "NEW_EXCEL",
