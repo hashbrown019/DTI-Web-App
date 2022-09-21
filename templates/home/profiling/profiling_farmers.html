@@ -386,10 +386,11 @@
 	}
 
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
+	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	var LS__PROF
 	function get_list_file(){ // For Inititalizing list in profiling/profiling_farmers.html
 		SPINNER_LOADER.show()
-		$send({
+		LS__PROF = $send({
 			action:"/api/list_all_profile",
 			method: POST,
 			func : function(res){
@@ -402,7 +403,9 @@
 				populate_farm_list_for_numbers(ALL_FARMERS)
 			}
 		})
+		println(LS__PROF)
 	}
+	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 	function populate_farm_list_for_numbers(ALL_FARMERS____){
