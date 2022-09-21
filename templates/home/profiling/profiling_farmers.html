@@ -180,10 +180,20 @@
 						note  = "Synced"
 					}
 					if(ls_excel[i].id=='{{USER_DATA["id"]}}' ){
-						del_ = `<b class="x-text-red">Delete <span class="fa fa-trash"></span></b>`
+						del_ = (`
+							<b class="x-text-red" onclick="confirm_delete_excel('`+ls_excel[i].file_name+`')">
+								Delete 
+								<span class="fa fa-trash"></span> 
+							</b>
+							&nbsp; | &nbsp;
+							<b class="x-text-blue" onclick="download_excel('`+ls_excel[i].file_name+`')">
+								Download 
+								<span class="fa fa-download"></span> 
+							</b>
+						`)
 					}
 					ls_excel_card += (`
-						<div class="x-row">
+						<div class="x-row x-padding x-border-dashed x-border-light-grey">
 							<div class="x-container x-col l2">
 								<b class="x-pale-`+colr+` x-text-`+colr+` x-leftbar x-border-`+colr+`">[`+note+`]</b>
 							</div>
@@ -204,7 +214,61 @@
 			}
 		})
 	}
-	
+
+	let del_dialog01
+	function confirm_delete_excel(fff){
+		del_dialog01 = $dialog({
+			title : "Confirm Deletion",
+			type : "error",
+			content : (`
+				Are you sure you want to delete <b>[`+fff+`]</b> <br>
+				If you do, a copy of this file will automatically downloaded as for fail-safe
+			`),
+			buttons : ["Download","Delete","Cancel"],
+			buttons_actions : [function (){download_excel(fff)},function (){delete_excel(fff)}]
+
+		})
+		del_dialog01.show()
+	}
+
+	function download_excel(fff){
+		// window.open('/download_excel/'+fff, '_blank');
+		let a= document.createElement('a');
+		a.target= '_blank';
+		a.href= '/download_excel/'+fff.replace("#","@@").replace("#","@@");
+		a.click();
+		// $send({
+		// 	action : "/download_excel",
+		// 	method : POST,
+		// 	data : $DATA({"file":fff}),
+		// 	func : function(res){
+		// 		println(res)
+		// 	}
+		// })
+	}
+
+	function delete_excel(fff){
+		// alert("DELETE :"+ fff)
+		SPINNER_LOADER.show()
+		// del_dialog01.hide()
+		download_excel(fff)
+		$send({
+			action : "/delete_excel",
+			method : POST,
+			data : $DATA({"file":fff.replace("#","@@").replace("#","@@")}),
+			func : function(res){
+				println(res)
+				get_uploaded_excel()
+				SPINNER_LOADER.hide()
+
+				excel_upload_dialog.destroy()
+				get_uploaded_excel()
+			}
+		})
+		del_dialog01.destroy()
+	}
+
+	// =========================for FILTER====================================================
 
 	function get_ls_enum_area(){
 		var ls_all_enum_area = '<option type="" value="all" selected>All RCU Level</option>'
@@ -262,7 +326,6 @@
 	}
 
 	function get_ls_all_area(brgy){SEL_BRGY=brgy}
-
 	function get_ls_primary_crop(){}
 
 	function filterByArea(person){

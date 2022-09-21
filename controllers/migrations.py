@@ -55,27 +55,28 @@ class _main:
 		for path in os.listdir(dir_path):
 			PATH__ = os.path.join(dir_path, path)
 			if os.path.isfile(PATH__):
-				print(PATH__)
+				if PATH__.find("._DELETED_FILE_")<0:	
+					print(PATH__)
 
-				file_name =  PATH__ # path to file + file name
-				# file_name =  c.RECORDS+"/spreadsheets/93#2022-09-19#NSAMAR_vc_a_1.xlsx" # path to file + file name
-				sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
-				try:
-					df = pd.read_excel(io=file_name, sheet_name=sheet, engine='openpyxl')
-				except Exception as e:
-					print(e)
-					continue
+					file_name =  PATH__ # path to file + file name
+					# file_name =  c.RECORDS+"/spreadsheets/93#2022-09-19#NSAMAR_vc_a_1.xlsx" # path to file + file name
+					sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
+					try:
+						df = pd.read_excel(io=file_name, sheet_name=sheet, engine='openpyxl')
+					except Exception as e:
+						print(e)
+						continue
 
-				EXCEL_DATA = df.iterrows()
+					EXCEL_DATA = df.iterrows()
 
-				_result = {}
-				LLL = dict(EXCEL_DATA)
-				for key in LLL:
-					_result[key] = [] 
-					for val in LLL[key]:
-						_result[key].append(val)
-				del _result[0]
-				FROM_EXCEL_RPOFILES = FROM_EXCEL_RPOFILES +_main.append_data_excel_mdata(_result,path)
+					_result = {}
+					LLL = dict(EXCEL_DATA)
+					for key in LLL:
+						_result[key] = [] 
+						for val in LLL[key]:
+							_result[key].append(val)
+					del _result[0]
+					FROM_EXCEL_RPOFILES = FROM_EXCEL_RPOFILES +_main.append_data_excel_mdata(_result,path)
 
 		return (FROM_EXCEL_RPOFILES)
 		# return jsonify(FROM_EXCEL_RPOFILES)
@@ -142,32 +143,53 @@ class _main:
 			PATH__ = os.path.join(dir_path, path)
 			if path.find("~$") == -1:
 				if os.path.isfile(PATH__):
-					file_details = (path.split("#"))
-					USER = rapid.select("SELECT * FROM `users` WHERE `id`='{}' ORDER BY `name` ASC; ".format(file_details[0]))[0]
-					if(len(USER)<=0):
-						USER= {"name":"none","id":"none"}
-					file_name =  PATH__ # path to file + file name
-					# file_name =  c.RECORDS+"/spreadsheets/93#2022-09-19#NSAMAR_vc_a_1.xlsx" # path to file + file name
-					sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
-					try:
-						df = pd.read_excel(io=file_name, sheet_name=sheet, engine='openpyxl')
-						ls_uploaded_excel.append({
-							"file_name":path,
-							"status": "Synced",
-							"name":USER["name"],
-							"id":USER["id"]
+					if PATH__.find("._DELETED_FILE_")<0:
+						file_details = (path.split("#"))
+						USER = rapid.select("SELECT * FROM `users` WHERE `id`='{}' ORDER BY `name` ASC; ".format(file_details[0]))[0]
+						if(len(USER)<=0):
+							USER= {"name":"none","id":"none"}
+						file_name =  PATH__ # path to file + file name
+						# file_name =  c.RECORDS+"/spreadsheets/93#2022-09-19#NSAMAR_vc_a_1.xlsx" # path to file + file name
+						sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
+						try:
+							df = pd.read_excel(io=file_name, sheet_name=sheet, engine='openpyxl')
+							ls_uploaded_excel.append({
+								"file_name":path,
+								"status": "Synced",
+								"name":USER["name"],
+								"id":USER["id"]
 							})
-					except Exception as e:
-						print(e)
-						ls_uploaded_excel.append({
-							"file_name":path,
-							"status": "Failed",
-							"name":USER["name"],
-							"id":USER["id"]
-							})
-
-						continue
-
+						except Exception as e:
+							print(e)
+							ls_uploaded_excel.append({
+								"file_name":path,
+								"status": "Failed",
+								"name":USER["name"],
+								"id":USER["id"]
+								})
+							continue
 		return jsonify(ls_uploaded_excel);
 		# return jsonify(os.listdir(c.RECORDS+"/spreadsheets/"));
 		# return data
+
+
+	@app.route("/download_excel/<excel_file>",methods=["POST","GET"])
+	def download_excel(excel_file):
+		# excel_file = request.form['file']
+		print(excel_file)
+		def_name = excel_file.split("@@")[2]
+		excel_file = excel_file.replace("@@","#")
+		return send_file(c.RECORDS+"/spreadsheets/"+excel_file, as_attachment=True,download_name=def_name)
+
+	@app.route("/delete_excel/",methods=["POST","GET"])
+	def delete_excel():
+		excel_file = request.form['file']
+		# print(excel_file)
+		def_name = excel_file.split("@@")[2]
+		excel_file = excel_file.replace("@@","#")
+
+		os.rename(
+			c.RECORDS+"/spreadsheets/"+excel_file,
+			c.RECORDS+"/spreadsheets/"+excel_file+"._DELETED_FILE_"
+		)
+		return jsonify({"status":"done"})
