@@ -100,6 +100,9 @@ class _main:
 			# print("{} >>> {}".format(type(_farmer[4]),_farmer[4] ))
 			if(_farmer[3] == "" or _farmer[3] == " " or _farmer[3] == None):
 				continue;
+
+			_farmer[40] = _main.region_name_cleaner(_farmer[40])
+
 			farmer_from_excel.append({
 				'input_by': USER[0],
 				'SOURCE': "NEW_EXCEL",
@@ -195,3 +198,30 @@ class _main:
 			c.RECORDS+"/spreadsheets/"+excel_file+"._DELETED_FILE_"
 		)
 		return jsonify({"status":"done"})
+
+
+
+	# THIS FUNCTION FIX THE REGION name with SIMILAR AREA
+	def region_name_cleaner(region):
+		region = str(region)
+		roman_numerals = ["i","ii","iii","iv","v","vi","vii","viii","ix","x","xi","xii","xiii"]
+		num_digits = ["1","2","3","4","5","6","7","8","9","10","11","12","13"]
+		region = region.lower()
+		region = region.replace(" ","")
+		region = region.replace("region","")
+		region = region.replace("r-","")
+		region = region.replace("r:","")
+		if(region==""):region = 'Untagged';
+		# region = num_digits[roman_numerals.index(region)]
+
+		else:
+			try:
+				if(region.isnumeric()):
+					region = region
+				else:
+					region = num_digits[roman_numerals.index(region)]
+			except Exception as e:
+				region = region + ""
+
+
+		return region
