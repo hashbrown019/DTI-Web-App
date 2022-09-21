@@ -102,6 +102,7 @@ class _main:
 				continue;
 
 			_farmer[40] = _main.region_name_cleaner(_farmer[40])
+			_farmer[47] = _main.crops_name_cleaner(_farmer[47])
 
 			farmer_from_excel.append({
 				'input_by': USER[0],
@@ -212,8 +213,6 @@ class _main:
 		region = region.replace("r-","")
 		region = region.replace("r:","")
 		if(region==""):region = 'Untagged';
-		# region = num_digits[roman_numerals.index(region)]
-
 		else:
 			try:
 				if(region.isnumeric()):
@@ -222,6 +221,12 @@ class _main:
 					region = num_digits[roman_numerals.index(region)]
 			except Exception as e:
 				region = region + ""
-
-
 		return region
+
+	# THIS FUNCTION FIX THE crops name with SIMILAR AREA
+	def crops_name_cleaner(crops):
+		crops = str(crops)
+		crops = crops.lower()
+		crops = crops.replace(" ","")
+		if(crops==""):crops = 'Untagged';
+		return crops

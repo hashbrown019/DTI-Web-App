@@ -11,7 +11,7 @@
 		<div class="x-bottombar x-border-teal x-row">
 			<div class="x-btn x-left x-container ">
 				<i class="x-text-grey">
-					Displaying <b id="prof_farmer_count">0</b> Profiles of
+					Displaying <b id="prof_farmer_count">0</b> Profiles ||
 					 <span id="scan_view"><span id="scan_item"></span>/</span>
 					<b id="prof_farmer_count_all">0</b> total records
 				</i>
@@ -368,6 +368,7 @@
 	}
 
 	async function conso_filters(){
+		$ID("prof_farmer_count").innerHTML = 0
 		SPINNER_LOADER.show()
 		await new Promise(resolve => setTimeout(resolve, 1000)); // WAIT FOR 1 SECONDS
 		FILTER_SEL_REG = $ID("dash_sel_region").value

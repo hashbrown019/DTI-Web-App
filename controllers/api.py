@@ -46,8 +46,8 @@ class _main:
 		prof_1 = "ERROR"
 		# try:
 		prof_1 = json.loads(json.loads(strsd))
-		# prof_1['addr_region'] = prof_1['addr_region'].replace(" ","")
 		prof_1['addr_region'] = migrations.region_name_cleaner(prof_1['addr_region'])
+		prof_1['farmer-primary_crop'] = migrations.crops_name_cleaner(prof_1['farmer-primary_crop'])
 		prof_1['farmer_img_base64'] = ""
 		prof_1['SOURCE'] = "MOBILE"
 
@@ -72,8 +72,8 @@ class _main:
 		# try:
 		prof_1 = json.loads(json.loads(strsd))
 		prof_1['SOURCE'] = "MOBILE"
-
 		prof_1['addr_region'] = migrations.region_name_cleaner(prof_1['addr_region'])
+		prof_1['farmer-primary_crop'] = migrations.crops_name_cleaner(prof_1['farmer-primary_crop'])
 		# prof_1['farmer_img_base64'] = "" # REMOVES BASE64 Data
 
 		USER = rapid.select("SELECT * FROM `users` WHERE `id`={} ORDER BY `name` ASC; ".format(prof_1["USER_ID"]))
