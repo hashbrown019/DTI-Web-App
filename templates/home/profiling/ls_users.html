@@ -112,7 +112,6 @@
 							let SELECTED_USER_ACC 
 							
 							function load_users(){
-								println(" * Getting User lists")
 								$send({
 									action : "/get_user",
 									method : POST,
@@ -176,7 +175,6 @@
 												method : POST,
 												data : $DATA({"id":SELECTED_USER_ACC.id}),
 												func : function(res){
-													println(res)
 													load_users()
 													acc_clear()
 													del_user_dialog.hide()
@@ -213,7 +211,6 @@
 							}
 
 							function btn_dis(){
-								println('events')
 								if(!input_validate("required")){
 									$ID('save_btn').disabled = true
 								}else{
@@ -251,14 +248,11 @@
 										method : POST,
 										func : function (res){
 											// var resp = JSON.parse(res)
-											println("FROM SERVER")
-											println(res)
 											load_users()
 											acc_clear()
 										}
 									})
 								}
-								println(_form_data)
 							}
 
 							function set_ls_rcu(){

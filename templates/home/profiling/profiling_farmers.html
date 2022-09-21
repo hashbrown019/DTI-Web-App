@@ -389,13 +389,11 @@
 
 	function get_list_file(){ // For Inititalizing list in profiling/profiling_farmers.html
 		SPINNER_LOADER.show()
-		println(" * Getting List of Profiles")
 		$send({
 			action:"/api/list_all_profile",
 			method: POST,
 			func : function(res){
 				ls_file_farmer = JSON.parse(res)
-				println(ls_file_farmer)
 				$ID("prof_farmer_count_all").innerHTML = ls_file_farmer.length
 				enumerator_encoded_num = {}
 
@@ -559,9 +557,7 @@
 					`+FORM_A_LS[i].label+`
 				</button>		
 			`)
-			println()
 		}
-		println(person)
 
 		var prof_pic = person.farmer_img_base64
 		if(prof_pic=="" || prof_pic==" " || prof_pic==undefined){
@@ -629,7 +625,6 @@
 					method : POST,
 					func : function (res) {
 						var form_ = JSON.parse(JSON.parse(res))
-						println(form_) 
 						refill_data_forms__(form_)
 					}
 				})
@@ -645,7 +640,6 @@
 			f_list.push(form_data_a[i].id)
 		}
 		form_f_names.push(f_list)
-		println(f_list)
 	}
 
 
