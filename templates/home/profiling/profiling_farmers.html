@@ -271,8 +271,8 @@
 	function get_ls_crops(){
 		var ls_all_crops_primary = '<option type="" value="all" selected>All Crops</option>'
 		for(key in VALUE_CHAIN_CROP){
-			ls_all_crops_primary += '<option value="'+VALUE_CHAIN_CROP[key]+'">'+VALUE_CHAIN_CROP[key]+'</option>'
-			delete CONSO_LISTED_PRIMARY_CROPS[VALUE_CHAIN_CROP[key]]
+			ls_all_crops_primary += '<option value="'+VALUE_CHAIN_CROP[key].toLowerCase()+'">'+VALUE_CHAIN_CROP[key].toLowerCase()+'</option>'
+			delete CONSO_LISTED_PRIMARY_CROPS[VALUE_CHAIN_CROP[key].toLowerCase()]
 		}
 		for(key_untagg in CONSO_LISTED_PRIMARY_CROPS){
 			ls_all_crops_primary += '<option class="x-pale-red" value="'+key_untagg+'">untagged : '+key_untagg+'♦</option>'
