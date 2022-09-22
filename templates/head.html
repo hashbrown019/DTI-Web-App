@@ -46,8 +46,6 @@
 	<link rel="stylesheet" href="../static/css/leaflet.css">
 	<link rel="stylesheet" href="../../static/css/leaflet-panel-layers.css">
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
-
-
 </head> 
 
 <div id="SPINNER_LOADER" class="x-modal x-display-container">
@@ -55,14 +53,23 @@
 	<div class="x-display-middle x-center">
 		<h1 class="fa fa-spin fa-circle-o-notch x-text-white x-jumbo"></h1><br>
 		<b class="x-text-white"> Loading, Please wait . . . </b>
+		<div id="SPINNER_LOADER_MSG" class="x-text-white x-container x-padding">
+			
+		</div>
 	</div>
 </div>
 
 <script type="text/javascript">
 	let SPINNER_LOADER = {
-		show : function(){$ID("SPINNER_LOADER").style.display = "block"},
-		hide : function(){$ID("SPINNER_LOADER").style.display = "none"},
-	}
+		show : function(){
+			$ID("SPINNER_LOADER").style.display = "block";
+			this.message('<span>This will disappear after the loading is done</span>');
+		},
+		hide : function(){$ID("SPINNER_LOADER").style.display = "none";},
+		message : function(masg){
+			$ID("SPINNER_LOADER_MSG").innerHTML = masg;
+		}
+	};
 
 </script>
 

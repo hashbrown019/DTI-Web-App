@@ -11,7 +11,7 @@
 		<div class="x-bottombar x-border-teal x-row">
 			<div class="x-btn x-left x-container ">
 				<i class="x-text-grey">
-					Displaying <b id="prof_farmer_count">0</b> Profiles ||
+					<b id="prof_farmer_count">0</b> Profiles Found ||
 					 <span id="scan_view"><span id="scan_item"></span>/</span>
 					<b id="prof_farmer_count_all">0</b> total records
 				</i>
@@ -401,17 +401,28 @@
 				ALL_FARMERS=ls_file_farmer
 				conso_all(ALL_FARMERS)
 				populate_farm_list_for_numbers(ALL_FARMERS)
+			},
+			progress : function(e){
+				println(e)
+				SPINNER_LOADER.message(`
+					<span>
+						Gathering 
+						<b>[`+Math.floor(e.loaded/1000000)+`]</b>
+						bytes of <b>`+Math.floor(e.total/1000000)+`</b>
+					</span>
+				`);
 			}
 		})
 		println(LS__PROF)
 	}
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
+	let RES_ALL_FARMER_PROF= []
 	function populate_farm_list_for_numbers(ALL_FARMERS____){
 		LS_FARMER_VIEW ="";
 		var FILTER_total_recors_farmer_counter = 0;
 		$ID("profile_list").innerHTML = "";
+		$ID("profile_list").addEventListener("scroll", prof_farmer_view_scroll);
 		async_num_farmer_count= 0;
 		for (var f_counter = 0;f_counter < ALL_FARMERS____.length;f_counter++) {
 			if(
@@ -422,6 +433,7 @@
 
 				){
 				make_ls_farmer(ALL_FARMERS____[f_counter],ALL_FARMERS____.length,f_counter);
+				RES_ALL_FARMER_PROF.push(ALL_FARMERS____[f_counter]);
 				popu_enumerator_encoded(ALL_FARMERS____[f_counter]);
 				$ID("scan_item").innerHTML = FILTER_total_recors_farmer_counter;
 				FILTER_total_recors_farmer_counter += 1;
@@ -431,6 +443,27 @@
 		$ID("profile_list").style.display = "block";
 		num_enumerator_encoded();
 		SPINNER_LOADER.hide();
+	}
+
+	function prof_farmer_view_scroll(e){
+		var element = $ID("profile_list")
+		println(element.scrollHeight - element.scrollTop , element.clientHeight)
+		if((element.scrollHeight - element.scrollTop) <= element.clientHeight+1){
+			var prof_card = $CLASS("farmer_card")
+			var limit_ls_inc = 0
+			for (var i = 0; i < prof_card.length; i++) {
+				if(prof_card[i].style.display=="none"){
+					prof_card[i].style.display = "block"
+					println(prof_card[i].style.display)
+					if(limit_ls_inc >= 10){
+						limit_ls_inc = 0
+						return
+					}
+					limit_ls_inc += 1
+				}
+				
+			}
+		}
 	}
 
 	let LS_FARMER_VIEW =""
@@ -446,9 +479,10 @@
 			$ID("prof_farmer_count").innerHTML = async_num_farmer_count
 			var person = alldata_farmer
 			var prof_pic = ""
-			// $ID("profile_list").innerHTML = `
-			LS_FARMER_VIEW = `
-			<div class="x-row x-hover-teal x-padding" id="`+person.farmer_code+`" onclick="get_ind('`+person.farmer_code+`')">
+			var profile_card_isvisible = 'block'
+			if(async_num_farmer_count>=20){profile_card_isvisible = "none"}
+			LS_FARMER_VIEW += `
+			<div style="display:`+profile_card_isvisible+`" class="farmer_card x-animate-bottom x-row x-hover-teal x-padding" id="`+person.farmer_code+`" onclick="get_ind('`+person.farmer_code+`')">
 				<div class='x-row'>
 					<div class="x-col l1">
 						<!-- <img loading="lazy" id="img_`+person.farmer_code+`" src="`+prof_pic+`" class="x-image x-round" style="max-width:100%"> -->
@@ -479,8 +513,7 @@
 						<b>`+async_num_farmer_count+`:`+total_recors_farmer_counter+`</b>-`+person.farmer_code+`
 					</span>
 				</div>
-			</div>` + LS_FARMER_VIEW
-
+			</div>`
 			if(async_num_farmer_count >= parseInt($ID("scan_item").innerHTML)){
 				post_farmer_ls()
 			}
@@ -518,7 +551,6 @@
 		enumerator_encoded_num[farmer.input_by.name].num += 1
 		enumerator_encoded_num[farmer.input_by.name].user = farmer.input_by
 	}
-
 
 	// ==========================================================
 	function get_ind(fid){

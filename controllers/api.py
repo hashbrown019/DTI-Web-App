@@ -85,7 +85,6 @@ class _main:
 			prof_1["input_by"] = USER[0]
 		return json.dumps(json.dumps(prof_1))
 
-
 	@app.route("/get_full_profile_str",methods=["POST","GET"]) # GETS the Fulll data of Farmer
 	def get_full_profile_str():
 		FILE = request.form["profile_file_name"]

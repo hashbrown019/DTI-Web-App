@@ -94,8 +94,8 @@
 		</div>
 		<br>
 		<footer class="x-footer x-container x-light-grey">
-			<span class="x-small x-text-grey x-left">DTI RAPID NPCO 2022 | All Right Reserve</span>
-			<span class="x-small x-text-grey x-right">DTI RAPID NPCO 2022 | All Right Reserve</span>
+			<span class="x-small x-text-grey x-left">DTI RAPID NPCO 2022</span>
+			<span class="x-small x-text-grey x-right">DTI RAPID NPCO 2022</span>
 		</footer>
 	</body>
 	<style>
@@ -114,23 +114,23 @@
 
 		init()
 		function init(){
-			load_users()
-			set_ls_rcu()
-			get_list_file() // For Inititalizing list in profiling/profiling_farmers.html
+			load_users();
+			set_ls_rcu();
+			get_list_file(); // For Inititalizing list in profiling/profiling_farmers.html
 		}
 		// ================================================
 
-		let ALL_DATA = undefined
-		let ALL_DATA_CONSO = {}
+		let ALL_DATA = undefined;
+		let ALL_DATA_CONSO = {};
 
 		function logout() {
-			redirectto("/logout")
+			redirectto("/logout");
 		}
 
 		function __init__(){
 			// conso()
-			var tab_id = (window.location.href).split("#")[1]
-			go_tab(parseInt(tab_id))
+			var tab_id = (window.location.href).split("#")[1];
+			go_tab(parseInt(tab_id));
 		}
 
 		function conso(){
@@ -142,17 +142,16 @@
 					// dash_conso1(ALL_DATA)
 					// get_farmer_cards()
 					// $show_view('profile-farmer','content-dash')/////////////////////////////
-					
 				}
-			})
+			});
 		}
 
 		function go_tab(_index){
-			var tabs = $CLASS("top_tab")
-			var body_content = $CLASS("body_content")  // FOR BODY CONTENT
+			var tabs = $CLASS("top_tab");
+			var body_content = $CLASS("body_content") ; // FOR BODY CONTENT
 			for (var i = 0; i < tabs.length; i++) {
-				tabs[i].classList.remove("x-bottombar","x-border-teal")
-				body_content[i].style.display = "none"  // FOR BODY CONTENT
+				tabs[i].classList.remove("x-bottombar","x-border-teal");
+				body_content[i].style.display = "none";  // FOR BODY CONTENT
 			}
 			tabs[_index].classList.add("x-bottombar","x-border-teal")
 			body_content[_index].style.display = "block" // FOR BODY CONTENT
@@ -171,7 +170,6 @@
 
 			stay_tuned.show()
 		}
-
 
 			// Tawk_API.visitor = {
 			// 	'name' : "{{USER_DATA['name']}}",
