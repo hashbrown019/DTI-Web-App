@@ -466,8 +466,7 @@
 				SPINNER_LOADER.message(`
 					<span>
 						Gathering 
-						<b>[`+Math.floor(e.loaded/1000000)+`]</b>
-						bytes of <b>`+Math.floor(e.total/1000000)+`</b>
+						<b>[`+(e.loaded/100000)+`]</b>
 					</span>
 				`);
 			}

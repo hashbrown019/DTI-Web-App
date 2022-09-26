@@ -63,14 +63,12 @@
 	let SPINNER_LOADER = {
 		show : function(){
 			$ID("SPINNER_LOADER").style.display = "block";
-			this.message('<span>This will disappear after the loading is done</span>');
+			this.message('<span>This may take a while.<br>This will disappear after the loading is done</span>');
 		},
 		hide : function(){$ID("SPINNER_LOADER").style.display = "none";},
 		message : function(masg){
 			$ID("SPINNER_LOADER_MSG").innerHTML = masg;
 		}
 	};
-
 </script>
-
 <!-- https://cdn.amcharts.com/lib/5/geodata/philippinesLow.js -->

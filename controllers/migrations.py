@@ -96,7 +96,6 @@ class _main:
 				if _farmer[inc]  == "nan":
 					_farmer[inc] = ""
 
-
 			# print("{} >>> {}".format(type(_farmer[4]),_farmer[4] ))
 			if(_farmer[3] == "" or _farmer[3] == " " or _farmer[3] == None):
 				continue;
@@ -114,15 +113,14 @@ class _main:
 				'l_name':_farmer[3],
 				'ext_name':_farmer[4],
 				'farmer_name': "{} {} {} {}".format(_farmer[1],_farmer[2],_farmer[3],_farmer[4],),
-
 				'farmer_sex':_farmer[5],
 				'addr_region':_farmer[40],
 				'addr_prov':_farmer[41],
 				'addr_city':_farmer[42],
 				'addr_brgy':_farmer[43],
 				'farmer-primary_crop':_farmer[47],
-				'farmer-fo_name_rapid': _farmer[32],
-				'farmer_dip_ref': _farmer[27]
+				'farmer-fo_name_rapid': _main.other_name_cleaner(_farmer[32]),
+				'farmer_dip_ref': _main.other_name_cleaner(_farmer[27])
 			})
 		# return str(len(datas))
 		return farmer_from_excel
@@ -232,3 +230,13 @@ class _main:
 		crops = crops.replace(" ","")
 		if(crops==""):crops = 'Untagged';
 		return crops
+	# THIS FUNCTION FIX THE crops name with SIMILAR AREA
+	def other_name_cleaner(strs):
+		strs = str(strs)
+		strs = strs.lower()
+		strs = strs.replace("  "," ")
+		strs = strs.replace(" - ","-")
+		strs = strs.replace(" -","-")
+		strs = strs.replace("- ","-")
+		if(strs==""):strs = 'Untagged';
+		return strs.upper()

@@ -52,6 +52,8 @@ class _main:
 		prof_1 = json.loads(json.loads(strsd))
 		prof_1['addr_region'] = migrations.region_name_cleaner(prof_1['addr_region'])
 		prof_1['farmer-primary_crop'] = migrations.crops_name_cleaner(prof_1['farmer-primary_crop'])
+		prof_1['farmer-fo_name_rapid']  = migrations.other_name_cleaner(prof_1['farmer-fo_name_rapid'])
+		prof_1['farmer_dip_ref']  = migrations.other_name_cleaner(prof_1['farmer_dip_ref'])
 		prof_1['farmer_img_base64'] = ""
 		prof_1['SOURCE'] = "MOBILE"
 
