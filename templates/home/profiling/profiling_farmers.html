@@ -70,6 +70,30 @@
 				</button>
 			</div>
 		</div>
+		<div class="x-container x-padding x-border-dashed x-border-grey x-pale-teal">
+			<div class="x-col l6">
+				<div class="x-padding x-col l3 x-text-teal">
+					<b>Farmer's Org</b>
+				</div>
+				<select id="dash_sel_fo" class="x-input x-select x-col l3 x-light-grey x-round-xlarge">
+					<option type="" value="all" selected>All</option>
+				</select>
+				<button class="x-input x-btn x-col l2 x-green x-round-xlarge" onclick="conso_filters()">
+					Filter <span class="fa fa-filter"></span>
+				</button>
+			</div>
+			<div class="x-col l6">
+				<div class="x-padding x-col l3 x-text-teal">
+					<b>DIP's</b>
+				</div>
+				<select id="dash_sel_dip" class="x-input x-select x-col l3 x-light-grey x-round-xlarge">
+					<option type="" value="all" selected>All</option>
+				</select>
+				<button class="x-input x-btn x-col l2 x-green x-round-xlarge" onclick="conso_filters()">
+					Filter <span class="fa fa-filter"></span>
+				</button>
+			</div>
+		</div>
 	</div>
 	
 	<div class="x-row">
@@ -80,7 +104,7 @@
 		<div class="x-row">
 			<div class=" x-col l8">
 				<b class="x-text-teal x-padding">Farmer Profiles</b><br>
-				<div id="profile_list" class="x-row" style="overflow-y:scroll;height: 60vh;">
+				<div id="profile_list" class="x-row x-bottombar" style="overflow-y:scroll;height: 60vh;">
 					<div class="x-container x-center">
 						<br>
 						<span class="x-large x-text-teal">
@@ -114,6 +138,8 @@
 	let FILTER_SEL_PRIMARY_CROP;
 	let FILTER_SEL_ENUM_AREA;
 	let FILTER_SEL_DATA_SOURCE;
+
+	let FILTER_SEL_FO, FILTER_SEL_DIP;
 
 	function export_farmer_excel(argument) {staytuned()}
 
@@ -268,6 +294,22 @@
 
 	}	
 
+	function get_ls_fo(){
+		var ls_all_fo = '<option type="" value="all" selected>All </option>'
+		for(key in CONSO_LISTED_FO){
+			ls_all_fo += '<option value="'+key+'">'+key+'</option>'
+		}
+		$ID("dash_sel_fo").innerHTML = ls_all_fo;
+	}
+
+	function get_ls_dip(){
+		var ls_all_dip = '<option type="" value="all" selected>All </option>'
+		for(key in CONSO_LISTED_DIP){
+			ls_all_dip += '<option value="'+key+'">'+key+'</option>'
+		}
+		$ID("dash_sel_dip").innerHTML = ls_all_dip;
+	}	
+
 	function get_ls_crops(){
 		var ls_all_crops_primary = '<option type="" value="all" selected>All Crops</option>'
 		for(key in VALUE_CHAIN_CROP){
@@ -277,7 +319,7 @@
 		for(key_untagg in CONSO_LISTED_PRIMARY_CROPS){
 			ls_all_crops_primary += '<option class="x-pale-red" value="'+key_untagg+'">untagged : '+key_untagg+'♦</option>'
 		}
-		$ID("dash_sel_crop_primary").innerHTML = ls_all_crops_primary
+		$ID("dash_sel_crop_primary").innerHTML = ls_all_crops_primary;
 	}	
 
 	function get_ls_region(){
@@ -367,6 +409,20 @@
 		else{return false}
 	}
 
+	function filterByDIP(person){
+		var DIP__= person["farmer_dip_ref"]
+		if(FILTER_SEL_DIP=="all" ||FILTER_SEL_DIP==undefined){SPINNER_LOADER.show();return true}
+		if(DIP__==FILTER_SEL_DIP){return true}
+		else{return false}
+	}
+
+	function filterByFO(person){
+		var FO__= person["farmer-fo_name_rapid"]
+		if(FILTER_SEL_FO=="all" ||FILTER_SEL_FO==undefined){SPINNER_LOADER.show();return true}
+		if(FO__==FILTER_SEL_FO){return true}
+		else{return false}
+	}
+
 	async function conso_filters(){
 		$ID("prof_farmer_count").innerHTML = 0
 		SPINNER_LOADER.show()
@@ -379,6 +435,9 @@
 		FILTER_SEL_PRIMARY_CROP = $ID("dash_sel_crop_primary").value;
 		FILTER_SEL_ENUM_AREA = $ID("enumeartor_area").value;
 		FILTER_SEL_DATA_SOURCE = $ID("dash_sel_data_source").value;
+
+		FILTER_SEL_FO= $ID("dash_sel_fo").value;
+		FILTER_SEL_DIP= $ID("dash_sel_dip").value;
 
 		enumerator_encoded_num = {}
 		total_recors_farmer_counter = 0
@@ -429,6 +488,8 @@
 				filterByArea(ALL_FARMERS____[f_counter]) &&
 				filterByPrimaryCrop(ALL_FARMERS____[f_counter]) &&
 				filterByEnumArea(ALL_FARMERS____[f_counter]) &&
+				filterByFO(ALL_FARMERS____[f_counter]) &&
+				filterByDIP(ALL_FARMERS____[f_counter]) &&
 				filterByDataSource(ALL_FARMERS____[f_counter])
 
 				){
@@ -447,15 +508,13 @@
 
 	function prof_farmer_view_scroll(e){
 		var element = $ID("profile_list")
-		println(element.scrollHeight - element.scrollTop , element.clientHeight)
 		if((element.scrollHeight - element.scrollTop) <= element.clientHeight+1){
 			var prof_card = $CLASS("farmer_card")
 			var limit_ls_inc = 0
 			for (var i = 0; i < prof_card.length; i++) {
 				if(prof_card[i].style.display=="none"){
 					prof_card[i].style.display = "block"
-					println(prof_card[i].style.display)
-					if(limit_ls_inc >= 10){
+					if(limit_ls_inc >= 1){
 						limit_ls_inc = 0
 						return
 					}

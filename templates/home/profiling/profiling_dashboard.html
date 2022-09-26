@@ -60,6 +60,10 @@
 	let CONSO_LISTED_PRIMARY_CROPS = {}
 	let CONSO_LISTED_ENUMERATOR_AREA = {}
 
+	let CONSO_LISTED_FO = {}
+	let CONSO_LISTED_DIP = {}
+
+
 	let data_for_chart_MOBILE = []
 	let data_for_chart_EXCEL = []
 	let dash_conso = {}
@@ -83,6 +87,18 @@
 			CONSO_LISTED_REGIONS[FARMER['addr_region']] = {}
 			CONSO_LISTED_PRIMARY_CROPS[FARMER['farmer-primary_crop']] = {}
 			CONSO_LISTED_ENUMERATOR_AREA[FARMER['input_by']['rcu']] = {}
+
+
+			CONSO_LISTED_FO[FARMER['farmer-fo_name_rapid']]={}
+			CONSO_LISTED_DIP[FARMER['farmer_dip_ref']]={}
+
+
+			CONSO_LISTED_REGIONS = sortByKeys(CONSO_LISTED_REGIONS)
+			CONSO_LISTED_PRIMARY_CROPS = sortByKeys(CONSO_LISTED_PRIMARY_CROPS)
+			CONSO_LISTED_ENUMERATOR_AREA = sortByKeys(CONSO_LISTED_ENUMERATOR_AREA)
+			CONSO_LISTED_FO = sortByKeys(CONSO_LISTED_FO)
+			CONSO_LISTED_DIP = sortByKeys(CONSO_LISTED_DIP)
+
 			// FARMER['addr_region'] = FARMER['addr_region'].replace(" ","")
 
 			// if(FARMER['SOURCE']!="MOBILE"){continue;}// IF dili gikan sa MOIBLE > SKIP
@@ -137,6 +153,9 @@
 		// == For Filtering
 		get_ls_region()
 		get_ls_crops()
+		get_ls_enum_area()
+		get_ls_fo()
+		get_ls_dip()
 		get_ls_enum_area()
 	}
 

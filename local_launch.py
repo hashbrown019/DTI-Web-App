@@ -22,6 +22,7 @@ from controllers import migrations
 # import sms_main as gsm
 c.PORT = 80
 
+
 app = Flask(__name__)
 Minify(app=app, html=True, js=True, cssless=True)
 

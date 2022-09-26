@@ -120,7 +120,9 @@ class _main:
 				'addr_prov':_farmer[41],
 				'addr_city':_farmer[42],
 				'addr_brgy':_farmer[43],
-				'farmer-primary_crop':_farmer[47]
+				'farmer-primary_crop':_farmer[47],
+				'farmer-fo_name_rapid': _farmer[32],
+				'farmer_dip_ref': _farmer[27]
 			})
 		# return str(len(datas))
 		return farmer_from_excel

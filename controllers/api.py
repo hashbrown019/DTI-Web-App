@@ -17,15 +17,19 @@ cors = CORS(app)
 rapid= sqlite(c.SQLITE_DB)
 # rapid = mysql(c.LOCAL_HOST,c.LOCAL_USER,c.LOCAL_PASSWORD,c.LOCAL_DATABASE)
 farm_details = None
+FARMER_PROFILE_LS = None
 
 class _main:
 	def __init__(self, arg):
 		super(_main, self).__init__()
 		self.arg = arg
-
+		
 	# @cross_origin()
 	@app.route("/api/list_all_profile",methods=["POST","GET"])
 	def list_all_profile():
+		return _main.list_all_profile___()
+
+	def list_all_profile___():
 		res = []
 		dir_path = c.RECORDS+"/profiles/__temp__/"
 		for path in os.listdir(dir_path):
@@ -396,4 +400,3 @@ class _main:
 
 		res.append(lens_)
 		return jsonify(res)
-		
