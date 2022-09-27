@@ -24,6 +24,7 @@ class _main:
 
 	@app.route("/homepage",methods=["POST","GET"])
 	def homepage():
+		return render_template("SITE_OFF.html") # MAINTENANCE
 		if(_main.is_on_session()):
 			return render_template("home/home.html",USER_DATA = session["USER_DATA"][0])
 		else:
@@ -33,4 +34,4 @@ class _main:
 	@app.route("/get_sub_form_a_template",methods=["POST","GET"]) # GETS the Fulll data of Farmer
 	def get_sub_form_a_template():
 		page = request.form['subform_temp']
-		return render_template("home/form_a/{}.html".format(page))
+		return render_template("home/form_a/{}.html".format(page)

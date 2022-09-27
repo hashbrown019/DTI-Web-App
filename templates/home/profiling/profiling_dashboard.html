@@ -1,6 +1,6 @@
 <style>
 	#chartdiv_MOBILE,#chartdiv_EXCEL, #_ph_map {
-		width: 100%;
+		/*width: 50%;*/
 		height: 500px;
 	}
 </style>
@@ -35,18 +35,17 @@
 				<span class="x-text-grey">Untagged :<span class="x-text-black" id="count_all_sex_untagged"><span class="fa fa-notch fa spin"></span></span></span><br>
 			</div>
 		</div>
-		<div class="x-container x-col l10 x-padding">
-			<div class="x-container x-row">
-				<h3 class="x-padding x-text-teal">Bar Chart for Farmer Profiles</h3>
-				<b class="x-padding x-text-teal">MIS Mobile App (AgriMismo)</b>
-				<div id="chartdiv_MOBILE"></div>
-			</div>
-			<hr>
-			<div>
-				<h3 class="x-padding x-text-teal">Bar Chart for Farmer Profiles</h3>
-				<b class="x-padding x-text-teal">Bulk Uploading <i>New Spreadsheet Template</i></b>
-				<div id="chartdiv_EXCEL"></div>
-			</div>
+	</div>
+	<div class="x-container x-row">
+		<div class="x-container x-half">
+			<h3 class="x-padding x-text-teal">Bar Chart for Farmer Profiles</h3>
+			<b class="x-padding x-text-teal">MIS Mobile App (AgriMismo)</b>
+			<div id="chartdiv_MOBILE"></div>
+		</div>
+		<div class="x-container x-half ">
+			<h3 class="x-padding x-text-teal">Bar Chart for Farmer Profiles</h3>
+			<b class="x-padding x-text-teal">Bulk Uploading <i>New Spreadsheet Template</i></b>
+			<div id="chartdiv_EXCEL"></div>
 		</div>
 	</div>
 	<div>
@@ -65,11 +64,13 @@
 
 	let data_for_chart_MOBILE = []
 	let data_for_chart_EXCEL = []
+	let data_for_chart_ALL = []
 	let dash_conso = {}
 
 	function conso_all(___ALL_FARMERS){
 		dash_conso = {}
 		var sex = {}
+		var category_ALL = {}
 		var category_MOBILE = {}
 		var category_EXCEL = {}
 
@@ -121,6 +122,7 @@
 			dash_conso[(region_cons+" "+FARMER['addr_region'])][FARMER['farmer-primary_crop']] += 1
 			dash_conso[(region_cons+" "+FARMER['addr_region'])]["SOURCE"] = FARMER['SOURCE']
 
+			category_ALL[FARMER['farmer-primary_crop']] = 'none';
 			if(FARMER['SOURCE']=="MOBILE"){category_MOBILE[FARMER['farmer-primary_crop']] = 'none';}// IF dili gikan sa MOIBLE > SKIP
 			if(FARMER['SOURCE']=="NEW_EXCEL"){category_EXCEL[FARMER['farmer-primary_crop']] = 'none';}// IF dili gikan sa MOIBLE > SKIP
 
@@ -144,11 +146,13 @@
 			// if(dash_conso[key]["SOURCE"] == "MOBILE"){
 				data_for_chart_MOBILE.push(dash_conso[key])
 			}
+			data_for_chart_ALL.push(dash_conso[key])
 		}
 
 		SPINNER_LOADER.hide()
 		CHART_REGION_CROP_MOBILE(data_for_chart_MOBILE,category_MOBILE,"chartdiv_MOBILE")
 		CHART_REGION_CROP_MOBILE(data_for_chart_EXCEL,category_EXCEL,"chartdiv_EXCEL")
+		// CHART_REGION_CROP_MOBILE(data_for_chart_ALL,category_ALL,"chartdiv_MOBILE")
 		// == For Filtering
 		get_ls_region()
 		get_ls_crops()

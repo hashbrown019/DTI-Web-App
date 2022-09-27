@@ -19,8 +19,8 @@ class _main:
 
 	@app.route("/login",methods=["POST","GET"])
 	def login():
-		# return render_template("login/loginv2.html")
-		return render_template("login/login.html")
+		# return render_template("login/login.html")
+		return render_template("SITE_OFF.html") # MAINTENANCE
 
 	@app.route("/login_auth",methods=["POST"])
 	def login_auth():
