@@ -187,6 +187,7 @@
 			}
 		})
 	}
+
 	function get_uploaded_excel(){
 		var uploader_id  = ("{{USER_DATA['id']}}")
 		$send({
@@ -291,7 +292,6 @@
 			ls_all_enum_area += '<option value="'+key+'">'+key+'</option>'
 		}
 		$ID("enumeartor_area").innerHTML = ls_all_enum_area
-
 	}	
 
 	function get_ls_fo(){

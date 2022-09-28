@@ -315,8 +315,6 @@ class _main:
 	# 					mimetype='application/zip',
 	# 					headers={'Content-Disposition': 'attachment;filename=DTI_RAPID_MIS_'+__ver+'.apk'})
 
-
-
 	@app.route("/api/todbdti",methods=["POST","GET"])
 	def todbdti():
 		data = json.loads(request.form["data"])
@@ -362,7 +360,6 @@ class _main:
 					print(_data["farmer_name"])
 					# return "0"
 					res.append(path)
-
 		print(len(res))
 		return jsonify(res)
 		
