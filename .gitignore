@@ -12,5 +12,6 @@ app_version.txt
 app_version.txt
 app_version.txt
 *.db
+*.pyc
 assets/DB/dti_rapidxi.db
 assets/DB/dti_rapidxi.db
