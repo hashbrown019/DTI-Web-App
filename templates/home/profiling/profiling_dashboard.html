@@ -35,6 +35,43 @@
 				<span class="x-text-grey">Untagged :<span class="x-text-black" id="count_all_sex_untagged"><span class="fa fa-notch fa spin"></span></span></span><br>
 			</div>
 		</div>
+		<div class="x-container x-col l2 x-padding">
+			<div class="x-container x-center x-padding x-round-large x-border-dashed x-border-orange">
+				<b id="total_num_farmer_with_dip" class="x-xxlarge"><span class="fa fa-notch fa spin"></span></b><br>
+				<span class="x-small">
+					Number of Profiles <br>
+					<b>With DIP's</b>
+				</span>
+			</div>
+		</div>
+		<div class="x-container x-col l2 x-padding">
+			<div class="x-container x-center x-padding x-round-large x-border-dashed x-border-blue">
+				<b id="total_num_farmer_with_fo" class="x-xxlarge"><span class="fa fa-notch fa spin"></span></b><br>
+				<span class="x-small">
+					Number of Profiles <br>
+					<b>With FO's</b>
+				</span>
+			</div>
+		</div>
+		<div class="x-container x-col l2 x-padding">
+			<div class="x-container x-center x-padding x-round-large x-border-dashed x-border-green">
+				<b id="total_num_farmer_head" class="x-xxlarge"><span class="fa fa-notch fa spin"></span></b><br>
+				<span class="x-small">
+					Number of Profiles <br>
+					<b>Head of the Houshold</b>
+				</span>
+			</div>
+		</div>
+		<div class="x-container x-col l2 x-padding">
+			<div class="x-container x-center x-padding x-round-large x-border-dashed x-border-green">
+				<b id="total_num_farmer_geotagged" class="x-xxlarge"><span class="fa fa-notch fa spin"></span></b><br>
+				<span class="x-small">
+					Number of Profiles <br>
+					<b class="x-small">Geotagged</b><br>
+					<b class="x-small x-text-grey">That has Map Coordinates</b>
+				</span>
+			</div>
+		</div>
 	</div>
 	<div class="x-container x-row">
 		<div class="x-container x-half">
@@ -69,7 +106,9 @@
 
 	function conso_all(___ALL_FARMERS){
 		dash_conso = {}
+		var has_DIP = 0, has_fo = 0, has_IP=0;
 		var sex = {}
+		var head_hh = {}
 		var category_ALL = {}
 		var category_MOBILE = {}
 		var category_EXCEL = {}
@@ -130,6 +169,12 @@
 			if(!sex.hasOwnProperty(FARMER['farmer_sex'])){sex[FARMER['farmer_sex']] = 0}
 			sex[FARMER['farmer_sex']] += 1
 
+			if(FARMER['farmer-fo_name_rapid'] !="UNTAGGED"){has_fo +=1}
+			if(FARMER['farmer_dip_ref'] !="UNTAGGED"){has_DIP += 1}
+
+			if(FARMER['farmer-head_of_house'] in head_hh){} //if wala pay region sa list
+			else{head_hh[(FARMER['farmer-head_of_house'])] = 0}
+			head_hh[(FARMER['farmer-head_of_house'])] += 1
 		}
 
 
@@ -160,6 +205,11 @@
 		get_ls_fo()
 		get_ls_dip()
 		get_ls_enum_area()
+		
+		$ID("total_num_farmer_with_dip").innerHTML = (has_DIP)
+		$ID("total_num_farmer_with_fo").innerHTML = (has_fo)
+		$ID("total_num_farmer_head").innerHTML = (head_hh["true"])
+		println(head_hh)
 	}
 
 	function CHART_REGION_CROP_MOBILE(__data,__category,chartdiv){
