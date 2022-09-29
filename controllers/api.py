@@ -10,7 +10,6 @@ import sys
 import random
 from controllers.migrations import _main as migrations
 
-
 app = Blueprint("api",__name__)
 cors = CORS(app)
 
