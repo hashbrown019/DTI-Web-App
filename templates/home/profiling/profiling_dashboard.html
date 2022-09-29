@@ -68,7 +68,7 @@
 				<span class="x-small">
 					Number of Profiles <br>
 					<b class="x-small">Geotagged</b><br>
-					<b class="x-small x-text-grey">That has Map Coordinates</b>
+					<b class="x-tiny x-text-grey">That has Map Coordinates</b>
 				</span>
 			</div>
 		</div>
@@ -106,7 +106,7 @@
 
 	function conso_all(___ALL_FARMERS){
 		dash_conso = {}
-		var has_DIP = 0, has_fo = 0, has_IP=0;
+		var has_DIP = 0, has_fo = 0, has_IP=0 , has_geotag=0;
 		var sex = {}
 		var head_hh = {}
 		var category_ALL = {}
@@ -175,6 +175,10 @@
 			if(FARMER['farmer-head_of_house'] in head_hh){} //if wala pay region sa list
 			else{head_hh[(FARMER['farmer-head_of_house'])] = 0}
 			head_hh[(FARMER['farmer-head_of_house'])] += 1
+
+			if((FARMER['farmer-coords_long']== "" || FARMER['farmer-coords_lat']== " ") && (FARMER['farmer-coords_long']== "" || FARMER['farmer-coords_lat']== " ")){
+				has_geotag += 1
+			}
 		}
 
 
@@ -206,6 +210,7 @@
 		get_ls_dip()
 		get_ls_enum_area()
 		
+		$ID("total_num_farmer_geotagged").innerHTML = (has_geotag)
 		$ID("total_num_farmer_with_dip").innerHTML = (has_DIP)
 		$ID("total_num_farmer_with_fo").innerHTML = (has_fo)
 		$ID("total_num_farmer_head").innerHTML = (head_hh["true"])
