@@ -35,7 +35,11 @@ class _main:
 			if os.path.isfile(os.path.join(dir_path, path)):
 				if(path.find("@profile")>=0):
 					# res.append(path)
-					res.append(_main.profile_info_farmer(path))
+					try:
+						res.append(_main.profile_info_farmer(path))
+						pass
+					except Exception as e:
+						print(e)
 
 		# res = migrations.excel_popu()
 		res = res + migrations.excel_popu()

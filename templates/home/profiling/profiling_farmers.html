@@ -60,7 +60,7 @@
 				<div class="x-padding x-col l3 x-text-teal">
 					<b>Data Source</b>
 				</div>
-				<select id="dash_sel_data_source" class="x-input x-select x-col l3 x-light-grey x-round-xlarge" onchange="get_ls_data_source(this.value)">
+				<select id="dash_sel_data_source" class="x-input x-select x-col l3 x-light-grey x-round-xlarge" onchange="">
 					<option type="" value="all" selected>All Data Source</option>
 					<option type="" value="MOBILE">Mobile App</option>
 					<option type="" value="NEW_EXCEL">Spreadsheet Template</option>
@@ -100,10 +100,75 @@
 		<div class="x-row x-padding">
 			<i class="">This numbers are based on the records that has been <b class="x-text-blue x-pale-blue">SYNCED</b> from the Mobile App to the System and all <b class="x-text-blue x-pale-blue">VERIFIED</b> records from the uploaded Spreadsheet files. any <b class="x-text-red x-pale-red">Unsynced</b> records on the mobile app and all records from <b class="x-text-red x-pale-red">'On-System-Checking'</b> Spreadsheet files will not be counted</i>
 		</div>
+
+
+		<div class="x-container x-row x-padding">
+			<div class="x-container x-col l6  x-padding">
+				<div class="x-container x-center x-padding x-round-large x-border-dashed x-border-green">
+					<div class="x-container x-col l4 x-padding">
+						<div class="x-container x-center x-round-large">
+							<b id="total_num_farmer_filter_male" class="x-xxlarge"><span class="fa fa-notch fa spin"></span></b><br>
+							<span class="x-small">
+								<b class="x-small">Male</b><br>
+								<b class="x-tiny x-text-grey"> </b>
+							</span>
+						</div>
+					</div>
+					<div class="x-container x-col l4 x-padding">
+						<div class="x-container x-center x-round-large">
+							<b id="total_num_farmer_filter_female" class="x-xxlarge"><span class="fa fa-notch fa spin"></span></b><br>
+							<span class="x-small">
+								<b class="x-small">Female</b><br>
+								<b class="x-tiny x-text-grey"> </b>
+							</span>
+						</div>
+					</div>
+					<div class="x-container x-col l4 x-padding">
+						<div class="x-container x-center x-round-large x-text-grey">
+							<b id="total_num_farmer_filter_untagged" class="x-xxlarge"><span class="fa fa-notch fa spin"></span></b><br>
+							<span class="x-small">
+								<b class="x-small">Untagged</b><br>
+								<b class="x-tiny x-text-grey"></b>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="x-container x-col l2 x-padding">
+				<div class="x-container x-center x-padding x-round-large x-border-dashed x-border-orange">
+					<b id="total_num_farmer_filter_ip" class="x-xxlarge"><span class="fa fa-notch fa spin"></span></b><br>
+					<span class="x-small">
+						Number of Profiles <br>
+						<b>IP Profiles</b>
+					</span>
+				</div>
+			</div>
+			<div class="x-container x-col l2 x-padding">
+				<div class="x-container x-center x-padding x-round-large x-border-dashed x-border-blue">
+					<b id="total_num_farmer_filter_youth" class="x-xxlarge"><span class="fa fa-notch fa spin"></span></b><br>
+					<span class="x-small">
+						Number of Profiles <br>
+						<b>Youth</b>
+					</span>
+				</div>
+			</div>
+			<div class="x-container x-col l2 x-padding">
+				<div class="x-container x-center x-padding x-round-large x-border-dashed x-border-green">
+					<b id="total_num_farmer_filter_pwd" class="x-xxlarge"><span class="fa fa-notch fa spin"></span></b><br>
+					<span class="x-small">
+						Number of Profiles <br>
+						<b>PWD</b>
+					</span>
+				</div>
+			</div>
+
+		</div>
 		<hr>
 		<div class="x-row">
 			<div class=" x-col l8">
 				<b class="x-text-teal x-padding">Farmer Profiles</b><br>
+				<p class="x-padding x-text-grey">Below are the list of profiled farmer from mobile app and bulk uploading excel files, scroll down to view more list on the selected filters above</p>
 				<div id="profile_list" class="x-row x-bottombar" style="overflow-y:scroll;height: 60vh;">
 					<div class="x-container x-center">
 						<br>
@@ -141,7 +206,22 @@
 
 	let FILTER_SEL_FO, FILTER_SEL_DIP;
 
-	function export_farmer_excel(argument) {staytuned()}
+	function export_farmer_excel(argument) {
+		println(FILTERED_ID_FARMERS)
+		$send({
+			action : "/migrations/export_excel",
+			method : POST,
+			data : $DATA({
+				"ls" : JSON.stringify(FILTERED_ID_FARMERS),
+				"id" : ("{{USER_DATA['id']}}")
+			}),
+			func : function (res){
+				alert(res)
+			}
+
+		})
+		// staytuned()
+	}
 
 	let excel_upload_dialog
 	function import_farmer_excel(argument) {
@@ -460,6 +540,7 @@
 				ALL_FARMERS=ls_file_farmer
 				conso_all(ALL_FARMERS)
 				populate_farm_list_for_numbers(ALL_FARMERS)
+				
 			},
 			progress : function(e){
 				println(e)
@@ -476,7 +557,9 @@
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	let RES_ALL_FARMER_PROF= []
+	let FILTERED_ID_FARMERS = []
 	function populate_farm_list_for_numbers(ALL_FARMERS____){
+		FILTERED_ID_FARMERS = []
 		LS_FARMER_VIEW ="";
 		var FILTER_total_recors_farmer_counter = 0;
 		$ID("profile_list").innerHTML = "";
@@ -495,8 +578,10 @@
 				make_ls_farmer(ALL_FARMERS____[f_counter],ALL_FARMERS____.length,f_counter);
 				RES_ALL_FARMER_PROF.push(ALL_FARMERS____[f_counter]);
 				popu_enumerator_encoded(ALL_FARMERS____[f_counter]);
+				FILTERED_ID_FARMERS.push(ALL_FARMERS____[f_counter]['farmer_code'])
 				$ID("scan_item").innerHTML = FILTER_total_recors_farmer_counter;
 				FILTER_total_recors_farmer_counter += 1;
+				dash_number(ALL_FARMERS____[f_counter])
 			}
 		}
 		$ID("scan_item").innerHTML = FILTER_total_recors_farmer_counter;
@@ -527,6 +612,42 @@
 	let LS_FARMER_VIEW =""
 	function post_farmer_ls(){
 		$ID("profile_list").innerHTML =LS_FARMER_VIEW;
+	}
+
+
+	let num_filter_ip = 0, num_filter_pwd = 0, num_filter_youth = 0,num_filter_male = 0,num_filter_female = 0,num_filter_untagged = 0;
+	function dash_number(person){
+		// println(person['farmer_sex'])
+		if(person['farmer-is_ip']==true){num_filter_ip += 1}
+		if(person['farmer-is_pwd']==true){num_filter_pwd += 1}
+
+		if(person['farmer-age']>18 && person['farmer-age']<34){num_filter_youth += 1}
+
+		if(person['farmer_sex'].toLowerCase()=="male"){num_filter_male += 1}
+		else if(person['farmer_sex'].toLowerCase()=="female"){num_filter_female += 1}
+		else{num_filter_untagged += 1}
+
+
+		// $ID("total_num_farmer_filter_ip").innerHTML
+	}
+
+	function dash_nums(){
+		$ID("total_num_farmer_filter_ip").innerHTML = num_filter_ip
+		$ID("total_num_farmer_filter_pwd").innerHTML = num_filter_pwd
+		$ID("total_num_farmer_filter_youth").innerHTML = num_filter_youth
+
+		$ID("total_num_farmer_filter_male").innerHTML = num_filter_male
+		$ID("total_num_farmer_filter_female").innerHTML = num_filter_female
+		$ID("total_num_farmer_filter_untagged").innerHTML = num_filter_untagged
+
+
+		println("********** DONE ****************")
+		num_filter_ip = 0
+		num_filter_pwd = 0
+		num_filter_youth = 0
+		num_filter_male = 0
+		num_filter_female = 0
+		num_filter_untagged = 0
 	}
 
 	let async_num_farmer_count = 0;
@@ -574,6 +695,7 @@
 			</div>`
 			if(async_num_farmer_count >= parseInt($ID("scan_item").innerHTML)){
 				post_farmer_ls()
+				dash_nums()
 			}
 		}
 	}
