@@ -10,6 +10,7 @@ from flask_cors import CORS,cross_origin
 import base64
 import sys
 import pandas as pd
+from tqdm import tqdm
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -134,27 +135,27 @@ class _main:
 	def excel_popu():
 		dir_path = c.RECORDS+"/spreadsheets/"
 		FROM_EXCEL_RPOFILES = []
-
-		for path in os.listdir(dir_path):
+		loads_ = tqdm(os.listdir(dir_path))
+		for path in loads_:
 			PATH__ = os.path.join(dir_path, path)
+			loads_.desc = path
 			if os.path.isfile(PATH__):
 				if PATH__.find("._DELETED_FILE_")<0:	
-					print(PATH__)
-
+					# print(PATH__)
 					file_name =  PATH__ # path to file + file name
 					# file_name =  c.RECORDS+"/spreadsheets/93#2022-09-19#NSAMAR_vc_a_1.xlsx" # path to file + file name
 					sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
 					try:
 						df = pd.read_excel(io=file_name, sheet_name=sheet, engine='openpyxl')
 					except Exception as e:
-						print(e)
+						print(" * Error in [{}] :: {}".format(path,e))
 						continue
 
 					EXCEL_DATA = df.iterrows()
 
-					_result = {}
+					_result = {} 
 					LLL = dict(EXCEL_DATA)
-					for key in LLL:
+					for key in (LLL):
 						_result[key] = [] 
 						for val in LLL[key]:
 							_result[key].append(val)
@@ -236,7 +237,6 @@ class _main:
 						if(len(USER)<=0):
 							USER= {"name":"none","id":"none"}
 						file_name =  PATH__ # path to file + file name
-						# file_name =  c.RECORDS+"/spreadsheets/93#2022-09-19#NSAMAR_vc_a_1.xlsx" # path to file + file name
 						sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
 						try:
 							df = pd.read_excel(io=file_name, sheet_name=sheet, engine='openpyxl')
@@ -258,7 +258,7 @@ class _main:
 		return jsonify(ls_uploaded_excel);
 		# return jsonify(os.listdir(c.RECORDS+"/spreadsheets/"));
 		# return data
-
+                  
 
 	@app.route("/download_excel/<excel_file>",methods=["POST","GET"])
 	def download_excel(excel_file):
@@ -282,7 +282,7 @@ class _main:
 		return jsonify({"status":"done"})
 
 
-
+	# =========================================================================================
 	# THIS FUNCTION FIX THE REGION name with SIMILAR AREA
 	def region_name_cleaner(region):
 		region = str(region)

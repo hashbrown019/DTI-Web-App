@@ -24,7 +24,7 @@ class _main:
 
 	@app.route("/homepage",methods=["POST","GET"])
 	def homepage():
-		# return render_template("SITE_OFF.html") # MAINTENANCE
+		return render_template("SITE_OFF.html") # MAINTENANCE
 		if(_main.is_on_session()):
 			return render_template("home/home.html",USER_DATA = session["USER_DATA"][0])
 		else:
