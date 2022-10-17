@@ -14,4 +14,4 @@ class Globals_:
 
 	def init(self):
 		print(" - Starting Globals_ app_context")
-		apiV2.FARMER_PROFILE_LS = apiV2._main.list_all_profile___()
+		# apiV2.FARMER_PROFILE_LS = apiV2._main.list_all_profile___()
