@@ -17,13 +17,19 @@ cors = CORS(app)
 rapid= sqlite(c.SQLITE_DB)
 # rapid = mysql(c.LOCAL_HOST,c.LOCAL_USER,c.LOCAL_PASSWORD,c.LOCAL_DATABASE)
 farm_details = None
+
 FARMER_PROFILE_LS = None
 
 class _main:
 	def __init__(self, arg):
 		super(_main, self).__init__();
+		print(" * STARTING API V2")
 		self.arg = arg;
 		
+	@app.route("/api/v2/global_",methods=["POST","GET"])
+	def global_():
+		return FARMER_PROFILE_LS;
+
 	@app.route("/api/v2/list_all_profile",methods=["POST","GET"])
 	def list_all_profile():
 		return _main.list_all_profile___();
@@ -36,7 +42,7 @@ class _main:
 		for path in loads_:
 			if os.path.isfile(os.path.join(dir_path, path)):
 				if(path.find("@profile")>=0):
-					loads_.desc = path
+					loads_.desc = " * "+path
 					# res.append(path)
 					try:
 						res.append(_main.profile_info_farmer(path))
@@ -53,12 +59,12 @@ class _main:
 		f = open(c.RECORDS+"/profiles/__temp__/"+ path, "r")
 		strsd = f.read()
 		f.close()
-		prof_1 = "ERROR";
+		prof_1 = "ERROR"
 		prof_1 = json.loads(json.loads(strsd));
-		prof_1['addr_region'] = migrations.region_name_cleaner(prof_1['addr_region']);
-		prof_1['farmer-primary_crop'] = migrations.crops_name_cleaner(prof_1['farmer-primary_crop']);
-		prof_1['farmer-fo_name_rapid']  = migrations.other_name_cleaner(prof_1['farmer-fo_name_rapid']);
-		prof_1['farmer_dip_ref']  = migrations.other_name_cleaner(prof_1['farmer_dip_ref']);
+		prof_1['addr_region'] = migrations.region_name_cleaner(prof_1['addr_region'])
+		prof_1['farmer-primary_crop'] = migrations.crops_name_cleaner(prof_1['farmer-primary_crop'])
+		prof_1['farmer-fo_name_rapid']  = migrations.other_name_cleaner(prof_1['farmer-fo_name_rapid'])
+		prof_1['farmer_dip_ref']  = migrations.other_name_cleaner(prof_1['farmer_dip_ref'])
 		prof_1['farmer_img_base64'] = "";
 		prof_1['SOURCE'] = "MOBILE";
 
@@ -70,3 +76,4 @@ class _main:
 			USER[0]["password"] = "CONFIDENTIAL"
 			prof_1["input_by"] = USER[0]
 		return prof_1
+

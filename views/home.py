@@ -7,7 +7,6 @@ import json
 
 app = Blueprint("home",__name__)
 
-
 # rapid = mysql(c.LOCAL_HOST,c.LOCAL_USER,c.LOCAL_PASSWORD,c.LOCAL_DATABASE)
 rapid= sqlite("assets\\db\\dti_rapidxi.db")
 
@@ -24,12 +23,11 @@ class _main:
 
 	@app.route("/homepage",methods=["POST","GET"])
 	def homepage():
-		return render_template("SITE_OFF.html") # MAINTENANCE
+		# return render_template("SITE_OFF.html") # MAINTENANCE
 		if(_main.is_on_session()):
 			return render_template("home/home.html",USER_DATA = session["USER_DATA"][0])
 		else:
 			return redirect("/login?force_url=1")
-
 
 	@app.route("/get_sub_form_a_template",methods=["POST","GET"]) # GETS the Fulll data of Farmer
 	def get_sub_form_a_template():

@@ -54,7 +54,10 @@ _USER = "not initialized"
 _PASSWORD = "not initialized"
 _DATABASE = "not initialized"
 
-
+# ================================
+global __STORE
+__STORE = {}
+# ================================
 # _PORT
 # _HOST
 # _USER

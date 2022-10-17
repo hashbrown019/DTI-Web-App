@@ -11,7 +11,6 @@ app = Blueprint("login",__name__)
 # rapid= sqlite("assets\\db\\dti_rapidxi.db")
 rapid= sqlite(c.SQLITE_DB)
 
-
 class _main:
 	def __init__(self, arg):
 		super(_main, self).__init__()
@@ -19,7 +18,7 @@ class _main:
 
 	@app.route("/login",methods=["POST","GET"])
 	def login():
-		return render_template("SITE_OFF.html") # MAINTENANCE
+		# return render_template("SITE_OFF.html") # MAINTENANCE
 		return render_template("login/login.html")
 
 	@app.route("/login_auth",methods=["POST"])

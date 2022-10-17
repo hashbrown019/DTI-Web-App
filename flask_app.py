@@ -18,6 +18,8 @@ from views import home
 from controllers import api
 from controllers import apiV2
 from controllers import migrations
+from controllers.GLOBALS_ import Globals_
+
 # import sms_main as gsm
 c.PORT = 80
 
@@ -35,6 +37,8 @@ app.register_blueprint(login.app)
 app.register_blueprint(api.app)
 app.register_blueprint(apiV2.app)
 app.register_blueprint(migrations.app)
+
+Globals_(app)
 
 @app.route("/")
 def index():return redirect("/login")
