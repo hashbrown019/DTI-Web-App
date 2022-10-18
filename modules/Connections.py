@@ -8,9 +8,7 @@ class sqlite:
 		self.database=database
 
 	def init_db(self):
-		# print(self)
 		conn = None
-		# print("----------- SQLITE INITIALIZATION STARTED -----------")
 		try:
 			conn = sqlite3.connect(self.database)
 			# print("<<<<<<<<< SQLITE INITIALIZATION COMPLETE <<<<<<<<<")

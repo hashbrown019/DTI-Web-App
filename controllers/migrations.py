@@ -41,7 +41,6 @@ class _main:
 		print(note)
 		return note
 
-
 	@app.route("/migrations/export_excel",methods=["POST","GET"])
 	def export_excel():
 		print("===========================")
@@ -99,7 +98,6 @@ class _main:
 		prof_1['farmer_dip_ref']  = migrations.other_name_cleaner(prof_1['farmer_dip_ref'])
 		prof_1['farmer_img_base64'] = ""
 		prof_1['SOURCE'] = "MOBILE"
-
 		USER = rapid.select("SELECT * FROM `users` WHERE `id`={} ORDER BY `name` ASC; ".format(prof_1["USER_ID"]))
 		if(len(USER)<=0):
 			prof_1["input_by"] = {"name":"none"}

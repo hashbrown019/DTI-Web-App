@@ -38,7 +38,7 @@ class _main:
 		res = []
 		dir_path = c.RECORDS+"/profiles/__temp__/";
 		_title = "----";
-		loads_ = tqdm(os.listdir(dir_path),  desc =_title,ascii ="►○•█");
+		loads_ = tqdm(os.listdir(dir_path),  desc =_title,ascii ="►>○•|█");
 		for path in loads_:
 			if os.path.isfile(os.path.join(dir_path, path)):
 				if(path.find("@profile")>=0):
@@ -55,7 +55,6 @@ class _main:
 		return jsonify(res)
 
 	def profile_info_farmer(path):
-
 		f = open(c.RECORDS+"/profiles/__temp__/"+ path, "r")
 		strsd = f.read()
 		f.close()
