@@ -1,6 +1,10 @@
 <div class=" x-container x-white">
+
+
 	<div class="x-container">
 		<h3 class="x-padding x-text-teal x-left">Profile List</h3>
+
+
 		<p class="x-padding x-text-teal x-right">
 			<b class="x-text-orange" onclick="get_list_file()">
 				Refresh <span class="fa fa-refresh fa-spin"></span>
@@ -9,12 +13,14 @@
 	</div>
 	<div class="x-row">
 		<div class="x-bottombar x-border-teal x-row">
+			
 			<div class="x-btn x-left x-container ">
 				<i class="x-text-grey">
 					<b id="prof_farmer_count">0</b> Profiles Found ||
 					 <span id="scan_view"><span id="scan_item"></span>/</span>
 					<b id="prof_farmer_count_all">0</b> total records
 				</i>
+				<br>
 			</div>
 			<div class="x-button x-right x-text-orange x-hover-orange" onclick="export_farmer_excel()">
 				<b>Export Data</b> | <span class="fa fa-download"></span>
@@ -101,6 +107,13 @@
 			<i class="">This numbers are based on the records that has been <b class="x-text-blue x-pale-blue">SYNCED</b> from the Mobile App to the System and all <b class="x-text-blue x-pale-blue">VERIFIED</b> records from the uploaded Spreadsheet files. any <b class="x-text-red x-pale-red">Unsynced</b> records on the mobile app and all records from <b class="x-text-red x-pale-red">'On-System-Checking'</b> Spreadsheet files will not be counted</i>
 		</div>
 
+
+		<div class="x-container x-row">
+			<span class="x-padding x-text-teal">
+				Data as of <b class="farmer_data_last_date">--/--/----</b> 
+				(<span class="farmer_data_last_date_ x-small x-text-grey">--------</span>)
+			</span>
+		</div>
 
 		<div class="x-container x-row x-padding">
 			<div class="x-container x-col l6  x-padding">
@@ -205,6 +218,25 @@
 	let FILTER_SEL_DATA_SOURCE;
 
 	let FILTER_SEL_FO, FILTER_SEL_DIP;
+
+	function get_last_farmer_data_date(argument) {
+		$send({
+			action : "/api/v2/farmer_chunk_data_date",
+			func : function (res){
+				var date_time = JSON.parse(res)
+				var farmer_data_last_date = $CLASS("farmer_data_last_date")
+				var farmer_data_last_date_ = $CLASS("farmer_data_last_date_")
+				for (var i = farmer_data_last_date.length - 1; i >= 0; i--) {
+					farmer_data_last_date[i].innerHTML = date_time["file_dm"]
+				}
+				for (var i = farmer_data_last_date_.length - 1; i >= 0; i--) {
+					farmer_data_last_date_[i].innerHTML = date_time["time_diff"]
+				}
+			}
+
+		})
+		// staytuned()
+	}
 
 	function export_farmer_excel(argument) {
 		println(FILTERED_ID_FARMERS)
@@ -540,6 +572,7 @@
 				ALL_FARMERS=ls_file_farmer
 				conso_all(ALL_FARMERS)
 				populate_farm_list_for_numbers(ALL_FARMERS)
+				get_last_farmer_data_date()
 				
 			},
 			progress : function(e){
@@ -888,30 +921,30 @@
 
 	}
 
-	function get_prof_imgs(ls_file){  // Lazy Load for Profile Images After profrile list completely lodaded
-		// if(ls_file[i]==null){}
-		for (var i = 0; i < ls_file.length; i++) {
-			$send({
-				action : "/api/get_imgProf/"+ls_file[i],
-				method : POST,
-				func : function(res) {
-					try{
-						var im_res = JSON.parse(res)
-						// println(im_res)
-						var ids_ = (im_res.f_name).split(".")[0]
-						var prof_pic = im_res.base_64
-						if(prof_pic=="" || prof_pic==" " || prof_pic==undefined){
-							prof_pic = "../static/img/user.png"
-						}
-						$ID("img_"+ids_).src = prof_pic
-					}
-					catch(e){
-						println(" ERROR in getting image for img_"+ids_ +" || ERROR : "+e)
-					}
-				}
-			})
-		}
-	}
+	// function get_prof_imgs(ls_file){  // Lazy Load for Profile Images After profrile list completely lodaded
+	// 	// if(ls_file[i]==null){}
+	// 	for (var i = 0; i < ls_file.length; i++) {
+	// 		$send({
+	// 			action : "/api/get_imgProf/"+ls_file[i],
+	// 			method : POST,
+	// 			func : function(res) {
+	// 				try{
+	// 					var im_res = JSON.parse(res)
+	// 					// println(im_res)
+	// 					var ids_ = (im_res.f_name).split(".")[0]
+	// 					var prof_pic = im_res.base_64
+	// 					if(prof_pic=="" || prof_pic==" " || prof_pic==undefined){
+	// 						prof_pic = "../static/img/user.png"
+	// 					}
+	// 					$ID("img_"+ids_).src = prof_pic
+	// 				}
+	// 				catch(e){
+	// 					println(" ERROR in getting image for img_"+ids_ +" || ERROR : "+e)
+	// 				}
+	// 			}
+	// 		})
+	// 	}
+	// }
 
 	// ==========================Profile=====================================
 

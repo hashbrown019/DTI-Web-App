@@ -9,8 +9,16 @@
 
 	<div class="x-container">
 		<div class="x-padding x-text-teal x-left">
-			<h3 class="x-padding x-text-teal">Dashboard</h3>
-			<b class="x-padding x-text-teal">Profiling</b>
+			<h3 class="x-padding x-text-teal">
+				<span class="x-medium">Dashboard/Profiling/</span>
+				
+				<b class="x-text-teal">Farmers</b>
+			</h3>
+			<span class="x-padding x-text-teal">
+				Data as of <b class="farmer_data_last_date">--/--/----</b> 
+				(<span class="farmer_data_last_date_ x-small x-text-grey">--------</span>)
+			</span>
+			<b class="x-text-yellow x-round-large" onclick="farmer_data_refresh()"> Append Data <span class="x-small ">(Data Index Refresh)</span></b>
 		</div>
 		<p class="x-padding x-text-teal x-right">
 			<b class="x-text-orange" onclick="get_list_file()">
@@ -199,6 +207,13 @@
 		}
 
 		SPINNER_LOADER.hide()
+		if(chart_MOBILE!=undefined){
+			println(" -- Chart Clearing")
+			chart_MOBILE.dispose()
+			root_MOBILE.dispose()
+			chart_MOBILE = undefined;
+			root_MOBILE = undefined;
+		}
 		CHART_REGION_CROP_MOBILE(data_for_chart_MOBILE,category_MOBILE,"chartdiv_MOBILE")
 		CHART_REGION_CROP_MOBILE(data_for_chart_EXCEL,category_EXCEL,"chartdiv_EXCEL")
 		// CHART_REGION_CROP_MOBILE(data_for_chart_ALL,category_ALL,"chartdiv_MOBILE")
@@ -217,8 +232,10 @@
 		println(head_hh)
 	}
 
+
+
+	let chart_MOBILE, root_MOBILE
 	function CHART_REGION_CROP_MOBILE(__data,__category,chartdiv){
-		var chart_MOBILE, root_MOBILE
 		am5.ready(function() {
 			root_MOBILE = am5.Root.new(chartdiv);
 			root_MOBILE.setThemes([
@@ -299,6 +316,40 @@
 			// chart_MOBILE.appear(1000, 100);
 
 		}); 
+	}
+
+	function farmer_data_refresh(){
+		var ref_dialog = $dialog({
+			title : "Data Index Refresh",
+			subtitle : "You are about to perform D.I.R",
+			type : "warning",
+			content : "if you proceed, it can take A <b>LOT OF TIME</b> to index all records in the system but, you can minimize the loading screen and do other task.<br> <b>The System will notify you once it is done</b>",
+			buttons : ["Proceed","No I'm not gonna do this"],
+			buttons_actions :[
+				function (){
+					SPINNER_LOADER.show()
+					SPINNER_LOADER.message("Performing <b>Data Index Refresh</b><br>Please wait or Minimized this loading screen")
+					ref_dialog.destroy()
+					$send({
+						action : "/api/v2/set_farmer_chunk_data",
+						method : POST,
+						func : function () {
+							SPINNER_LOADER.hide()
+							$dialog({
+								type : "success",
+								title : "Data Index Refresh Done",
+								subtitle : "Performing Data Index Refresh is done you can refresh this page or do it later",
+								buttons : ["Refresh the entire page","Naahh, Maybe later"],
+								buttons_actions : [function(){
+									location.reload();
+								}]
+							}).show()
+						}
+					})
+				}
+			]
+		})
+		ref_dialog.show()
 	}
 
 // ===============================================================================

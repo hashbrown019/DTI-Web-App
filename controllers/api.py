@@ -26,49 +26,7 @@ class _main:
 	# @cross_origin()
 	@app.route("/api/list_all_profile",methods=["POST","GET"])
 	def list_all_profile():
-		return _main.list_all_profile___()
-
-	def list_all_profile___():
-		res = []
-		dir_path = c.RECORDS+"/profiles/__temp__/"
-		for path in os.listdir(dir_path):
-			if os.path.isfile(os.path.join(dir_path, path)):
-				if(path.find("@profile")>=0):
-					# res.append(path)
-					try:
-						res.append(_main.profile_info_farmer(path))
-						pass
-					except Exception as e:
-						print(e)
-
-		# res = migrations.excel_popu()
-		res = res + migrations.excel_popu()
-		random.shuffle(res)
-		return jsonify(res)
-
-	def profile_info_farmer(path):
-		f = open(c.RECORDS+"/profiles/__temp__/"+ path, "r")
-		strsd = f.read()
-		f.close()
-		prof_1 = "ERROR"
-		# try:
-		prof_1 = json.loads(json.loads(strsd))
-		prof_1['addr_region'] = migrations.region_name_cleaner(prof_1['addr_region'])
-		prof_1['farmer-primary_crop'] = migrations.crops_name_cleaner(prof_1['farmer-primary_crop'])
-		prof_1['farmer-fo_name_rapid']  = migrations.other_name_cleaner(prof_1['farmer-fo_name_rapid'])
-		prof_1['farmer_dip_ref']  = migrations.other_name_cleaner(prof_1['farmer_dip_ref'])
-		prof_1['farmer_img_base64'] = ""
-		prof_1['SOURCE'] = "MOBILE"
-
-		USER = rapid.select("SELECT * FROM `users` WHERE `id`={} ORDER BY `name` ASC; ".format(prof_1["USER_ID"]))
-		if(len(USER)<=0):
-			prof_1["input_by"] = {"name":"none"}
-		else:
-			prof_1["input_by"] = {}
-			USER[0]["password"] = "CONFIDENTIAL"
-			prof_1["input_by"] = USER[0]
-		return prof_1
-		# return json.dumps(json.dumps(prof_1))
+		return redirect("/api/v2/get_farmer_chunk_data")
 
 	# @cross_origin()
 	@app.route("/get_profile",methods=["POST","GET"]) # GET ONLY PROFILE FORM INFIO
@@ -94,24 +52,6 @@ class _main:
 			prof_1["input_by"] = USER[0]
 		return json.dumps(json.dumps(prof_1))
 
-	@app.route("/get_full_profile_str",methods=["POST","GET"]) # GETS the Fulll data of Farmer
-	def get_full_profile_str():
-		FILE = request.form["profile_file_name"]
-		f = open(c.RECORDS+"/profiles/__temp__/"+ FILE, "r")
-		res = f.read()
-		# res = json.loads(f.read())
-		f.close()
-		res_ = json.loads(json.loads(res))
-		res_['SOURCE'] = "MOBILE"
-
-		USER = rapid.select("SELECT * FROM `users` WHERE `id`={} ORDER BY `name` ASC; ".format(res_["USER_ID"]))
-		if(len(USER)<=0):
-			res_["input_by"] = {"name":"none"}
-		else:
-			res_["input_by"] = {}
-			USER[0]["password"] = "CONFIDENTIAL"
-			res_["input_by"] = USER[0]
-		return json.dumps(json.dumps(res_))
 
 	@app.route("/get_sub_form_a",methods=["POST","GET"]) # GETS the Fulll data of Farmer
 	def get_sub_form_a():
@@ -317,7 +257,7 @@ class _main:
 	# 	return Response(fileobj.getvalue(),
 	# 					mimetype='application/zip',
 	# 					headers={'Content-Disposition': 'attachment;filename=DTI_RAPID_MIS_'+__ver+'.apk'})
-
+	
 	@app.route("/api/todbdti",methods=["POST","GET"])
 	def todbdti():
 		data = json.loads(request.form["data"])
@@ -335,7 +275,6 @@ class _main:
 	@app.route("/api/sql_test",methods=["POST","GET"])
 	def sql_test():
 		crops = ["Cacao","Coffee","Coconut","Banana","Calamansi","Jackfruit","Mango","Pili Nut","Other fruits and nuts"]
-
 		for crop in crops:
 			rapid.do('''
 				INSERT INTO 

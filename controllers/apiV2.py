@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, session, redirect, jsonify, send_file
 from flask_session import Session
 from modules.Connections import mysql,sqlite
+from modules import Utility as util
 import Configurations as c
 import os
 import json
@@ -32,7 +33,7 @@ class _main:
 
 	@app.route("/api/v2/list_all_profile",methods=["POST","GET"])
 	def list_all_profile():
-		return _main.list_all_profile___();
+		return jsonify(_main.list_all_profile___());
 
 	def list_all_profile___():
 		res = []
@@ -52,7 +53,7 @@ class _main:
 		# res = migrations.excel_popu()
 		res = res + migrations.excel_popu()
 		random.shuffle(res)
-		return jsonify(res)
+		return res
 
 	def profile_info_farmer(path):
 		f = open(c.RECORDS+"/profiles/__temp__/"+ path, "r")
@@ -75,4 +76,28 @@ class _main:
 			USER[0]["password"] = "CONFIDENTIAL"
 			prof_1["input_by"] = USER[0]
 		return prof_1
+
+	@app.route("/api/v2/set_farmer_chunk_data",methods=["POST","GET"])
+	def set_farmer_chunk_data():
+		all_data  = _main.list_all_profile___()
+		f = open(c.RECORDS+"/profiles/farmer_profile.json", "w")
+		f.write(json.dumps(all_data))
+		f.close()
+		return "Done"
+
+	@app.route("/api/v2/get_farmer_chunk_data",methods=["POST","GET"])
+	def get_farmer_chunk_data():
+		f = open(c.RECORDS+"/profiles/farmer_profile.json", "r")
+		all_data = f.read()
+		f.close()
+		return all_data
+
+	@app.route("/api/v2/farmer_chunk_data_date",methods=["POST","GET"])
+	def farmer_chunk_data_date():
+		import datetime, time
+		file_dm = datetime.datetime.fromtimestamp(util.file_creation_date(c.RECORDS+"/profiles/farmer_profile.json"))
+		date_now = datetime.datetime.now()
+		time_diff = (date_now-file_dm)
+		data = {"file_dm":str(file_dm).split(".")[0],"time_diff":str(time_diff).split(".")[0]}
+		return (data)
 
