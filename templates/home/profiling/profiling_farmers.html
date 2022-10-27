@@ -585,11 +585,7 @@
 				
 			},
 			progress : function(e){
-				if (headerMap(e)['X-File-Length'] ==undefined){
-					var response_length = parseFloat(headerMap(e)['content-length'])
-				}else{
-					var response_length = parseFloat(headerMap(e)['X-File-Length'])
-				}
+				var response_length = parseFloat(headerMap(e)['total'])
 
 				var response_loaded = parseFloat(e.loaded)
 				var percent_  = (response_loaded / response_length) * 100;
