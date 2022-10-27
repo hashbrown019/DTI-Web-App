@@ -64,6 +64,12 @@
 <script type="text/javascript">
 	let SPINNER_LOADER = {
 		show : function(){
+			var elem_container = $ID("SPINNER_LOADER_LOADING_BAR_CONTAINER");
+			var elem = $ID("SPINNER_LOADER_LOADING_BAR");
+			elem_container.style.display = "none"
+			elem.style.width = '0%'; 
+			elem.innerHTML = '0%';
+			var elem_container = $ID("SPINNER_LOADER_LOADING_BAR_CONTAINER");
 			$ID("SPINNER_LOADER").style.display = "block";
 			this.message('<span>This may take a while.<br>This will disappear after the loading is done</span>');
 		},
