@@ -589,6 +589,7 @@
 				var response_loaded = parseFloat(e.loaded)
 				var percent_  = (response_loaded / response_length) * 100;
 				var percent_rounded = Math.round(percent_ * 100) / 100
+				println(headerMap(e))
 				SPINNER_LOADER.loading(percent_rounded)
 				SPINNER_LOADER.message(`
 					<span>
