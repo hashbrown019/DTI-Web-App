@@ -594,7 +594,10 @@
 					<span>
 						Gathering 
 						<b>`+percent_rounded+`%</b><br>
-						<span class="x-small">[`+(e.loaded)+"/"+(e.loaded)+` bytes]</span>
+						<span class="x-small">
+							[`+(response_loaded)+" / "+(response_length)+` bytes]<br>
+							<i>`+(response_length-response_loaded)+` bytes remaining</i>
+						</span>
 					</span>
 				`);
 			}
