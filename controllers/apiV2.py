@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, session, redirect, jsonify, send_file
+from flask import Blueprint, render_template, request, session, redirect, jsonify, send_file, Response
 from flask_session import Session
 from modules.Connections import mysql,sqlite
 from modules import Utility as util
@@ -87,10 +87,15 @@ class _main:
 
 	@app.route("/api/v2/get_farmer_chunk_data",methods=["POST","GET"])
 	def get_farmer_chunk_data():
-		f = open(c.RECORDS+"/profiles/farmer_profile.json", "r")
+		chunck_farmer_profile = c.RECORDS+"/profiles/farmer_profile.json"
+		f = open(chunck_farmer_profile, "r")
 		all_data = f.read()
+		file_stats = os.stat(chunck_farmer_profile)
+		print(file_stats.st_size)
 		f.close()
-		return all_data
+		resp = Response(all_data)
+		resp.headers['Content-Length'] = file_stats.st_size
+		return resp
 
 	@app.route("/api/v2/farmer_chunk_data_date",methods=["POST","GET"])
 	def farmer_chunk_data_date():

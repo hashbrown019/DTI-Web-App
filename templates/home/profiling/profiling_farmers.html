@@ -245,7 +245,16 @@
 			method : POST,
 			data : $DATA({
 				"ls" : JSON.stringify(FILTERED_ID_FARMERS),
-				"id" : ("{{USER_DATA['id']}}")
+				"id" : ("{{USER_DATA['id']}}"),
+				"FILTER_SEL_REG" : FILTER_SEL_REG,
+				"FILTER_SEL_PROV" : FILTER_SEL_PROV,
+				"FILTER_SEL_CITY" : FILTER_SEL_CITY,
+				"FILTER_SEL_BRGY" : FILTER_SEL_BRGY,
+				"FILTER_SEL_PRIMARY_CROP" : FILTER_SEL_PRIMARY_CROP,
+				"FILTER_SEL_ENUM_AREA" : FILTER_SEL_ENUM_AREA,
+				"FILTER_SEL_DATA_SOURCE" : FILTER_SEL_DATA_SOURCE,
+				"FILTER_SEL_FO" : FILTER_SEL_FO,
+				"FILTER_SEL_DIP" : FILTER_SEL_DIP
 			}),
 			func : function (res){
 				alert(res)
