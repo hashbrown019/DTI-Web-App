@@ -52,9 +52,11 @@
 	<span onclick="document.getElementById('SPINNER_LOADER').style.display='none'" class="x-padding x-text-yellow x-display-topright"><b>Minimize_</b></span>
 	<div class="x-display-middle x-center">
 		<h1 class="fa fa-spin fa-circle-o-notch x-text-white x-jumbo"></h1><br>
-		<b class="x-text-white"> Loading, Please wait . . . </b>
+		<b class="x-text-white"> Loading, Please wait</b>
+		<div id="SPINNER_LOADER_LOADING_BAR_CONTAINER" class="x-light-grey" style="display:none;width: 50vw;">
+			<div id="SPINNER_LOADER_LOADING_BAR" class="x-container x-green" style="width:20%">20%</div>
+		</div>
 		<div id="SPINNER_LOADER_MSG" class="x-text-white x-container x-padding">
-			
 		</div>
 	</div>
 </div>
@@ -67,7 +69,14 @@
 		},
 		hide : function(){$ID("SPINNER_LOADER").style.display = "none";},
 		destroy : function(){$ID("SPINNER_LOADER").style.display = "none";},
-		message : function(masg){$ID("SPINNER_LOADER_MSG").innerHTML = masg;}
+		message : function(msg_){$ID("SPINNER_LOADER_MSG").innerHTML = msg_;},
+		loading : function(percent){
+			var elem = $ID("SPINNER_LOADER_LOADING_BAR");
+			var elem_container = $ID("SPINNER_LOADER_LOADING_BAR_CONTAINER");
+			elem_container.style.display = "block"
+			elem.style.width = percent + '%'; 
+			elem.innerHTML = percent * 1  + '%';
+		},
 	};
 </script>
 <!-- https://cdn.amcharts.com/lib/5/geodata/philippinesLow.js -->

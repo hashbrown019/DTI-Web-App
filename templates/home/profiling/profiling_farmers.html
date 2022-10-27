@@ -585,11 +585,16 @@
 				
 			},
 			progress : function(e){
-				println(e)
+				var response_length = headerMap(e)['content-length']
+				var response_loaded = e.loaded
+				var percent_  = (response_loaded / response_length) * 100;
+				var percent_rounded = Math.round(percent_ * 100) / 100
+				SPINNER_LOADER.loading(percent_rounded)
 				SPINNER_LOADER.message(`
 					<span>
 						Gathering 
-						<b>[`+(e.loaded/100000)+`]</b>
+						<b>`+percent_rounded+`%</b><br>
+						<span class="x-small">[`+(e.loaded)+"/"+(e.loaded)+` bytes]</span>
 					</span>
 				`);
 			}
