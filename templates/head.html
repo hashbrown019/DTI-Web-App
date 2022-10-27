@@ -54,7 +54,7 @@
 		<h1 class="fa fa-spin fa-circle-o-notch x-text-white x-jumbo"></h1><br>
 		<b class="x-text-white"> Loading, Please wait</b>
 		<div id="SPINNER_LOADER_LOADING_BAR_CONTAINER" class="x-round x-light-grey" style="display:none;width: 50vw;">
-			<div id="SPINNER_LOADER_LOADING_BAR" class="x-round x-container x-green" style="width:0%">0%</div>
+			<div id="SPINNER_LOADER_LOADING_BAR" class="x-round x-container x-green" style="width:0%">&nbsp;</div>
 		</div>
 		<div id="SPINNER_LOADER_MSG" class="x-text-white x-container x-padding">
 		</div>
@@ -68,7 +68,6 @@
 			var elem = $ID("SPINNER_LOADER_LOADING_BAR");
 			elem_container.style.display = "none"
 			elem.style.width = '0%'; 
-			elem.innerHTML = '0%';
 			var elem_container = $ID("SPINNER_LOADER_LOADING_BAR_CONTAINER");
 			$ID("SPINNER_LOADER").style.display = "block";
 			this.message('<span>This may take a while.<br>This will disappear after the loading is done</span>');
@@ -81,7 +80,6 @@
 			var elem_container = $ID("SPINNER_LOADER_LOADING_BAR_CONTAINER");
 			elem_container.style.display = "block"
 			elem.style.width = percent + '%'; 
-			elem.innerHTML = percent * 1  + '%';
 		},
 	};
 </script>

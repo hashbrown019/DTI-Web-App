@@ -12,7 +12,10 @@
 						<img src="../static/img/user.png" class="x-img x-circle x-right" style="max-width:7%">
 						<span class="x-container x-right">
 							<button class="x-btn x-border x-round" onclick="logout()"> <span class="x-text-red fa fa-power-off"></span> Logout</button>
-							<button class="x-btn x-border x-round"> <span class="x-text-yellow fa fa-cog"></span> Settings</button>
+							<button class="x-btn x-border x-round">
+								{{USER_DATA['job']}}
+								<span class="x-text-yellow fa fa-user"></span>
+							</button>
 						</span>
 					</div>
 				</div>
