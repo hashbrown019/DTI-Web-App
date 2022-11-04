@@ -1,0 +1,42 @@
+<div class=" x-container x-white">
+
+
+	<div class="x-container">
+		<h3 class="x-text-teal x-left">MSME Profiles</h3>
+
+
+		<p class="x-padding x-text-teal x-right">
+			<b class="x-text-orange" onclick="get_list_file_msme()">
+				Refresh <span class="fa fa-refresh fa-spin"></span>
+			</b>
+		</p>
+	</div>
+	<div class="x-row">
+		<div class="x-bottombar x-border-teal x-row">
+			
+			<div class="x-btn x-left x-container ">
+				<i class="x-text-grey">
+					<b id="prof_msme_count">0</b> Profiles Found ||
+					 <span id="scan_view"><span id="scan_item"></span>/</span>
+					<b id="prof_msme_count_all">0</b> total records
+				</i>
+				<br>
+			</div>
+			<div class="x-button x-right x-text-orange x-hover-orange" onclick="export_msme_excel()">
+				<b>Export Data</b> | <span class="fa fa-download"></span>
+			</div>
+			<div class="x-button x-right x-text-blue x-hover-blue" onclick="import_msme_excel()">
+				<b>Import Spreadsheet</b> | <span class="fa fa-upload"></span>
+			</div>
+			<div class="x-button x-right x-green" onclick="add_msme_profile()">
+				<b>Add MSME Profile</b> | <span class="fa fa-users"></span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="x-row">
+		{% include 'home/no_data.html' %}
+	</div>
+</div>
+<script type="text/javascript">
+</script>

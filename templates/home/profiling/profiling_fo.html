@@ -1,0 +1,155 @@
+<style type="text/css">
+	#map_page_2 { height: 180px; }
+</style>
+
+<div class=" x-container x-white">
+	<div class="x-container">
+		<h3 class="x-text-teal x-left">Farmer Organization</h3>
+
+
+		<p class="x-padding x-text-teal x-right">
+			<b class="x-text-orange" onclick="get_list_file_fo()">
+				Refresh <span class="fa fa-refresh fa-spin"></span>
+			</b>
+		</p>
+	</div>
+	<div class="x-row">
+		<div class="x-bottombar x-border-teal x-row">
+			
+			<div class="x-btn x-left x-container ">
+				<i class="x-text-grey">
+					<b id="prof_fo_count">0</b> Profiles Found ||
+					<span id="scan_view"><span id="scan_item"></span>/</span>
+					<b id="prof_fo_count_all">0</b> total records
+				</i>
+				<br>
+			</div>
+			<div class="x-button x-right x-text-orange x-hover-orange" onclick="export_fo_excel()">
+				<b>Export Data</b> | <span class="fa fa-download"></span>
+			</div>
+			<div class="x-button x-right x-text-blue x-hover-blue" onclick="import_fo_excel()">
+				<b>Import Spreadsheet</b> | <span class="fa fa-upload"></span>
+			</div>
+			<div class="x-button x-right x-green" onclick="add_fo_profile()">
+				<b>Add FO Profile</b> | <span class="fa fa-users"></span>
+			</div>
+		</div>
+	</div>
+	<div class="x-row">
+		{% include 'home/no_data.html' %}
+	</div>
+</div>
+<script type="text/javascript">
+	let ADD_FO_MODAL = undefined
+	let FORM_B_PAGE = 0
+	let FORM_B_PAGE_CONTENT = $CLASS("form_b_1")
+	let FORM_CURRENT_PAGE = 0
+
+	// add_fo_profile()
+	function add_fo_profile(){
+		ADD_FO_MODAL = $dialog({
+			title : "Farmer Organization Profile Set-Up",
+			subtitle : "You are about to add Farmer Organization Profile, Please fill the fields properly",
+			content : (`{% include 'home/form_b/form_b1.html' %}`),
+			buttons : ["Save","Cancel"],
+			buttons_actions : [form_b_save,form_b_cancel]
+		})
+		
+		ADD_FO_MODAL.show()
+
+		FORM_B_PAGE = FORM_CURRENT_PAGE
+		all_page_hide_fo()
+		FORM_B_PAGE_CONTENT[FORM_CURRENT_PAGE].style.display="block";
+	}
+
+	function all_page_hide_fo(){
+		$ID("page_fo_num").innerHTML = FORM_B_PAGE
+		map_diplay_page()
+		for (var i = 0; i < FORM_B_PAGE_CONTENT.length; i++) {
+			FORM_B_PAGE_CONTENT[i].style.display = "none"
+		}
+	}
+
+	function form_b_next(){
+		if(FORM_B_PAGE==FORM_B_PAGE_CONTENT.length-1){return}
+		FORM_B_PAGE += 1
+		all_page_hide_fo()
+		FORM_B_PAGE_CONTENT[FORM_B_PAGE].style.display="block";
+		
+	}
+	function form_b_prev(){
+		if(FORM_B_PAGE==0){return}
+		FORM_B_PAGE -= 1
+		all_page_hide_fo()
+		FORM_B_PAGE_CONTENT[FORM_B_PAGE].style.display="block";
+	}
+
+	function form_b_save(){
+		alert("SAVE")
+	}
+
+	function form_b_cancel(){
+		alert("CANCEL")
+	}
+
+	function map_diplay_page(){
+		if(FORM_B_PAGE == 1){
+			map_display("map_page_2","address_fo");
+			ADD_FO_MODAL.dialog.style.width = "70vw";
+		}
+	}
+
+// ====================================================================
+	var marker = undefined
+	var TILE_manager = undefined
+	var mymap = undefined
+	function map_display(_map_id,ouput_addr){
+		if(mymap != undefined){
+			mymap.off();
+			mymap.remove();
+			TILE_manager.remove()
+		}
+		try{
+			mymap = L.map(_map_id).setView([51.505, -0.09], 13);
+			TILE_manager = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+				attribution: 'DTI RAPID GROWTH',
+				maxZoom: 18,
+				id: 'mapbox/streets-v11',
+				tileSize: 512,
+				zoomOffset: -1,
+				accessToken: 'pk.eyJ1IjoiZGlvYW1lIiwiYSI6ImNrbGo1ZDc1aDAxZTQybnBoc2tpZGcxOWoifQ.90lp0SPxVC4Kz113q_Wn9g'
+			})
+			TILE_manager.addTo(mymap);
+			let samp = {"lat":8.945209,"lng":125.538939}
+			mymap.setView([samp.lat, samp.lng], 13);
+
+			function onMapClick(e) {
+				if(marker != undefined){mymap.removeLayer(marker)}
+				marker = L.marker(e.latlng).addTo(mymap);
+				$.get('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+e.latlng.lat+'&lon='+e.latlng.lng, function(data){
+					console.log(data.address);
+					var addr = 
+						 String(data.address.village + "," ).replace("undefined,",'')
+						+String(data.address.neighbourhood+",").replace("undefined,",'')
+						+String(data.address.quarter+",").replace("undefined,",'')
+						+String(data.address.suburb+",").replace("undefined,",'')
+						+String(data.address.road + ",").replace("undefined,",'')
+						+String(data.address.tourism + ",").replace("undefined,",'')
+						+String(data.address.leisure + ",").replace("undefined,",'')
+						+String(data.address.state + ",").replace("undefined,",'')
+						+String(data.address.region + ",").replace("undefined,",'')
+						+String(e.latlng.lat +","+e.latlng.lng+ ",").replace("undefined,",'')
+					// $ID("reg_brgy").value = addr.split("undefined ,").join("")
+					$ID(ouput_addr).value = addr
+				});
+			}
+			mymap.on('click', onMapClick);
+		}
+		catch(e){
+			$ID("map_cont").style.display = "none"
+			console.error(e)
+		}
+	}
+
+
+</script>

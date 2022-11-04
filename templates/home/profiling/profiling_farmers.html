@@ -1,8 +1,6 @@
 <div class=" x-container x-white">
-
-
 	<div class="x-container">
-		<h3 class="x-padding x-text-teal x-left">Profile List</h3>
+		<h3 class="x-text-teal x-left">Farmer Profile</h3>
 
 
 		<p class="x-padding x-text-teal x-right">
@@ -181,6 +179,11 @@
 		<div class="x-row">
 			<div class=" x-col l8">
 				<b class="x-text-teal x-padding">Farmer Profiles</b><br>
+				<div class="x-row x-container x-padding">
+					<span>Search</span><br>
+					<input id='data_search_farmer' class="x-search x-input x-border" type="search" name="" onkeyup="data_search_farmer(this.value)" placeholder="input Search Criteria Here">
+					<i id="data_search_farmer_note" class="x-text-grey x-animate-fading" style="display: none;padding:2px"><b>Searching. . . .</b> </i>
+				</div>
 				<p class="x-padding x-text-grey">Below are the list of profiled farmer from mobile app and bulk uploading excel files, scroll down to view more list on the selected filters above</p>
 				<div id="profile_list" class="x-row x-bottombar" style="overflow-y:scroll;height: 60vh;">
 					<div class="x-container x-center">
@@ -211,11 +214,13 @@
 	</div>
 </div>
 <script type="text/javascript">
+	let search_farmer_timer;
 	let ALL_FARMERS = [], enumerator_encoded_num
 	let FILTER_SEL_REG, FILTER_SEL_PROV, FILTER_SEL_CITY, FILTER_SEL_BRGY;
 	let FILTER_SEL_PRIMARY_CROP;
 	let FILTER_SEL_ENUM_AREA;
 	let FILTER_SEL_DATA_SOURCE;
+	let FILTER_SEL_SEARCH;
 
 	let FILTER_SEL_FO, FILTER_SEL_DIP;
 
@@ -542,6 +547,45 @@
 		else{return false}
 	}
 
+	function filterBySearch(person){
+		var person_values = []
+		for(key in person){
+			if((""+ typeof(person[key])).toLowerCase()=="object"){
+				for(key2 in person[key]){
+					person_values.push((""+person[key][key2]).toLowerCase())
+				}
+			}
+			else{
+				person_values.push((""+person[key]).toLowerCase())
+			}
+			// println(key)
+		}
+
+		if(FILTER_SEL_SEARCH=="" ||FILTER_SEL_SEARCH==undefined){SPINNER_LOADER.show();return true}
+		else if(person_values.includes(FILTER_SEL_SEARCH.toLowerCase())){return true}
+		else{return false}
+	}
+
+	function data_search_farmer(args){
+		clearTimeout(search_farmer_timer);
+		search_farmer_timer = setTimeout(() => {
+			$ID('data_search_farmer_note').style.display="block";
+			conso_filters_search()
+		}, 800);
+	}
+
+	async function conso_filters_search(){
+		$ID("prof_farmer_count").innerHTML = 0
+		// SPINNER_LOADER.show()
+		await new Promise(resolve => setTimeout(resolve, 1000)); // WAIT FOR 1 SECONDS
+		FILTER_SEL_SEARCH = $ID("data_search_farmer").value
+		enumerator_encoded_num = {}
+		total_recors_farmer_counter = 0
+		populate_farm_list_for_numbers(ALL_FARMERS)
+		$ID('data_search_farmer_note').style.display="none";
+	}
+
+
 	async function conso_filters(){
 		$ID("prof_farmer_count").innerHTML = 0
 		SPINNER_LOADER.show()
@@ -550,6 +594,7 @@
 		FILTER_SEL_PROV = $ID("dash_sel_prov").value
 		FILTER_SEL_CITY = $ID("dash_sel_city").value
 		FILTER_SEL_BRGY = $ID("dash_sel_brgy").value
+		FILTER_SEL_SEARCH = $ID("data_search_farmer").value
 
 		FILTER_SEL_PRIMARY_CROP = $ID("dash_sel_crop_primary").value;
 		FILTER_SEL_ENUM_AREA = $ID("enumeartor_area").value;
@@ -566,9 +611,9 @@
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-	var LS__PROF
+	var LS__PROF;
 	function get_list_file(){ // For Inititalizing list in profiling/profiling_farmers.html
-		return //REMOVED FOR DEVELOPMENT
+		// return //REMOVED FOR DEVELOPMENT ?? REMOVE THIS TO LOAD THE DATA
 		SPINNER_LOADER.show()
 		LS__PROF = $send({
 			action:"/api/list_all_profile",
@@ -623,8 +668,8 @@
 				filterByEnumArea(ALL_FARMERS____[f_counter]) &&
 				filterByFO(ALL_FARMERS____[f_counter]) &&
 				filterByDIP(ALL_FARMERS____[f_counter]) &&
-				filterByDataSource(ALL_FARMERS____[f_counter])
-
+				filterByDataSource(ALL_FARMERS____[f_counter]) &&
+				filterBySearch(ALL_FARMERS____[f_counter])
 				){
 				make_ls_farmer(ALL_FARMERS____[f_counter],ALL_FARMERS____.length,f_counter);
 				RES_ALL_FARMER_PROF.push(ALL_FARMERS____[f_counter]);

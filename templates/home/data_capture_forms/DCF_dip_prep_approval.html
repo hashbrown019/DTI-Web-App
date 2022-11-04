@@ -6,14 +6,14 @@
 	<div class="x-button x-right x-text-blue x-hover-blue" onclick="">
 		<b>Import Spreadsheet</b> | <span class="fa fa-upload"></span>
 	</div>
-	<button class="x-btn x-right x-green" onclick="$ID('dcf_modal_add').style.display='block'">
+	<button class="x-btn x-right x-green" onclick="$ID('dcf_modal_dip_prep').style.display='block'">
 		Add DC Form <span class="fa fa-plus"></span>
 	</button>
 
-	<div id="dcf_modal_add" class="x-modal" style="display:block">
+	<div id="dcf_modal_dip_prep" class="x-modal" style="display:block">
 		<div class="x-modal-content" style=";width: 70vw;">
 			<div class="x-container">
-				<b onclick="$ID('dcf_modal_add').style.display='none'"
+				<b onclick="$ID('dcf_modal_dip_prep').style.display='none'"
 				class="x-button x-display-topright x-red">&times;</b>
 				<h3 class="x-text-teal"><b>DIP Preparational and Approval Form</b></h3>
 			</div>
@@ -145,7 +145,8 @@
 					</div>
 					<div class="x-container x-row">
 						<div class="x-row x-padding">
-							<span> Total Hectarage Covered </span><br>				<input id="total_ha_coverage" class="form_dcf_dip_prep_approval x-input x-border" type="" name="">
+							<span> Total Hectarage Covered </span><br>
+							<input id="total_ha_coverage" class="form_dcf_dip_prep_approval x-input x-border" type="" name="">
 
 						</div>
 						<div class="x-row ">
@@ -228,61 +229,49 @@
 	// 		}
 	// 	})
 	// },500)
-	fo_dropdown();
-	dip_dropdown();
-	benif_dropdown();
+	prepare_dd("form_dcf_dip_prep_approval");
 
-	function fo_dropdown(){
+	function prepare_dd(form_class){
 		dd1 = $dropdown_multiple({
 			id : "fo_list",
-			dd_id : "fo_options",
-			classn : "form_dcf_dip_prep_approval",
+			dd_id : "fo_value",
+			classn : form_class,
 			option :  [],
 			search : true,
 			add : true,
-			on_add : function(item){
-				println(item)
-			}
+			on_add : function(item){}
 		})
-	}
-
-	function dip_dropdown(){
 		dd2 = $dropdown_multiple({
 			id : "dip_list",
-			dd_id : "dip_option",
-			classn : "form_dcf_dip_prep_approval",
+			dd_id : "dip_value",
+			classn : form_class,
 			option :  [],
 			search : true,
 			add : true,
-			on_add : function(item){
-				// alert(item)
-			}
+			on_add : function(item){}
 		})
-	}
-
-	function benif_dropdown(){
 		dd3 = $dropdown_multiple({
 			id : "benif_list",
-			dd_id : "benif_option",
-			classn : "form_dcf_dip_prep_approval",
+			dd_id : "benif_value",
+			classn : form_class,
 			option :  [],
 			search : true,
 			add : true,
-			on_add : function(item){
-				// alert(item)
-			}
+			on_add : function(item){}
 		})
 	}
 
 	function get_data(){
 		var forms = $CLASS("form_dcf_dip_prep_approval")
+		var _data = {}
 		for (var i = 0; i < forms.length; i++) {
-			println(forms[i].id+" : "+forms[i].value)
+			_data[forms[i].id] = forms[i].value
 		}
+		return _data
 	}
 
 	function _submit_dcf_dip_prep_approval(){
-
+		println(get_data())
 	}
 
 </script>

@@ -108,3 +108,12 @@ class _main:
 		data = {"file_dm":str(file_dm).split(".")[0],"time_diff":str(time_diff).split(".")[0]}
 		return (data)
 
+	@app.route("/api/v2/get_all_primary_crops",methods=["POST","GET"])
+	def get_all_primary_crops():
+		res = rapid.select("SELECT * FROM `primary_crops`;")
+		return jsonify(res)
+
+	@app.route("/api/v2/get_all_fo",methods=["POST","GET"])
+	def get_all_fo():
+		res = rapid.select("SELECT `rcu` FROM `fo_list`;")
+		return jsonify(res)

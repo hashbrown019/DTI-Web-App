@@ -12,63 +12,14 @@
 				<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
 				CPA Tracker
 			</button>
-			<button class="dcf_top_tab x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="dcf_go_tab(1)">
-				<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
-				DIP Prep and Approval Tracker
-			</button>
-			<button class="dcf_top_tab x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="dcf_go_tab(2)">
-				<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
-				Enabler's Activity Tracker
-			</button>
-			<button class="dcf_top_tab x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="dcf_go_tab(3)">
-				<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
-				Equity Financing Tracker
-			</button>
-			<button class="dcf_top_tab x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="dcf_go_tab(4)">
-				<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
-				Matching Grant Implementation Tracker
-			</button>
-			<button class="dcf_top_tab x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="dcf_go_tab(5)">
-				<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
-				Product Development & Consultancy Services
-			</button>
-			<button class="dcf_top_tab x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="dcf_go_tab(6)">
-				<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
-				Trade Promotions
-			</button>
 		</div>
 	</div>
 
 	<div class="x-container x-col l10">
 		<br><br>
 		<div class="x-container x-round">
-
 			<div class="dcf_body_content x-white x-padding x-round x-animate-top" style="display:block;">
-				{% include 'home/data_capture_forms/DCF_cpa_tracker.html' %}
-				{% include 'home/no_data.html' %}
-			</div>
-			<div class="dcf_body_content x-white x-padding x-round x-animate-top" style="display:none;">
-				{% include 'home/data_capture_forms/cap_build_fsp.html' %}
-				{% include 'home/no_data.html' %}
-			</div>
-			<div class="dcf_body_content x-white x-padding x-round x-animate-top" style="display:none;">
-				{% include 'home/data_capture_forms/planting_materials.html' %}
-				{% include 'home/no_data.html' %}
-			</div>
-			<div class="dcf_body_content x-white x-padding x-round x-animate-top" style="display:none;">
-				{% include 'home/data_capture_forms/rehab_rejuv.html' %}
-				{% include 'home/no_data.html' %}
-			</div>
-			<div class="dcf_body_content x-white x-padding x-round x-animate-top" style="display:none;">
-				{% include 'home/data_capture_forms/trade_fair.html' %}
-				{% include 'home/no_data.html' %}
-			</div>
-			<div class="dcf_body_content x-white x-padding x-round x-animate-top" style="display:none;">
-				{% include 'home/data_capture_forms/prototypes_dev.html' %}
-				{% include 'home/no_data.html' %}
-			</div>
-			<div class="dcf_body_content x-white x-padding x-round x-animate-top" style="display:none;">
-				{% include 'home/data_capture_forms/matching_grants_receipt.html' %}
+				{% include 'home/data_capture_forms/DCF_dip_prep_approval.html' %}
 				{% include 'home/no_data.html' %}
 			</div>
 		</div>
@@ -88,7 +39,7 @@
 		tabs[_index].classList.add("x-leftbar","x-border-teal")
 		dcf_body_content[_index].style.display = "block" // FOR BODY CONTENT
 	}
-
 </script>
 <!-- <div id="conso1_chart"></div>
 <span class="x-tiny" id="res"></span> -->
+
