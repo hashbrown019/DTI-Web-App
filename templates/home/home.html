@@ -124,10 +124,10 @@
 
 		init()
 		function init(){
-			{% if USER_DATA['job'] != "Enumerator" %}
-			load_users();
-			set_ls_rcu();
-			{% endif %}
+			{% if USER_DATA['job'] != "Enumerator" %} //JINJA: RESTRICTION USER
+				load_users();
+				set_ls_rcu();
+			{% endif %} // JINJA: RESTRICTION USER
 			get_list_file(); // For Inititalizing list in profiling/profiling_farmers.html
 			
 		}
