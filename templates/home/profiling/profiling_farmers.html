@@ -105,7 +105,6 @@
 			<i class="">This numbers are based on the records that has been <b class="x-text-blue x-pale-blue">SYNCED</b> from the Mobile App to the System and all <b class="x-text-blue x-pale-blue">VERIFIED</b> records from the uploaded Spreadsheet files. any <b class="x-text-red x-pale-red">Unsynced</b> records on the mobile app and all records from <b class="x-text-red x-pale-red">'On-System-Checking'</b> Spreadsheet files will not be counted</i>
 		</div>
 
-
 		<div class="x-container x-row">
 			<span class="x-padding x-text-teal">
 				Data as of <b class="farmer_data_last_date">--/--/----</b> 
@@ -176,6 +175,12 @@
 
 		</div>
 		<hr>
+		<div class="x-row x-container x-padding">
+			<button class="x-input x-btn x-blue" onclick="_inc_area()">
+				View Included Area <span class="fa fa-eye"></span>
+			</button>
+		</div>
+		<hr>
 		<div class="x-row">
 			<div class=" x-col l8">
 				<b class="x-text-teal x-padding">Farmer Profiles</b><br>
@@ -184,6 +189,7 @@
 					<input id='data_search_farmer' class="x-search x-input x-border" type="search" name="" onkeyup="data_search_farmer(this.value)" placeholder="input Search Criteria Here">
 					<i id="data_search_farmer_note" class="x-text-grey x-animate-fading" style="display: none;padding:2px"><b>Searching. . . .</b> </i>
 				</div>
+
 				<p class="x-padding x-text-grey">Below are the list of profiled farmer from mobile app and bulk uploading excel files, scroll down to view more list on the selected filters above</p>
 				<div id="profile_list" class="x-row x-bottombar" style="overflow-y:scroll;height: 60vh;">
 					<div class="x-container x-center">
@@ -651,10 +657,15 @@
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	let num_filter_ip = 0, num_filter_pwd = 0, num_filter_youth = 0,num_filter_male = 0,num_filter_female = 0,num_filter_untagged = 0;
 
 	let RES_ALL_FARMER_PROF= []
 	let FILTERED_ID_FARMERS = []
+	let AREA_LS__ = []
 	function populate_farm_list_for_numbers(ALL_FARMERS____){
+		num_filter_ip = 0, num_filter_pwd = 0, num_filter_youth = 0,num_filter_male = 0,num_filter_female = 0,num_filter_untagged = 0;
+
+		AREA_LS__ = []
 		FILTERED_ID_FARMERS = []
 		LS_FARMER_VIEW ="";
 		var FILTER_total_recors_farmer_counter = 0;
@@ -674,16 +685,69 @@
 				make_ls_farmer(ALL_FARMERS____[f_counter],ALL_FARMERS____.length,f_counter);
 				RES_ALL_FARMER_PROF.push(ALL_FARMERS____[f_counter]);
 				popu_enumerator_encoded(ALL_FARMERS____[f_counter]);
-				FILTERED_ID_FARMERS.push(ALL_FARMERS____[f_counter]['farmer_code'])
+				FILTERED_ID_FARMERS.push(ALL_FARMERS____[f_counter]['farmer_code']);
 				$ID("scan_item").innerHTML = FILTER_total_recors_farmer_counter;
 				FILTER_total_recors_farmer_counter += 1;
-				dash_number(ALL_FARMERS____[f_counter])
+				dash_number(ALL_FARMERS____[f_counter]);
+				popu_data_prov_muni_brgy(ALL_FARMERS____[f_counter]);
 			}
 		}
 		$ID("scan_item").innerHTML = FILTER_total_recors_farmer_counter;
 		$ID("profile_list").style.display = "block";
 		num_enumerator_encoded();
 		SPINNER_LOADER.hide();
+	}
+
+	function popu_data_prov_muni_brgy(farmer){
+		var __data = {
+			"Region" :farmer.addr_region,
+			"Province" : farmer.addr_prov,
+			"Municipality/City" : farmer.addr_city,
+			"Brgy" : farmer.addr_brgy,
+			"Number" : 0,
+		}
+		if(!AREA_LS__.includes(JSON.stringify(__data))){
+			AREA_LS__.push(JSON.stringify(__data))
+		}
+	}
+
+	function display_popu_data_prov_muni_brgy(){
+		var strs__ = ""
+		var __ls = [] ; for (var i = 0; i < AREA_LS__.length; i++) {__ls.push(JSON.parse(AREA_LS__[i]))}
+		for (var i = 0; i < __ls.length; i++) {
+			strs__ += `
+			<tr class="x-tiny">
+				<td>`+__ls[i]["Region"]+`</td>
+				<td>`+__ls[i]["Province"]+`</td>
+				<td>`+__ls[i]["Municipality/City"]+`</td>
+				<td>`+__ls[i]["Brgy"]+`</td>
+			</tr>`;
+		}
+		
+		$ID('area_ls__').innerHTML = strs__;
+		return __ls;
+	}
+
+	function _inc_area(){
+		println(" * Showing included data")
+		var inc_area_dialog = $dialog({
+			title : "Included Areas",
+			subtitle : "this is the list of areas that has been included on the population of list",
+			content : (`
+				<table class="x-container x-table x-table-bordered" id="table_area_ls">
+					<thead>
+						<th>Region</th>
+						<th>Province</th>
+						<th>Municipality</th>
+						<th>Brgy</th>
+					</thead>
+					<tbody id="area_ls__" style=";overflow-y:scroll;height: 70vh;">
+					</tbody>
+				</table>`)
+		})
+		inc_area_dialog.show();
+		display_popu_data_prov_muni_brgy();
+		println(" * Showing included data finished")
 	}
 
 	function prof_farmer_view_scroll(e){
@@ -711,7 +775,6 @@
 	}
 
 
-	let num_filter_ip = 0, num_filter_pwd = 0, num_filter_youth = 0,num_filter_male = 0,num_filter_female = 0,num_filter_untagged = 0;
 	function dash_number(person){
 		// println(person['farmer_sex'])
 		if(person['farmer-is_ip']==true){num_filter_ip += 1}
