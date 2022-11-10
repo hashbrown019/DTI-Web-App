@@ -37,6 +37,50 @@
 	<div class="x-row">
 		{% include 'home/no_data.html' %}
 	</div>
+	<div hidden>
+	</div>
 </div>
 <script type="text/javascript">
+	function add_msme_profile(){
+		$send({
+			action : "/resp_prof",
+			method : GET,
+			func : function(e){
+				var f_c = $dialog({
+					title : "VC Profiling Form C",
+					subtitle : "Add entry for VC Profiling Form C",
+					// content : (e)
+					content : (`
+						<div class="x-container x- row">
+							<div class="x-container x-col l3 m3">
+								<button class="x-btn x-block x-teal" onclick="show_sub_form_msme_profile('/resp_prof')">
+									Respondednt Profile
+								</button>
+								<button class="x-btn x-block x-teal" onclick="show_sub_form_msme_profile('/business_info')">
+									Business Information
+								</button>
+								<button class="x-btn x-block x-teal" onclick="show_sub_form_msme_profile('/ciboasn')">
+									Challenges
+								</button>
+							</div>
+							<div id="sub_form_c" class="x-container x-col l3 m3">
+								
+							</div>
+						</div>`)
+				})
+				// f_c.style.min_width = "80vw";
+				f_c.dialog.style.width = "70vw";
+				f_c.show()
+			}
+		})
+	}
+	function show_sub_form_msme_profile(url){
+		$send({
+			action : "/resp_prof",
+			method : GET,
+			func : function(e){
+				$ID("sub_form_c").innerHTML = e
+			}
+		})
+	}
 </script>
