@@ -659,14 +659,14 @@
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	let num_filter_ip = 0, num_filter_pwd = 0, num_filter_youth = 0,num_filter_male = 0,num_filter_female = 0,num_filter_untagged = 0;
 
-	let RES_ALL_FARMER_PROF= []
-	let FILTERED_ID_FARMERS = []
-	let AREA_LS__ = []
+	let RES_ALL_FARMER_PROF= [];
+	let FILTERED_ID_FARMERS = [];
+	let AREA_LS__ = [];
 	function populate_farm_list_for_numbers(ALL_FARMERS____){
 		num_filter_ip = 0, num_filter_pwd = 0, num_filter_youth = 0,num_filter_male = 0,num_filter_female = 0,num_filter_untagged = 0;
 
-		AREA_LS__ = []
-		FILTERED_ID_FARMERS = []
+		AREA_LS__ = [];
+		FILTERED_ID_FARMERS = [];
 		LS_FARMER_VIEW ="";
 		var FILTER_total_recors_farmer_counter = 0;
 		$ID("profile_list").innerHTML = "";
@@ -707,7 +707,7 @@
 			"Number" : 0,
 		}
 		if(!AREA_LS__.includes(JSON.stringify(__data))){
-			AREA_LS__.push(JSON.stringify(__data))
+			AREA_LS__.push(JSON.stringify(__data));
 		}
 	}
 
@@ -747,7 +747,7 @@
 		})
 		inc_area_dialog.show();
 		display_popu_data_prov_muni_brgy();
-		println(" * Showing included data finished")
+		println(" * Showing included data finished");
 	}
 
 	function prof_farmer_view_scroll(e){
@@ -757,7 +757,7 @@
 			var limit_ls_inc = 0
 			for (var i = 0; i < prof_card.length; i++) {
 				if(prof_card[i].style.display=="none"){
-					prof_card[i].style.display = "block"
+					prof_card[i].style.display = "block";
 					if(limit_ls_inc >= 1){
 						limit_ls_inc = 0
 						return
@@ -769,7 +769,7 @@
 		}
 	}
 
-	let LS_FARMER_VIEW =""
+	let LS_FARMER_VIEW ="";
 	function post_farmer_ls(){
 		$ID("profile_list").innerHTML =LS_FARMER_VIEW;
 	}
@@ -791,22 +791,17 @@
 	}
 
 	function dash_nums(){
-		$ID("total_num_farmer_filter_ip").innerHTML = num_filter_ip
-		$ID("total_num_farmer_filter_pwd").innerHTML = num_filter_pwd
-		$ID("total_num_farmer_filter_youth").innerHTML = num_filter_youth
+		$ID("total_num_farmer_filter_ip").innerHTML = num_filter_ip;
+		$ID("total_num_farmer_filter_pwd").innerHTML = num_filter_pwd;
+		$ID("total_num_farmer_filter_youth").innerHTML = num_filter_youth;
 
-		$ID("total_num_farmer_filter_male").innerHTML = num_filter_male
-		$ID("total_num_farmer_filter_female").innerHTML = num_filter_female
-		$ID("total_num_farmer_filter_untagged").innerHTML = num_filter_untagged
+		$ID("total_num_farmer_filter_male").innerHTML = num_filter_male;
+		$ID("total_num_farmer_filter_female").innerHTML = num_filter_female;
+		$ID("total_num_farmer_filter_untagged").innerHTML = num_filter_untagged;
 
 
 		println("********** DONE ****************")
-		num_filter_ip = 0
-		num_filter_pwd = 0
-		num_filter_youth = 0
-		num_filter_male = 0
-		num_filter_female = 0
-		num_filter_untagged = 0
+		num_filter_ip = 0;num_filter_pwd = 0;num_filter_youth = 0;num_filter_male = 0;num_filter_female = 0;num_filter_untagged = 0;
 	}
 
 	let async_num_farmer_count = 0;
@@ -917,7 +912,6 @@
 				}
 			})
 		}
-
 	}
 	// =========================================================
 	function view_farmer_data(res){
@@ -981,7 +975,6 @@
 		farmer_dialog_info.show()
 	}
 
-
 	// ===================================================================================
 	function get_farmer_form(file_farmer){ // GET SUBform of selected farmer
 		var f_fname = file_farmer.split("@")
@@ -1007,15 +1000,13 @@
 	}
 	let form_f_names = []
 	function get_form_data(){
-		var form_data_a = $CLASS("form_data_a")
-		var f_list = []
-
+		var form_data_a = $CLASS("form_data_a");
+		var f_list = [];
 		for (var i = 0; i < form_data_a.length; i++) {
-			f_list.push(form_data_a[i].id)
+			f_list.push(form_data_a[i].id);
 		}
-		form_f_names.push(f_list)
+		form_f_names.push(f_list);
 	}
-
 
 	function refill_data_forms__(form_){ /////////// REFILLING FOR HAS DATA 
 		var form_data_refill = form_
@@ -1069,15 +1060,11 @@
 	// 		})
 	// 	}
 	// }
-
 	// ==========================Profile=====================================
 
 	function not_head_hh(sel){
-		if(!sel){
-			$ID("not_head_hh").style.display = "block"
-		}else{
-			$ID("not_head_hh").style.display = "none"
-		}
+		if(!sel){$ID("not_head_hh").style.display = "block"}
+		else{$ID("not_head_hh").style.display = "none"}
 	}
 
 	// ==========================Access to financial=====================================
