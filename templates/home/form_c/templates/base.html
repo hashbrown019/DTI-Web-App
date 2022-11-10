@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'bootstrap-4.0.0-dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'bootstrap-4.0.0-dist/css/bootstrap-datepicker.min.css') }}">
+    
+    {% block head %} {% endblock %}
+</head>
+<body>
+    <script src="{{ url_for('static', filename= 'jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename= 'jquery1.11.min.js') }}"></script>
+    <script src="{{ url_for('static', filename= 'bootstrap-4.0.0-dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename= 'bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ url_for('static', filename= 'bootstrap-4.0.0-dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script>
+      //modal 
+        $(document).ready(function(){
+            $("#myModal").modal('show');
+        });
+
+        //add input text
+        $(document).ready(function(){
+  $(".hidden-textbox").hide();
+  $("select#fixture-use").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "others"){
+      $(".hidden-textbox").show();
+    }
+    else
+      $(".hidden-textbox").hide();
+  });  
+});
+
+
+$(document).ready(function(){
+  $(".hidden-textbox2").hide();
+  $("select#fixture-use2").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "pfns"){
+      $(".hidden-textbox2").show();
+    }
+    else
+      $(".hidden-textbox2").hide();
+  });  
+});
+
+$(document).ready(function(){
+  $(".hidden-textbox3").hide();
+  $("select#fixture-use3").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "yess"){
+      $(".hidden-textbox3").show();
+    }
+    else
+      $(".hidden-textbox3").hide();
+  });  
+});
+
+$(document).ready(function(){
+  $(".hidden-textbox4").hide();
+  $("select#fixture-use4").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "yess1"){
+      $(".hidden-textbox4").show();
+    }
+    else
+      $(".hidden-textbox4").hide();
+  });  
+});
+
+$(document).ready(function(){
+  $(".hidden-textbox5").hide();
+  $("select#fixture-use5").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "yess2"){
+      $(".hidden-textbox5").show();
+    }
+    else
+      $(".hidden-textbox5").hide();
+  });  
+});
+
+$(document).ready(function(){
+  $(".hidden-textbox6").hide();
+  $("select#fixture-use6").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "yess3"){
+      $(".hidden-textbox6").show();
+    }
+    else
+      $(".hidden-textbox6").hide();
+  });  
+});
+
+$(document).ready(function(){
+  $(".hidden-textbox7").hide();
+  $("select#fixture-use7").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "yess4"){
+      $(".hidden-textbox7").show();
+    }
+    else
+      $(".hidden-textbox7").hide();
+  });  
+});
+
+$(document).ready(function(){
+  $(".hidden-textbox8").hide();
+  $("select#fixture-use8").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "yess5"){
+      $(".hidden-textbox8").show();
+    }
+    else
+      $(".hidden-textbox8").hide();
+  });  
+});
+
+$(document).ready(function(){
+  $(".hidden-textbox9").hide();
+  $("select#fixture-use9").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "yess6"){
+      $(".hidden-textbox9").show();
+    }
+    else
+      $(".hidden-textbox9").hide();
+  });  
+});
+
+$(document).ready(function(){
+  $(".hidden-textbox10").hide();
+  $("select#fixture-use10").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "yess7"){
+      $(".hidden-textbox10").show();
+    }
+    else
+      $(".hidden-textbox10").hide();
+  });  
+});
+$(document).ready(function(){
+  $(".hidden-textbox11").hide();
+  $("select#fixture-use11").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "orgs"){
+      $(".hidden-textbox11").show();
+    }
+    else
+      $(".hidden-textbox11").hide();
+  });  
+});
+
+$(document).ready(function(){
+  $(".hidden-textbox12").hide();
+  $("select#fixture-use12").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "yess8"){
+      $(".hidden-textbox12").show();
+    }
+    else
+      $(".hidden-textbox12").hide();
+  });  
+});
+
+function myFunction() {
+  var checkbox1 = document.getElementById("business_reg");
+  var checkbox2 = document.getElementById("product_reg");
+  var checkbox3 = document.getElementById("cert_reg");
+  var checkbox4 = document.getElementById("lic_op");
+  var checkbox5 = document.getElementById("iso_cert");
+  var checkbox6 = document.getElementById("Gap_cert");
+  var checkbox7 = document.getElementById("organic");
+  var checkbox8 = document.getElementById("halal");
+  var checkbox9 = document.getElementById("other_cert");
+  var checkbox10 = document.getElementById("others12");
+  var textt = document.getElementById("textt");
+  var textt2 = document.getElementById("textt2");
+  var textt3 = document.getElementById("textt3");
+  var textt4 = document.getElementById("textt4");
+  var textt5= document.getElementById("textt5");
+  var textt6 = document.getElementById("textt6");
+  var textt7 = document.getElementById("textt7");
+  var textt8 = document.getElementById("textt8");
+  var textt9 = document.getElementById("textt9");
+  var textt10 = document.getElementById("textt10");
+  if (checkbox1.checked == true){
+    textt.style.display = "block";
+  } else{
+     textt.style.display = "none";
+  }
+  if (checkbox2.checked == true){
+    textt2.style.display = "block";
+  } else {
+     textt2.style.display = "none";
+  }
+
+  if (checkbox3.checked == true){
+    textt3.style.display = "block";
+  } else {
+     textt3.style.display = "none";
+  }
+
+  if (checkbox4.checked == true){
+    textt4.style.display = "block";
+  } else {
+     textt4.style.display = "none";
+  }
+
+  if (checkbox5.checked == true){
+    textt5.style.display = "block";
+  } else{
+     textt5.style.display = "none";
+  }
+  if (checkbox6.checked == true){
+    textt6.style.display = "block";
+  } else {
+     textt6.style.display = "none";
+  }
+
+  if (checkbox6.checked == true){
+    textt6.style.display = "block";
+  } else {
+     textt6.style.display = "none";
+  }
+
+  if (checkbox7.checked == true){
+    textt7.style.display = "block";
+  } else {
+     textt7.style.display = "none";
+  }
+
+  if (checkbox8.checked == true){
+    textt8.style.display = "block";
+  } else {
+     textt8.style.display = "none";
+  }
+
+  if (checkbox9.checked == true){
+    textt9.style.display = "block";
+  } else {
+     textt9.style.display = "none";
+  }
+  if (checkbox9.checked == true){
+    inserts.style.display = "block";
+  } else {
+    inserts.style.display = "none";
+  }
+
+  if (checkbox10.checked == true){
+    inserttext.style.display = "block";
+  } else{
+    inserttext.style.display = "none";
+  }
+
+}
+
+
+//date picker
+$(function() {
+            $('#datepicker').datepicker();
+            $('#datepicker2').datepicker();
+            $('#datepicker3').datepicker();
+            $('#datepicker4').datepicker();
+            $('#datepicker5').datepicker();
+            $('#datepicker6').datepicker();
+            $('#datepicker7').datepicker();
+            $('#datepicker8').datepicker();
+            $('#datepicker9').datepicker();
+            $('#datepicker10').datepicker();
+            $('#datepicker11').datepicker();
+            $('#datepicker12').datepicker();
+            $('#datepicker13').datepicker();
+            $('#datepicker14').datepicker();
+            $('#datepicker15').datepicker();
+            $('#datepicker16').datepicker();
+        });
+
+        
+  
+    </script>
+    {% block body %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,342 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<div class="d-flex" id="wrapper">
+        <div class="list-group list-group-flush">
+    <div class="border-end bg-white" id="sidebar-wrapper">
+   
+
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ url_for('form_c.resp_prof') }}">Respondent's Profile</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3"href="{{ url_for('form_c.business_info') }}">Business Information</a>
+            <a class="list-group-item list-group-item-action list-group-item-success active p-3" href="{{ url_for('form_c.ciboasn') }}">Challenges in business operations and support</a>
+            
+        </div>
+    </div>
+    </div>
+    <style>
+        .modal-dialog,
+  .modal-content {
+      height: 80%;
+  }
+  
+  .modal-body {
+      max-height: calc(100% - 120px);
+      overflow-y: scroll;
+  }
+    </style>
+    <div id="myModal" class="modal fade" >
+        <div  class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header" style="background-color: #004d00;">
+                    <h5 style="color: white;" class="modal-title">C3-Challenges in business operations and support needed</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body" style="background-color: #e6fff3;">
+                    <form> 
+                        <div class="form-group">
+                        <div class="form-row">
+
+                            <div class="col" >
+                                <strong> <label for="exampleFormControlSelect1">Does your company/firm encounter <strong><u>problems, issues</strong></u> on the following:</label></strong>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+
+                    <div style="padding-left: 20px;" class="form-group">
+                        <div class="form-row">
+
+                            <div class="col" >
+                                <strong>
+                                <label for="fixture-use4">a. Form of Interprise</label>
+                                </strong>
+                                <select style="width: 350px;" class="form-control" name="fixture-use4" id="fixture-use4" required>
+                                    <option value="" selected disabled>Please select</option>
+                                    <option value="yess1">Yes</option>
+                                    <option value="nooo1">No</option>
+                                </select>
+                                <input style="width: 350px;"  type="text" class="form-control hidden-textbox4" name="fixture-use4" id="fixture-use4" placeholder="Please specify">
+                                </div>
+</div>
+                        </div>
+
+
+                        <div style="padding-left: 20px;" class="form-group">
+                            <div class="form-row">
+    
+                                <div class="col" >
+                                    <strong>
+                                    <label for="fixture-use5">b. Pricing</label>
+                                    </strong>
+                                    <select style="width: 350px;" class="form-control" name="fixture-use5" id="fixture-use5" required>
+                                        <option value="" selected disabled>Please select</option>
+                                        <option value="yess2">Yes</option>
+                                        <option value="nooo2">No</option>
+                                    </select>
+                                    <input style="width: 350px;"  type="text" class="form-control hidden-textbox5" name="fixture-use4" id="fixture-use5" placeholder="Please specify">
+                                    </div>
+    </div>
+                            </div>
+
+                            <div style="padding-left: 20px;" class="form-group">
+                                <div class="form-row">
+        
+                                    <div class="col" >
+                                        <strong>
+                                        <label for="fixture-use6">c. Quality of Raw Materials</label>
+                                        </strong>
+                                        <select style="width: 350px;" class="form-control" name="fixture-use6" id="fixture-use6" required>
+                                            <option value="" selected disabled>Please select</option>
+                                            <option value="yess3">Yes</option>
+                                            <option value="nooo3">No</option>
+                                        </select>
+                                        <input style="width: 350px;"  type="text" class="form-control hidden-textbox6" name="fixture-use6" id="fixture-use6" placeholder="Please specify">
+                                        </div>
+        </div>
+                                </div>
+
+                                <div style="padding-left: 20px;" class="form-group">
+                                    <div class="form-row">
+            
+                                        <div class="col" >
+                                            <strong>
+                                            <label for="fixture-use7">d. Quality of Final Product	</label>
+                                            </strong>
+                                            <select style="width: 350px;" class="form-control" name="fixture-use7" id="fixture-use7" required>
+                                                <option value="" selected disabled>Please select</option>
+                                                <option value="yess4">Yes</option>
+                                                <option value="nooo4">No</option>
+                                            </select>
+                                            <input style="width: 350px;"  type="text" class="form-control hidden-textbox7" name="fixture-use7" id="fixture-use7" placeholder="Please specify">
+                                            </div>
+            </div>
+                                    </div>
+                                    
+                                    <div style="padding-left: 20px;" class="form-group">
+                                        <div class="form-row">
+                                            <div class="col">
+                
+                                               <strong>
+                                              <label for="name">e. Other, please specify</label>
+                                            </strong>
+                                              <input style="width: 500px;" type="text" class="form-control" id="otherssss">
+                                              </div>
+                
+                                            </div>
+                                        </div>
+                                   
+                                        
+                                <div class="form-group">
+                                    <div class="form-row">
+            
+                                        <div class="col" >
+                                            <strong>
+                                            <label for="fixture-use8">Do you have existing commercial partnership with suppliers?</label>
+                                            </strong>
+                                            <select style="width: 500px;" class="form-control" name="fixture-use8" id="fixture-use8" required>
+                                                <option value="" selected disabled>Please select</option>
+                                                <option value="yess5">Yes, which form?</option>
+                                                <option value="nooo5">No</option>
+                                            </select>
+                                            <input style="width: 500px;"  type="text" class="form-control hidden-textbox8" name="fixture-use8" id="fixture-use8" placeholder="Please specify">
+                                            </div>
+            </div>
+                                    </div>
+                                  
+                                    <div class="form-group">
+                                        <div class="form-row">
+                
+                                            <div class="col" >
+                                                <strong>
+                                                <label for="fixture-use8">Do you provide support/assistance to your current partners?</label>
+                                                </strong>
+                                                <select style="width: 500px;"class="form-control" name="fixture-use9" id="fixture-use9" required>
+                                                    <option value="" selected disabled>Please select</option>
+                                                    <option value="yess6">Yes, which form?</option>
+                                                    <option value="nooo6">No</option>
+                                                </select>
+                                                <input style="width: 500px;"  type="text" class="form-control hidden-textbox9" name="fixture-use9" id="fixture-use9" placeholder="Please specify">
+                                                </div>
+                </div>
+                                        </div>
+                                            
+                                            
+                                        <div class="form-group">
+                                            <div class="form-row">
+                    
+                                                <div class="col" >
+                                                    <strong>
+                                                    <label for="fixture-use10">Are you satisfied with your current business/production performance?</label>
+                                                    </strong>
+                                                    <select style="width: 500px;"class="form-control" name="fixture-use10" id="fixture-use10" required>
+                                                        <option value="" selected disabled>Please select</option>
+                                                        <option value="yess7">Yes, which form?</option>
+                                                        <option value="nooo7">No</option>
+                                                    </select>
+                                                    <input style="width: 500px;"  type="text" class="form-control hidden-textbox10" name="fixture-use10" id="fixture-use10" placeholder="Please specify">
+                                                    </div>
+                    </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="form-row">
+                                                    <div class="col">
+                        
+                                                       <strong>
+                                                      <label>IF No, what do you think you need to do to improve it? Please specify your answer in the space provided:</label>
+                                                    </strong>
+                                                      <input type="text" class="form-control" id="ifno">
+                                                      </div>
+                                                
+                        
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="form-row">
+                                                        <div class="col" >
+                                                        <strong><label>Please check box if answer falls in any of the following:</label> </strong>
+                                                     
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="form-row" >
+                                                        <div class="form-col" >
+                                                  <div style="padding-left: 40px;" class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" />
+                                                    <label  class="form-check-label" for="none">Capability</label>
+    
+                                                        <input style="margin-left: 20px;" class="form-check-input" type="checkbox" value="" />
+                                                        <label style="padding-left: 40px;"  class="form-check-label" for="none">Technology/Equipment</label>
+    
+                                                        <input style="margin-left: 20px;" class="form-check-input" type="checkbox" value=""  />
+                                                        <label style="padding-left: 40px;"  class="form-check-label" for="none">Access to Market</label>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="form-row" >
+                                                        <div class="form-col" >
+                                                            <div style="padding-left: 40px;" class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" />
+                                                        <label   class="form-check-label" for="none">Communication & Network with key partners</label>
+
+                                                        <input style="margin-left: 20px;" class="form-check-input" type="checkbox" value="" />
+                                                        <label style="padding-left: 40px;"  class="form-check-label" for="none">Political</label>
+                                                    </div>
+                                                    </div>
+                                                    </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="form-row">
+                                                            <div class="col">
+                                
+                                                               <strong>
+                                                              <label>Support Network/ Group</label>
+                                                            </strong>
+                    
+                                                              </div>
+                                
+                                                            </div>
+                                                        </div>
+                                                        <div style="padding-left: 20px;" class="form-group">
+                                                            <div class="form-row">
+                                    
+                                                                <div class="col" >
+                                                               
+                                                                    <label for="fixture-use11">Are you a member of any of the following?</label>
+                                                                 
+                                                                    <select style="width: 500px;"class="form-control" name="fixture-use11" id="fixture-use11" required>
+                                                                        <option value="" selected disabled>Please select</option>
+                                                                        <option>Chamber of Commerce</option>
+                                                                        <option>Trade Association</option>
+                                                                        <option>Cooperative</option>
+                                                                        <option>City organized group</option>
+                                                                        <option value="orgs">Other Orgs</option>
+                                                                    </select>
+                                                                    <input style="width: 500px;"  type="text" class="form-control hidden-textbox11" name="fixture-use11" id="fixture-use10" placeholder="Please specify">
+                                                                    </div>
+                                    </div>
+                                                            </div>
+                                                            <div style="padding-left: 20px;" class="form-group">
+                                                                <div class="form-row">
+                                                                    <div class="col">
+                                        
+                                                                   
+                                                                      <label>Name of Organization </label>
+                                                                 
+                                                                      <input type="text" class="form-control">
+                                                                      </div>
+                                                                      <div class="col">
+                                                                      
+                                                                      <label for="position">Location</label>
+                                                                   
+                                                                      <input type="text" class="form-control" id="location">
+                                                                      </div>
+                                        
+                                                                    </div>
+                                                                </div>
+        
+                                       
+                                                                <div class="form-group">
+                                                                    <div class="form-row">
+                                            
+                                                                        <div class="col" >
+                                                                            <strong>
+                                                                            <label for="fixture-use12">Does your membership in the organization helps you in your livelihood?</label>
+                                                                            </strong>
+                                                                            <select style="width: 500px;" class="form-control" name="fixture-use12" id="fixture-use12" required>
+                                                                                <option value="" selected disabled>Please select</option>
+                                                                                <option value="yess8">Yes</option>
+                                                                                <option value="nooo8">No</option>
+                                                                            </select>
+                                                                            <input style="width: 500px;"  type="text" class="form-control hidden-textbox12" name="fixture-use8" id="fixture-use12" placeholder="in what way it helps?">
+                                                                            </div>
+                                            </div>
+                                                                    </div>
+                                                                
+                                                                    <div class="form-group">
+                                                                        <div class="form-row">
+                                                                            <div class="col">
+                                                
+                                                                              <strong>
+                                                                              <label>What do you think the LGU, NGAs and other agencies should do to improve the local commodity cluster industry? (Cacao, Coffee, Coco, Process Fruits & nuts) </label>
+                                                                            </strong>
+                                                                              <input type="text" class="form-control">
+                                                                              </div>
+                                                                        
+                                                
+                                                                            </div>
+                                                                        </div>
+
+                                            
+                                            
+                                                        
+
+
+
+                                            
+
+                                         
+
+                    
+                
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
