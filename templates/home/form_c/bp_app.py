@@ -2,7 +2,7 @@ from flask import Flask, Blueprint, render_template, url_for
 
 app = Blueprint("form_c",__name__)
 
-@app.route('/')
+@app.route('/formc')
 def index():
     return render_template("index.html")
 
