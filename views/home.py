@@ -32,4 +32,4 @@ class _main:
 	@app.route("/get_sub_form_a_template",methods=["POST","GET"]) # GETS the Fulll data of Farmer
 	def get_sub_form_a_template():
 		page = request.form['subform_temp']
-		return render_template("home/form_a/{}.html".format(page))
+		return render_template("home/form_a/{}.html".format(page));
