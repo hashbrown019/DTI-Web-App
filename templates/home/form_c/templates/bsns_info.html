@@ -5,17 +5,6 @@
 {% endblock %}
 
 {% block body %}
-<div class="d-flex" id="wrapper">
-        <div class="list-group list-group-flush">
-    <div class="border-end bg-white" id="sidebar-wrapper">
-   
-
-            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ url_for('form_c.resp_prof') }}">Respondent's Profile</a>
-            <a class="list-group-item list-group-item-action list-group-item-success active p-3"href="{{ url_for('form_c.business_info') }}">Business Information</a>
-            <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ url_for('form_c.ciboasn') }}">Challenges in business operations and support</a>
-        </div>
-    </div>
-    </div>
     <style>
         .modal-dialog,
   .modal-content {
@@ -662,7 +651,7 @@
 
                                                         </tbody>
                                                       </table>
-                                                      
+                                                      <br>
                                                       <div class="form-group">
                                                         <div class="form-row" >
                                                             <div class="col" >
@@ -692,78 +681,90 @@
                                                             </div>
                                                         </div>
                                                         </div>
-    
-                                                              <tr>
-                                                                <td>
-                                                                    <div class="form-group">
-                                                                        <div class="form-row" >
-                                                                            <div class="col" >
-                                                            
-                                                            <label  class="form-check-label" for="none">Fertilizers</label>
-                                                            </div>
-                                                            </div>
-                                                            </div>
-                                                            <div style="padding-left: 40px;" class="form-group">
-                                                                <div class="form-row" >
-                                                                    <div class="col" >
-                                                            <input class="form-check-input" type="checkbox" value="" />
-                                                            <label  class="form-check-label" for="none">Organic</label>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <div style="padding-left: 40px;" class="form-group">
-                                                        <div class="form-row" >
-                                                            <div class="col">
-                                                            <input class="form-check-input" type="checkbox" value="" />
-                                                            <label  class="form-check-label" for="none">Synthetic</label>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                        </td>
-                                                                <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
-                                                                <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
-                                                                <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
-                                                              </tr>
+
+                                                              
                                                               
                                                               <tr>
-                                                               
-                                                                <td>
+                                                                <td style="padding-left: 30px;">
                                                                     <div class="form-group">
                                                                         <div class="form-row" >
                                                                             <div class="col" >
+                                                            <input class="form-check-input" type="checkbox" value="" />
+                                                            <label  class="form-check-label" for="none">Drying</label>
+                                                            </div>
+                                                            </div>
+                                                            </div>
+                                                            <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                        <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                        <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                    
+                                                        </td>
+                                                              </tr>
+    
+                                                              <tr>
+                                                                <td style="padding-left: 30px;">
+                                                                    <div class="form-group">
+                                                                        <div class="form-row" >
+                                                                            <div class="col" >
+                                                            <input class="form-check-input" type="checkbox" value="" />
+                                                            <label  class="form-check-label" for="none">Storage Hauling</label>
+                                                            </div>
+                                                            </div>
+                                                            </div>
+                                                            <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                        <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                        <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                    
+                                                        </td>
+                                                              </tr>
+    
                                                             
-                                                            <label  class="form-check-label" for="none">Chemicals</label>
-                                                            </div>
-                                                            </div>
-                                                            </div>
-                                                            <div style="padding-left: 40px;" class="form-group">
-                                                                <div class="form-row" >
-                                                                    <div class="col" >
-                                                            <input class="form-check-input" type="checkbox" value="" />
-                                                            <label  class="form-check-label" for="none">Organic</label>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <div style="padding-left: 40px;" class="form-group">
+    
+                                                              
+    
+                                                            </tbody>
+                                                          </table>
+
+                                                          <br>
+                                                      <div class="form-group">
                                                         <div class="form-row" >
-                                                            <div class="col">
-                                                            <input class="form-check-input" type="checkbox" value="" />
-                                                            <label  class="form-check-label" for="none">Synthetic</label>
+                                                            <div class="col" >
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" />
+                                                       <strong><label  class="form-check-label" for="none">Processing</label></strong> 
                                                         </div>
-                                                    </div>
-                                                    </div>
-                                                        </td>
-                                                        <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
-                                                        <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
-                                                        <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                        </div>
+                                                        </div>
+                                                        </div>
+    
+                                                        
+                                                    <div class="form-group">
+                                                        <div class="form-row" >
+                                                            <div class="col" >
+    
+                                                        <table class="table table-bordered table-dark">
+                                                            <thead style="background-color: #004d00 ;">
+                                                              <tr style="color: white;">
+                                                                <th scope="col">Specifics</th>
+                                                                <th scope="col">Current Capacity/ Production</th>
+                                                                <th scope="col">Potential for Expansion? (Y/N)</th>
+                                                                <th scope="col">Other Information</th>
                                                               </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+
+                                                              
+                                                              
                                                               <tr>
                                                                 <td style="padding-left: 30px;">
                                                                     <div class="form-group">
                                                                         <div class="form-row" >
                                                                             <div class="col" >
                                                             <input class="form-check-input" type="checkbox" value="" />
-                                                            <label  class="form-check-label" for="none">Vermicast Compost</label>
+                                                            <label  class="form-check-label" for="none">Semi Processing</label>
                                                             </div>
                                                             </div>
                                                             </div>
@@ -780,7 +781,7 @@
                                                                         <div class="form-row" >
                                                                             <div class="col" >
                                                             <input class="form-check-input" type="checkbox" value="" />
-                                                            <label  class="form-check-label" for="none">Seedlings (Nursery Operator)</label>
+                                                            <label  class="form-check-label" for="none">Final Product Form</label>
                                                             </div>
                                                             </div>
                                                             </div>
@@ -791,14 +792,53 @@
                                                         </td>
                                                               </tr>
     
+                                                            
+    
+                                                              
+    
+                                                            </tbody>
+                                                          </table>
+
+                                                          <br>
+                                                      <div class="form-group">
+                                                        <div class="form-row" >
+                                                            <div class="col" >
+                                                      <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" />
+                                                       <strong><label  class="form-check-label" for="none">Trading</label></strong> 
+                                                        </div>
+                                                        </div>
+                                                        </div>
+                                                        </div>
+                                                        
+                                                        
+                                                    <div class="form-group">
+                                                        <div class="form-row" >
+                                                            <div class="col" >
+    
+                                                        <table class="table table-bordered table-dark">
+                                                            <thead style="background-color: #004d00 ;">
+                                                              <tr style="color: white;">
+                                                                <th scope="col">Specifics</th>
+                                                                <th scope="col">Volume/ Capacity</th>
+                                                                <th scope="col">Potential for Expansion? (Y/N)</th>
+                                                                <th scope="col">Other Information</th>
+                                                              </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+
+                                                              
+                                                              
                                                               <tr>
                                                                 <td style="padding-left: 30px;">
                                                                     <div class="form-group">
                                                                         <div class="form-row" >
                                                                             <div class="col" >
-                                                            <input class="form-check-input" type="checkbox" value="" id="others12" onclick="myFunction()" />
-                                                            <label  class="form-check-label" for="none">Others</label>
-                                                            <input type="text" class="form-control" id="inserttext" style="display: none;" placeholder="Please Specify ">
+                                                            <input class="form-check-input" type="checkbox" value="" />
+                                                            <label  class="form-check-label" for="none">Consolidation/ Buy & Sell</label>
                                                             </div>
                                                             </div>
                                                             </div>
@@ -808,12 +848,412 @@
                                                     
                                                         </td>
                                                               </tr>
+    
+                                                
+    
+                                                            
     
                                                               
     
                                                             </tbody>
                                                           </table>
                                                           
+
+                                                          <br>
+                                                          <div class="form-group">
+                                                            <div class="form-row" >
+                                                                <div class="col" >
+                                                          <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="" />
+                                                           <strong><label  class="form-check-label" for="none">Marketing</label></strong> 
+                                                            </div>
+                                                            </div>
+                                                            </div>
+                                                            </div>
+                                                            
+                                                            
+                                                        <div class="form-group">
+                                                            <div class="form-row" >
+                                                                <div class="col" >
+        
+                                                            <table class="table table-bordered table-dark">
+                                                                <thead style="background-color: #004d00 ;">
+                                                                  <tr style="color: white;">
+                                                                    <th scope="col">Specifics</th>
+                                                                    <th scope="col">Production Cap./Month</th>
+                                                                    <th scope="col">Potential for Expansion? (Y/N)</th>
+                                                                    <th scope="col">Other Information</th>
+                                                                  </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+    
+                                                                  
+                                                                  
+                                                                  <tr>
+                                                                    <td style="padding-left: 30px;">
+                                                                        <div class="form-group">
+                                                                            <div class="form-row" >
+                                                                                <div class="col" >
+                                                                <input class="form-check-input" type="checkbox" value="" />
+                                                                <label  class="form-check-label" for="none">Packaging and Labelling Marketing (Retail and Wholesale)</label>
+                                                                </div>
+                                                                </div>
+                                                                </div>
+                                                                <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                            <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                            <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                        
+                                                            </td>
+                                                                  </tr>
+        
+                                                    
+        
+                                                                
+        
+                                                                  
+        
+                                                                </tbody>
+                                                              </table>
+
+                                                              <br>
+                                                              <div class="form-group">
+                                                                <div class="form-row" >
+                                                                    <div class="col" >
+                                                              <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" value="" />
+                                                               <strong><label  class="form-check-label" for="none">Financial Services</label></strong> 
+                                                                </div>
+                                                                </div>
+                                                                </div>
+                                                                </div>
+                                                                
+                                                                
+                                                            <div class="form-group">
+                                                                <div class="form-row" >
+                                                                    <div class="col" >
+            
+                                                                <table class="table table-bordered table-dark">
+                                                                    <thead style="background-color: #004d00 ;">
+                                                                      <tr style="color: white;">
+                                                                        <th scope="col">Specifics</th>
+                                                                        <th scope="col">Loan Portfolio (specific to RAPID priority crops)</th>
+                                                                        <th scope="col">Potential for Expansion? (Y/N)</th>
+                                                                        <th scope="col">Other Information</th>
+                                                                      </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+        
+                                                                      
+                                                                      
+                                                                      <tr>
+                                                                        <td style="padding-left: 30px;">
+                                                                            <div class="form-group">
+                                                                                <div class="form-row" >
+                                                                                    <div class="col" >
+                                                                    <input class="form-check-input" type="checkbox" value="" />
+                                                                    <label  class="form-check-label" for="none">Micro-financing</label>
+                                                                    </div>
+                                                                    </div>
+                                                                    </div>
+                                                                    <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                            
+                                                                </td>
+                                                                      </tr>
+
+                                                                      <tr>
+                                                                        <td style="padding-left: 30px;">
+                                                                            <div class="form-group">
+                                                                                <div class="form-row" >
+                                                                                    <div class="col" >
+                                                                    <input class="form-check-input" type="checkbox" value="" />
+                                                                    <label  class="form-check-label" for="none">Insurance (equipment, crop, other asset)</label>
+                                                                    </div>
+                                                                    </div>
+                                                                    </div>
+                                                                    <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                            
+                                                                </td>
+                                                                      </tr>
+
+                                                                    </tbody>
+                                                                  </table>
+
+                                                                  <br>
+                                                                  <div class="form-group">
+                                                                    <div class="form-row" >
+                                                                        <div class="col" >
+                                                                  <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" value="" />
+                                                                   <strong><label  class="form-check-label" for="none">Production & Sales</label></strong> 
+                                                                    </div>
+                                                                    </div>
+                                                                    </div>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <div class="form-row" >
+                                                                            <div class="col" >
+                                                                    
+                                                                               <i> <label  class="form-check-label" for="none">Assumption: Profiled individual/organization is into any of the project’s priority commodity e.i cacao, coffee, PFN, Coconut)</label>
+                                                                               </i>
+                                                                                </div>
+                                                                                </div>
+                                                                                </div>
+                                                                    
+                                                                <div class="form-group">
+                                                                    <div class="form-row" >
+                                                                        <div class="col" >
+                
+                                                                    <table class="table table-bordered table-dark">
+                                                                        <thead style="background-color: #004d00 ;">
+                                                                          <tr style="color: white;">
+                                                                            <th scope="col">Product/Services <br>( under VC only)</th>
+                                                                            <th scope="col">Sales Volume/month</th>
+                                                                            <th scope="col">Unit Selling Price</th>
+                                                                            <th scope="col">Unit Measurement <br>(kgs/sack/pc, interest)</th>
+                                                                          </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+            
+                                                                          
+                                                                          
+                                                                          <tr>
+                                                                            <td>
+                                                                                <div class="form-group">
+                                                                                    <div class="form-row" >
+                                                                                        <div class="col" >
+                                                                                            <textarea class="form-control" id="exampleFormControlTextarea1"></textarea>
+                                                                        </div>
+                                                                        </div>
+                                                                        </div>
+                                                                        <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                    <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                    <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                
+                                                                    </td>
+                                                                          </tr>
+    
+                                                                          <tr>
+                                                                            <td>
+                                                                                <div class="form-group">
+                                                                                    <div class="form-row" >
+                                                                                        <div class="col" >
+                                                                                            <textarea class="form-control" id="exampleFormControlTextarea1"></textarea>
+                                                                        </div>
+                                                                        </div>
+                                                                        </div>
+                                                                        <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                    <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                    <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                
+                                                                    </td>
+                                                                          </tr>
+                
+                                                            
+                
+                                                                        
+                
+                                                                          
+                
+                                                                        </tbody>
+                                                                      </table>
+
+                                                                      <br>
+                                                                      <div class="form-group">
+                                                                        <div class="form-row" >
+                                                                            <div class="col" >
+                                                                      <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox" value="" />
+                                                                       <strong><label  class="form-check-label" for="none">Supply/Value Chain, Marketing Channel</label></strong> 
+                                                                        </div>
+                                                                        </div>
+                                                                        </div>
+                                                                        </div>
+    
+                                                                        <div class="form-group">
+                                                                            <div class="form-row" >
+                                                                                <div class="col" >
+                                                                        
+                                                                       <label  class="form-check-label" for="none">Where do you buy your raw materials</label>
+                                                                                    </div>
+                                                                                    </div>
+                                                                                    </div>
+
+                                                                                    <div class="form-group">
+                                                                                        <div class="form-row" >
+                                                                                            <div class="form-col" >
+                                                                                      <div style="padding-left: 40px;" class="form-check">
+                                                                                        <input class="form-check-input" type="checkbox" value="" />
+                                                                                        <label  class="form-check-label" for="none">Direct Farm</label>
+                                        
+                                                                                            <input style="margin-left: 20px;" class="form-check-input" type="checkbox" value="" />
+                                                                                            <label style="padding-left: 40px;"  class="form-check-label" for="none">Public Market</label>
+                                        
+                                                                                            <input style="margin-left: 20px;" class="form-check-input" type="checkbox" value=""  />
+                                                                                            <label style="padding-left: 40px;"  class="form-check-label" for="none">Trader/Consolidator</label>
+                                        
+                                                                                           
+                                                                                        </div>
+                                                                                        </div>
+                                                                                        </div>
+                                                                                        </div>
+                                                                        
+                                                                    <div class="form-group">
+                                                                        <div class="form-row" >
+                                                                            <div class="col" >
+                    
+                                                                        <table class="table table-bordered table-dark">
+                                                                            <thead style="background-color: #004d00 ;">
+                                                                              <tr style="color: white;">
+                                                                                <th scope="col">Raw Materials</th>
+                                                                                <th scope="col">Volume/Supply Requirement</th>
+                                                                                <th scope="col">Quality Requirement (organic, color, packaging, etc.)</th>
+                                                                                <th scope="col">Unit Measuremen<br>(kgs/sack/pc, interest)</th>
+                                                                              </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            </div>
+                                                                        </div>
+                                                                        </div>
+                
+                                                                              
+                                                                              
+                                                                              <tr>
+                                                                                <td>
+                                                                                    <div class="form-group">
+                                                                                        <div class="form-row" >
+                                                                                            <div class="col" >
+                                                                                                <textarea class="form-control" id="exampleFormControlTextarea1"></textarea>
+                                                                            </div>
+                                                                            </div>
+                                                                            </div>
+                                                                            <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                        <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                        <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                    
+                                                                        </td>
+                                                                              </tr>
+        
+                                                                              <tr>
+                                                                                <td>
+                                                                                    <div class="form-group">
+                                                                                        <div class="form-row" >
+                                                                                            <div class="col" >
+                                                                                                <textarea class="form-control" id="exampleFormControlTextarea1"></textarea>
+                                                                            </div>
+                                                                            </div>
+                                                                            </div>
+                                                                            <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                        <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                        <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                    
+                                                                        </td>
+                                                                              </tr>
+                    
+                                                                
+                    
+                                                                            
+                    
+                                                                              
+                    
+                                                                            </tbody>
+                                                                          </table>
+
+                                                                          <br>
+                                                                  <div class="form-group">
+                                                                    <div class="form-row" >
+                                                                        <div class="col" >
+                                                                  <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" value="" />
+                                                                   <strong><label  class="form-check-label" for="none">Marketing/ Sales Distribution Channel</label></strong> 
+                                                                    </div>
+                                                                    </div>
+                                                                    </div>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <div class="form-row" >
+                                                                            <div class="col" >
+                                                                    
+                                                                               <i> <label  class="form-check-label" for="none">Where do you sell your products/services?</label>
+                                                                               </i>
+                                                                                </div>
+                                                                                </div>
+                                                                                </div>
+                                                                    
+                                                                <div class="form-group">
+                                                                    <div class="form-row" >
+                                                                        <div class="col" >
+                
+                                                                    <table class="table table-bordered table-dark">
+                                                                        <thead style="background-color: #004d00 ;">
+                                                                          <tr style="color: white;">
+                                                                            <th scope="col">Clients</th>
+                                                                            <th scope="col">Distribution Point/Location</th>
+                                                                            <th scope="col">Sales Volume <br> (ave. month)</th>
+                                                                            <th scope="col">Payment Terms <br> (COD, consignment, others)</th>
+                                                                          </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        </div>
+                                                                    </div>
+                                                                    </div>
+            
+                                                                          
+                                                                          
+                                                                          <tr>
+                                                                            <td>
+                                                                                <div class="form-group">
+                                                                                    <div class="form-row" >
+                                                                                        <div class="col" >
+                                                                                            <textarea class="form-control" id="exampleFormControlTextarea1"></textarea>
+                                                                        </div>
+                                                                        </div>
+                                                                        </div>
+                                                                        <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                    <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                    <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                
+                                                                    </td>
+                                                                          </tr>
+    
+                                                                          <tr>
+                                                                            <td>
+                                                                                <div class="form-group">
+                                                                                    <div class="form-row" >
+                                                                                        <div class="col" >
+                                                                                            <textarea class="form-control" id="exampleFormControlTextarea1"></textarea>
+                                                                        </div>
+                                                                        </div>
+                                                                        </div>
+                                                                        <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                    <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                    <td><textarea class="form-control" id="exampleFormControlTextarea1"></textarea></td>
+                                                                
+                                                                    </td>
+                                                                          </tr>
+                
+                                                            
+                
+                                                                        
+                
+                                                                          
+                
+                                                                        </tbody>
+                                                                      </table>
                 
                     </form>
                 </div>
