@@ -33,6 +33,4 @@ class _main:
 	def get_sub_form_a_template():
 		page = request.form['subform_temp']
 		return render_template("home/form_a/{}.html".format(page));
-
-
 		# sample commit
