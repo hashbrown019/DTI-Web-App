@@ -1,6 +1,6 @@
 from flask import Flask, Blueprint, render_template, url_for
 
-app = Blueprint("form_c",__name__)
+app = Blueprint("form_c",__name__,template_folder="templates")
 
 @app.route('/formc')
 def index():
