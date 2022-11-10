@@ -5,27 +5,16 @@
 {% endblock %}
 
 {% block body %}
-    <style>
-        .modal-dialog,
-  .modal-content {
-      height: 80%;
-  }
-  
-  .modal-body {
-      max-height: calc(100% - 120px);
-      overflow-y: scroll;
-  }
-    </style>
-    <div id="myModal" class="modal fade">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
 
-                <div class="modal-header" style="background-color: #004d00;">
-                    <h5 style="color: white;" class="modal-title">C-2 Business Information</h5>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </style>
+    <div class="card" style="width:800px;  margin: 0 auto; float: none; margin-bottom: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+
+
+                <div class="card-header" style="background-color: #004d00;">
+                    <h5 style="color: white;">C-2 Business Information</h5>
                 </div>
 
-                <div class="modal-body" style="background-color: #e6fff3;">
+                <div class="card-body" style="background-color: #e6fff3;">
                     <form> 
                         <div class="form-group">
                         <div class="form-row">
@@ -1258,7 +1247,5 @@
                     </form>
                 </div>
             </div>
-        </div>
-    </div>
 
 {% endblock %}
