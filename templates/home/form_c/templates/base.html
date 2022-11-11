@@ -178,7 +178,7 @@ function myFunction() {
   var checkbox7 = document.getElementById("organic");
   var checkbox8 = document.getElementById("halal");
   var checkbox9 = document.getElementById("other_cert");
-  var checkbox10 = document.getElementById("others12");
+  var checkbox10 = document.getElementById("others_specific_products_checkbox");
   var textt = document.getElementById("textt");
   var textt2 = document.getElementById("textt2");
   var textt3 = document.getElementById("textt3");
@@ -260,9 +260,9 @@ function myFunction() {
   }
 
   if (checkbox10.checked == true){
-    inserttext.style.display = "block";
+    others_specific_products.style.display = "block";
   } else{
-    inserttext.style.display = "none";
+    others_specific_products.style.display = "none";
   }
 
 }
