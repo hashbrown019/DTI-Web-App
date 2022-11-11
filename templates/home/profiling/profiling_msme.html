@@ -76,7 +76,7 @@
 	}
 	function show_sub_form_msme_profile(url){
 		$send({
-			action : "/resp_prof",
+			action : url,
 			method : GET,
 			func : function(e){
 				$ID("sub_form_c").innerHTML = e;
