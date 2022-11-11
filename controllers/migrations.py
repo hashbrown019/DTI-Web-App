@@ -238,32 +238,39 @@ class _main:
 		dir_path = c.RECORDS+"/spreadsheets/"
 		for path in os.listdir(dir_path):
 			PATH__ = os.path.join(dir_path, path)
-			if path.find("~$") == -1:
-				if os.path.isfile(PATH__):
-					if PATH__.find("._DELETED_FILE_")<0:
-						file_details = (path.split("#"))
-						USER = rapid.select("SELECT * FROM `users` WHERE `id`='{}' ORDER BY `name` ASC; ".format(file_details[0]))[0]
-						if(len(USER)<=0):
-							USER= {"name":"none","id":"none"}
-						file_name =  PATH__ # path to file + file name
-						sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
-						try:
-							df = pd.read_excel(io=file_name, sheet_name=sheet, engine='openpyxl')
-							ls_uploaded_excel.append({
-								"file_name":path,
-								"status": "Synced",
-								"name":USER["name"],
-								"id":USER["id"]
-							})
-						except Exception as e:
-							print(e)
-							ls_uploaded_excel.append({
-								"file_name":path,
-								"status": "Failed",
-								"name":USER["name"],
-								"id":USER["id"]
+			# if(session["USER_DATA"][0]["id"]) != ""):pass;
+			print(session["USER_DATA"][0]['job'] != "Admin" or session["USER_DATA"][0]['job'] != "Super Admin")
+			if(session["USER_DATA"][0]['job'] != "Admin" or session["USER_DATA"][0]['job'] != "Super Admin"):
+				if(int(session["USER_DATA"][0]["id"]) != int(path.split("#")[0])):print("match");pass;
+
+				elif path.find("~$") == -1:
+					if os.path.isfile(PATH__):
+						if PATH__.find("._DELETED_FILE_")<0:
+							# print(str(session["USER_DATA"][0]['id']) + " - "+str(path.split("#")[0]))
+							# print(" * Getting Excel Info")
+							file_details = (path.split("#"))
+							USER = rapid.select("SELECT * FROM `users` WHERE `id`='{}' ORDER BY `name` ASC; ".format(file_details[0]))[0]
+							if(len(USER)<=0):
+								USER= {"name":"none","id":"none"}
+							file_name =  PATH__ # path to file + file name
+							sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
+							try:
+								df = pd.read_excel(io=file_name, sheet_name=sheet, engine='openpyxl')
+								ls_uploaded_excel.append({
+									"file_name":path,
+									"status": "Synced",
+									"name":USER["name"],
+									"id":USER["id"]
 								})
-							continue
+							except Exception as e:
+								print(e)
+								ls_uploaded_excel.append({
+									"file_name":path,
+									"status": "Failed",
+									"name":USER["name"],
+									"id":USER["id"]
+									})
+								continue
 		return jsonify(ls_uploaded_excel);
 		# return jsonify(os.listdir(c.RECORDS+"/spreadsheets/"));
 		# return data
