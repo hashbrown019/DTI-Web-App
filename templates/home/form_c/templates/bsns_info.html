@@ -22,7 +22,7 @@
 
                     <div class="col">
                         <strong> <label for="exampleFormControlSelect1">VC Stakeholder Category</label></strong>
-                        <select class="form-control form_data_c" id="choice">
+                        <select class="form-control form_data_c" id="vc_stakeholder">
                             <option value="" selected disabled>Please select</option>
                             <option value="1">MSME</option>
                             <option>Large Firm</option>
@@ -31,16 +31,16 @@
 
                     <div class="col">
                         <strong>
-                            <label for="fixture-use2">Industry Cluster</label>
+                            <label for="industry_cluster">Industry Cluster</label>
                         </strong>
-                        <select class="form-control form_data_c" name="fixture-use2" id="fixture-use2" required>
+                        <select class="form-control form_data_c" name="industry_cluster" id="industry_cluster" required>
                             <option value="" selected disabled>Please select</option>
                             <option value="cacao">Cacao</option>
                             <option value="coconut">Coconut</option>
                             <option value="coffee">Coffee</option>
                             <option value="pfns">PFN-Specify</option>
                         </select>
-                        <input type="text" class="form-control hidden-textbox2 form_data_c" name="fixture-use2" id="fixture-use2"
+                        <input type="text" class="form-control hidden-textbox2 form_data_c" name="pfn_specify" id="pfn_specify"
                             placeholder="Please specify">
                     </div>
 
@@ -56,14 +56,14 @@
                         <strong>
                             <label for="name">Registered Business Name</label>
                         </strong>
-                        <input type="text" class="form-control form_data_c" id="name">
+                        <input type="text" class="form-control form_data_c" id="reg_business_name">
                     </div>
 
                     <div class="col">
                         <strong>
                             <label for="ifyes">Business Address</label>
                         </strong>
-                        <input type="text" class="form-control form_data_c" id="name">
+                        <input type="text" class="form-control form_data_c" id="business_address">
                     </div>
 
 
@@ -77,16 +77,16 @@
 
                     <div class="col">
                         <strong>
-                            <label for="fixture-use">Form of Interprise</label>
+                            <label>Form of Interprise</label>
                         </strong>
-                        <select class="form-control form_data_c" name="fixture-use" id="fixture-use" required>
+                        <select class="form-control form_data_c" name="form_interprise" id="form_interprise" required>
                             <option value="" selected disabled>Please select</option>
                             <option value="single">Single/Sole</option>
                             <option value="partner">Partnership</option>
                             <option value="corporate">Corporation</option>
                             <option value="others">Other</option>
                         </select>
-                        <input type="text" class="form-control hidden-textbox form_data_c" name="fixture-use" id="fixture-use" placeholder="Please specify">
+                        <input type="text" class="form-control hidden-textbox form_data_c" id="interprise_other" placeholder="Please specify">
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
             <div class="form-group">
                 <div class="form-row">
                     <div class="col">
-                        <strong><label for="fixture-use">Availability of official/legal/administrative documents. Check
+                        <strong><label>Availability of official/legal/administrative documents. Check
                                 all that applies</label>
                         </strong>
                     </div>
@@ -106,7 +106,7 @@
                 <div class="form-row">
                     <div class="col">
                         <strong>
-                            <label for="fixture-use">a. Administration</label>
+                            <label>a. Administration</label>
                         </strong>
                     </div>
                 </div>
@@ -116,16 +116,16 @@
                 <div class="form-row">
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input form_data_c" type="checkbox" name="pick" value="1" id="business_reg"
+                            <input class="form-check-input form_data_c" type="checkbox" name="pick" value="1" id="business_reg_check"
                                 onclick="myFunction()" />
-                            <label class="form-check-label" for="business_reg">Business Registration</label>
+                            <label class="form-check-label" for="business_reg_check">Business Registration</label>
 
                             <div id="textt" style=" width: 300px; margin-left: 150px; display: none;">
 
                                 <div class="input-group date" id="datepicker">
                                     <label style="width: 136px; background-color: #b3ffec;"
                                         class="input-group-text">Issued date:</label>
-                                    <input type="text" class="form-control form_data_c">
+                                    <input type="text" class="form-control form_data_c" id="issued_date_business_reg">
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white">
                                             <i class="fa fa-calendar"></i>
@@ -135,7 +135,7 @@
                                 <div class="input-group date" id="datepicker2">
                                     <label style="width: 136px; background-color: #ffcccc;"
                                         class="input-group-text">Expiration date:</label>
-                                    <input type="text" class="form-control form_data_c">
+                                    <input type="text" class="form-control form_data_c" id="expired_date">
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white">
                                             <i class="fa fa-calendar"></i>
@@ -154,14 +154,14 @@
                 <div class="form-row">
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input form_data_c" type="checkbox" value="" id="product_reg" onclick="myFunction()" />
-                            <label class="form-check-label" for="product_reg">Product Registration</label>
+                            <input class="form-check-input form_data_c" type="checkbox" value="" id="product_reg_check" onclick="myFunction()" />
+                            <label class="form-check-label" for="product_reg_check">Product Registration</label>
 
                             <div id="textt2" style="  width: 300px; margin-left: 150px; display: none;">
                                 <div class="input-group date" id="datepicker3">
                                     <label style="width: 136px; background-color: #b3ffec; "
                                         class="input-group-text">Issued date:</label>
-                                    <input type="text" class="form-control form_data_c">
+                                    <input type="text" class="form-control form_data_c" id="issued_date_product_reg">
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white">
                                             <i class="fa fa-calendar"></i>
@@ -171,7 +171,7 @@
                                 <div class="input-group date" id="datepicker4">
                                     <label style="width: 136px; background-color: #ffcccc;"
                                         class="input-group-text">Expiration date:</label>
-                                    <input type="text" class="form-control form_data_c">
+                                    <input type="text" class="form-control form_data_c" id="expired_date_product_reg">
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white">
                                             <i class="fa fa-calendar"></i>
@@ -202,7 +202,7 @@
                                 <div class="input-group date" id="datepicker5">
                                     <label style="width: 136px; background-color: #b3ffec; "
                                         class="input-group-text">Issued date:</label>
-                                    <input type="text" class="form-control form_data_c">
+                                    <input type="text" class="form-control form_data_c" id="issued_date_cert_reg">
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white">
                                             <i class="fa fa-calendar"></i>
@@ -212,7 +212,7 @@
                                 <div class="input-group date" id="datepicker6">
                                     <label style="width: 136px;  background-color: #ffcccc;"
                                         class="input-group-text">Expiration date:</label>
-                                    <input type="text" class="form-control form_data_c">
+                                    <input type="text" class="form-control form_data_c" id="expired_date_cert_reg">
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white">
                                             <i class="fa fa-calendar"></i>
@@ -238,7 +238,7 @@
                                 <div class="input-group date" id="datepicker7">
                                     <label style="width: 136px; background-color: #b3ffec;"
                                         class="input-group-text">Issued date:</label>
-                                    <input type="text" class="form-control form_data_c">
+                                    <input type="text" class="form-control form_data_c" id="issued_date_lic_op">
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white">
                                             <i class="fa fa-calendar"></i>
@@ -248,7 +248,7 @@
                                 <div class="input-group date" id="datepicker8">
                                     <label style="width: 136px;  background-color: #ffcccc;"
                                         class="input-group-text">Expiration date:</label>
-                                    <input type="text" class="form-control form_data_c">
+                                    <input type="text" class="form-control form_data_c" id="expired_date_lic_op">
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white">
                                             <i class="fa fa-calendar"></i>
@@ -266,7 +266,7 @@
                 <div class="form-row">
                     <div class="col">
                         <strong>
-                            <label for="fixture-use">b. Product Quality</label>
+                            <label>b. Product Quality</label>
                         </strong>
                     </div>
                 </div>
@@ -279,12 +279,14 @@
                             <input class="form-check-input form_data_c" type="checkbox" name="pick" value="1" id="iso_cert"
                                 onclick="myFunction()" />
                             <label class="form-check-label" for="iso_cert">ISO Certification</label>
+                            <input type="text" class="form-control form_data_c" id="iso_cert_specific" style="display: none;"
+                            placeholder="Please Specify ">
 
                             <div id="textt5" style=" width: 300px; margin-left: 150px; display: none;">
                                 <div class="input-group date" id="datepicker9">
                                     <label style="width: 136px; background-color: #b3ffec;"
                                         class="input-group-text">Issued date:</label>
-                                    <input type="text" class="form-control form_data_c">
+                                    <input type="text" class="form-control form_data_c" id="issued_date_iso_cert">
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white">
                                             <i class="fa fa-calendar"></i>
@@ -294,7 +296,7 @@
                                 <div class="input-group date" id="datepicker10">
                                     <label style="width: 136px;  background-color: #ffcccc;"
                                         class="input-group-text">Expiration date:</label>
-                                    <input type="text" class="form-control form_data_c">
+                                    <input type="text" class="form-control form_data_c" id="expired_date_iso_cert">
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white">
                                             <i class="fa fa-calendar"></i>
@@ -318,14 +320,14 @@
                 <div class="form-row">
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input form_data_c" type="checkbox" value="" id="Gap_cert"onclick="myFunction()" />
+                            <input class="form-check-input form_data_c" type="checkbox" value="" id="gapgmp_cert"onclick="myFunction()" />
                             <label class="form-check-label" for="Gap_cert">GAP/GMP Certification</label>
 
                             <div id="textt6" style=" width: 300px; margin-left: 150px; display: none;">
                                 <div class="input-group date" id="datepicker11">
                                     <label style="width: 136px; background-color: #b3ffec;"
                                         class="input-group-text">Issued date:</label>
-                                    <input type="text" class="form-control form_data_c">
+                                    <input type="text" class="form-control form_data_c" id="issued_date_gapgmp_cert">
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white">
                                             <i class="fa fa-calendar"></i>
@@ -336,7 +338,7 @@
                                 <div class="input-group date" id="datepicker12">
                                     <label style="width: 136px;  background-color: #ffcccc;"
                                         class="input-group-text">Expiration date:</label>
-                                    <input type="text" class="form-control form_data_c">
+                                    <input type="text" class="form-control form_data_c" id="expired_date_gapgmp_cert">
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white">
                                             <i class="fa fa-calendar"></i>
@@ -366,7 +368,7 @@
                                 <div class="input-group date" id="datepicker13">
                                     <label style="width: 136px; background-color: #b3ffec;"
                                         class="input-group-text">Issued date:</label>
-                                    <input type="text" class="form-control form_data_c">
+                                    <input type="text" class="form-control form_data_c" id="issued_date_organic">
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white">
                                             <i class="fa fa-calendar"></i>
@@ -376,7 +378,7 @@
                                 <div class="input-group date" id="datepicker14">
                                     <label style="width: 136px; background-color: #ffcccc;"
                                         class="input-group-text">Expiration date:</label>
-                                    <input type="text" class="form-control form_data_c">
+                                    <input type="text" class="form-control form_data_c" id="expired_date_organic">
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white">
                                             <i class="fa fa-calendar"></i>
@@ -402,7 +404,7 @@
                                 <div class="input-group date" id="datepicker15">
                                     <label style="width: 136px; background-color: #b3ffec;"
                                         class="input-group-text">Issued date:</label>
-                                    <input type="text" class="form-control form_data_c">
+                                    <input type="text" class="form-control form_data_c" id="issued_date_halal">
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white">
                                             <i class="fa fa-calendar"></i>
@@ -412,7 +414,7 @@
                                 <div class="input-group date" id="datepicker16">
                                     <label style="width: 136px; background-color: #ffcccc;"
                                         class="input-group-text">Expiration date:</label>
-                                    <input type="text" class="form-control form_data_c">
+                                    <input type="text" class="form-control form_data_c" id="expired_date_halal">
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white">
                                             <i class="fa fa-calendar"></i>
@@ -432,24 +434,24 @@
                             <input class="form-check-input form_data_c" type="checkbox" value="" id="other_cert"
                                 onclick="myFunction()" />
                             <label class="form-check-label" for="other_cert">Other Certification</label>
-                            <input type="text" class="form-control form_data_c" id="inserts" style="display: none;"
+                            <input type="text" class="form-control form_data_c" id="other_cert_specify" style="display: none;"
                                 placeholder="Please Specify ">
 
                             <div id="textt9" style=" width: 300px; margin-left: 150px; display: none;">
-                                <div class="input-group date" id="datepicker15">
+                                <div class="input-group date" id="datepicker17">
                                     <label style="width: 136px; background-color: #b3ffec;"
                                         class="input-group-text">Issued date:</label>
-                                    <input type="text" class="form-control form_data_c">
+                                    <input type="text" class="form-control form_data_c" id="issued_date_other_cert">
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white">
                                             <i class="fa fa-calendar"></i>
                                         </span>
                                     </span>
                                 </div>
-                                <div class="input-group date" id="datepicker16">
+                                <div class="input-group date" id="datepicker18">
                                     <label style="width: 136px; background-color: #ffcccc;"
                                         class="input-group-text">Expiration date:</label>
-                                    <input type="text" class="form-control form_data_c">
+                                    <input type="text" class="form-control form_data_c" id="expired_date_other_cert">
                                     <span class="input-group-append">
                                         <span class="input-group-text bg-white">
                                             <i class="fa fa-calendar"></i>
@@ -467,7 +469,7 @@
                 <div class="form-row">
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input form_data_c" type="checkbox" value="" />
+                            <input class="form-check-input form_data_c" type="checkbox" value="" id="none_of_the_above" />
                             <label class="form-check-label" for="none">None of the Above/On-process/Informal</label>
                         </div>
                     </div>
@@ -488,17 +490,17 @@
                 <div class="form-row">
                     <div class="form-col">
                         <div style="padding-left: 40px;" class="form-check">
-                            <input class="form-check-input form_data_c" type="checkbox" value="" />
+                            <input class="form-check-input form_data_c" type="checkbox" value="" id="micro"/>
                             <label class="form-check-label" for="none">Micro (3M below)</label>
 
-                            <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="" />
+                            <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="" id="small"/>
                             <label style="padding-left: 40px;" class="form-check-label" for="none">Small (3-15M)</label>
 
-                            <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="" />
+                            <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="" id="medium"/>
                             <label style="padding-left: 40px;" class="form-check-label" for="none">Medium
                                 (15.1M-100M)</label>
 
-                            <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="" />
+                            <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="" id="large" />
                             <label style="padding-left: 40px;" class="form-check-label" for="none">Large (Above
                                 100M)</label>
                         </div>

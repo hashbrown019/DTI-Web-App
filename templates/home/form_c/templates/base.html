@@ -26,7 +26,7 @@
         //add input text
         $(document).ready(function(){
   $(".hidden-textbox").hide();
-  $("select#fixture-use").change(function(){
+  $("select#form_interprise").change(function(){
     var currentVal = $(this).val();
     if(currentVal == "others"){
       $(".hidden-textbox").show();
@@ -39,7 +39,7 @@
 
 $(document).ready(function(){
   $(".hidden-textbox2").hide();
-  $("select#fixture-use2").change(function(){
+  $("select#industry_cluster").change(function(){
     var currentVal = $(this).val();
     if(currentVal == "pfns"){
       $(".hidden-textbox2").show();
@@ -51,7 +51,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $(".hidden-textbox3").hide();
-  $("select#fixture-use3").change(function(){
+  $("select#no_indigenous_group").change(function(){
     var currentVal = $(this).val();
     if(currentVal == "yess"){
       $(".hidden-textbox3").show();
@@ -169,12 +169,12 @@ $(document).ready(function(){
 });
 
 function myFunction() {
-  var checkbox1 = document.getElementById("business_reg");
-  var checkbox2 = document.getElementById("product_reg");
+  var checkbox1 = document.getElementById("business_reg_check");
+  var checkbox2 = document.getElementById("product_reg_check");
   var checkbox3 = document.getElementById("cert_reg");
   var checkbox4 = document.getElementById("lic_op");
   var checkbox5 = document.getElementById("iso_cert");
-  var checkbox6 = document.getElementById("Gap_cert");
+  var checkbox6 = document.getElementById("gapgmp_cert");
   var checkbox7 = document.getElementById("organic");
   var checkbox8 = document.getElementById("halal");
   var checkbox9 = document.getElementById("other_cert");
@@ -217,6 +217,13 @@ function myFunction() {
   } else{
      textt5.style.display = "none";
   }
+
+  if (checkbox5.checked == true){
+    iso_cert_specific.style.display = "block";
+  } else{
+    iso_cert_specific.style.display = "none";
+  }
+
   if (checkbox6.checked == true){
     textt6.style.display = "block";
   } else {
@@ -247,9 +254,9 @@ function myFunction() {
      textt9.style.display = "none";
   }
   if (checkbox9.checked == true){
-    inserts.style.display = "block";
+    other_cert_specify.style.display = "block";
   } else {
-    inserts.style.display = "none";
+    other_cert_specify.style.display = "none";
   }
 
   if (checkbox10.checked == true){
@@ -279,6 +286,8 @@ $(function() {
             $('#datepicker14').datepicker();
             $('#datepicker15').datepicker();
             $('#datepicker16').datepicker();
+            $('#datepicker17').datepicker();
+            $('#datepicker18').datepicker();
         });
 
         
