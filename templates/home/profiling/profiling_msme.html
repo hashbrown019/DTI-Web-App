@@ -54,17 +54,25 @@
 						<div class="x-container x- row">
 							<div class="x-container x-col l3 m3">
 								<button class="x-btn x-block x-teal" onclick="show_sub_form_msme_profile('/resp_prof')">
-									Respondednt Profile
+									<span class="x-left"><b>C-1</b> Respondent’s Profile</span>
 								</button>
+								<br>
 								<button class="x-btn x-block x-teal" onclick="show_sub_form_msme_profile('/business_info')">
-									Business Information
+									<span class="x-left"><b>C-2</b> Business Information</span>
 								</button>
+								<br>
 								<button class="x-btn x-block x-teal" onclick="show_sub_form_msme_profile('/ciboasn')">
-									Challenges
+									<span class="x-left"><b>C-3</b> Business Operations and Support</span>
 								</button>
 							</div>
-							<div id="sub_form_c" class="x-container x-col l3 m3">
-								
+							<div id="sub_form_c" class="x-container x-col l9 m9" style="overflow-y:scroll;height: 70vh;">
+								<div class="x-center x-container x-padding">
+									<br><br><br><br>
+									<h2 class="x-text-teal"><b> No Sub-form for Form C is Selected</b></h2>
+									<span class='text-grey'>
+										Please select sub form list for Profiling Form C from the left to edit or fill ethe data
+									</span>
+								</div>
 							</div>
 						</div>`)
 				})
@@ -80,7 +88,9 @@
 			method : GET,
 			func : function(e){
 				$ID("sub_form_c").innerHTML = e;
+				$ID("sub_form_c").querySelectorAll("div")[0].style.width="100%"
 			}
 		})
 	}
+	// =====
 </script>
