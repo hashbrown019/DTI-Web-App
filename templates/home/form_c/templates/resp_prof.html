@@ -8,93 +8,96 @@
 
 
 
-    <div class="card" style="width:1000px;  margin: 0 auto; float: none; margin-bottom: 10px;">
+<div class="card" style="width:800px;  margin: 0 auto; float: none; margin-bottom: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 
-                <div  class="card-header" style="background-color: #004d00;">
-                    <h5 style="color: white;" class="modal-title">C-1 Respondent’s Profile</h5>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <div class="card-header" style="background-color: #004d00;">
+        <h5 style="color: white;">C-1 Respondent’s Profile</h5>
+    </div>
+
+    <div class="card-body" style="background-color: #c6ecd9;">
+
+        <form>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+
+                        <strong>
+                            <label for="name">Name</label>
+                        </strong>
+                        <input type="text" class="form-control form_data_c" id="name">
+                    </div>
+                    <div class="col">
+                        <strong>
+                            <label for="position">Position in the Firm/ Company</label>
+                        </strong>
+                        <input type="text" class="form-control form_data_c" id="position">
+                    </div>
+
                 </div>
+            </div>
 
-                <div class="card-body" style="background-color: #e6fff3;">
-                    <form> 
-                        <div class="form-group">
-                        <div class="form-row">
-                            <div class="col">
 
-                               <strong>
-                              <label for="name">Name</label>
-                            </strong>
-                              <input type="text" class="form-control" id="name">
-                              </div>
-                              <div class="col">
-                                <strong>
-                              <label for="position">Position in the Firm/ Company</label>
-                              </strong>
-                              <input type="text" class="form-control" id="position">
-                              </div>
-
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="form-row">     
-                            <div class="col" >
-                                <strong>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <strong>
                             <label for="fixture-use3">Member of Indigenous Group</label>
-                            </strong>
-                            <select class="form-control" name="fixture-use3" id="fixture-use3" >
-                                <option value="" selected disabled>Please select</option>
-                                <option value="yess">Yes</option>
-                                <option value="noo">No</option>
-                            </select>
-                            <input type="text" class="form-control hidden-textbox3" name="fixture-use3" id="fixture-use3" placeholder="Please specify which group">
-                            </div>
-
-                        
-
-                               <div class="col-xs-2">
-                                <strong>
-                                <label for="exampleFormControlSelect1">Sex</label>
-                                </strong>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                  <option value="" selected disabled>Please select</option>
-                                  <option>Male</option>
-                                  <option>Female</option>
-                                </select>
-                                </div>
-
-                                <div class="col-xs-2 pl-3" >
-                                    <strong>
-                                    <label for="age">Age</label>
-                                   </strong>
-                                    <input style="width: 100px;" type="text" class="form-control" id="age">
-                             </div>
-
-                          </div>
+                        </strong>
+                        <select class="form-control form_data_c" name="fixture-use3" id="fixture-use3">
+                            <option value="" selected disabled>Please select</option>
+                            <option value="yess">Yes</option>
+                            <option value="noo">No</option>
+                        </select>
+                        <input type="text" class="form-control hidden-textbox3 form_data_c" name="fixture-use3" id="fixture-use3" placeholder="Please specify which group">
                     </div>
 
 
-                        <div class="form-group">
-                        <div class="form-row">
-                        <div class="col" >
-                            <strong>
+
+                    <div class="col-xs-2">
+                        <strong>
+                            <label for="exampleFormControlSelect1">Sex</label>
+                        </strong>
+                        <select class="form-control form_data_c" id="exampleFormControlSelect1">
+                            <option value="" selected disabled>Please select</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </div>
+
+                    <div class="col-xs-2 pl-3">
+                        <strong>
+                            <label for="age">Age</label>
+                        </strong>
+                        <input style="width: 100px;" type="text" class="form-control form_data_c" id="age">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <strong>
                             <label for="age">Contact Details (Phone Number)</label>
-                           </strong>
-                            <input type="text" class="form-control">
-                        </div>
+                        </strong>
+                        <input type="text" class="form-control form_data_c">
+                    </div>
 
-                        <div class="col" >
-                            <strong>
-                                <label for="email">Email Address</label>
-                          </strong>
-                                <input type="email" class="form-control" style="width: 300px;">
-                        </div>
+                    <div class="col">
+                        <strong>
+                            <label for="email">Email Address</label>
+                        </strong>
+                        <input type="email" class="form-control form_data_c" style="width: 300px;">
                     </div>
-                    </div>
-                </form>
-                     </div>
-                     </div>
-                   
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
 
 {% endblock %}
-    
