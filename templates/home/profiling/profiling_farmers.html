@@ -616,6 +616,15 @@
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	var is_CALL_Dash_FARMER_called = false;
+	function CALL_Dash_FARMER(){ // THIS IS CALLED WHEN USER SELECT PROFILING>>FARMERS
+		if(!is_CALL_Dash_FARMER_called){get_list_file()}
+		is_CALL_Dash_FARMER_called = true;
+	}
+
 	var LS__PROF;
 	function get_list_file(){ // For Inititalizing list in profiling/profiling_farmers.html
 		// return //REMOVED FOR DEVELOPMENT ?? REMOVE THIS TO LOAD THE DATA
@@ -627,9 +636,9 @@
 				ALL_FARMERS = JSON.parse(res)
 				$ID("prof_farmer_count_all").innerHTML = ALL_FARMERS.length
 				enumerator_encoded_num = {}
-				conso_all(ALL_FARMERS)
 				populate_farm_list_for_numbers(ALL_FARMERS)
 				get_last_farmer_data_date()
+				conso_all(ALL_FARMERS)
 				
 			},
 			progress : function(e){
@@ -654,6 +663,10 @@
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 	let num_filter_ip = 0, num_filter_pwd = 0, num_filter_youth = 0,num_filter_male = 0,num_filter_female = 0,num_filter_untagged = 0;
 
 	let RES_ALL_FARMER_PROF= [];

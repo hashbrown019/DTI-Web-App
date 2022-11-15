@@ -88,6 +88,32 @@ class _main:
 		return str(data)
 		# return jsonify(data)
 
+# ================================================================================
+	@app.route("/api/v2/set_data_return",methods=["POST","GET"])
+	def set_data_return():
+		d_r = json.loads(request.data, strict=False)
+		f = open(c.RECORDS+"/profiles/DASH_RETURN_DATA.json", "w")
+		f.write(json.dumps(d_r))
+		f.close()
+		return "DONE"
+		# return jsonify(data)
+
+
+	@app.route("/api/v2/get_data_return",methods=["POST","GET"])
+	def get_data_return():
+		chunck_farmer_profile = c.RECORDS+"/profiles/DASH_RETURN_DATA.json"
+		file_stats = os.stat(chunck_farmer_profile)
+		f = open(chunck_farmer_profile, "r")
+		all_data = f.read()
+		f.close()
+		resp = Response(all_data)
+		resp.headers['Content-Length'] = file_stats.st_size
+		resp.headers['X-File-Length'] = file_stats.st_size
+		resp.headers['total'] = file_stats.st_size
+		return resp
+
+# ================================================================================
+
 	@app.route("/api/v2/set_farmer_chunk_data",methods=["POST","GET"])
 	def set_farmer_chunk_data():
 		all_data  = _main.list_all_profile___()
@@ -107,13 +133,6 @@ class _main:
 		resp.headers['total'] = file_stats.st_size
 		return resp
 
-	def get_alldata_from_shrink_data_file():
-		chunck_farmer_profile = c.RECORDS+"/profiles/farmer_profile.json"
-		f = open(chunck_farmer_profile, "r")
-		all_data = f.read()
-		f.close()
-		return all_data
-
 	@app.route("/api/v2/farmer_chunk_data_date",methods=["POST","GET"])
 	def farmer_chunk_data_date():
 		import datetime, time
@@ -122,6 +141,17 @@ class _main:
 		time_diff = (date_now-file_dm)
 		data = {"file_dm":str(file_dm).split(".")[0],"time_diff":str(time_diff).split(".")[0]}
 		return (data)
+# ================================================================================
+
+
+	def get_alldata_from_shrink_data_file():
+		chunck_farmer_profile = c.RECORDS+"/profiles/farmer_profile.json"
+		f = open(chunck_farmer_profile, "r")
+		all_data = f.read()
+		f.close()
+		return all_data
+
+
 
 	@app.route("/api/v2/get_all_primary_crops",methods=["POST","GET"])
 	def get_all_primary_crops():
