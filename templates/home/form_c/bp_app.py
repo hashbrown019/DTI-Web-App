@@ -19,7 +19,7 @@ def business_info():
 def ciboasn():
     return render_template("ciboasn.html")
 
-@app.route("/trade_promotion")
+@app.route("/dcf/trade_promotion")
 def trade_promotion():
     return render_template("trade_promotion.html")
 
