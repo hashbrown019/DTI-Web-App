@@ -19,6 +19,10 @@
 				(<span class="farmer_data_last_date_ x-small x-text-grey">--------</span>)
 			</span>
 			<b class="x-hover-yellow x-padding x-round-large x-border x-border-yellow x-text-yellow x-round-large" onclick="farmer_data_refresh()"> Append Data <span class="x-small ">(Data Index Refresh)</span></b>
+
+			<div class="x-right x-text-blue x-hover-blue" style="padding-left:5px;" onclick="import_farmer_excel()">
+				<b>Import Spreadsheet</b> | <span class="fa fa-upload"></span>
+			</div>
 		</div>
 		<p class="x-padding x-text-teal x-right">
 			<b class="x-text-orange" onclick="get_list_file()">
@@ -214,6 +218,7 @@
 			chart_MOBILE = undefined;
 			root_MOBILE = undefined;
 		}
+
 		CHART_REGION_CROP_MOBILE(data_for_chart_MOBILE,category_MOBILE,"chartdiv_MOBILE")
 		CHART_REGION_CROP_MOBILE(data_for_chart_EXCEL,category_EXCEL,"chartdiv_EXCEL")
 		// CHART_REGION_CROP_MOBILE(data_for_chart_ALL,category_ALL,"chartdiv_MOBILE")
@@ -229,6 +234,27 @@
 		$ID("total_num_farmer_with_dip").innerHTML = (has_DIP)
 		$ID("total_num_farmer_with_fo").innerHTML = (has_fo)
 		$ID("total_num_farmer_head").innerHTML = (head_hh["true"])
+
+		var _data_to_be_return = {
+			"has_geotag" : has_geotag,
+			"has_DIP" : has_DIP,
+			"has_fo" : has_fo,
+			"head_hh" : head_hh,
+			"data_for_chart_MOBILE" : data_for_chart_MOBILE,
+			"data_for_chart_EXCEL" : data_for_chart_EXCEL,
+			"category_MOBILE" : category_MOBILE,
+			"category_EXCEL" : category_EXCEL,
+		}
+		println(_data_to_be_return)
+		_data_to_be_return = {}
+		has_geotag = 0
+		has_DIP = 0
+		has_fo = 0
+		head_hh = {}
+		data_for_chart_MOBILE = {}
+		data_for_chart_EXCEL = {}
+		category_MOBILE = {}
+		category_EXCEL = {}
 	}
 
 

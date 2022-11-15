@@ -37,56 +37,63 @@
 	<div class="x-row">
 		{% include 'home/no_data.html' %}
 	</div>
-	<div hidden>
-	</div>
 </div>
 <script type="text/javascript">
 	var f_c ;
 	function add_msme_profile(){
-		$send({
-			action : "/resp_prof",
-			method : GET,
-			func : function(e){
-				f_c = $dialog({
-					title : "VC Profiling Form C",
-					subtitle : "Add entry for VC Profiling Form C",
-					content : (`
-						<div class="x-container x- row">
-							<div class="x-container x-col l3 m3">
-								<button class="x-btn x-block x-teal" onclick="show_sub_form_msme_profile('/resp_prof')">
-									<span class="x-left"><b>C-1</b> Respondent’s Profile</span>
-								</button>
-								<br>
-								<button class="x-btn x-block x-teal" onclick="show_sub_form_msme_profile('/business_info')">
-									<span class="x-left"><b>C-2</b> Business Information</span>
-								</button>
-								<br>
-								<button class="x-btn x-block x-teal" onclick="show_sub_form_msme_profile('/ciboasn')">
-									<span class="x-left"><b>C-3</b> Business Operations and Support</span>
-								</button>
-							</div>
-							<div id="sub_form_c" class="x-container x-col l9 m9" style="overflow-y:scroll;height: 70vh;">
-								<div class="x-center x-container x-padding">
-									<br><br><br><br>
-									<h2 class="x-text-teal"><b> No Sub-form for Form C is Selected</b></h2>
-									<span class='text-grey'>
-										Please select sub form list for Profiling Form C from the left to edit or fill ethe data
-									</span>
-								</div>
-							</div>
-						</div>`)
-				})
-				// f_c.style.min_width = "80vw";
-				f_c.dialog.style.width = "70vw";
-				f_c.show();
-			}
+		f_c = $dialog({
+			title : "VC Profiling Form C",
+			subtitle : "Add entry for VC Profiling Form C",
+			content : (`
+				<div class="x-container x- row">
+					<div class="x-container x-col l3 m3">
+						<button class="x-btn x-block x-teal" onclick="show_sub_form_msme_profile('/resp_prof')">
+							<span class="x-left"><b>C-1</b> Respondent’s Profile</span>
+						</button>
+						<br>
+						<button class="x-btn x-block x-teal" onclick="show_sub_form_msme_profile('/business_info')">
+							<span class="x-left"><b>C-2</b> Business Information</span>
+						</button> 
+						<br>
+						<button class="x-btn x-block x-teal" onclick="show_sub_form_msme_profile('/ciboasn')">
+							<span class="x-left"><b>C-3</b> Business Operations and Support</span>
+						</button>
+					</div>
+					<div id="sub_form_c" class="x-container x-col l9 m9" style="overflow-y:scroll;height: 70vh;">
+						<div class="x-center x-container x-padding">
+							<br><br><br><br>
+							<h2 class="x-text-teal"><b> No Sub-form for Form C is Selected</b></h2>
+							<span class='text-grey'>
+								Please select sub form list for Profiling Form C from the left to edit or fill ethe data
+							</span>
+						</div>
+					</div>
+				</div>`),
+			buttons : ["Save","Exit"],
+			buttons_actions : [get_all_data]
 		})
+		// f_c.style.min_width = "80vw";
+		f_c.dialog.style.width = "70vw";
+		f_c.show();
 	}
+
+	function get_all_data(){
+		var form_data_c = {}
+		var form_c_fields = $ID("sub_form_c").querySelectorAll(".form_data_c")
+		for (var i = 0; i < form_c_fields.length; i++) {
+			form_data_c[form_c_fields[i].id] = form_c_fields[i].value
+		}
+		println(form_data_c)
+	}
+
 	function show_sub_form_msme_profile(url){
 		$send({
 			action : url,
 			method : GET,
 			func : function(e){
+				var _submit_btn = (`
+
+				`)
 				$ID("sub_form_c").innerHTML = e;
 				$ID("sub_form_c").querySelectorAll("div")[0].style.width="100%"
 			}

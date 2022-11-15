@@ -248,7 +248,6 @@ class _main:
 				else:
 					is_show = False
 
-
 			if(is_show):
 				if path.find("~$") == -1:
 					if os.path.isfile(PATH__):
@@ -258,7 +257,7 @@ class _main:
 							file_details = (path.split("#"))
 							USER = rapid.select("SELECT * FROM `users` WHERE `id`='{}' ORDER BY `name` ASC; ".format(file_details[0]))[0]
 							if(len(USER)<=0):
-								USER= {"name":"none","id":"none"}
+								USER = {"name":"none","id":"none"}
 							file_name =  PATH__ # path to file + file name
 							sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
 							try:
@@ -276,7 +275,7 @@ class _main:
 									"status": "Failed",
 									"name":USER["name"],
 									"id":USER["id"]
-									})
+								})
 								continue
 
 		return jsonify(ls_uploaded_excel);
@@ -330,19 +329,19 @@ class _main:
 
 	# THIS FUNCTION FIX THE crops name with SIMILAR AREA
 	def crops_name_cleaner(crops):
-		crops = str(crops)
-		crops = crops.lower()
-		crops = crops.replace(" ","")
+		crops = str(crops);
+		crops = crops.lower();
+		crops = crops.replace(" ","");
 		if(crops==""):crops = 'Untagged';
 		return crops
-	# THIS FUNCTION FIX THE crops name with SIMILAR AREA
 
+	# THIS FUNCTION FIX THE crops name with SIMILAR AREA
 	def other_name_cleaner(strs):
-		strs = str(strs)
-		strs = strs.lower()
-		strs = strs.replace("  "," ")
-		strs = strs.replace(" - ","-")
-		strs = strs.replace(" -","-")
-		strs = strs.replace("- ","-")
+		strs = str(strs);
+		strs = strs.lower();
+		strs = strs.replace("  "," ");
+		strs = strs.replace(" - ","-");
+		strs = strs.replace(" -","-");
+		strs = strs.replace("- ","-");
 		if(strs==""):strs = 'Untagged';
-		return strs.upper()
+		return strs.upper();
