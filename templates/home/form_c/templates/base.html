@@ -168,6 +168,18 @@ $(document).ready(function(){
   });  
 });
 
+$(document).ready(function(){
+  $(".hidden-textbox13").hide();
+  $("select#dip_alignment").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "dipyes"){
+      $(".hidden-textbox13").show();
+    }
+    else
+      $(".hidden-textbox13").hide();
+  });  
+});
+
 function myFunction() {
   var checkbox1 = document.getElementById("business_reg_check");
   var checkbox2 = document.getElementById("product_reg_check");
