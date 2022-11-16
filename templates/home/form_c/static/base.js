@@ -1,7 +1,3 @@
-//modal 
-$(document).ready(function(){
-    $("#myModal").modal('show');
-});
 
 //add input text
 $(document).ready(function(){
