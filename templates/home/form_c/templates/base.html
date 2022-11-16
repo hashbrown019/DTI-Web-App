@@ -61,6 +61,31 @@ $(document).ready(function(){
   });  
 });
 
+
+$(document).ready(function(){
+  $(".hidden-column_9_18").hide();
+  $("select#type_inv_match").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "expansion" || currentVal == "productive_investment"){
+      $(".hidden-column_9_18").show();
+    }
+    else
+      $(".hidden-column_9_18").hide();
+  });  
+});
+
+$(document).ready(function(){
+  $(".hidden-column_19_26").hide();
+  $("select#type_inv_match").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "rehabilitation"){
+      $(".hidden-column_19_26").show();
+    }
+    else
+      $(".hidden-column_19_26").hide();
+  });  
+});
+
 $(document).ready(function(){
   $(".hidden-column_22_28").hide();
   $("select#type_assistance").change(function(){
@@ -377,6 +402,9 @@ $(function() {
             $('#datepicker24').datepicker();
             $('#datepicker25').datepicker();
             $('#datepicker26').datepicker();
+            $('#datepicker27').datepicker();
+            $('#datepicker28').datepicker();
+            $('#datepicker29').datepicker();
         });
 
         

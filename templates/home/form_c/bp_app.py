@@ -28,6 +28,10 @@ def dcf_trade_promotion():
 def dcf_product_development():
     return render_template("dcf_product_development.html")
 
+@app.route("/dcf/dcf_matching_grant")
+def dcf_matching_grant():
+    return render_template("dcf_matching_grant.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
 
