@@ -50,6 +50,57 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
+  $(".hidden-column_18_21").hide();
+  $("select#type_assistance").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "product_dev"){
+      $(".hidden-column_18_21").show();
+    }
+    else
+      $(".hidden-column_18_21").hide();
+  });  
+});
+
+
+$(document).ready(function(){
+  $(".hidden-column_9_18").hide();
+  $("select#type_inv_match").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "expansion" || currentVal == "productive_investment"){
+      $(".hidden-column_9_18").show();
+    }
+    else
+      $(".hidden-column_9_18").hide();
+  });  
+});
+
+$(document).ready(function(){
+  $(".hidden-column_19_26").hide();
+  $("select#type_inv_match").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "rehabilitation"){
+      $(".hidden-column_19_26").show();
+    }
+    else
+      $(".hidden-column_19_26").hide();
+  });  
+});
+
+$(document).ready(function(){
+  $(".hidden-column_22_28").hide();
+  $("select#type_assistance").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "consultancy_serv"){
+      $(".hidden-column_22_28").show();
+    }
+    else
+      $(".hidden-column_22_28").hide();
+  });  
+});
+
+
+
+$(document).ready(function(){
   $(".hidden-textbox3").hide();
   $("select#no_indigenous_group").change(function(){
     var currentVal = $(this).val();
@@ -63,7 +114,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $(".hidden-textbox4").hide();
-  $("select#fixture-use4").change(function(){
+  $("select#form_interprise").change(function(){
     var currentVal = $(this).val();
     if(currentVal == "yess1"){
       $(".hidden-textbox4").show();
@@ -75,7 +126,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $(".hidden-textbox5").hide();
-  $("select#fixture-use5").change(function(){
+  $("select#pricing").change(function(){
     var currentVal = $(this).val();
     if(currentVal == "yess2"){
       $(".hidden-textbox5").show();
@@ -87,7 +138,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $(".hidden-textbox6").hide();
-  $("select#fixture-use6").change(function(){
+  $("select#quality_raw").change(function(){
     var currentVal = $(this).val();
     if(currentVal == "yess3"){
       $(".hidden-textbox6").show();
@@ -99,7 +150,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $(".hidden-textbox7").hide();
-  $("select#fixture-use7").change(function(){
+  $("select#quality_final_prod").change(function(){
     var currentVal = $(this).val();
     if(currentVal == "yess4"){
       $(".hidden-textbox7").show();
@@ -111,7 +162,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $(".hidden-textbox8").hide();
-  $("select#fixture-use8").change(function(){
+  $("select#existing_comm").change(function(){
     var currentVal = $(this).val();
     if(currentVal == "yess5"){
       $(".hidden-textbox8").show();
@@ -123,7 +174,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $(".hidden-textbox9").hide();
-  $("select#fixture-use9").change(function(){
+  $("select#prov_supp_assis").change(function(){
     var currentVal = $(this).val();
     if(currentVal == "yess6"){
       $(".hidden-textbox9").show();
@@ -135,7 +186,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $(".hidden-textbox10").hide();
-  $("select#fixture-use10").change(function(){
+  $("select#business_prodc3").change(function(){
     var currentVal = $(this).val();
     if(currentVal == "yess7"){
       $(".hidden-textbox10").show();
@@ -146,7 +197,7 @@ $(document).ready(function(){
 });
 $(document).ready(function(){
   $(".hidden-textbox11").hide();
-  $("select#fixture-use11").change(function(){
+  $("select#member_following").change(function(){
     var currentVal = $(this).val();
     if(currentVal == "orgs"){
       $(".hidden-textbox11").show();
@@ -158,7 +209,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $(".hidden-textbox12").hide();
-  $("select#fixture-use12").change(function(){
+  $("select#member_livelihood").change(function(){
     var currentVal = $(this).val();
     if(currentVal == "yess8"){
       $(".hidden-textbox12").show();
@@ -167,6 +218,57 @@ $(document).ready(function(){
       $(".hidden-textbox12").hide();
   });  
 });
+
+$(document).ready(function(){
+  $(".hidden-textbox13").hide();
+  $("select#dip_alignment").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "dipyes"){
+      $(".hidden-textbox13").show();
+    }
+    else
+      $(".hidden-textbox13").hide();
+  });  
+});
+
+
+$(document).ready(function(){
+  $(".hidden-textbox14").hide();
+  $("select#dip_alignment_prod").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "dipyesprod"){
+      $(".hidden-textbox14").show();
+    }
+    else
+      $(".hidden-textbox14").hide();
+  });  
+});
+
+$(document).ready(function(){
+  $(".hidden-textbox15").hide();
+  $("select#title_cert").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "other_specifics"){
+      $(".hidden-textbox15").show();
+    }
+    else
+      $(".hidden-textbox15").hide();
+  });  
+});
+
+
+$(document).ready(function(){
+  $(".hidden-textbox16").hide();
+  $("select#title_cert2").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "others_specifics"){
+      $(".hidden-textbox16").show();
+    }
+    else
+      $(".hidden-textbox16").hide();
+  });  
+});
+
 
 function myFunction() {
   var checkbox1 = document.getElementById("business_reg_check");
@@ -178,7 +280,7 @@ function myFunction() {
   var checkbox7 = document.getElementById("organic");
   var checkbox8 = document.getElementById("halal");
   var checkbox9 = document.getElementById("other_cert");
-  var checkbox10 = document.getElementById("others12");
+  var checkbox10 = document.getElementById("others_specific_products_checkbox");
   var textt = document.getElementById("textt");
   var textt2 = document.getElementById("textt2");
   var textt3 = document.getElementById("textt3");
@@ -260,10 +362,14 @@ function myFunction() {
   }
 
   if (checkbox10.checked == true){
-    inserttext.style.display = "block";
+    others_specific_products.style.display = "block";
   } else{
-    inserttext.style.display = "none";
+    others_specific_products.style.display = "none";
   }
+
+ 
+
+
 
 }
 
@@ -288,6 +394,17 @@ $(function() {
             $('#datepicker16').datepicker();
             $('#datepicker17').datepicker();
             $('#datepicker18').datepicker();
+            $('#datepicker19').datepicker();
+            $('#datepicker20').datepicker();
+            $('#datepicker21').datepicker();
+            $('#datepicker22').datepicker();
+            $('#datepicker23').datepicker();
+            $('#datepicker24').datepicker();
+            $('#datepicker25').datepicker();
+            $('#datepicker26').datepicker();
+            $('#datepicker27').datepicker();
+            $('#datepicker28').datepicker();
+            $('#datepicker29').datepicker();
         });
 
         

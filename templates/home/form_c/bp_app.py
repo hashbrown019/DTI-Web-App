@@ -19,6 +19,19 @@ def business_info():
 def ciboasn():
     return render_template("ciboasn.html")
 
+@app.route("/dcf/dcf_trade_promotion")
+def dcf_trade_promotion():
+    return render_template("dcf_trade_promotion.html")
+
+
+@app.route("/dcf/dcf_product_development")
+def dcf_product_development():
+    return render_template("dcf_product_development.html")
+
+@app.route("/dcf/dcf_matching_grant")
+def dcf_matching_grant():
+    return render_template("dcf_matching_grant.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
 

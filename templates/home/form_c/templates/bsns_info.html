@@ -8,20 +8,27 @@
 
 <div class="card"
     style="width:80%;  margin: 0 auto; float: none; margin-bottom: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+    <style>
 
+        th,td{
+        border-color: white !important;
+        border: 2px solid white;
+        }
+        
+        </style>
     <div class="card-header" style="background-color: #004d00;">
         <h5 style="color: white;">C-2 Business Information</h5>
     </div>
 
     <div class="card-body" style="background-color: #c6ecd9;">
 
-        <form>
+        <form style="margin-left: 2%; margin-right: 2%;">
 
             <div class="form-group">
                 <div class="form-row">
 
                     <div class="col">
-                        <strong> <label for="exampleFormControlSelect1">VC Stakeholder Category</label></strong>
+                        <strong> <label for="exampleFormControlSelect1">VC Stakeholder Category:</label></strong>
                         <select class="form-control form_data_c" id="vc_stakeholder">
                             <option value="" selected disabled>Please select</option>
                             <option value="1">MSME</option>
@@ -31,7 +38,7 @@
 
                     <div class="col">
                         <strong>
-                            <label for="industry_cluster">Industry Cluster</label>
+                            <label for="industry_cluster">Industry Cluster:</label>
                         </strong>
                         <select class="form-control form_data_c" name="industry_cluster" id="industry_cluster" required>
                             <option value="" selected disabled>Please select</option>
@@ -54,16 +61,16 @@
 
                     <div class="col">
                         <strong>
-                            <label for="name">Registered Business Name</label>
+                            <label for="name">Registered Business Name:</label>
                         </strong>
                         <input type="text" class="form-control form_data_c" id="reg_business_name">
                     </div>
 
                     <div class="col">
                         <strong>
-                            <label for="ifyes">Business Address</label>
+                            <label for="ifyes">Business Address:</label>
                         </strong>
-                        <input type="text" class="form-control form_data_c" id="business_address">
+                        <input type="text" class="form-control form_data_c " id="business_address">
                     </div>
 
 
@@ -77,7 +84,7 @@
 
                     <div class="col">
                         <strong>
-                            <label>Form of Interprise</label>
+                            <label>Form of Interprise:</label>
                         </strong>
                         <select class="form-control form_data_c" name="form_interprise" id="form_interprise" required>
                             <option value="" selected disabled>Please select</option>
@@ -95,6 +102,7 @@
             <div class="form-group">
                 <div class="form-row">
                     <div class="col">
+                        <br>
                         <strong><label>Availability of official/legal/administrative documents. Check
                                 all that applies</label>
                         </strong>
@@ -479,6 +487,7 @@
             <div class="form-group">
                 <div class="form-row">
                     <div class="col">
+                        <br>
                         <strong><label for="fixture-use">Type of Enterprise/Business Size</label> </strong>
                         <i>
                             <label for="fixture-use">(by asset, exc. land)</label>
@@ -512,14 +521,24 @@
             <div class="form-group">
                 <div class="form-row">
                     <div class="col">
+                        <br>
                         <strong><label>Business Classification and Current Value Addition Activity</label> </strong>
-                        <label style="padding-left: 20px;">Please mark&nbsp;&nbsp;<i class="fa fa-check-square"
-                                aria-hidden="true"></i>&nbsp;&nbsp;the main economic activity of the enterprise.</label>
                     </div>
                 </div>
+                
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                <label>Please mark&nbsp;&nbsp;<i class="fa fa-check-square"
+                    aria-hidden="true"></i>&nbsp;&nbsp;the main economic activity of the enterprise.</label>
+                    </div>
+                    </div>
+        </div>
 
             </div>
 
+            
+            <br>
             <div class="form-group">
                 <div class="form-row">
                     <div class="col">
@@ -577,8 +596,8 @@
                     </div>
                 </td>
                 <td><textarea class="form-control form_data_c" id="store_capacity_fertilizer"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_fertilizer"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_fertilizer"></textarea></td>
             </tr>
 
             <tr>
@@ -595,37 +614,37 @@
                     <div style="padding-left: 40px;" class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-check-input form_data_c" type="checkbox" value="" />
-                                <label class="form-check-label" for="none">Organic</label>
+                                <input class="form-check-input form_data_c" type="checkbox" value="" id="pesticides" />
+                                <label class="form-check-label" for="none">Pesticides</label>
                             </div>
                         </div>
                     </div>
                     <div style="padding-left: 40px;" class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-check-input form_data_c" type="checkbox" value="" />
-                                <label class="form-check-label" for="none">Synthetic</label>
+                                <input class="form-check-input form_data_c" type="checkbox" value="" id="herbicides" />
+                                <label class="form-check-label" for="none">Herbicides</label>
                             </div>
                         </div>
                     </div>
                 </td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="store_capacity_chemicals"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_chemicals"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_chemicals"></textarea></td>
             </tr>
             <tr>
                 <td style="padding-left: 30px;">
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-check-input form_data_c" type="checkbox" value="" />
+                                <input class="form-check-input form_data_c" type="checkbox" value="" id="vermicast_compost" />
                                 <label class="form-check-label" for="none">Vermicast Compost</label>
                             </div>
                         </div>
                     </div>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="store_capacity_vermicast_compost"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_vermicast_compost"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_vermicast_compost"></textarea></td>
 
                 </td>
             </tr>
@@ -635,14 +654,14 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-check-input form_data_c" type="checkbox" value="" />
+                                <input class="form-check-input form_data_c" type="checkbox" value="" id="seedlings"/>
                                 <label class="form-check-label" for="none">Seedlings (Nursery Operator)</label>
                             </div>
                         </div>
                     </div>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="store_capacity_seedlings"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_seedlings"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_seedlings"></textarea></td>
 
                 </td>
             </tr>
@@ -652,17 +671,17 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-check-input form_data_c" type="checkbox" value="" id="others12"
+                                <input class="form-check-input form_data_c" type="checkbox" value="" id="others_specific_products_checkbox"
                                     onclick="myFunction()" />
                                 <label class="form-check-label" for="none">Others</label>
-                                <input type="text" class="form-control form_data_c" id="inserttext" style="display: none;"
+                                <input type="text" class="form-control form_data_c" id="others_specific_products" style="display: none;"
                                     placeholder="Please Specify ">
                             </div>
                         </div>
                     </div>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="store_capacity_others_specific_products"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_others_specific_products"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_others_specific_products"></textarea></td>
 
                 </td>
             </tr>
@@ -676,7 +695,7 @@
                 <div class="form-row">
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input form_data_c" type="checkbox" value="" />
+                            <input class="form-check-input form_data_c" type="checkbox" value="" id="post_harvest"/>
                             <strong><label class="form-check-label" for="none">Post- Harvest</label></strong>
                         </div>
                     </div>
@@ -709,14 +728,14 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-check-input form_data_c" type="checkbox" value="" />
+                                <input class="form-check-input form_data_c" type="checkbox" value="" id="drying" />
                                 <label class="form-check-label" for="none">Drying</label>
                             </div>
                         </div>
                     </div>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="area_capacity_drying"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_exp_drying"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_drying"></textarea></td>
 
                 </td>
             </tr>
@@ -726,14 +745,14 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-check-input form_data_c" type="checkbox" value="" />
+                                <input class="form-check-input form_data_c" type="checkbox" value="" id="storage_hauling"/>
                                 <label class="form-check-label" for="none">Storage Hauling</label>
                             </div>
                         </div>
                     </div>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="area_capacity_storage_hauling"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_exp_storage_hauling"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_storage_hauling"></textarea></td>
 
                 </td>
             </tr>
@@ -750,7 +769,7 @@
                 <div class="form-row">
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input form_data_c" type="checkbox" value="" />
+                            <input class="form-check-input form_data_c" type="checkbox" value="" id="processing" />
                             <strong><label class="form-check-label" for="none">Processing</label></strong>
                         </div>
                     </div>
@@ -783,14 +802,14 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-check-input form_data_c" type="checkbox" value="" />
+                                <input class="form-check-input form_data_c" type="checkbox" value="" id="semi_processing"/>
                                 <label class="form-check-label" for="none">Semi Processing</label>
                             </div>
                         </div>
                     </div>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="current_capacity_semi_processing"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_exp_semi_processing"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_semi_processing"></textarea></td>
 
                 </td>
             </tr>
@@ -800,14 +819,14 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-check-input form_data_c" type="checkbox" value="" />
+                                <input class="form-check-input form_data_c" type="checkbox" value="" id="final_product"/>
                                 <label class="form-check-label" for="none">Final Product Form</label>
                             </div>
                         </div>
                     </div>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="current_capacity_final_product"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_exp_final_product"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_final_product"></textarea></td>
 
                 </td>
             </tr>
@@ -824,7 +843,7 @@
                 <div class="form-row">
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input form_data_c" type="checkbox" value="" />
+                            <input class="form-check-input form_data_c" type="checkbox" value="" id="trading" />
                             <strong><label class="form-check-label" for="none">Trading</label></strong>
                         </div>
                     </div>
@@ -857,14 +876,14 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-check-input form_data_c" type="checkbox" value="" />
+                                <input class="form-check-input form_data_c" type="checkbox" value="" id="consolidation" />
                                 <label class="form-check-label" for="none">Consolidation/ Buy & Sell</label>
                             </div>
                         </div>
                     </div>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="volume_consolidation"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_consolidation"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_consolidation"></textarea></td>
 
                 </td>
             </tr>
@@ -884,7 +903,7 @@
                 <div class="form-row">
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input form_data_c" type="checkbox" value="" />
+                            <input class="form-check-input form_data_c" type="checkbox" value="" id="marketing" />
                             <strong><label class="form-check-label" for="none">Marketing</label></strong>
                         </div>
                     </div>
@@ -917,15 +936,15 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-check-input form_data_c" type="checkbox" value="" />
+                                <input class="form-check-input form_data_c" type="checkbox" value="" id="pack_label" />
                                 <label class="form-check-label" for="none">Packaging and Labelling Marketing (Retail and
                                     Wholesale)</label>
                             </div>
                         </div>
                     </div>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="production_pack_label"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_pack_label"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_pack_label"></textarea></td>
 
                 </td>
             </tr>
@@ -944,7 +963,7 @@
                 <div class="form-row">
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input form_data_c" type="checkbox" value="" />
+                            <input class="form-check-input form_data_c" type="checkbox" value="" id="financial_services" />
                             <strong><label class="form-check-label" for="none">Financial Services</label></strong>
                         </div>
                     </div>
@@ -977,14 +996,14 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-check-input form_data_c" type="checkbox" value="" />
+                                <input class="form-check-input form_data_c" type="checkbox" value="" id="micro_financing" />
                                 <label class="form-check-label" for="none">Micro-financing</label>
                             </div>
                         </div>
                     </div>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="loan_portfo_micro_financing"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_micro_financing"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_micro_financing"></textarea></td>
 
                 </td>
             </tr>
@@ -994,15 +1013,14 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <input class="form-check-input form_data_c" type="checkbox" value="" />
-                                <label class="form-check-label" for="none">Insurance (equipment, crop, other
-                                    asset)</label>
+                                <input class="form-check-input form_data_c" type="checkbox" value="" id="insurance"/>
+                                <label class="form-check-label" for="none">Insurance (equipment, crop, other asset)</label>
                             </div>
                         </div>
                     </div>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="loan_portfo_insurance"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="potential_insurance"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="other_info_insurance"></textarea></td>
 
                 </td>
             </tr>
@@ -1059,13 +1077,13 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea>
+                                <textarea class="form-control form_data_c" id="product_service"></textarea>
                             </div>
                         </div>
                     </div>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="sales_vol"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="unit_selling"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="unit_measurement"></textarea></td>
 
                 </td>
             </tr>
@@ -1075,13 +1093,29 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea>
+                                <textarea class="form-control form_data_c" id="product_service2"></textarea>
                             </div>
                         </div>
                     </div>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="sales_vol2"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="unit_selling2"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="unit_measurement2"></textarea></td>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <textarea class="form-control form_data_c" id="product_service3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="sales_vol3"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="unit_selling3"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="unit_measurement3"></textarea></td>
 
                 </td>
             </tr>
@@ -1123,13 +1157,13 @@
                 <div class="form-row">
                     <div class="form-col">
                         <div style="padding-left: 40px;" class="form-check">
-                            <input class="form-check-input form_data_c" type="checkbox" value="" />
+                            <input class="form-check-input form_data_c" type="checkbox" value="" id="direct_farm" />
                             <label class="form-check-label" for="none">Direct Farm</label>
 
-                            <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="" />
+                            <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="" id="public_market" />
                             <label style="padding-left: 40px;" class="form-check-label" for="none">Public Market</label>
 
-                            <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="" />
+                            <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="" id="trader_conso" />
                             <label style="padding-left: 40px;" class="form-check-label"
                                 for="none">Trader/Consolidator</label>
 
@@ -1149,7 +1183,7 @@
                                     <th scope="col">Raw Materials</th>
                                     <th scope="col">Volume/Supply Requirement</th>
                                     <th scope="col">Quality Requirement (organic, color, packaging, etc.)</th>
-                                    <th scope="col">Unit Measuremen<br>(kgs/sack/pc, interest)</th>
+                                    <th scope="col">Unit Measurement<br>(kgs/sack/pc, interest)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1164,13 +1198,13 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea>
+                                <textarea class="form-control form_data_c" id="raw_materials"></textarea>
                             </div>
                         </div>
                     </div>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="volume_supply"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="quality_requirement"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="unit_measurement_raw"></textarea></td>
 
                 </td>
             </tr>
@@ -1180,13 +1214,29 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
-                                <textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea>
+                                <textarea class="form-control form_data_c" id="raw_materials2"></textarea>
                             </div>
                         </div>
                     </div>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="volume_supply2"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="quality_requirement2"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="unit_measurement_raw2"></textarea></td>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col">
+                                <textarea class="form-control form_data_c" id="raw_materials3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                <td><textarea class="form-control form_data_c" id="raw_materials3"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="raw_materials3"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="raw_materials3"></textarea></td>
 
                 </td>
             </tr>
@@ -1250,9 +1300,9 @@
                     </div>
 
                 </td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="distrib_point_local_cust"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="sales_vol_local_cust"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="payment_terms_local_cust"></textarea></td>
             </tr>
 
             <tr>
@@ -1269,9 +1319,9 @@
 
                 </td>
 
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="distrib_point_middleman"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="sales_vol_middleman"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="payment_terms_middleman"></textarea></td>
             </tr>
             <tr>
                 <td>
@@ -1282,9 +1332,9 @@
                             </div>
                         </div>
                     </div>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="distrib_point_export"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="sales_vol_export"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="payment_terms_export"></textarea></td>
 
                 </td>
             </tr>
@@ -1295,13 +1345,13 @@
                         <div class="form-row">
                             <div class="col">
                                 <label class="form-check-label" for="none">Others</label>
-                                <input type="text" class="form-control form_data_c" placeholder="Please specify">
+                                <input type="text" class="form-control form_data_c" id="others_specify_marketing" placeholder="Please specify">
                             </div>
                         </div>
                     </div>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="distrib_point_others_specify_marketing"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="sales_vol_others_specify_marketing"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="payment_terms_others_specify_marketing"></textarea></td>
 
                 </td>
             </tr>
@@ -1355,10 +1405,10 @@
                     </div>
 
                 </td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="inhouse_num_workers"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="inhouse_memb_ip_group"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="inhouse_ave_workdays"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="inhouse_ave_salary"></textarea></td>
             </tr>
 
             <tr>
@@ -1375,9 +1425,9 @@
 
                 </td>
 
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="sub_cont_num_workers"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="sub_cont_memb_ip_group"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="sub_cont_ave_workdays"></textarea></td>
                 <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
             </tr>
             <tr>
@@ -1389,10 +1439,10 @@
                             </div>
                         </div>
                     </div>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="piece_rate_num_workers"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="piece_rate_memb_ip_group"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="piece_rate_ave_workdays"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="piece_rate_ave_workdays"></textarea></td>
 
                 </td>
             </tr>
@@ -1406,10 +1456,10 @@
                             </div>
                         </div>
                     </div>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
-                <td><textarea class="form-control form_data_c" id="exampleFormControlTextarea1"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="total_num_workers"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="total_memb_ip_group"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="total_ave_workdays"></textarea></td>
+                <td><textarea class="form-control form_data_c" id="total_ave_workdays"></textarea></td>
 
                 </td>
             </tr>
