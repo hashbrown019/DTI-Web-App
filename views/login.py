@@ -42,3 +42,4 @@ class _main:
 	@app.route("/get_session")
 	def get_session():
 		return jsonify(session )
+		

@@ -27,7 +27,7 @@
 				<b>Import Spreadsheet</b> | <span class="fa fa-upload"></span>
 			</div>
 		</div>
-
+		
 		<div class="x-container x-padding x-border-dashed x-border-grey x-pale-teal">
 			<div class="x-padding x-col l2 x-text-teal">
 				<b>Area/Location</b>
@@ -490,14 +490,13 @@
 	function get_ls_primary_crop(){}
 
 	function filterByArea(person){
-		var _prk= person.addr_street_purok_sitio 
-		var _city = person.addr_city
-		var _prov= person.addr_prov
-		var _reg = person.addr_region
-		var _brg = person.addr_brgy
+		var _prk= person.addr_street_purok_sitio ;
+		var _city = person.addr_city;
+		var _prov= person.addr_prov;
+		var _reg = person.addr_region;
+		var _brg = person.addr_brgy;
 
 		if(FILTER_SEL_REG=="all" ||FILTER_SEL_REG==undefined){SPINNER_LOADER.show();return true}
-
 		if(_reg==FILTER_SEL_REG){
 			if(FILTER_SEL_PROV=="all" ||FILTER_SEL_PROV==undefined){return true}
 			else{
@@ -526,35 +525,35 @@
 	}
 
 	function filterByEnumArea(person){
-		var enum_area_= person["input_by"]["rcu"]
+		var enum_area_= person["input_by"]["rcu"];
 		if(FILTER_SEL_ENUM_AREA=="all" ||FILTER_SEL_ENUM_AREA==undefined){SPINNER_LOADER.show();return true}
 		if(enum_area_==FILTER_SEL_ENUM_AREA){return true}
 		else{return false}
 	}
 
 	function filterByDataSource(person){
-		var data_source= person["SOURCE"]
+		var data_source= person["SOURCE"];
 		if(FILTER_SEL_DATA_SOURCE=="all" ||FILTER_SEL_DATA_SOURCE==undefined){SPINNER_LOADER.show();return true}
 		if(data_source==FILTER_SEL_DATA_SOURCE){return true}
 		else{return false}
 	}
 
 	function filterByDIP(person){
-		var DIP__= person["farmer_dip_ref"]
+		var DIP__= person["farmer_dip_ref"];
 		if(FILTER_SEL_DIP=="all" ||FILTER_SEL_DIP==undefined){SPINNER_LOADER.show();return true}
 		if(DIP__==FILTER_SEL_DIP){return true}
 		else{return false}
 	}
 
 	function filterByFO(person){
-		var FO__= person["farmer-fo_name_rapid"]
+		var FO__= person["farmer-fo_name_rapid"];
 		if(FILTER_SEL_FO=="all" ||FILTER_SEL_FO==undefined){SPINNER_LOADER.show();return true}
 		if(FO__==FILTER_SEL_FO){return true}
 		else{return false}
 	}
 
 	function filterBySearch(person){
-		var person_values = []
+		var person_values = [];
 		for(key in person){
 			if((""+ typeof(person[key])).toLowerCase()=="object"){
 				for(key2 in person[key]){
@@ -581,13 +580,13 @@
 	}
 
 	async function conso_filters_search(){
-		$ID("prof_farmer_count").innerHTML = 0
+		$ID("prof_farmer_count").innerHTML = 0;
 		// SPINNER_LOADER.show()
 		await new Promise(resolve => setTimeout(resolve, 1000)); // WAIT FOR 1 SECONDS
-		FILTER_SEL_SEARCH = $ID("data_search_farmer").value
+		FILTER_SEL_SEARCH = $ID("data_search_farmer").value;
 		enumerator_encoded_num = {}
-		total_recors_farmer_counter = 0
-		populate_farm_list_for_numbers(ALL_FARMERS)
+		total_recors_farmer_counter = 0;
+		populate_farm_list_for_numbers(ALL_FARMERS);
 		$ID('data_search_farmer_note').style.display="none";
 	}
 
@@ -617,6 +616,15 @@
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	var is_CALL_Dash_FARMER_called = false;
+	function CALL_Dash_FARMER(){ // THIS IS CALLED WHEN USER SELECT PROFILING>>FARMERS
+		if(!is_CALL_Dash_FARMER_called){get_list_file()}
+		is_CALL_Dash_FARMER_called = true;
+	}
+
 	var LS__PROF;
 	function get_list_file(){ // For Inititalizing list in profiling/profiling_farmers.html
 		// return //REMOVED FOR DEVELOPMENT ?? REMOVE THIS TO LOAD THE DATA
@@ -625,14 +633,12 @@
 			action:"/api/list_all_profile",
 			method: POST,
 			func : function(res){
-				ls_file_farmer = JSON.parse(res)
-				$ID("prof_farmer_count_all").innerHTML = ls_file_farmer.length
+				ALL_FARMERS = JSON.parse(res)
+				$ID("prof_farmer_count_all").innerHTML = ALL_FARMERS.length
 				enumerator_encoded_num = {}
-
-				ALL_FARMERS=ls_file_farmer
-				conso_all(ALL_FARMERS)
 				populate_farm_list_for_numbers(ALL_FARMERS)
 				get_last_farmer_data_date()
+				conso_all(ALL_FARMERS)
 				
 			},
 			progress : function(e){
@@ -646,7 +652,7 @@
 						Gathering 
 						<b>`+Math.round(percent_)+`%</b><br>
 						<span class="x-small">
-							[`+(response_loaded)+" / "+(response_length)+` bytes]<br>
+							[ `+(response_loaded/1000000).toFixed(1)+" / "+(response_length/1000000).toFixed(1)+` Mb ]<br>
 							<i>`+(response_length-response_loaded)+` bytes remaining</i>
 						</span>
 					</span>
@@ -657,16 +663,20 @@
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 	let num_filter_ip = 0, num_filter_pwd = 0, num_filter_youth = 0,num_filter_male = 0,num_filter_female = 0,num_filter_untagged = 0;
 
-	let RES_ALL_FARMER_PROF= []
-	let FILTERED_ID_FARMERS = []
-	let AREA_LS__ = []
+	let RES_ALL_FARMER_PROF= [];
+	let FILTERED_ID_FARMERS = [];
+	let AREA_LS__ = [];
 	function populate_farm_list_for_numbers(ALL_FARMERS____){
 		num_filter_ip = 0, num_filter_pwd = 0, num_filter_youth = 0,num_filter_male = 0,num_filter_female = 0,num_filter_untagged = 0;
 
-		AREA_LS__ = []
-		FILTERED_ID_FARMERS = []
+		AREA_LS__ = [];
+		FILTERED_ID_FARMERS = [];
 		LS_FARMER_VIEW ="";
 		var FILTER_total_recors_farmer_counter = 0;
 		$ID("profile_list").innerHTML = "";
@@ -707,7 +717,7 @@
 			"Number" : 0,
 		}
 		if(!AREA_LS__.includes(JSON.stringify(__data))){
-			AREA_LS__.push(JSON.stringify(__data))
+			AREA_LS__.push(JSON.stringify(__data));
 		}
 	}
 
@@ -715,13 +725,14 @@
 		var strs__ = ""
 		var __ls = [] ; for (var i = 0; i < AREA_LS__.length; i++) {__ls.push(JSON.parse(AREA_LS__[i]))}
 		for (var i = 0; i < __ls.length; i++) {
-			strs__ += `
-			<tr class="x-tiny">
-				<td>`+__ls[i]["Region"]+`</td>
-				<td>`+__ls[i]["Province"]+`</td>
-				<td>`+__ls[i]["Municipality/City"]+`</td>
-				<td>`+__ls[i]["Brgy"]+`</td>
-			</tr>`;
+			strs__ +=( `
+				<tr class="x-tiny">
+					<td>`+__ls[i]["Region"]+`</td>
+					<td>`+__ls[i]["Province"]+`</td>
+					<td>`+__ls[i]["Municipality/City"]+`</td>
+					<td>`+__ls[i]["Brgy"]+`</td>
+				</tr>
+			`);
 		}
 		
 		$ID('area_ls__').innerHTML = strs__;
@@ -747,7 +758,7 @@
 		})
 		inc_area_dialog.show();
 		display_popu_data_prov_muni_brgy();
-		println(" * Showing included data finished")
+		println(" * Showing included data finished");
 	}
 
 	function prof_farmer_view_scroll(e){
@@ -757,7 +768,7 @@
 			var limit_ls_inc = 0
 			for (var i = 0; i < prof_card.length; i++) {
 				if(prof_card[i].style.display=="none"){
-					prof_card[i].style.display = "block"
+					prof_card[i].style.display = "block";
 					if(limit_ls_inc >= 1){
 						limit_ls_inc = 0
 						return
@@ -769,9 +780,10 @@
 		}
 	}
 
-	let LS_FARMER_VIEW =""
+	let LS_FARMER_VIEW ="";
 	function post_farmer_ls(){
 		$ID("profile_list").innerHTML =LS_FARMER_VIEW;
+		LS_FARMER_VIEW = ""
 	}
 
 
@@ -791,22 +803,17 @@
 	}
 
 	function dash_nums(){
-		$ID("total_num_farmer_filter_ip").innerHTML = num_filter_ip
-		$ID("total_num_farmer_filter_pwd").innerHTML = num_filter_pwd
-		$ID("total_num_farmer_filter_youth").innerHTML = num_filter_youth
+		$ID("total_num_farmer_filter_ip").innerHTML = num_filter_ip;
+		$ID("total_num_farmer_filter_pwd").innerHTML = num_filter_pwd;
+		$ID("total_num_farmer_filter_youth").innerHTML = num_filter_youth;
 
-		$ID("total_num_farmer_filter_male").innerHTML = num_filter_male
-		$ID("total_num_farmer_filter_female").innerHTML = num_filter_female
-		$ID("total_num_farmer_filter_untagged").innerHTML = num_filter_untagged
+		$ID("total_num_farmer_filter_male").innerHTML = num_filter_male;
+		$ID("total_num_farmer_filter_female").innerHTML = num_filter_female;
+		$ID("total_num_farmer_filter_untagged").innerHTML = num_filter_untagged;
 
 
 		println("********** DONE ****************")
-		num_filter_ip = 0
-		num_filter_pwd = 0
-		num_filter_youth = 0
-		num_filter_male = 0
-		num_filter_female = 0
-		num_filter_untagged = 0
+		num_filter_ip = 0;num_filter_pwd = 0;num_filter_youth = 0;num_filter_male = 0;num_filter_female = 0;num_filter_untagged = 0;
 	}
 
 	let async_num_farmer_count = 0;
@@ -917,7 +924,6 @@
 				}
 			})
 		}
-
 	}
 	// =========================================================
 	function view_farmer_data(res){
@@ -955,7 +961,7 @@
 						</div>
 						`+form_selection_btn+`
 					</div>
-					<div id="form_farmer_a_`+person.farmer_code+`" class="x-col l9 x-padding" style=";overflow-y:scroll;height: 70vh;">
+					<div id="form_farmer_a_`+person.farmer_code+`" class="x-col l9 x-padding" style=";overflow-y:scroll;height: 80vh;">
 						<div class="x-container x-center">
 							<br><br><br>
 							<h3>Please Select Form</h3>
@@ -980,7 +986,6 @@
 		farmer_dialog_info.elements[0].style.width = "70vw"
 		farmer_dialog_info.show()
 	}
-
 
 	// ===================================================================================
 	function get_farmer_form(file_farmer){ // GET SUBform of selected farmer
@@ -1007,15 +1012,13 @@
 	}
 	let form_f_names = []
 	function get_form_data(){
-		var form_data_a = $CLASS("form_data_a")
-		var f_list = []
-
+		var form_data_a = $CLASS("form_data_a");
+		var f_list = [];
 		for (var i = 0; i < form_data_a.length; i++) {
-			f_list.push(form_data_a[i].id)
+			f_list.push(form_data_a[i].id);
 		}
-		form_f_names.push(f_list)
+		form_f_names.push(f_list);
 	}
-
 
 	function refill_data_forms__(form_){ /////////// REFILLING FOR HAS DATA 
 		var form_data_refill = form_
@@ -1069,15 +1072,11 @@
 	// 		})
 	// 	}
 	// }
-
 	// ==========================Profile=====================================
 
 	function not_head_hh(sel){
-		if(!sel){
-			$ID("not_head_hh").style.display = "block"
-		}else{
-			$ID("not_head_hh").style.display = "none"
-		}
+		if(!sel){$ID("not_head_hh").style.display = "block"}
+		else{$ID("not_head_hh").style.display = "none"}
 	}
 
 	// ==========================Access to financial=====================================

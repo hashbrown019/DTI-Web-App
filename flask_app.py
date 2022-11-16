@@ -20,6 +20,9 @@ from controllers import apiV2
 from controllers import migrations
 from controllers.GLOBALS_ import Globals_
 
+from templates.home.form_c import bp_app as bp_c
+
+
 # import sms_main as gsm
 c.PORT = 80
 
@@ -37,6 +40,9 @@ app.register_blueprint(login.app)
 app.register_blueprint(api.app)
 app.register_blueprint(apiV2.app)
 app.register_blueprint(migrations.app)
+
+app.register_blueprint(bp_c.app)
+
 
 Globals_(app)
 

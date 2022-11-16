@@ -124,12 +124,13 @@
 
 		init()
 		function init(){
-			{% if USER_DATA['job'] != "Enumerator" %} //JINJA: RESTRICTION USER
+			{% if {} != "Enumerator" %} //JINJA: RESTRICTION USER
 				load_users();
+				// return_data_to_serv()
 				set_ls_rcu();
 			{% endif %} // JINJA: RESTRICTION USER
-			get_list_file(); // For Inititalizing list in profiling/profiling_farmers.html
-			
+			// get_list_file(); // For Inititalizing list in profiling/profiling_farmers.html
+			return_data_to_serv()
 		}
 		// ================================================
 
@@ -168,7 +169,7 @@
 			}
 			tabs[_index].classList.add("x-bottombar","x-border-teal")
 			body_content[_index].style.display = "block" // FOR BODY CONTENT
-
+			
 			redirectto("#"+_index)
 
 		}

@@ -16,3 +16,7 @@ app_version.txt
 assets/DB/dti_rapidxi.db
 assets/DB/dti_rapidxi.db
 *.pyc
+*.pyc
+*.pyc
+*.pyc
+views/__pycache__/login.cpython-310.pyc

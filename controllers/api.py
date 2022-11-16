@@ -196,7 +196,6 @@ class _main:
 	def upload_data():
 		data = request.form['data']
 		f_name = request.form['f_name']
-
 		# --------------back-up------------
 		back_up = open(c.RECORDS+"/profiles/__temp__/"+f_name+"", "w")
 		back_up.write(json.dumps(data))
