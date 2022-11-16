@@ -28,7 +28,7 @@ from templates.home.form_c import bp_app as bp_c
 c.PORT = 80
 
 app = Flask(__name__)
-Minify(app=app, html=True, js=True, cssless=True)
+# Minify(app=app, html=True, js=True, cssless=True)
 
 app.config["JSONIFY_PRETTYPRINT_REGULAR"] = True
 app.secret_key=c.SECRET_KEY
