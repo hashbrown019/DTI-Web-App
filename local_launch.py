@@ -41,7 +41,7 @@ app.register_blueprint(api.app)
 app.register_blueprint(apiV2.app)
 app.register_blueprint(migrations.app)
 
-app.register_blueprint(bp_c.app,url_prefix='/_formc')
+app.register_blueprint(bp_c.app)
 
 Globals_(app)
 
