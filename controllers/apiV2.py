@@ -98,7 +98,6 @@ class _main:
 		return "DONE"
 		# return jsonify(data)
 
-
 	@app.route("/api/v2/get_data_return",methods=["POST","GET"])
 	def get_data_return():
 		chunck_farmer_profile = c.RECORDS+"/profiles/DASH_RETURN_DATA.json"
@@ -141,8 +140,8 @@ class _main:
 		time_diff = (date_now-file_dm)
 		data = {"file_dm":str(file_dm).split(".")[0],"time_diff":str(time_diff).split(".")[0]}
 		return (data)
+		
 # ================================================================================
-
 
 	def get_alldata_from_shrink_data_file():
 		chunck_farmer_profile = c.RECORDS+"/profiles/farmer_profile.json"
@@ -150,8 +149,6 @@ class _main:
 		all_data = f.read()
 		f.close()
 		return all_data
-
-
 
 	@app.route("/api/v2/get_all_primary_crops",methods=["POST","GET"])
 	def get_all_primary_crops():

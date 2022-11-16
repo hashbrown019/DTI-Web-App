@@ -22,12 +22,12 @@
 				</i>
 				<br>
 			</div>
-			<div class="x-button x-right x-text-orange x-hover-orange" onclick="export_msme_excel()">
+			<!-- <div class="x-button x-right x-text-orange x-hover-orange" onclick="export_msme_excel()">
 				<b>Export Data</b> | <span class="fa fa-download"></span>
 			</div>
 			<div class="x-button x-right x-text-blue x-hover-blue" onclick="import_msme_excel()">
 				<b>Import Spreadsheet</b> | <span class="fa fa-upload"></span>
-			</div>
+			</div> -->
 			<div class="x-button x-right x-green" onclick="add_msme_profile()">
 				<b>Add MSME Profile</b> | <span class="fa fa-users"></span>
 			</div>
@@ -41,6 +41,8 @@
 <script type="text/javascript">
 	var f_c ;
 	function add_msme_profile(){
+		var msme_id = gen_code(48)
+		println(msme_id)
 		f_c = $dialog({
 			title : "VC Profiling Form C",
 			subtitle : "Add entry for VC Profiling Form C",
@@ -59,12 +61,13 @@
 							<span class="x-left"><b>C-3</b> Business Operations and Support</span>
 						</button>
 					</div>
+					<input class="form_data_c" id="MSME_ID" value="`+msme_id+`" hidden>
 					<div id="sub_form_c" class="x-container x-col l9 m9" style="overflow-y:scroll;height: 70vh;">
 						<div class="x-center x-container x-padding">
 							<br><br><br><br>
 							<h2 class="x-text-teal"><b> No Sub-form for Form C is Selected</b></h2>
 							<span class='text-grey'>
-								Please select sub form list for Profiling Form C from the left to edit or fill ethe data
+								Please select sub form list for Profiling Form C from the left to edit or fill the data
 							</span>
 						</div>
 					</div>
@@ -75,15 +78,6 @@
 		// f_c.style.min_width = "80vw";
 		f_c.dialog.style.width = "70vw";
 		f_c.show();
-	}
-
-	function get_all_data(){
-		var form_data_c = {}
-		var form_c_fields = $ID("sub_form_c").querySelectorAll(".form_data_c")
-		for (var i = 0; i < form_c_fields.length; i++) {
-			form_data_c[form_c_fields[i].id] = form_c_fields[i].value
-		}
-		println(form_data_c)
 	}
 
 	function show_sub_form_msme_profile(url){
@@ -98,6 +92,18 @@
 				$ID("sub_form_c").querySelectorAll("div")[0].style.width="100%"
 			}
 		})
+	}
+
+	function get_all_data(){
+		var form_data_c = {}
+		var MSME_ID = $ID("MSME_ID").value
+		var form_c_fields = $ID("sub_form_c").querySelectorAll(".form_data_c")
+		// var form_c_fields = $ID("sub_form_c").querySelectorAll(".form_data_c")
+		for (var i = 0; i < form_c_fields.length; i++) {
+			form_data_c[form_c_fields[i].id] = form_c_fields[i].value
+		}
+		form_data_c['MSME_ID'] = MSME_ID;
+		println(form_data_c)
 	}
 	// =====
 </script>
