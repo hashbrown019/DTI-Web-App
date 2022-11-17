@@ -198,9 +198,9 @@ $(".hidden-textbox12").hide();
 
 $(document).ready(function(){
 $(".hidden-textbox13").hide();
-$("select#dip_alignment").change(function(){
+$("select#dip_alignment_prod").change(function(){
 var currentVal = $(this).val();
-if(currentVal == "dipyes"){
+if(currentVal == "dipyesprod"){
 $(".hidden-textbox13").show();
 }
 else
@@ -211,9 +211,9 @@ $(".hidden-textbox13").hide();
 
 $(document).ready(function(){
 $(".hidden-textbox14").hide();
-$("select#dip_alignment_prod").change(function(){
+$("select#dip_alignment").change(function(){
 var currentVal = $(this).val();
-if(currentVal == "dipyesprod"){
+if(currentVal == "dipyes"){
 $(".hidden-textbox14").show();
 }
 else
