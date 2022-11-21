@@ -396,6 +396,9 @@ $(function() {
     $('#datepicker29').datepicker();
     $('#datepicker30').datepicker();
     $('#datepicker31').datepicker();
+    $('#datepicker32').datepicker();
+    $('#datepicker33').datepicker();
+    $('#datepicker34').datepicker();
 });
 
 

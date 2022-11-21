@@ -36,6 +36,10 @@ def dcf_matching_grant():
 def dcf_enablers_tracker():
     return render_template("dcf_enablers_tracker.html")
 
+@app.route("/dcf/dcf_equity_tracker")
+def dcf_equity_tracker():
+    return render_template("dcf_equity_tracker.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
 
