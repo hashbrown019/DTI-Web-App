@@ -40,6 +40,10 @@ def dcf_enablers_tracker():
 def dcf_equity_tracker():
     return render_template("dcf_equity_tracker.html")
 
+@app.route("/dcf/dcf_dip_preparation_tracker")
+def dcf_dip_preparation_tracker():
+    return render_template("dcf_dip_preparation_tracker.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
 
