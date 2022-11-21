@@ -32,6 +32,10 @@ def dcf_product_development():
 def dcf_matching_grant():
     return render_template("dcf_matching_grant.html")
 
+@app.route("/dcf/dcf_enablers_tracker")
+def dcf_enablers_tracker():
+    return render_template("dcf_enablers_tracker.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
 

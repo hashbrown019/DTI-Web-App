@@ -233,6 +233,18 @@ $(".hidden-textbox15").hide();
 });  
 });
 
+$(document).ready(function(){
+    $(".hidden-textbox17").hide();
+    $("select#training_act_en").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "training_act_spec"){
+    $(".hidden-textbox17").show();
+    }
+    else
+    $(".hidden-textbox17").hide();
+    });  
+    });
+
 
 $(document).ready(function(){
 $(".hidden-textbox16").hide();
@@ -382,6 +394,8 @@ $(function() {
     $('#datepicker27').datepicker();
     $('#datepicker28').datepicker();
     $('#datepicker29').datepicker();
+    $('#datepicker30').datepicker();
+    $('#datepicker31').datepicker();
 });
 
 
