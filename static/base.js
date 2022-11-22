@@ -198,9 +198,9 @@ $(".hidden-textbox12").hide();
 
 $(document).ready(function(){
 $(".hidden-textbox13").hide();
-$("select#dip_alignment").change(function(){
+$("select#dip_alignment_prod").change(function(){
 var currentVal = $(this).val();
-if(currentVal == "dipyes"){
+if(currentVal == "dipyesprod"){
 $(".hidden-textbox13").show();
 }
 else
@@ -211,9 +211,9 @@ $(".hidden-textbox13").hide();
 
 $(document).ready(function(){
 $(".hidden-textbox14").hide();
-$("select#dip_alignment_prod").change(function(){
+$("select#dip_alignment").change(function(){
 var currentVal = $(this).val();
-if(currentVal == "dipyesprod"){
+if(currentVal == "dipyes"){
 $(".hidden-textbox14").show();
 }
 else
@@ -232,6 +232,18 @@ else
 $(".hidden-textbox15").hide();
 });  
 });
+
+$(document).ready(function(){
+    $(".hidden-textbox17").hide();
+    $("select#training_act_en").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "training_act_spec"){
+    $(".hidden-textbox17").show();
+    }
+    else
+    $(".hidden-textbox17").hide();
+    });  
+    });
 
 
 $(document).ready(function(){
@@ -382,6 +394,16 @@ $(function() {
     $('#datepicker27').datepicker();
     $('#datepicker28').datepicker();
     $('#datepicker29').datepicker();
+    $('#datepicker30').datepicker();
+    $('#datepicker31').datepicker();
+    $('#datepicker32').datepicker();
+    $('#datepicker33').datepicker();
+    $('#datepicker34').datepicker();
+    $('#datepicker35').datepicker();
+    $('#datepicker36').datepicker();
+    $('#datepicker37').datepicker();
+    $('#datepicker38').datepicker();
+    $('#datepicker39').datepicker();
 });
 
 

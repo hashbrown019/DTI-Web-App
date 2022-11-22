@@ -24,3 +24,4 @@ controllers/__pycache__/api.cpython-310.pyc
 views/__pycache__/home.cpython-310.pyc
 *.pyc
 views/__pycache__/login.cpython-310.pyc
+ssh_pull.bat
