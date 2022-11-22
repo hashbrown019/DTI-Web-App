@@ -21,7 +21,6 @@
 	<!-- <script type="module" src="../static/js/Bootloader.js"></script> -->
 	<!-- <script type="text/javascript" src="../static/js/Bootloader.js"></script> -->
 
-
 	<script src="../static/js/amcharts/index.js"></script>
 	<script src="../static/js/amcharts/xy.js"></script>
 	<script src="../static/js/amcharts/Animated.js"></script>
@@ -44,9 +43,6 @@
 	<link rel="stylesheet" href="../../static/css/leaflet-panel-layers.css">
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'bootstrap-4.0.0-dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'style.css') }}">
@@ -82,17 +78,18 @@
 			var elem_container = $ID("SPINNER_LOADER_LOADING_BAR_CONTAINER");
 			$ID("SPINNER_LOADER").style.display = "block";
 			this.message('<span>This may take a while.<br>This will disappear after the loading is done</span>');
+			return elem;
 		},
 		hide : function(){$ID("SPINNER_LOADER").style.display = "none";},
 		destroy : function(){$ID("SPINNER_LOADER").style.display = "none";},
-		message : function(msg_){$ID("SPINNER_LOADER_MSG").innerHTML = msg_;},
+		message : function(msg_){$ID("SPINNER_LOADER_MSG").innerHTML = msg_;return $ID("SPINNER_LOADER_MSG")},
 		loading : function(percent){
 			var elem = $ID("SPINNER_LOADER_LOADING_BAR");
 			var elem_container = $ID("SPINNER_LOADER_LOADING_BAR_CONTAINER");
 			elem_container.style.display = "block"
-			elem.style.width = percent + '%'; 
+			elem.style.width = percent + '%';
+			return elem;
 		},
 	};
 </script>
-
 <!-- https://cdn.amcharts.com/lib/5/geodata/philippinesLow.js -->

@@ -10,7 +10,19 @@
 		<div class="x-row">
 			<button class="dcf_top_tab x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="dcf_go_tab(0)">
 				<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
-				CPA Tracker
+				DIP Preparational and Approval
+			</button>
+			<button class="x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="show_sub_form_dcf('dcf/dcf_trade_promotion')">
+				<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
+				Trade Promotion
+			</button>
+			<button class="x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="show_sub_form_dcf('/dcf/dcf_product_development')">
+				<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
+				Product Development
+			</button>
+			<button class="x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="show_sub_form_dcf(/dcf/dcf_matching_grant)">
+				<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
+				Matching Grant Tracker
 			</button>
 		</div>
 	</div>
@@ -18,7 +30,7 @@
 	<div class="x-container x-col l10">
 		<br><br>
 		<div class="x-container x-round">
-			<div class="dcf_body_content x-white x-padding x-round x-animate-top" style="display:block;">
+			<div class="dcf_body_content x-white x-padding x-round x-animate-top" style="display:none;">
 				{% include 'home/data_capture_forms/DCF_dip_prep_approval.html' %}
 				{% include 'home/no_data.html' %}
 			</div>
@@ -38,6 +50,24 @@
 		}
 		tabs[_index].classList.add("x-leftbar","x-border-teal")
 		dcf_body_content[_index].style.display = "block" // FOR BODY CONTENT
+	}
+
+	function show_sub_form_dcf(url){
+		$send({
+			action : url,
+			method : GET,
+			func : function(e){
+				var dcf_dialog = $dialog({
+					title : "Data Capture Form",
+					subtitle : "Fill the entries correctly",
+					content : e
+				})
+				dcf_dialog.dialog.querySelectorAll("div")[0].style.width="100%";
+				dcf_dialog.dialog.querySelectorAll("div")[1].style.width="100%";
+				dcf_dialog.dialog.style.width = "80%"
+				dcf_dialog.show()
+			}
+		})
 	}
 </script>
 <!-- <div id="conso1_chart"></div>

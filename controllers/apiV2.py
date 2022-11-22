@@ -11,6 +11,7 @@ import sys
 import random
 from controllers.migrations import _main as migrations
 from tqdm import tqdm
+import threading
 
 app = Blueprint("apiV2",__name__)
 cors = CORS(app)
@@ -112,13 +113,26 @@ class _main:
 		return resp
 
 # ================================================================================
-
-	@app.route("/api/v2/set_farmer_chunk_data",methods=["POST","GET"])
-	def set_farmer_chunk_data():
+	
+	def thread_chunking(args):
+		print(" ************* START thread_chunking")
 		all_data  = _main.list_all_profile___()
 		f = open(c.RECORDS+"/profiles/farmer_profile.json", "w")
 		f.write(json.dumps(all_data))
 		f.close()
+		print(" ************* FINISHED thread_chunking")
+		pass
+
+	@app.route("/api/v2/set_farmer_chunk_data",methods=["POST","GET"])
+	def set_farmer_chunk_data():
+		t1 = threading.Thread(target=_main.thread_chunking, args=(10,))
+		t1.start()
+
+		# t1.join() #FOR WAITING FINISHE THREAD
+		# all_data  = _main.list_all_profile___()
+		# f = open(c.RECORDS+"/profiles/farmer_profile.json", "w")
+		# f.write(json.dumps(all_data))
+		# f.close()
 		return "Done"
 
 	@app.route("/api/v2/get_farmer_chunk_data",methods=["POST","GET"])

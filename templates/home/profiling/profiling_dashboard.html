@@ -265,6 +265,13 @@
 			data : JSON.stringify(_data_to_be_return),
 			func : function(res){
 				// prinln(res)
+				if(chart_MOBILE!=undefined){
+					println(" -- Chart Clearing")
+					chart_MOBILE.dispose()
+					root_MOBILE.dispose()
+					chart_MOBILE = undefined;
+					root_MOBILE = undefined;
+				}
 			}
 		})
 	}
@@ -295,10 +302,7 @@
 	function CHART_REGION_CROP_MOBILE(__data,__category,chartdiv){
 		am5.ready(function() {
 			root_MOBILE = am5.Root.new(chartdiv);
-			root_MOBILE.setThemes([
-				am5themes_Animated.new(root_MOBILE)
-			]);
-
+			root_MOBILE.setThemes([ am5themes_Animated.new(root_MOBILE) ]);
 			chart_MOBILE = root_MOBILE.container.children.push(am5xy.XYChart.new(root_MOBILE, {
 				panX: false,
 				panY: false,
@@ -307,9 +311,7 @@
 				layout: root_MOBILE.verticalLayout
 			}));
 
-			chart_MOBILE.set("scrollbarY", am5.Scrollbar.new(root_MOBILE, {
-				orientation: "vertical"
-			}));
+			chart_MOBILE.set("scrollbarY", am5.Scrollbar.new(root_MOBILE, { orientation: "vertical" }));
 
 			var data = __data
 
@@ -341,16 +343,13 @@
 					valueXField: fieldName,
 					categoryYField: "category"
 				}));
-
 				series.columns.template.setAll({
 					tooltipText: "{name} {valueX}",
 					// tooltipText: "{name}, {categoryY}: {valueX}",
 					tooltipY: am5.percent(90)
 				});
 				series.data.setAll(data);
-
 				series.appear();
-
 				series.bullets.push(function () {
 					return am5.Bullet.new(root_MOBILE, {
 						sprite: am5.Label.new(root_MOBILE, {
@@ -362,16 +361,13 @@
 						})
 					});
 				});
-
 				legend.data.push(series);
 			}
 
 			for(key in __category){
 				makeSeries(key, key);
 			}
-
 			// chart_MOBILE.appear(1000, 100);
-
 		}); 
 	}
 
@@ -393,9 +389,10 @@
 						func : function () {
 							SPINNER_LOADER.hide()
 							$dialog({
-								type : "success",
-								title : "Data Index Refresh Done",
-								subtitle : "Performing Data Index Refresh is done you can refresh this page or do it later",
+								type : "warning",
+								title : "Data Index Refresh on Prgress",
+								subtitle : "Performing Data Index Refresh is on progress. ",
+								content :(`Usually it takes about an hour to populate all data into a index. But, you can continue using MIS without waiting as this process happens on background. you can refresh this page or do it later`),
 								buttons : ["Refresh the entire page","Naahh, Maybe later"],
 								buttons_actions : [function(){
 									location.reload();
@@ -405,7 +402,7 @@
 					})
 				}
 			]
-		})
+		});
 		ref_dialog.show()
 	}
 
