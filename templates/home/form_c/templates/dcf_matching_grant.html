@@ -26,7 +26,7 @@
                         <strong>
                             <label for="name">Implementing Unit:</label>
                         </strong>
-                        <input style="width: 90%;" type="text" class="form-control dcf_product_development"
+                        <input  type="text" class="form-control dcf_product_development"
                             id="implementing_unit">
 
                     </div>
@@ -36,7 +36,7 @@
                         <strong>
                             <label for="name">DIP:</label>
                         </strong>
-                        <input style="width: 90%;" type="text" class="form-control dcf_product_development"
+                        <input  type="text" class="form-control dcf_product_development"
                             id="dip_match">
 
                     </div>
@@ -47,7 +47,7 @@
                         <strong>
                             <label for="name">FO/MSME Recipients:</label>
                         </strong>
-                        <input style="width: 90%;" type="text" class="form-control dcf_product_development"
+                        <input  type="text" class="form-control dcf_product_development"
                             id="msme_rcp">
 
                     </div>
@@ -57,7 +57,7 @@
                         <strong>
                             <label for="name">FO Member Recipients:</label>
                         </strong>
-                        <input style="width: 90%;" type="text" class="form-control dcf_product_development"
+                        <input  type="text" class="form-control dcf_product_development"
                             id="msme_rcp">
 
                     </div>
@@ -72,7 +72,7 @@
                         <strong>
                             <label>Commodity:</label>
                         </strong>
-                        <input style="width: 90%;" type="text" class="form-control dcf_product_development"
+                        <input  type="text" class="form-control dcf_product_development"
                             id="commodity_match">
                         </select>
                     </div>
@@ -133,7 +133,7 @@
                             <strong>
                                 <label for="name">Total of MGAs based on approved DIP:</label>
                             </strong>
-                            <input style="width: 70%;" type="text" class="form-control dcf_product_development"
+                            <input  type="text" class="form-control dcf_product_development"
                                 id="total_approved_dip">
 
                         </div>
@@ -143,7 +143,7 @@
                             <strong>
                                 <label for="name">Total of MGAs Signed:</label>
                             </strong>
-                            <input style="width: 70%;" type="text" class="form-control dcf_product_development"
+                            <input  type="text" class="form-control dcf_product_development"
                                 id="total_signed">
 
 
@@ -154,7 +154,7 @@
                             <strong>
                                 <label for="name">Total of MGAs not yet Signed:</label>
                             </strong>
-                            <input style="width: 70%;" type="text" class="form-control dcf_product_development"
+                            <input  type="text" class="form-control dcf_product_development"
                                 id="total_not_signed">
 
 
@@ -172,23 +172,23 @@
 
                 <div class="form-group">
                     <div class="form-row">
-                        <div class="col">
+                        <div class="col-md-5">
 
                             <strong>
                                 <label for="name">Total Matching Grant Based on Approved Business Plan (IN PHP):</label>
                             </strong>
-                            <input style="width: 90%;" type="text" class="form-control dcf_product_development"
+                            <input  type="text" class="form-control dcf_product_development"
                                 id="total_businessplanphp">
 
 
                         </div>
 
-                        <div class="col">
+                        <div class="col-md-5">
 
                             <strong>
                                 <label for="name">Previous Matching Grant Availment (IN PHP) - First Availment:</label>
                             </strong>
-                            <input style="width: 80%;" type="text" class="form-control dcf_product_development"
+                            <input  type="text" class="form-control dcf_product_development"
                                 id="prev_availment">
 
 
@@ -200,23 +200,23 @@
 
                 <div class="form-group">
                     <div class="form-row">
-                        <div class="col">
+                        <div class="col-md-5">
 
                             <strong>
                                 <label for="name"> Matching Grant Availment as of this Reporting Period (IN PHP) and
                                     date:</label>
                             </strong>
-                            <input style="width: 90%;" type="text" class="form-control dcf_product_development"
+                            <input type="text" class="form-control dcf_product_development"
                                 id="reporting_period">
 
                         </div>
 
-                        <div class="col">
+                        <div class="col-md-5">
 
                             <strong>
                                 <label for="name"> Remaining Matching Grant Balance (in PHP):</label>
                             </strong>
-                            <input style="width: 80%;" type="text" class="form-control dcf_product_development"
+                            <input  type="text" class="form-control dcf_product_development"
                                 id="reporting_period">
 
                         </div>
@@ -227,40 +227,32 @@
 
                     <div class="form-group">
                         <div class="form-row">
-                            <div class="col"><br>
+                            <div class="col-md-3"><br>
 
 
                                 <strong>
                                     <label for="name">Inclusive Timeline of Implementation:</label>
                                 </strong>
-                                <div style="width: 50%;" class="input-group date" id="datepicker27">
-                                    <label style="width: 136px; background-color: #b3ffec;"
+                                <div  class="input-group date">
+                                    <label style=" background-color: #b3ffec;"
                                         class="input-group-text">Start Date:</label>
-                                    <input type="text" class="form-control dcf_trade_promotion" id="start_date">
-                                    <span class="input-group-append">
-                                        <span class="input-group-text bg-white">
-                                            <i class="fa fa-calendar"></i>
-                                        </span>
-                                    </span>
+                                    <input type="date" class="form-control dcf_trade_promotion" id="start_date">
+                                   
                                 </div>
-                                <div style="width: 50%;" class="input-group date" id="datepicker28">
-                                    <label style="width: 136px; background-color: #ffcccc;" class="input-group-text">End
+                                <div  class="input-group date" >
+                                    <label style="  background-color: #ffcccc;" class="input-group-text">End
                                         Date:</label>
-                                    <input type="text" class="form-control dcf_trade_promotion" id="ended_date">
-                                    <span class="input-group-append">
-                                        <span class="input-group-text bg-white">
-                                            <i class="fa fa-calendar"></i>
-                                        </span>
-                                    </span>
+                                    <input type="date" class="form-control dcf_trade_promotion" id="ended_date">
+                                    
                                 </div>
                             </div>
 
-                            <div class="col">
+                            <div class="col-md-3">
                                 <br>
                                 <strong>
                                     <label for="name">Time Elapse:</label>
                                 </strong>
-                                <input style="width: 50%;" type="text" class="form-control dcf_product_development"
+                                <input  type="text" class="form-control dcf_product_development"
                                     id="time_elapse">
 
                             </div>
@@ -281,7 +273,7 @@
                             <strong>
                                 <label for="name">Total Budget as Approved in the DIP:</label>
                             </strong>
-                            <input style="width: 70%;" type="text" class="form-control dcf_product_development"
+                            <input  type="text" class="form-control dcf_product_development"
                                 id="total_budget_approved_dip">
 
                         </div>
@@ -291,7 +283,7 @@
                             <strong>
                                 <label for="name">Actual Cost of Procurement:</label>
                             </strong>
-                            <input style="width: 70%;" type="text" class="form-control dcf_product_development"
+                            <input  type="text" class="form-control dcf_product_development"
                                 id="cost_procurement">
 
 
@@ -302,7 +294,7 @@
                             <strong>
                                 <label for="name">Summary of Actual Tools Procured:</label>
                             </strong>
-                            <input style="width: 70%;" type="text" class="form-control dcf_product_development"
+                            <input type="text" class="form-control dcf_product_development"
                                 id="summary_total_procured">
 
 
@@ -320,23 +312,23 @@
 
                 <div class="form-group">
                     <div class="form-row">
-                        <div class="col">
+                        <div class="col-md-5">
 
                             <strong>
                                 <label for="name">Inclusive Timeline of Implementation:</label>
                             </strong>
-                            <input style="width: 90%;" type="text" class="form-control dcf_product_development"
+                            <input  type="text" class="form-control dcf_product_development"
                                 id="timeline_imp">
 
 
                         </div>
 
-                        <div class="col">
+                        <div class="col-md-5">
 
                             <strong>
                                 <label for="name">Time Elapse:</label>
                             </strong>
-                            <input style="width: 80%;" type="text" class="form-control dcf_product_development"
+                            <input  type="text" class="form-control dcf_product_development"
                                 id="time_elapse_match">
 
 
@@ -348,23 +340,23 @@
 
                 <div class="form-group">
                     <div class="form-row">
-                        <div class="col">
+                        <div class="col-md-5">
 
                             <strong>
                                 <label for="name"> Matching Grant Availment as of this Reporting Period (IN PHP) and
                                     date:</label>
                             </strong>
-                            <input style="width: 90%;" type="text" class="form-control dcf_product_development"
+                            <input  type="text" class="form-control dcf_product_development"
                                 id="reporting_period">
 
                         </div>
 
-                        <div class="col">
+                        <div class="col-md-4">
 
                             <strong>
                                 <label for="name"> Remaining Matching Grant Balance (in PHP):</label>
                             </strong>
-                            <input style="width: 80%;" type="text" class="form-control dcf_product_development"
+                            <input  type="text" class="form-control dcf_product_development"
                                 id="reporting_period">
 
                         </div>
@@ -381,7 +373,7 @@
                                 <strong>
                                     <label for="name">Time Elapse:</label>
                                 </strong>
-                                <input style="width: 50%;" type="text" class="form-control dcf_product_development"
+                                <input type="text" class="form-control dcf_product_development"
                                     id="time_elapse">
 
                             </div>
@@ -392,13 +384,9 @@
                                 <strong>
                                     <label for="name">Date of Distribution/Training:</label>
                                 </strong>
-                                <div style="width: 70%;" class="input-group date" id="datepicker29">
-                                    <input type="text" class="form-control dcf_product_development" id="date_dist">
-                                    <span class="input-group-append">
-                                        <span class="input-group-text bg-white">
-                                            <i class="fa fa-calendar"></i>
-                                        </span>
-                                    </span>
+                                <div  class="input-group date" >
+                                    <input type="date" class="form-control dcf_product_development" id="date_dist">
+                                    
                                 </div>
 
                             </div>
@@ -408,7 +396,7 @@
                                 <strong>
                                     <label for="name">Remarks on the Delivered Tools:</label>
                                 </strong>
-                                <input style="width: 70%;" type="text" class="form-control dcf_product_development"
+                                <input  type="text" class="form-control dcf_product_development"
                                     id="remarks_delivered">
 
                             </div>
