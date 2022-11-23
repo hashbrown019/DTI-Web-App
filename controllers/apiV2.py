@@ -11,7 +11,9 @@ import sys
 import random
 from controllers.migrations import _main as migrations
 from tqdm import tqdm
-import threading
+# import threading
+# from multiprocessing import Pool, Process
+import asyncio
 
 app = Blueprint("apiV2",__name__)
 cors = CORS(app)
@@ -114,9 +116,9 @@ class _main:
 
 # ================================================================================
 	
-	def thread_chunking(args):
+	async def thread_chunking(args):
 		print(" ************* START thread_chunking")
-		all_data  = _main.list_all_profile___()
+		all_data  = await _main.list_all_profile___()
 		f = open(c.RECORDS+"/profiles/farmer_profile.json", "w")
 		f.write(json.dumps(all_data))
 		f.close()
@@ -127,7 +129,11 @@ class _main:
 	def set_farmer_chunk_data():
 		# t1 = threading.Thread(target=_main.thread_chunking, args=(10,))
 		# t1.start()
-		_main.thread_chunking(1)
+		# with Pool(1) as p:
+		# 	print(p.map(_main.thread_chunking, "args"))
+		asyncio.run(_main.thread_chunking(1))
+		# p = Process(target=_main.thread_chunking, args=('bob',))
+		# p.start()
 		# t1.join() #FOR WAITING FINISHE THREAD
 		# all_data  = _main.list_all_profile___()
 		# f = open(c.RECORDS+"/profiles/farmer_profile.json", "w")

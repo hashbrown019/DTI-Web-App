@@ -84,8 +84,7 @@ class _main:
 			return jsonify({"f_name":ids,"base_64":res["profile"]["farmer_img_base64"]})
 		except Exception as e:
 			return jsonify({"f_name":ids,"base_64":"../static/img/err_pic.png"})
-
-
+ 
 	# @cross_origin()
 	@app.route("/api/edit_user_acc",methods=["POST","GET"])
 	def edit_user_acc():

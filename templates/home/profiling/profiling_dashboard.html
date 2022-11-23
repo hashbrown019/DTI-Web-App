@@ -313,7 +313,7 @@
 
 			chart_MOBILE.set("scrollbarY", am5.Scrollbar.new(root_MOBILE, { orientation: "vertical" }));
 
-			var data = __data
+			var data = __data;
 
 			var yAxis = chart_MOBILE.yAxes.push(am5xy.CategoryAxis.new(root_MOBILE, {
 				categoryField: "category",
@@ -327,7 +327,7 @@
 				min: 0,
 				renderer: am5xy.AxisRendererX.new(root_MOBILE, {})
 			}));
-
+ 
 			var legend = chart_MOBILE.children.push(am5.Legend.new(root_MOBILE, {
 				centerX: am5.p50,
 				x: am5.p50
