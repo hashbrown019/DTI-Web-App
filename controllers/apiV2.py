@@ -209,11 +209,6 @@ class _main:
 				prof_1 = json.loads(json.loads(strsd)); 
 				if(f_id not in res_ls):res_ls[f_id] = {}
 				for key in prof_1:
-					if(prefix=="profile"):
-						if(prof_1['farmer_code']=="" or prof_1['farmer_code']==" " or prof_1['farmer_code']==None):
-							print(" EMPTY FARMER CODE in PROFILE")
-							continue
-
 					if(key == 'farmer_img_base64'):prof_1[key]= "HIDDEN";
 					if(key == 'post_harv-photo'):prof_1[key]= "HIDDEN";
 					if(key == 'farm-photo'):prof_1[key]= "HIDDEN";
@@ -227,7 +222,8 @@ class _main:
 
 		new_f_ls = []
 		for key2 in res_ls:
-			new_f_ls.append(res_ls[key2])
+			if( "profile__farmer_code" in res_ls[key2])
+				new_f_ls.append(res_ls[key2])
 
 		return jsonify(new_f_ls)
 
