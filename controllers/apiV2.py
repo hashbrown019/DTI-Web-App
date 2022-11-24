@@ -116,9 +116,9 @@ class _main:
 
 # ================================================================================
 	
-	async def thread_chunking(args):
+	def thread_chunking(args):
 		print(" ************* START thread_chunking")
-		all_data  = await _main.list_all_profile___()
+		all_data  =  _main.list_all_profile___()
 		f = open(c.RECORDS+"/profiles/farmer_profile.json", "w")
 		f.write(json.dumps(all_data))
 		f.close()
@@ -131,7 +131,8 @@ class _main:
 		# t1.start()
 		# with Pool(1) as p:
 		# 	print(p.map(_main.thread_chunking, "args"))
-		asyncio.run(_main.thread_chunking(1))
+		# asyncio.run(_main.thread_chunking(1))
+		_main.thread_chunking(1)
 		# p = Process(target=_main.thread_chunking, args=('bob',))
 		# p.start()
 		# t1.join() #FOR WAITING FINISHE THREAD
@@ -198,7 +199,6 @@ class _main:
 		for path in loads_:
 			if os.path.isfile(os.path.join(dir_path, path)):
 				# if(path.find("@profile")>=0):
-
 				loads_.desc = " * "+path
 				# res.append(path)
 				prefix = path.split("@")[1]
@@ -213,12 +213,9 @@ class _main:
 					if(key == 'post_harv-photo'):prof_1[key]= "HIDDEN";
 					if(key == 'farm-photo'):prof_1[key]= "HIDDEN";
 					res_ls[f_id]["{}__{}".format(prefix,key)] = prof_1[key]
-
 					complete_col["{}__{}".format(prefix,key)] = {}
 
-
-				if(sample >=10):
-					return jsonify(res_ls)
+				if(sample >=10): return jsonify(res_ls)
 				sample = sample + 1
 
 		# return jsonify(complete_col)

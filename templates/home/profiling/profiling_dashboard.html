@@ -383,23 +383,42 @@
 					SPINNER_LOADER.show()
 					SPINNER_LOADER.message("Performing <b>Data Index Refresh</b><br>Please wait or Minimized this loading screen")
 					ref_dialog.destroy()
-					$send({
-						action : "/api/v2/set_farmer_chunk_data",
-						method : POST,
-						func : function () {
-							SPINNER_LOADER.hide()
-							$dialog({
-								type : "warning",
-								title : "Data Index Refresh on Prgress",
-								subtitle : "Performing Data Index Refresh is on progress. ",
-								content :(`Usually it takes about an hour to populate all data into a index. But, you can continue using MIS without waiting as this process happens on background. you can refresh this page or do it later`),
-								buttons : ["Refresh the entire page","Naahh, Maybe later"],
-								buttons_actions : [function(){
-									location.reload();
-								}]
-							}).show()
-						}
+					
+					JSWorker('http://localhost:5000/static/js/workers.js',function(e){
+						println("----------------------------")
+						println(e)
+						SPINNER_LOADER.hide()
+						$dialog({
+							type : "warning",
+							title : "Data Index Refresh on Prgress",
+							subtitle : "Performing Data Index Refresh is on progress. ",
+							content :(`Usually it takes about an hour to populate all data into a index. But, you can continue using MIS without waiting as this process happens on background. you can refresh this page or do it later`),
+							buttons : ["Refresh the entire page","Naahh, Maybe later"],
+							buttons_actions : [function(){
+								location.reload();
+							}]
+						}).show()
 					})
+
+
+
+					// $send({
+					// 	action : "/api/v2/set_farmer_chunk_data",
+					// 	method : POST,
+					// 	func : function () {
+					// 		SPINNER_LOADER.hide()
+					// 		$dialog({
+					// 			type : "warning",
+					// 			title : "Data Index Refresh on Prgress",
+					// 			subtitle : "Performing Data Index Refresh is on progress. ",
+					// 			content :(`Usually it takes about an hour to populate all data into a index. But, you can continue using MIS without waiting as this process happens on background. you can refresh this page or do it later`),
+					// 			buttons : ["Refresh the entire page","Naahh, Maybe later"],
+					// 			buttons_actions : [function(){
+					// 				location.reload();
+					// 			}]
+					// 		}).show()
+					// 	}
+					// })
 				}
 			]
 		});
