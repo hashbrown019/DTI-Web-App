@@ -186,6 +186,7 @@ class _main:
 
 	@app.route("/api/v2/sample",methods=["POST","GET"])
 	def v2_sample():
+		complete_col = {}
 		res = []
 		res_ls = {}
 		dir_path = c.RECORDS+"/profiles/__temp__/";
@@ -213,7 +214,12 @@ class _main:
 					if(key == 'farm-photo'):prof_1[key]= "HIDDEN";
 					res_ls[f_id]["{}__{}".format(prefix,key)] = prof_1[key]
 
+					complete_col["{}__{}".format(prefix,key)] = {}
+
 
 				if(sample >=10):
 					return jsonify(res_ls)
 				sample = sample + 1
+
+		# return jsonify(complete_col)
+		# # return jsonify(res_ls)
