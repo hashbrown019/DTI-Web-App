@@ -185,8 +185,8 @@ class _main:
 # ================================================================================
 
 
-	@app.route("/api/v2/sample",methods=["POST","GET"])
-	def v2_sample():
+	@app.route("/api/v2/sample/<entry>",methods=["POST","GET"])
+	def v2_sample(entry):
 		complete_col = {}
 		res = []
 		res_ls = {}
@@ -215,7 +215,7 @@ class _main:
 					res_ls[f_id]["{}__{}".format(prefix,key)] = str(prof_1[key])
 					complete_col["{}__{}".format(prefix,key)] = {}
 
-				if(sample >=100): break
+				if(sample >=entry): break
 				# if(sample >=10): return jsonify(res_ls)
 				if(prefix=="profile"):
 					sample = sample + 1
