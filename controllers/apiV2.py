@@ -215,7 +215,7 @@ class _main:
 					res_ls[f_id]["{}__{}".format(prefix,key)] = str(prof_1[key])
 					complete_col["{}__{}".format(prefix,key)] = {}
 
-				if(sample >=300): break
+				if(sample >=100): break
 				# if(sample >=10): return jsonify(res_ls)
 				if(prefix=="profile"):
 					sample = sample + 1
