@@ -1,7 +1,7 @@
 console.log("Worker Inintialized")
 let _ = undefined
 
-import("http://localhost:5000/static/js/BRORN_WORKER_.js").then(function(module){
+import("/static/js/BRORN_WORKER_.js").then(function(module){
     // _____ = module
     console.log(module._JS_NAME)
     // return (module)
