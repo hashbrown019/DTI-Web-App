@@ -208,13 +208,9 @@ class _main:
 				prof_1 = json.loads(json.loads(strsd)); 
 				if(f_id not in res_ls):res_ls[f_id] = {}
 				for key in prof_1:
-					# if("{}__{}".format(prefix,key) not in res_ls[f_id]):
-					prof_1[key]["profile__farmer_img_base64"] = "HIDDEN"
+					if(key == 'farmer_img_base64'):prof_1[key]= "HIDDEN"
 					res_ls[f_id]["{}__{}".format(prefix,key)] = prof_1[key]
-					# full_prof.append({"{}__{}".format(prefix,key):prof_1[key]})
-					# full_prof[] = prof_1[key]
 
-				# res.append(_main.profile_info_farmer(path))
 
 				if(sample >=10):
 					return jsonify(res_ls)
