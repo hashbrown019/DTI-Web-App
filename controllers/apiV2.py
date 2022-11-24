@@ -209,7 +209,7 @@ class _main:
 				if(f_id not in res_ls):res_ls[f_id] = {}
 				for key in prof_1:
 					# if("{}__{}".format(prefix,key) not in res_ls[f_id]):
-					prof_1["profile__farmer_img_base64"] = "HIDDEN"
+					prof_1[key]["profile__farmer_img_base64"] = "HIDDEN"
 					res_ls[f_id]["{}__{}".format(prefix,key)] = prof_1[key]
 					# full_prof.append({"{}__{}".format(prefix,key):prof_1[key]})
 					# full_prof[] = prof_1[key]
