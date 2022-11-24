@@ -222,7 +222,7 @@ class _main:
 
 		new_f_ls = []
 		for key2 in res_ls:
-			if( "profile__farmer_code" in res_ls[key2])
+			if( "profile__farmer_code" in res_ls[key2]):
 				new_f_ls.append(res_ls[key2])
 
 		return jsonify(new_f_ls)
