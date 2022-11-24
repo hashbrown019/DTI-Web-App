@@ -211,12 +211,13 @@ class _main:
 				for key in prof_1:
 					if(prefix=="profile"):
 						if(prof_1['farmer_code']=="" or prof_1['farmer_code']==" " or prof_1['farmer_code']==None):
+							print(" EMPTY FARMER CODE in PROFILE")
 							continue
 
 					if(key == 'farmer_img_base64'):prof_1[key]= "HIDDEN";
 					if(key == 'post_harv-photo'):prof_1[key]= "HIDDEN";
 					if(key == 'farm-photo'):prof_1[key]= "HIDDEN";
-					res_ls[f_id]["{}__{}".format(prefix,key)] = prof_1[key]
+					res_ls[f_id]["{}__{}".format(prefix,key)] = str(prof_1[key])
 					complete_col["{}__{}".format(prefix,key)] = {}
 
 				if(sample >=1000): break
