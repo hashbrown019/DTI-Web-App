@@ -208,7 +208,9 @@ class _main:
 				prof_1 = json.loads(json.loads(strsd)); 
 				if(f_id not in res_ls):res_ls[f_id] = {}
 				for key in prof_1:
-					if(key == 'farmer_img_base64'):prof_1[key]= "HIDDEN"
+					if(key == 'farmer_img_base64'):prof_1[key]= "HIDDEN";
+					if(key == 'post_harv-photo'):prof_1[key]= "HIDDEN";
+					if(key == 'farm-photo'):prof_1[key]= "HIDDEN";
 					res_ls[f_id]["{}__{}".format(prefix,key)] = prof_1[key]
 
 
