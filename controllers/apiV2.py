@@ -179,3 +179,42 @@ class _main:
 	def get_all_fo():
 		res = rapid.select("SELECT `rcu` FROM `fo_list`;")
 		return jsonify(res)
+
+
+# ================================================================================
+
+
+	@app.route("/api/v2/sample",methods=["POST","GET"])
+	def v2_sample():
+		res = []
+		res_ls = {}
+		dir_path = c.RECORDS+"/profiles/__temp__/";
+		_title = "----";
+		loads_ = tqdm(os.listdir(dir_path),  desc =_title,ascii ="►>○•|█");
+		sample = 0
+		temp = ""
+		full_prof ={}
+		for path in loads_:
+			if os.path.isfile(os.path.join(dir_path, path)):
+				# if(path.find("@profile")>=0):
+
+				loads_.desc = " * "+path
+				# res.append(path)
+				prefix = path.split("@")[1]
+				f_id = path.split("@")[0]
+				fff = open(c.RECORDS+"/profiles/__temp__/"+ path, "r")
+				strsd = fff.read()
+				fff.close()
+				prof_1 = json.loads(json.loads(strsd)); 
+				if(f_id not in res_ls):res_ls[f_id] = {}
+				for key in prof_1:
+					# if("{}__{}".format(prefix,key) not in res_ls[f_id]):
+					res_ls[f_id]["{}__{}".format(prefix,key)] = prof_1[key]
+					# full_prof.append({"{}__{}".format(prefix,key):prof_1[key]})
+					# full_prof[] = prof_1[key]
+
+				# res.append(_main.profile_info_farmer(path))
+
+				if(sample >=10):
+					return jsonify(res_ls)
+				sample = sample + 1
