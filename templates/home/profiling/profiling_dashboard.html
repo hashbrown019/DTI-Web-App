@@ -384,7 +384,7 @@
 					SPINNER_LOADER.message("Performing <b>Data Index Refresh</b><br>Please wait or Minimized this loading screen")
 					ref_dialog.destroy()
 
-					JSWorker('/static/js/workers.js',function(e){
+					JSWorker('/static/js/Workers.js',function(e){
 						println("----------------------------")
 						println(e)
 						SPINNER_LOADER.hide()
