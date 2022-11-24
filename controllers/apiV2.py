@@ -199,7 +199,7 @@ class _main:
 		for path in loads_:
 			if os.path.isfile(os.path.join(dir_path, path)):
 				# if(path.find("@profile")>=0):
-				loads_.desc = " * "+path
+				loads_.desc = "Profiles : ["+str(sample)+"] || "+path
 				# res.append(path)
 				prefix = path.split("@")[1]
 				f_id = path.split("@")[0]
@@ -215,9 +215,10 @@ class _main:
 					res_ls[f_id]["{}__{}".format(prefix,key)] = prof_1[key]
 					complete_col["{}__{}".format(prefix,key)] = {}
 
-				# if(sample >=500): break
-				# # if(sample >=10): return jsonify(res_ls)
-				# sample = sample + 1
+				if(sample >=1500): break
+				# if(sample >=10): return jsonify(res_ls)
+				if(prefix=="profile"):
+					sample = sample + 1
 
 		new_f_ls = []
 		for key2 in res_ls:
