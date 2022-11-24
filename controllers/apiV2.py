@@ -214,7 +214,6 @@ class _main:
 					if(key == 'farm-photo'):prof_1[key]= "HIDDEN";
 					res_ls[f_id]["{}__{}".format(prefix,key)] = str(prof_1[key])
 					complete_col["{}__{}".format(prefix,key)] = {}
-
 				if(sample >=entry): break
 				# if(sample >=10): return jsonify(res_ls)
 				if(prefix=="profile"):
