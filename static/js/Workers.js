@@ -11,7 +11,7 @@ import("/static/js/BRORN_WORKER_.js").then(function(module){
 		action : "/api/v2/set_farmer_chunk_data",
 		method : _.POST,
 		func : function (e) {
-			_.println("DONE")
+			_.println("DONE WEBWORKING :::")
 		}
 	})
 })

@@ -215,7 +215,7 @@ class _main:
 					res_ls[f_id]["{}__{}".format(prefix,key)] = prof_1[key]
 					complete_col["{}__{}".format(prefix,key)] = {}
 
-				if(sample >=10): break
+				if(sample >=500): break
 				# if(sample >=10): return jsonify(res_ls)
 				sample = sample + 1
 
@@ -224,6 +224,6 @@ class _main:
 			new_f_ls.append(res_ls[key2])
 
 		return jsonify(new_f_ls)
-		
+
 		# return jsonify(complete_col)
 		# # return jsonify(res_ls)
