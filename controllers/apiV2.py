@@ -240,7 +240,6 @@ class _main:
 		# 			if(key_for_add_ not in res_ls[key2]):
 		# 				res_ls[key2][key_for_add_] = "NONE"
 		# 		new_f_ls.append(res_ls[key2])
-		print(new_f_ls)
 		return jsonify(new_f_ls)
 
 		# return jsonify(complete_col)
