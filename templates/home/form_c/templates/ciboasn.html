@@ -293,9 +293,10 @@
                             <input class="form-check-input form_data_c" type="checkbox" value="" id="commu_key_part" />
                             <label class="form-check-label" for="none">City organized group </label>
 
-                            <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="" id="other_orgs_checkbox"/>
+                            <input style="margin-left: 20px;" class="form-check-input form_data_c" type="checkbox" value="" id="other_orgs_checkbox" onclick="myFunction2()"/>
                             <label style="padding-left: 40px;" class="form-check-label" for="none">Other orgs, specify: </label>
-                            <input style="margin-left: 10px;" class="form-check-input form_data_c" value="" id="other_orgs"/>
+                            <input style="margin-left: 55%; display: none;"  type="text" class="form-control form_data_c" id="other_orgs_pls_spec"
+                            placeholder="Please Specify ">
                         </div>
                     </div>
                 </div>
@@ -304,14 +305,14 @@
 
             <div style="padding-left: 20px;" class="form-group">
                 <div class="form-row">
-                    <div class="col">
+                    <div class="col-md-6">
 
 
                         <label>Name of Organization: </label>
 
                         <input type="text" class="form-control form_data_c" id="name_org">
                     </div>
-                    <div class="col">
+                    <div class="col-md-6">
 
                         <label for="position">Location:</label>
 
@@ -344,7 +345,7 @@
 
             <div class="form-group">
                 <div class="form-row">
-                    <div class="col">
+                    <div class="col-md-12">
 
                         <strong>
                             <label>What do you think the LGU, NGAs and other agencies should do to improve the local

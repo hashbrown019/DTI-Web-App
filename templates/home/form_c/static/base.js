@@ -259,6 +259,19 @@ $(".hidden-textbox16").hide();
 });
 
 
+$(document).ready(function(){
+    $(".hidden-textbox19").hide();
+    $("select#industry_clus_eq").change(function(){
+    var currentVal = $(this).val();
+    if(currentVal == "specsss"){
+    $(".hidden-textbox19").show();
+    }
+    else
+    $(".hidden-textbox19").hide();
+    });  
+    });
+
+
 function myFunction() {
 var checkbox1 = document.getElementById("business_reg_check");
 var checkbox2 = document.getElementById("product_reg_check");
@@ -280,6 +293,7 @@ var textt7 = document.getElementById("textt7");
 var textt8 = document.getElementById("textt8");
 var textt9 = document.getElementById("textt9");
 var textt10 = document.getElementById("textt10");
+
 if (checkbox1.checked == true){
 textt.style.display = "block";
 } else{
@@ -360,7 +374,21 @@ others_specific_products.style.display = "none";
 
 
 
+
+
 }
+function myFunction2() {
+
+var checkbox11 = document.getElementById("other_orgs_checkbox");
+
+if (checkbox11.checked == true){
+    other_orgs_pls_spec.style.display = "block";
+} else{
+        other_orgs_pls_spec.style.display = "none";
+}
+
+}
+
 
 
 //date picker
