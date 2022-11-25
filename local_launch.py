@@ -29,6 +29,7 @@ c.PORT = 80
 
 app = Flask(__name__)
 # Minify(app=app, html=True, js=True, cssless=True)
+app.config['JSON_SORT_KEYS'] = False
 
 app.config["JSONIFY_PRETTYPRINT_REGULAR"] = True
 app.secret_key=c.SECRET_KEY

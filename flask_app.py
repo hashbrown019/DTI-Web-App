@@ -34,6 +34,7 @@ app.config["JSONIFY_PRETTYPRINT_REGULAR"] = True
 app.secret_key=c.SECRET_KEY
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
+app.config['JSON_SORT_KEYS'] = False
 
 app.register_blueprint(home.app)
 app.register_blueprint(login.app)
