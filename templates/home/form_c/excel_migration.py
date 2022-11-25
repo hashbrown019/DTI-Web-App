@@ -5,11 +5,11 @@ import pandas as pd
 app = Blueprint("excel_migration",__name__)
 
 @app.route('/excel_main/<num_entries>')
-def index():
+def index(num_entries):
     # get_url= urllib.request.urlopen('https://dtirapid.pythonanywhere.com/api/v2/sample')
     # print("Response Status: "+ str(get_url.getcode()) )
     # _DATA_ = json.loads(get_url.read())
-    df = pd.read_json (r'https://dtirapid.pythonanywhere.com/api/v2/sample/')
+    df = pd.read_json (r'https://dtirapid.pythonanywhere.com/api/v2/sample/'+num_entries)
     df.to_csv (r'exported_file.csv', index = 'profile__farmer_code')
     
     # return send_file('exported_file.csv')
