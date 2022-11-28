@@ -232,12 +232,12 @@ class _main:
 			new_f_ls_IND = {}
 			for key_new in MOBILE_DATA_ROWS_FORM_A:
 				if(key_new not in res_ls[key2]):
-					res_ls[key2][key_new] = "NO_INPUTED_DATA"
+					res_ls[key2][key_new] = "NO_DATA"
 				new_f_ls_IND[key_new] = res_ls[key2][key_new]
 			new_f_ls.append(new_f_ls_IND)
 
 		for ind_rec_ in new_f_ls:
-			if(ind_rec_['profile__farmer_code'] in "NO_INPUTED_DATA"):
+			if(ind_rec_['profile__farmer_code'] in "NO_DATA"):
 				new_f_ls.remove(ind_rec_)
 				pass
 
