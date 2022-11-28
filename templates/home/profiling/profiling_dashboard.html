@@ -162,9 +162,7 @@
 			if(FARMER['SOURCE']=="NEW_EXCEL"){region_cons = "Region_ : "}
 
 			if((region_cons+" "+FARMER['addr_region']) in dash_conso){} //if wala pay region sa list
-			else{
-				dash_conso[(region_cons+" "+FARMER['addr_region'])] = {}
-			}
+			else{dash_conso[(region_cons+" "+FARMER['addr_region'])] = {}}
 
 			if(FARMER['farmer-primary_crop'] in dash_conso[(region_cons+" "+FARMER['addr_region'])] ) {} //if wala pay VC sa list
 			else{
@@ -399,9 +397,6 @@
 							}]
 						}).show()
 					})
-
-
-
 					// $send({
 					// 	action : "/api/v2/set_farmer_chunk_data",
 					// 	method : POST,
