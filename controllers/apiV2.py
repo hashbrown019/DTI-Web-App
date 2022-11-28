@@ -236,10 +236,12 @@ class _main:
 				new_f_ls_IND[key_new] = res_ls[key2][key_new]
 			new_f_ls.append(new_f_ls_IND)
 
+		count_f_ls = 0
 		for ind_rec_ in new_f_ls:
-			if(ind_rec_['profile__farmer_code'] in "NO_DATA"):
-				new_f_ls.remove(ind_rec_)
-				pass
+			if(ind_rec_['profile__farmer_code'] == "NO_DATA"):
+				del new_f_ls[count_f_ls]
+				count_f_ls = count_f_ls + 1
+
 
 		# for key2 in res_ls:
 		# 	if( "profile__farmer_code" in res_ls[key2]):
