@@ -208,7 +208,10 @@ class _main:
 				strsd = fff.read()
 				fff.close()
 
-				prof_1 = json.loads(json.loads(strsd)); 
+				prof_1 = json.loads(json.loads(strsd));
+				if(prefix=="profile"):
+					if(prof_1['farmer_code']==" " or prof_1['farmer_code']=="" ):
+						continue
 
 				if(f_id not in res_ls):res_ls[f_id] = {}
 				for key in prof_1:
