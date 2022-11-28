@@ -18,7 +18,7 @@ class _main:
 
 	@app.route("/login",methods=["POST","GET"])
 	def login():
-		return render_template("SITE_OFF.html") # MAINTENANCE
+		# return render_template("SITE_OFF.html") # MAINTENANCE
 		return render_template("login/login.html")
 
 	@app.route("/login_auth",methods=["POST"])
@@ -27,11 +27,11 @@ class _main:
 		password = request.form['password']
 		log_res = rapid.select("SELECT * from `users` WHERE `username` = '{}' AND `password`='{}';".format(username,password))
 		if(len(log_res)!=0):
-			log_res[0]['password'] = "********"
+			log_res[0]['password'] = "********";
 			session["USER_DATA"] = log_res
-			return jsonify({"success":True,"user":session["USER_DATA"]})
+			return jsonify({"success":True,"user":session["USER_DATA"]});
 		else:
-			return jsonify({"success":False})
+			return jsonify({"success":False});
 
 	@app.route("/logout")
 	def logout():

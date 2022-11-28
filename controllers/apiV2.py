@@ -217,12 +217,13 @@ class _main:
 					if(key == 'farm-photo'):prof_1[key]= "HIDDEN";
 
 					res_ls[f_id]["{}__{}".format(prefix,key)] = str(prof_1[key])
+					res_ls[f_id]["farmer_code"] = str(prof_1['farmer_code'])
 
 					# complete_col["{}__{}".format(prefix,key)] = {}
 				if(sample >=int(entry)): break
 				# if(sample >=10): return jsonify(res_ls)
 				if(prefix=="profile"):
-					sample = sample + 1
+					sample = sample + 1;
 
 		new_f_ls = []
 		for key2 in res_ls:
@@ -233,13 +234,17 @@ class _main:
 				new_f_ls_IND[key_new] = res_ls[key2][key_new]
 			new_f_ls.append(new_f_ls_IND)
 
-
+		for ind_rec_ in new_f_ls:
+			if(ind_rec_['profile__farmer_code']=="NONE"):
+				new_f_ls.remove(ind_rec_)
+				pass
 		# for key2 in res_ls:
 		# 	if( "profile__farmer_code" in res_ls[key2]):
 		# 		for key_for_add_ in MOBILE_DATA_ROWS_FORM_A:
 		# 			if(key_for_add_ not in res_ls[key2]):
 		# 				res_ls[key2][key_for_add_] = "NONE"
 		# 		new_f_ls.append(res_ls[key2])
+
 		return jsonify(new_f_ls)
 
 		# return jsonify(complete_col)
