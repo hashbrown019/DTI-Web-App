@@ -237,10 +237,10 @@ class _main:
 			new_f_ls.append(new_f_ls_IND)
 
 		count_f_ls = 0
+		new_new_f_ls = []
 		for ind_rec_ in new_f_ls:
-			if(ind_rec_['profile__farmer_code'] == "NO_DATA"):
-				del new_f_ls[count_f_ls]
-				count_f_ls = count_f_ls + 1
+			if(ind_rec_['profile__farmer_code'] != "NO_DATA"):
+				new_new_f_ls.append(ind_rec_)
 
 
 		# for key2 in res_ls:
@@ -250,7 +250,8 @@ class _main:
 		# 				res_ls[key2][key_for_add_] = "NONE"
 		# 		new_f_ls.append(res_ls[key2])
 
-		return jsonify(new_f_ls)
+		return jsonify(new_new_f_ls)
+		# return jsonify(new_f_ls)
 
 		# return jsonify(complete_col)
 		# # return jsonify(res_ls)
