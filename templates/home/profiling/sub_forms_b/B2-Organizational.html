@@ -1,0 +1,270 @@
+
+ 
+	<div class=" x-row x-container x-card x-light-grey" style="margin-top: 10px;" >
+		<h2 class=" x-container x-green x-padding">Organizational Profile</h2>
+
+		<div class="x-container x-padding">
+
+			<style> 
+				table, th, td{border: 1px solid black;border-collapse: collapse;}
+			</style>
+
+			<div class="x-row x-section x-padding ">
+				<div class="x-row">
+					<form class="x-container x-padding ">
+						<h3><span class="">Is there any existing partnership with other organizations?</span></h3>
+					</form>
+				</div>
+			</div>
+			<div class="x-row x-section x-padding ">
+				<div class="x-row x-container">
+					<label> Office/Business Address:</label>
+					<input class="form_data_b x-input x-border" id="office_business_adrress" type="text" placeholder="">
+				</div>
+				<div class="x-row x-container ">
+					<div class="x-col l6">
+						<label>GPS Coordinates: (Lat.)</label>
+						<input class="form_data_b x-input x-border" id="gps_coordinates_lat" type="text" placeholder="">
+					</div>
+
+					<div class="x-col l6">
+						<label>GPS Coordinates:(Long.)</label>
+						<input class="form_data_b x-input x-border" id="gps_coordinates_long" type="text" placeholder="">
+					</div>
+				</div>	
+			</div>
+			
+			<div class="x-row x-container x-padding">
+				<div class="x-col l6 x-container x-padding">
+					<span class="">Types of Organization:</span>
+					<select class="form_data_b x-border x-select x-border" id="types_of_organization" name="option"><br>
+						<option value="" disabled selected>Choose your option</option>
+						<option value="1"> Farmers’/ Growers’ Association </option>
+						<option value="2">Farmers’ Cooperative Type of Cooperative</option>
+						<option value="3">Others, please specify</option>
+					</select>
+					<textarea class="form_data_b x-border x-input " id="types_of_organization_others" type="text" placeholder="If others, please specify"s></textarea>
+				</div>
+				<div class="x-col l6 x-container x-padding">
+					<span class="">Registering Agencies: </span>
+					<select class="form_data_b x-border x-select x-border" id="registering_agencies" name="option">
+						<option value="" disabled selected>Choose your option</option>
+						<option value="1"> Cooperative Development Authority  </option>
+						<option value="2"> Department of Labor and Employment </option>
+						<option value="3"> Securities and Exchange Commission </option>
+						<option value="4"> Department of Agriculture  </option>
+						<option value="5">Others, please specify</option>
+					</select>
+					<textarea class="form_data_b x-border x-input " id="registering_agencies_others" type="text" placeholder="If others, please specify"s></textarea>
+				</div>
+			</div>
+
+
+			<div class="x-row x-padding x-container">
+				<div class="x-col l6 x-container x-padding">	
+					<label>Date Registered:</label>
+					<input class="form_data_b x-input x-border" id="date_registered" type="date" placeholder="">
+				</div>
+				<div class="x-col l6 x-container x-padding">
+					<label>Total No. of years of operation:</label>
+					<input class="form_data_b x-input x-border" id="total_no_of_years" type="text" placeholder="">
+				</div>	
+			</div>	
+
+			<div class="x-row x-container x-padding">
+				<b class="x-row x-container x-padding">Area/ Scope of Operation:</b>
+				<div class="x-row x-padding x-container">
+					<input class="form_data_b x-radio" id="community_level" id="area_scope_community_level" type="radio" name="scope" value="community" >
+					<span class="x-text-grey">Community (Barangay) level</span>
+					<input class="form_data_b x-radio" id="municipal_level" id="area_scope_municipal_level" type="radio" name="scope" value="municipal">
+					<span class="x-text-grey">Municipal Level</span>
+					<input class="form_data_b x-radio" id="provincial_level" id="area_scope_provincial_level" type="radio" name="scope" value="provincial">
+					<span class="x-text-grey">Provincial Level</span>
+					<input class="form_data_b x-radio" id="regional_level" id="area_scope_regional_level" type="radio" name="scope" value="regional">
+					<span class="x-text-grey">Regional Level</span>
+					<input class="form_data_b x-radio" id="national_level" id="area_scope_national_level" type="radio" name="scope" value="national">
+					<span class="x-text-grey">National Level</span>
+				</div>
+			</div>
+
+			<div class="">
+				<div class="x-row x-section x-padding ">
+					<div class="x-col l6"><br><br>
+						<form class="x-container x-section">
+							<label class="">Membership to an apex FO/Federation:</label><br>
+							<input class="form_data_b x-radio" id="membership_to_an_apex_fo_no_checkbox" type="checkbox" >
+							<span class="">NO</span>
+							<input class="fomat_data_b x-check" id="membership_to_an_apex_fo_yes_checkbox"  type="checkbox">
+							<label class="">Yes, Please Specify:</label><br><br>
+							<textarea class="form_data_b x-border x-input" placeholder="Please Specify" id="membership_to_an_apex_please_specify" type="text"></textarea>
+						</form>
+					</div>
+				</div>	
+
+				<div class="x-row x-section x-padding ">
+					<div class="x-col l6">
+						<form class="x-container">
+							<label class="">Membership to other National and International Organizations/ Institution:</label><br>
+							<input class="form_data_b x-radio" id="membership_to_other_national_international_organizations_no_checkbox"type="checkbox" name="membership" value="yes" >
+							<label class="">NO</label>
+							<input class="form_data_b x-radio" id="membership_to_other_national_international_organizations_yes_checkbox" type="checkbox" name="membership" value="no">
+							<label class="">Yes, Please Specify:</label><br><br>
+							<textarea class="form_data_b x-border x-input" placeholder="Please Specify" id="membership_to_other_national_international_organizations_please_specify" type="text"></textarea>
+						</form>
+						<br>
+					</div>
+				</div>
+				
+				<div class="x-row x-section x-padding ">
+					<div class="x-col l6">
+						<form class="x-container">
+							<label class="">Do you have Vision, Mission, Objectives in the Organization (VMGO)? </label><br>
+							<input class="form_data_b x-radio" id="vmo_no_checkbox" type="checkbox" name="membership" value="yes">
+							<label class="">NO</label>
+							<input class="form_data_b x-radio" id="vmo_yes_checkbox" type="checkbox" name="membership" value="no">
+							<label class="">Yes, Please Specify:</label><br><br>
+							<textarea class="form_data_b x-border x-input" placeholder="Please Specify" id="vmo_please_specify" type="text"></textarea>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="x-row x-col x-section  ">
+			<div class="x-col l6 ">
+				<form class="x-container ">
+					<label class=""><h5><b>Membership Profile</b></h5></label>
+					<span class="">Please register the organizations total active members based on the following category:</span><br>
+				</form>
+			</div>
+
+			<div class="x-container x-padding">
+				<style>table, th, td{border: 1px solid black; border-collapse: collapse;}</style>
+				<table class="x-table x-container x-table-border">
+					<tr>
+						<th>
+							Members Category
+						</th>
+						<th colspan="2">
+							Regular/Paying
+						</th>
+						<th colspan="2">
+							Associate
+						</th>
+						<th colspan="2">
+							Total 
+						</th>
+						<th rowspan="2">
+							<center>Ave. Land Area/<br> farmer<br>(in Ha)</center>
+						</th>
+					</tr>
+
+					<tr>
+						<td rowspan="5">
+							Number of <b>ACTIVE</b> Farmer-Members under <b>CHOSEN</b> industry cluster<br>
+
+							<div class="x-col l9 x-padding">
+								<input class="form_data_b x-radio" id="cacao_checkbox" id="" type="checkbox" >
+								<label class="">Cacao</label><br><br>
+								<input class="form_data_b x-radio" id="coffee_checkbox" id="" type="checkbox">
+								<label class="">Coffee</label><br><br>
+								<input class="form_data_b x-radio x-center" id="coconut_checkbox" id="" type="checkbox">
+								<label class="">Coconut</label><br><br>
+								<input class="form_data_b x-radio" id="pfn_checkbox" id="" type="checkbox">
+								<label class="">PFN</label><br><br>
+							</div>
+						</td>
+
+						<td><center>male</center></td>
+						<td><center>female</center></td>
+						<td><center>male</center></td>
+						<td><center>female</center></td>
+						<td><center>male</center></td>
+						<td><center>female</center></td>
+					</tr>
+
+					<tr>
+						<td><input class="form_data_b x-light-grey x-input" id="cacao_1" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="cacao_2" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="cacao_3" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="cacao_4" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="cacao_5" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="cacao_6" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="cacao_7" type="text" name=""></td>
+
+					</tr>
+
+					<tr>
+						<td><input class="form_data_b x-light-grey x-input" id="coffee_1" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="coffee_2" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="coffee_3" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="coffee_4" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="coffee_5" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="coffee_6" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="coffee_7" type="text" name=""></td>
+
+					</tr>
+
+					<tr>
+						<td><input class="form_data_b x-light-grey x-input" id="coconut_1" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="coconut_2" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="coconut_3" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="coconut_4" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="coconut_5" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="coconut_6" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="coconut_7" type="text" name=""></td>
+					</tr>
+
+					<tr>
+						<td><input class="form_data_b x-light-grey x-input" id="pfn_1" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="pfn_2" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="pfn_3" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="pfn_4" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="pfn_5" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="pfn_6" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="pfn_7" type="text" name=""></td>
+					</tr>
+
+					<tr>
+						<td>Number of Farmer-Members(non-priority crop)</td>
+						<td><input class="form_data_b x-light-grey x-input" id="nfm_non_priority_1" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="nfm_non_priority_2" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="nfm_non_priority_3" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="nfm_non_priority_4" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="nfm_non_priority_5" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="nfm_non_priority_6" type="text" name=""></td>
+						<td><input class="form_data_b x-light-grey x-input" id="nfm_non_priority_7" type="text" name=""></td>
+					</tr>
+
+					<tr>
+						<td>
+							<div class="">
+								<b>Total</b><i> (should equal to overall membership)</i>
+							</div>
+							<td><input class="form_data_b x-light-grey x-input" style="width: 100%;" id="total_seom_1" type="text" name=""></td>
+							<td><input class="form_data_b x-light-grey x-input" style="width: 100%;" id="total_seom_2" type="text" name=""></td>
+							<td><input class="form_data_b x-light-grey x-input" style="width: 100%;" id="total_seom_3" type="text" name=""></td>
+							<td><input class="form_data_b x-light-grey x-input" style="width: 100%;" id="total_seom_4" type="text" name=""></td>
+							<td><input class="form_data_b x-light-grey x-input" style="width: 100%;" id="total_seom_5" type="text" name=""></td>
+							<td><input class="form_data_b x-light-grey x-input" style="width: 100%;" id="total_seom_6" type="text" name=""></td>
+							<td><input class="form_data_b x-light-grey x-input" style="width: 100%;" id="total_seom_7" type="text" name=""></td>
+						</td>
+
+					</tr>
+				</table>
+			</div>
+			<hr>
+			<br>
+			<br>
+			<br>
+
+			<div class="x-center">
+				<p class="x-center">
+					<input class="x-blue x-form_data_b" id="org_button_back" type="button" onclick="location.href='file:///C:/Users/User/Desktop/B/FORM%20B/B1-Respondents.html';" value="Back" />
+					<input class="x-blue x-form_data_b" id="org_button_next" type="button" onclick="location.href='file:///C:/Users/User/Desktop/B/FORM%20B/B3-Operational.html';" value="Next" />
+				</p>
+			</div>
+
+		</div>
+	</div>

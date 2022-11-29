@@ -50,11 +50,12 @@
 		ADD_FO_MODAL = $dialog({
 			title : "Farmer Organization Profile Set-Up",
 			subtitle : "You are about to add Farmer Organization Profile, Please fill the fields properly",
-			content : (`{% include 'home/form_b/form_b1.html' %}`),
+			content : (`<div style="overflow-y:scroll;height: 60vh;"> {% include 'home/form_b/form_b1.html' %} </div>`),
 			buttons : ["Save","Cancel"],
 			buttons_actions : [form_b_save,form_b_cancel]
 		})
 		
+		ADD_FO_MODAL.dialog.style.width = "80vw";
 		ADD_FO_MODAL.show()
 
 		FORM_B_PAGE = FORM_CURRENT_PAGE
@@ -63,40 +64,42 @@
 	}
 
 	function all_page_hide_fo(){
-		$ID("page_fo_num").innerHTML = FORM_B_PAGE
-		map_diplay_page()
+		$ID("page_fo_num").innerHTML = FORM_B_PAGE + 1
 		for (var i = 0; i < FORM_B_PAGE_CONTENT.length; i++) {
 			FORM_B_PAGE_CONTENT[i].style.display = "none"
 		}
 	}
 
-	function form_b_next(){
-		if(FORM_B_PAGE==FORM_B_PAGE_CONTENT.length-1){return}
-		FORM_B_PAGE += 1
-		all_page_hide_fo()
-		FORM_B_PAGE_CONTENT[FORM_B_PAGE].style.display="block";
-		
-	}
-	function form_b_prev(){
-		if(FORM_B_PAGE==0){return}
-		FORM_B_PAGE -= 1
-		all_page_hide_fo()
-		FORM_B_PAGE_CONTENT[FORM_B_PAGE].style.display="block";
-	}
 
-	function form_b_save(){
-		alert("SAVE")
-	}
-
-	function form_b_cancel(){
-		alert("CANCEL")
-	}
 
 	function map_diplay_page(){
 		if(FORM_B_PAGE == 1){
 			map_display("map_page_2","address_fo");
 			ADD_FO_MODAL.dialog.style.width = "70vw";
 		}
+	}
+
+
+	function form_b_next(){
+		if(FORM_B_PAGE==FORM_B_PAGE_CONTENT.length-1){return}
+		FORM_B_PAGE += 1
+		all_page_hide_fo()
+		FORM_B_PAGE_CONTENT[FORM_B_PAGE].style.display='block';
+		
+	}
+	function form_b_prev(){
+		if(FORM_B_PAGE==0){return}
+		FORM_B_PAGE -= 1
+		all_page_hide_fo()
+		FORM_B_PAGE_CONTENT[FORM_B_PAGE].style.display='block';
+	}
+
+	function form_b_save(){
+		alert('SAVE')
+	}
+
+	function form_b_cancel(){
+		alert('CANCEL')
 	}
 
 // ====================================================================

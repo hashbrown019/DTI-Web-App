@@ -1,193 +1,46 @@
+<div class="x-row x-center">
+	<span class="x-text-grey x-small">
+		Page - 
+		<span id="page_fo_num">-</span>
+	</span>
+</div>
+<div class="x-container x-padding ">
+	<button class="x-round-large x-btn x-blue x-right" onclick="form_b_next()">
+		Next <span class="fa fa-arrow-right"></span>
+	</button>
+	<button class="x-round-large x-btn x-blue x-left" onclick="form_b_prev()">
+		<span class="fa fa-arrow-left"></span> Prev
+	</button>
+</div>
+<hr>
+
 <div class="form_b_1 x-container x-row">
-	<div class="x-row">
-		<h4>Respondent Profile</h4>
-	</div>
-	<div class="x-row">
-		<span class="x-text-grey">Name of respondent</span>
-		<div class="x-row">
-			<input class="x-input x-border x-col m3 l3" type="" name="" placeholder="First Name">
-			<input class="x-input x-border x-col m3 l3" type="" name="" placeholder="Middle Name">
-			<input class="x-input x-border x-col m3 l3" type="" name="" placeholder="Last Name">
-			<input class="x-input x-border x-col m3 l3" type="" name="" placeholder="Ext. (if any)">
-		</div>
-	</div>
-	<div class="x-row">
-		<span class="x-text-grey">Designation in the Organization</span>
-		<input class="x-input x-border" type="" name="" placeholder="CEO, Staff etc.">
-	</div>
-	<div class="x-row">
-		<div class="x-col l6 m6">
-			<span class="x-text-grey">Sex</span>
-			<select class="x-input x-border">
-				<option value="male">Male</option>
-				<option value="female">Female</option>
-			</select>
-		</div>
-		<div class="x-col l6 m6">
-			<span class="x-text-grey">Age</span>
-			<input class="x-input x-border" type="number" name="" placeholder="age">
-		</div>
-	</div>
-	<div class="x-row">
-		<div class="x-col l6 m6">
-			<span class="x-text-grey">Contact Number</span>
-			<input class="x-input x-border" type="mobile" name="" placeholder="09*********">
-		</div>
-		<div class="x-col l6 m6">
-			<span class="x-text-grey">Email Address</span>
-			<input class="x-input x-border" type="email" name="" placeholder="email@email.com">
-		</div>
-	</div>
+	{% include 'home/profiling/sub_forms_b/B1-Respondents.html' %}
 </div>
 
 <!-- =================================================================================== -->
 <div class="form_b_1 x-container x-row" style="display: None;">
-	<div class="x-row">
-		<div class="x-row">
-			<h4>Organization Profile Profile</h4>
-		</div>
-		<div class="x-row">
-			<span class="x-text-grey">Registerered Name of Organization</span>
-			<input class="x-input x-border" type="" name="" placeholder="CEO, Staff etc.">
-		</div>
-		<div class="x-row">
-			<span class="x-text-grey">Office/Business Address</span>
-			<div id="map_cont" class="x-container x-round x-padding x-round-xlarge">
-				<div id="map_page_2"></div>
-			</div>
-			<input type="text" id="address_fo" name="address" class="x-input x-border x-round" placeholder="Input Address, But if you click on the map. ot will auto generate">
-		</div>
-		<hr>
-	</div>
-	<div class="x-row">
-		<span class="x-text-grey">Type of Organization</span>
-		<div>
-			<span class="">
-				<input id="" class="form_data x-check" type="checkbox">
-				<label>Farmers/Growers Association</label><br>
-			</span>
-			<span class="">
-				<input id="" class="form_data x-check" type="checkbox">
-				<label>Farmers Cooperative</label>
-				<input type="" placeholder="Type of Cooperative">
-				<br>
-			</span>
-			<span class="">
-				<input id="" class="form_data x-check" type="checkbox">
-				<label>Others</label>
-				<input type="" placeholder="Others Please, specify">
-				<br>
-			</span>
-		</div>
-		<hr>
-	</div>
-	<div class="x-row">
-		<span class="x-text-grey">Total No. of years operation</span><br>
-		<input class="x-input x-border" type="number" name="" placeholder="Years in numbers"><br>
-		<div class="x-row">
-			<div class="x-col m4 l4">
-				<span class="x-text-grey">Area/Scope of Operation</span><br>
-				<span class="">
-					<input id="" class="form_data x-check" type="checkbox">
-					<label>Community (Brgy.) Level</label>
-					<br>
-				</span>
-				<span class="">
-					<input id="" class="form_data x-check" type="checkbox">
-					<label>Municipal/City Level</label>
-					<br>
-				</span>
-				<span class="">
-					<input id="" class="form_data x-check" type="checkbox">
-					<label>Provincial Level</label>
-					<br>
-				</span>
-				<span class="">
-					<input id="" class="form_data x-check" type="checkbox">
-					<label>Regional Level</label>
-					<br>
-				</span>
-				<span class="">
-					<input id="" class="form_data x-check" type="checkbox">
-					<label>National Level</label>
-					<br>
-				</span>
-			</div>
-			<div class="x-col m8 l8">
-				<span class="x-text-grey">Registering Agencies</span><br>
-				<span class="">
-					<input id="" class="form_data x-check" type="checkbox">
-					<label>Cooperative Development Authority</label>
-					<input class="" type="date" placeholder="Date Registerered" name="">
-					<br>
-				</span>
-				<span class="">
-					<input id="" class="form_data x-check" type="checkbox">
-					<label>Department of Labor and Employment</label>
-					<input class="" type="date" placeholder="Date Registerered" name="">
-					<br>
-				</span>
-				<span class="">
-					<input id="" class="form_data x-check" type="checkbox">
-					<label>Securities and Exchange Commission</label>
-					<input class="" type="date" placeholder="Date Registerered" name="">
-					<br>
-				</span>
-				<span class="">
-					<input id="" class="form_data x-check" type="checkbox">
-					<label>Department of Agriculture</label>
-					<input class="" type="date" placeholder="Date Registerered" name="">
-					<br>
-				</span>
-				<span class="">
-					<input id="" class="form_data x-check" type="checkbox">
-					<label>Others</label>
-					<input class="" type="" placeholder="Others Please, specify">
-					<br>
-				</span>
-			</div>
-		</div>
-		<hr>
-	</div>
-	<div class="x-row">
-		<div class="x-row">
-			<span class="x-row">
-				<label class="x-col m5 l5">Membership to an apex FO/Federation</label>
-				<select class="x-border x-col m2 l2 x-input">
-					<option value="yes">Yes</option>
-					<option value="no">No</option>
-				</select>
-				<input class="x-col m5 l5" type="" name="" placeholder="if yes, pls specify">
-			</span>
-			<br>
-			<span class="x-row">
-				<label class="x-col m5 l5">Membership to other National and International Organizations/ Institution</label>
-				<select class="x-border x-col m2 l2 x-input">
-					<option value="yes">Yes</option>
-					<option value="no">No</option>
-				</select>
-				<input class="x-col m5 l5" type="" name="" placeholder="if yes, pls specify">
-			</span>
-			<br>
-			<span class="x-row">
-				<label class="x-col m5 l5">Do you have Vision, Mission, Objectives in the Organization (VMGO)?</label>
-				<select class="x-border x-col m2 l2 x-input">
-					<option value="yes">Yes</option>
-					<option value="no">No</option>
-				</select>
-				<input class="x-col m5 l5" type="" name="" placeholder="if yes, pls specify">
-			</span>
-			<br>
-		</div>
-		<hr>
-	</div>
-	<div class="x-row">
-		<span class="x-text-grey">Registering Agencies</span><br>
-		<div class="x-row">
-			sample
-		</div>
-		<hr>
-	</div>
+	{% include 'home/profiling/sub_forms_b/B2-Organizational.html' %}
+</div>
+<!-- =================================================================================== -->
+<div class="form_b_1 x-container x-row" style="display: None;">
+	{% include 'home/profiling/sub_forms_b/B3-Operational.html' %}
+</div>
+<!-- =================================================================================== -->
+<div class="form_b_1 x-container x-row" style="display: None;">
+	{% include 'home/profiling/sub_forms_b/B4-FoGovernance.html' %}
+</div>
+<!-- =================================================================================== -->
+<div class="form_b_1 x-container x-row" style="display: None;">
+	{% include 'home/profiling/sub_forms_b/B5-Administrative.html' %}
+</div>
+<!-- =================================================================================== -->
+<div class="form_b_1 x-container x-row" style="display: None;">
+	{% include 'home/profiling/sub_forms_b/B6-Capacity.html' %}
+</div>
+<!-- =================================================================================== -->
+<div class="form_b_1 x-container x-row" style="display: None;">
+	{% include 'home/profiling/sub_forms_b/B7-Partnership.html' %}
 </div>
 
 
