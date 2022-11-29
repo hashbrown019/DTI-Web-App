@@ -1,7 +1,6 @@
 from flask import Flask, Blueprint, render_template, url_for, json, jsonify, send_file
 import urllib.request
 import pandas as pd
-# import config as cc
 app = Blueprint("excel_migration",__name__)
 
 @app.route('/excel_main/<num_entries>')
