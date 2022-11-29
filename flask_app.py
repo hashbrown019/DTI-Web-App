@@ -21,6 +21,7 @@ from controllers import migrations
 from controllers.GLOBALS_ import Globals_
 
 from templates.home.form_c import bp_app as bp_c
+from templates.home.form_c import excel_migration as e_m
 
 
 # import sms_main as gsm
@@ -43,6 +44,7 @@ app.register_blueprint(apiV2.app)
 app.register_blueprint(migrations.app)
 
 app.register_blueprint(bp_c.app)
+app.register_blueprint(e_m.app)
 
 
 Globals_(app)

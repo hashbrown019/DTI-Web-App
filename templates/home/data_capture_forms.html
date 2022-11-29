@@ -8,10 +8,6 @@
 		</div>
 		<hr>
 		<div class="x-row">
-			<button class="dcf_top_tab x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="dcf_go_tab(0)">
-				<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
-				DIP Preparational and Approval
-			</button>
 			<button class="x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="show_sub_form_dcf('dcf/dcf_trade_promotion')">
 				<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
 				Trade Promotion
@@ -20,9 +16,21 @@
 				<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
 				Product Development
 			</button>
-			<button class="x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="show_sub_form_dcf(/dcf/dcf_matching_grant)">
+			<button class="x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="show_sub_form_dcf('/dcf/dcf_matching_grant')">
 				<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
 				Matching Grant Tracker
+			</button>
+			<button class="x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="show_sub_form_dcf('/dcf/dcf_enablers_tracker')">
+				<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
+				Enablers Activity Tracker
+			</button>
+			<button class="x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="show_sub_form_dcf('/dcf/dcf_equity_tracker')">
+				<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
+				Equity Tracker
+			</button>
+			<button class="x-button x-small _x-round-large x-padding x-text-black x-left-align" style=";white-space: normal;word-wrap: break-word;" onclick="show_sub_form_dcf('/dcf/dcf_dip_preparation_tracker')">
+				<!-- <b class="x-text-teal fa fa-edit x-large"></b>&nbsp;&nbsp;  -->
+				DIP Preperation Tracker
 			</button>
 		</div>
 	</div>
@@ -30,8 +38,7 @@
 	<div class="x-container x-col l10">
 		<br><br>
 		<div class="x-container x-round">
-			<div class="dcf_body_content x-white x-padding x-round x-animate-top" style="display:none;">
-				{% include 'home/data_capture_forms/DCF_dip_prep_approval.html' %}
+			<div class="dcf_body_content x-white x-padding x-round x-animate-top" style="display:block;">
 				{% include 'home/no_data.html' %}
 			</div>
 		</div>
