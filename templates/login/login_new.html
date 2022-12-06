@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	{% include 'head.html' %}
+	<body>
+		<style type="text/css">
+			#container_b{
+				background-image: url('../static/img/login_bg_dark.jpg');
+				/*background-image: url('../static/img/bg.webp');*/
+			
+				background-position: center;
+				background-size: cover;
+			}
+			#mapid { height: 180px; }
+		</style>
+		<!-- <div id="" class="" style="height: 100vh;"> -->
+
+
+	<body class="x-light-grey">
+		<div class="x-display-container" style="height:100vh;padding: 0px;">
+			<div class="x-display-middle x-padding">
+				<div class="x-container x-card x-round-large x-padding">
+					<div class="x-container x-half x-padding ">
+						<div class="">
+							<span class="x-right x-large x-round x-text-teal x-text x-jumbo"><b>misRG.</b></span><br>
+							<span class="x-right x-xlarge x-text-teal x-right-align">management <br>information system</span><br>
+							<span class="x-right x-right-align x-tiny x-text-grey">'
+								DTI RAPID GROWTH PROJECT MIS <br>
+								Version 2.3.3
+							</span><br>
+						</div>
+					</div>
+					<div class="x-container x-half x-leftbar x-border-teal">
+						<label class="x-small">Username</label>
+						<input class="login_field x-input x-border x-border-teal x-round-xxlarge" type="text" name="" placeholder="@username" required>
+						<label class="x-small">Password</label>
+						<input class="login_field x-input x-border x-border-teal x-round-xxlarge" type="password" name="" placeholder="********" required><br>
+						<button class="x-btn x-round-xxlarge x-teal x-block x-text-white" onclick="login()">Login <span class="fa fa-arrow-right"></span></button>
+					</div>
+				</div>
+			</div>
+			<div class="x-display-right">
+				<div id="err_log" class=" x-animate-right x-container x-card x-round-large x-padding x-leftbar x-border-red x-pale-red" style="display:none">
+					<span class="x-xxlarge x-text-red">Ooops!</span><br>
+					<span class="x-large x-text-red">it looks like you've you made a mistake in filling the form</span>
+				</div>
+				<div id="good_log" class=" x-animate-right x-container x-card x-round-large x-padding x-leftbar x-border-green x-pale-green" style="display:none">
+					<span class="x-xxlarge x-text-green">Welcome <b id="fname">----</b></span><br>
+					<span class="fa fa-circle-o-notch fa-spin"></span>
+					<span class="x-small x-text-green"> Please wait while we preapre your login :)</span>
+				</div>
+			</div>
+
+		</div>
+
+
+	</body>
+	<script type="text/javascript">
+		function login(){
+			var fields = $CLASS('login_field')
+			var cred = {
+				"user_name" :fields[0].value,
+				"password" :fields[1].value
+			}
+			$send({
+				action : '/login_auth',
+				method : POST,
+				data : $DATA(cred),
+				func : function (__) {
+					var login = JSON.parse(__).success
+					if(login){
+						$ID('good_log').style.display = 'block'
+						$ID('fname').innerHTML = JSON.parse(__).user[0].name
+						timeout(function(){
+							// redirectto("/home")
+							// alert("GOOD")
+							$ID('good_log').style.display = 'none'
+						},3000);
+						
+					}
+					else{
+						$ID('err_log').style.display = 'block'
+						timeout(function(){$ID('err_log').style.display = 'none'},2000);
+					}
+				}
+			})
+		}
+
+	</script>
+</html>

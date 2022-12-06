@@ -21,6 +21,11 @@ class _main:
 		# return render_template("SITE_OFF.html") # MAINTENANCE
 		return render_template("login/login.html")
 
+	@app.route("/login_new",methods=["POST","GET"])
+	def login_new():
+		# return render_template("SITE_OFF.html") # MAINTENANCE
+		return render_template("login/login_new.html")
+
 	@app.route("/login_auth",methods=["POST"])
 	def login_auth():
 		username = request.form['user_name']
