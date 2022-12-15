@@ -28,3 +28,4 @@ ssh_pull.bat
 controllers/__pycache__/api.cpython-310.pyc
 controllers/__pycache__/api.cpython-310.pyc
 views/__pycache__/login.cpython-310.pyc
+.Rhistory
