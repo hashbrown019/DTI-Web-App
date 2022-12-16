@@ -173,23 +173,23 @@ def region_name_cleaner(region):
 			region = region + ""
 	return region
 
-	# THIS FUNCTION FIX THE crops name with SIMILAR AREA
-	def crops_name_cleaner(crops):
-		crops = str(crops);
-		crops = crops.lower();
-		crops = crops.replace(" ","");
-		if(crops==""):crops = 'Untagged';
-		return crops
+# THIS FUNCTION FIX THE crops name with SIMILAR AREA
+def crops_name_cleaner(crops):
+	crops = str(crops);
+	crops = crops.lower();
+	crops = crops.replace(" ","");
+	if(crops==""):crops = 'Untagged';
+	return crops
 
-	# THIS FUNCTION FIX THE crops name with SIMILAR AREA
-	def other_name_cleaner(strs):
-		strs = str(strs);
-		strs = strs.lower();
-		strs = strs.replace("  "," ");
-		strs = strs.replace(" - ","-");
-		strs = strs.replace(" -","-");
-		strs = strs.replace("- ","-");
-		if(strs==""):strs = 'Untagged';
-		return strs.upper();
+# THIS FUNCTION FIX THE crops name with SIMILAR AREA
+def other_name_cleaner(strs):
+	strs = str(strs);
+	strs = strs.lower();
+	strs = strs.replace("  "," ");
+	strs = strs.replace(" - ","-");
+	strs = strs.replace(" -","-");
+	strs = strs.replace("- ","-");
+	if(strs==""):strs = 'Untagged';
+	return strs.upper();
 
 list_all_profile___()
