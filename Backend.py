@@ -17,6 +17,9 @@ import pandas as pd
 import asyncio
 
 c.RECORDS=c.RECORDS_SERVER
+c.SQLITE_DB=c.SQLITE_DB_SERVER
+rapid= sqlite(c.SQLITE_DB)
+
 def list_all_profile___():
 	res = []
 	dir_path = c.RECORDS+"/profiles/__temp__/";
