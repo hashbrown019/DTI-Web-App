@@ -9,6 +9,9 @@ import sys
 import random
 from controllers.migrations import _main as migrations
 from tqdm import tqdm
+import warnings
+import csv
+import pandas as pd
 # import threading
 # from multiprocessing import Pool, Process
 import asyncio
@@ -64,5 +67,127 @@ def thread_chunking(args):
 	f.close()
 	print(" ************* FINISHED thread_chunking")
 	pass
+
+# ===============================================================
+
+def excel_popu():
+	dir_path = c.RECORDS+"/spreadsheets/"
+	FROM_EXCEL_RPOFILES = []
+	loads_ = tqdm(os.listdir(dir_path))
+	for path in loads_:
+		PATH__ = os.path.join(dir_path, path)
+		loads_.desc = path
+		if os.path.isfile(PATH__):
+			if PATH__.find("._DELETED_FILE_")<0:	
+				# print(PATH__)
+				file_name =  PATH__ # path to file + file name
+				# file_name =  c.RECORDS+"/spreadsheets/93#2022-09-19#NSAMAR_vc_a_1.xlsx" # path to file + file name
+				sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
+				try:
+					df = pd.read_excel(io=file_name, sheet_name=sheet, engine='openpyxl')
+				except Exception as e:
+					print(" * Error in [{}] :: {}".format(path,e))
+					continue
+
+				EXCEL_DATA = df.iterrows()
+
+				_result = {} 
+				LLL = dict(EXCEL_DATA)
+				for key in (LLL):
+					_result[key] = [] 
+					for val in LLL[key]:
+						_result[key].append(val)
+				del _result[0]
+				FROM_EXCEL_RPOFILES = FROM_EXCEL_RPOFILES +append_data_excel_mdata(_result,path)
+
+	return (FROM_EXCEL_RPOFILES)
+	# return jsonify(FROM_EXCEL_RPOFILES)
+
+
+
+def append_data_excel_mdata(datas,path):
+	farmer_from_excel = []
+	# datas = (excel_popu())
+	head  = datas[1]; del datas[1];
+	_ID_ = path.split("#")[0]
+	USER = rapid.select("SELECT * FROM `users` WHERE `id`={} ORDER BY `name` ASC; ".format(_ID_) )
+	if(len(USER)<=0):
+		USER = [{"name":"none","password":"CONFIDENTIAL"}]
+	for datum in datas:
+		_farmer = datas[datum]
+		for inc in range(len(_farmer)):
+			_farmer[inc] = "{}".format(_farmer[inc])
+			if _farmer[inc]  == "nan":
+				_farmer[inc] = ""
+
+		# print("{} >>> {}".format(type(_farmer[4]),_farmer[4] ))
+		if(_farmer[3] == "" or _farmer[3] == " " or _farmer[3] == None):
+			continue;
+
+		_farmer[40] = region_name_cleaner(_farmer[40])
+		_farmer[47] = crops_name_cleaner(_farmer[47])
+
+		farmer_from_excel.append({
+			'input_by': USER[0],
+			'SOURCE': "NEW_EXCEL",
+			'USER_ID':_farmer[1],
+			'farmer_code': path,
+			'f_name':_farmer[1],
+			'm_name':_farmer[2],
+			'l_name':_farmer[3],
+			'ext_name':_farmer[4],
+			'farmer_name': "{} {} {} {}".format(_farmer[1],_farmer[2],_farmer[3],_farmer[4],),
+			'farmer_sex':_farmer[5],
+			'addr_region':_farmer[40],
+			'addr_prov':_farmer[41],
+			'addr_city':_farmer[42],
+			'addr_brgy':_farmer[43],
+			'farmer-primary_crop':_farmer[47],
+			'farmer-fo_name_rapid': other_name_cleaner(_farmer[32]),
+			'farmer_dip_ref': other_name_cleaner(_farmer[27])
+		})
+	# return str(len(datas))
+	return farmer_from_excel
+
+def region_name_cleaner(region):
+	region = str(region)
+	roman_numerals = ["i","ii","iii","iv","v","vi","vii","viii","ix","x","xi","xii","xiii"]
+	num_digits = ["1","2","3","4","5","6","7","8","9","10","11","12","13"]
+	region = region.lower()
+	region = region.replace(" ","")
+	region = region.replace("caraga","13")
+	region = region.replace("car","13")
+	region = region.replace("region","")
+	region = region.replace("r-","")
+	region = region.replace("r:","")
+	if(region==""):region = 'Untagged';
+	else:
+		try:
+			if(region.isnumeric()):
+				region = region
+			else:
+				region = num_digits[roman_numerals.index(region)]
+		except Exception as e:
+			region = region + ""
+	return region
+
+	# THIS FUNCTION FIX THE crops name with SIMILAR AREA
+	def crops_name_cleaner(crops):
+		crops = str(crops);
+		crops = crops.lower();
+		crops = crops.replace(" ","");
+		if(crops==""):crops = 'Untagged';
+		return crops
+
+	# THIS FUNCTION FIX THE crops name with SIMILAR AREA
+	def other_name_cleaner(strs):
+		strs = str(strs);
+		strs = strs.lower();
+		strs = strs.replace("  "," ");
+		strs = strs.replace(" - ","-");
+		strs = strs.replace(" -","-");
+		strs = strs.replace("- ","-");
+		if(strs==""):strs = 'Untagged';
+		return strs.upper();
 
 list_all_profile___()
