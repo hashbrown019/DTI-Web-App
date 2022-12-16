@@ -63,3 +63,5 @@ def thread_chunking(args):
 	f.close()
 	print(" ************* FINISHED thread_chunking")
 	pass
+
+list_all_profile___()
