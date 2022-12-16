@@ -103,7 +103,7 @@ class _main:
 
 	@app.route("/api/v2/set_data_return_")
 	def set_data_return_():
-		return set_data_return()
+		return _main.set_data_return()
 
 	@app.route("/api/v2/get_data_return",methods=["POST","GET"])
 	def get_data_return():
