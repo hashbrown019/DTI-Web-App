@@ -13,6 +13,7 @@ from tqdm import tqdm
 # from multiprocessing import Pool, Process
 import asyncio
 
+c.RECORDS=c.RECORDS_SERVER
 def list_all_profile___():
 	res = []
 	dir_path = c.RECORDS+"/profiles/__temp__/";
