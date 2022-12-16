@@ -7,7 +7,6 @@ from flask_cors import CORS,cross_origin
 import base64
 import sys
 import random
-from controllers.migrations import _main as migrations
 from tqdm import tqdm
 import warnings
 import csv
@@ -35,8 +34,8 @@ def list_all_profile___():
 					pass
 				except Exception as e:
 					print(e)
-	# res = migrations.excel_popu()
-	res = res + migrations.excel_popu()
+	# res = excel_popu()
+	res = res + excel_popu()
 	random.shuffle(res)
 	return res
 
@@ -46,10 +45,10 @@ def profile_info_farmer(path):
 	f.close()
 	prof_1 = "ERROR"
 	prof_1 = json.loads(json.loads(strsd));
-	prof_1['addr_region'] = migrations.region_name_cleaner(prof_1['addr_region'])
-	prof_1['farmer-primary_crop'] = migrations.crops_name_cleaner(prof_1['farmer-primary_crop'])
-	prof_1['farmer-fo_name_rapid']  = migrations.other_name_cleaner(prof_1['farmer-fo_name_rapid'])
-	prof_1['farmer_dip_ref']  = migrations.other_name_cleaner(prof_1['farmer_dip_ref'])
+	prof_1['addr_region'] = region_name_cleaner(prof_1['addr_region'])
+	prof_1['farmer-primary_crop'] = crops_name_cleaner(prof_1['farmer-primary_crop'])
+	prof_1['farmer-fo_name_rapid']  = other_name_cleaner(prof_1['farmer-fo_name_rapid'])
+	prof_1['farmer_dip_ref']  = other_name_cleaner(prof_1['farmer_dip_ref'])
 	prof_1['farmer_img_base64'] = "";
 	prof_1['SOURCE'] = "MOBILE";
 
