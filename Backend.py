@@ -144,7 +144,7 @@ def excel_popu():
 						# FROM_EXCEL_RPOFILES = FROM_EXCEL_RPOFILES + append_data_excel_mdata(_result,path)
 					except Exception as e:
 						print(" * Error in [{}] :: {}".format(path,e))
-						continue
+						# continue
 
 
 			f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "r")
