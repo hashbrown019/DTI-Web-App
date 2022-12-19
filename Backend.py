@@ -10,6 +10,7 @@ import random
 from tqdm import tqdm
 import warnings
 import csv
+import sys
 import pandas as pd
 # import threading
 # from multiprocessing import Pool, Process
@@ -35,7 +36,7 @@ def list_all_profile___():
 				except Exception as e:
 					print(e)
 	# res = excel_popu()
-	res = res + excel_popu()
+	# res = res + excel_popu()
 	random.shuffle(res)
 	return res
 
@@ -61,13 +62,31 @@ def profile_info_farmer(path):
 		prof_1["input_by"] = USER[0]
 	return prof_1
 
+
+# =========================================================
 def thread_chunking(args):
 	print(" ************* START thread_chunking")
 	all_data  =  list_all_profile___()
+	res = res + excel_popu()
 	f = open(c.RECORDS+"/profiles/farmer_profile.json", "w")
 	f.write(json.dumps(all_data))
 	f.close()
 	print(" ************* FINISHED thread_chunking")
+	pass
+
+
+
+def thread_chunking_append_excel(args):
+	print(" ************* START thread_chunking appending excel_popu ")
+	f = open(c.RECORDS+"/profiles/farmer_profile.json", "r")
+	__data = json.loads(f.read())
+	f.close()
+
+	all_data = __data + excel_popu()
+	f = open(c.RECORDS+"/profiles/farmer_profile.json", "w")
+	f.write(json.dumps(all_data))
+	f.close()
+	print(" ************* FINISHED thread_chunking appending excel_popu")
 	pass
 
 # ===============================================================
@@ -192,4 +211,13 @@ def other_name_cleaner(strs):
 	if(strs==""):strs = 'Untagged';
 	return strs.upper();
 
-thread_chunking(1)
+
+
+ 
+n = int(sys.argv[1])
+if(n==None):
+	print(" * No Argument defined")
+if(n==0):
+	thread_chunking(1)
+if(n==1):
+	thread_chunking_append_excel(1)
