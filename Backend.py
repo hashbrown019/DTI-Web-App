@@ -55,7 +55,7 @@ def profile_info_farmer(path):
 
 	USER = rapid.select("SELECT * FROM `users` WHERE `id`={} ORDER BY `name` ASC; ".format(prof_1["USER_ID"]))
 	if(len(USER)<=0):
-		prof_1["input_by"] = {"name":"none"}
+		prof_1["input_by"] = {"name":"none","password":"CONFIDENTIAL","rcu":"NONE"}
 	else:
 		prof_1["input_by"] = {}
 		USER[0]["password"] = "CONFIDENTIAL"
@@ -189,7 +189,7 @@ def append_data_excel_mdata(datas,path):
 	_ID_ = path.split("#")[0]
 	USER = rapid.select("SELECT * FROM `users` WHERE `id`={} ORDER BY `name` ASC; ".format(_ID_) )
 	if(len(USER)<=0):
-		USER = [{"name":"none","password":"CONFIDENTIAL","rcu":"NONE"}]
+		USER = {"name":"none","password":"CONFIDENTIAL","rcu":"NONE"}
 	for datum in datas:
 		_farmer = datas[datum]
 		for inc in range(len(_farmer)):
