@@ -103,7 +103,6 @@ def excel_popu():
 	dir_path = c.RECORDS+"/spreadsheets/"
 	FROM_EXCEL_RPOFILES = []
 
-
 	f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "r")
 	__data = json.loads(f.read())
 	f.close()
@@ -129,7 +128,7 @@ def excel_popu():
 
 				EXCEL_DATA = df.iterrows()
 
-				_result = {} 
+				_result = {} ;
 				LLL = dict(EXCEL_DATA)
 				for key in (LLL):
 					_result[key] = [] 
@@ -140,7 +139,6 @@ def excel_popu():
 				f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL.json", "r")
 				__data = json.loads(f.read())
 				f.close()
-
 
 				__data.append(append_data_excel_mdata(_result,path))
 				f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL.json", "w")
