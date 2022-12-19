@@ -281,5 +281,10 @@ elif(n=="excel"):
 	thread_chunking_append_excel(1)
 elif(n=="merge"):
 	merger_mobile_excel()
+elif(n=="all"):
+	init_excel_list_farmer()
+	thread_chunking(1)
+	thread_chunking_append_excel(1)
+	merger_mobile_excel()
 else:
 	print("not in options")
