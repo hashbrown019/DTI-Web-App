@@ -683,24 +683,29 @@
 		$ID("profile_list").addEventListener("scroll", prof_farmer_view_scroll);
 		async_num_farmer_count= 0;
 		for (var f_counter = 0;f_counter < ALL_FARMERS____.length;f_counter++) {
-			if(
-				filterByArea(ALL_FARMERS____[f_counter]) &&
-				filterByPrimaryCrop(ALL_FARMERS____[f_counter]) &&
-				filterByEnumArea(ALL_FARMERS____[f_counter]) &&
-				filterByFO(ALL_FARMERS____[f_counter]) &&
-				filterByDIP(ALL_FARMERS____[f_counter]) &&
-				filterByDataSource(ALL_FARMERS____[f_counter]) &&
-				filterBySearch(ALL_FARMERS____[f_counter])
-				){
-				make_ls_farmer(ALL_FARMERS____[f_counter],ALL_FARMERS____.length,f_counter);
-				RES_ALL_FARMER_PROF.push(ALL_FARMERS____[f_counter]);
-				popu_enumerator_encoded(ALL_FARMERS____[f_counter]);
-				FILTERED_ID_FARMERS.push(ALL_FARMERS____[f_counter]['farmer_code']);
-				$ID("scan_item").innerHTML = FILTER_total_recors_farmer_counter;
-				FILTER_total_recors_farmer_counter += 1;
-				dash_number(ALL_FARMERS____[f_counter]);
-				popu_data_prov_muni_brgy(ALL_FARMERS____[f_counter]);
+			try{
+				if(
+					filterByArea(ALL_FARMERS____[f_counter]) &&
+					filterByPrimaryCrop(ALL_FARMERS____[f_counter]) &&
+					filterByEnumArea(ALL_FARMERS____[f_counter]) &&
+					filterByFO(ALL_FARMERS____[f_counter]) &&
+					filterByDIP(ALL_FARMERS____[f_counter]) &&
+					filterByDataSource(ALL_FARMERS____[f_counter]) &&
+					filterBySearch(ALL_FARMERS____[f_counter])
+					){
+					make_ls_farmer(ALL_FARMERS____[f_counter],ALL_FARMERS____.length,f_counter);
+					RES_ALL_FARMER_PROF.push(ALL_FARMERS____[f_counter]);
+					popu_enumerator_encoded(ALL_FARMERS____[f_counter]);
+					FILTERED_ID_FARMERS.push(ALL_FARMERS____[f_counter]['farmer_code']);
+					$ID("scan_item").innerHTML = FILTER_total_recors_farmer_counter;
+					FILTER_total_recors_farmer_counter += 1;
+					dash_number(ALL_FARMERS____[f_counter]);
+					popu_data_prov_muni_brgy(ALL_FARMERS____[f_counter]);
+				}
+			}catch(e){
+				println(e)
 			}
+	
 		}
 		$ID("scan_item").innerHTML = FILTER_total_recors_farmer_counter;
 		$ID("profile_list").style.display = "block";
