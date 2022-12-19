@@ -112,7 +112,7 @@ def merger_mobile_excel():
 	EXCEL = json.loads(f.read())
 	f.close()
 
-	ALL_FARMER_DATA = EXCEL[0] + MOBILE
+	ALL_FARMER_DATA = EXCEL[1] + MOBILE
 
 	f = open(c.RECORDS+"/profiles/farmer_profile.json", "w")
 	f.write(json.dumps(ALL_FARMER_DATA))
@@ -175,7 +175,7 @@ def excel_popu():
 			f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "w")
 			f.write(json.dumps(sdf))
 			f.close()
-			
+
 		else:
 			loads_.desc = "Skipping || {}".format(path)
 			print("Skipping || {}".format(path))
