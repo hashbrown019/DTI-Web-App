@@ -256,5 +256,5 @@ if(n=="mobile"):
 	thread_chunking(1)
 if(n=="excel"):
 	thread_chunking_append_excel(1)
-if(n=="excel_list_init"):
+if(n=="init"):
 	init_excel_list_farmer()
