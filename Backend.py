@@ -122,29 +122,30 @@ def excel_popu():
 					sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
 					try:
 						df = pd.read_excel(io=file_name, sheet_name=sheet, engine='openpyxl')
+
+						EXCEL_DATA = df.iterrows()
+
+						_result = {} ;
+						LLL = dict(EXCEL_DATA)
+						for key in (LLL):
+							_result[key] = [] 
+							for val in LLL[key]:
+								_result[key].append(val)
+						del _result[0]
+
+						f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL.json", "r")
+						__data = json.loads(f.read())
+						f.close()
+
+						__data.append(append_data_excel_mdata(_result,path))
+						f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL.json", "w")
+						f.write(json.dumps(__data))
+						f.close()
+						# FROM_EXCEL_RPOFILES = FROM_EXCEL_RPOFILES + append_data_excel_mdata(_result,path)
 					except Exception as e:
 						print(" * Error in [{}] :: {}".format(path,e))
 						continue
 
-					EXCEL_DATA = df.iterrows()
-
-					_result = {} ;
-					LLL = dict(EXCEL_DATA)
-					for key in (LLL):
-						_result[key] = [] 
-						for val in LLL[key]:
-							_result[key].append(val)
-					del _result[0]
-
-					f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL.json", "r")
-					__data = json.loads(f.read())
-					f.close()
-
-					__data.append(append_data_excel_mdata(_result,path))
-					f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL.json", "w")
-					f.write(json.dumps(__data))
-					f.close()
-					# FROM_EXCEL_RPOFILES = FROM_EXCEL_RPOFILES + append_data_excel_mdata(_result,path)
 
 			f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "r")
 			sdf = json.loads(f.read())
