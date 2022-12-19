@@ -111,11 +111,11 @@ def merger_mobile_excel():
 	f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL.json", "r")
 	EXCEL = json.loads(f.read())
 	f.close()
-
-	ALL_FARMER_DATA = EXCEL[1] + MOBILE
-	print(len(EXCEL))
-	print(len(MOBILE))
-	return "--"
+	all_d_excel = []
+	for file_ex in EXCEL: #THIS LOOP IS created to  putl all record enc;osed to their file array excel
+		for ind_ex in fil_ex:
+			all_d_excel.append(ind_ex)
+	ALL_FARMER_DATA = all_d_excel + MOBILE
 	f = open(c.RECORDS+"/profiles/farmer_profile.json", "w")
 	f.write(json.dumps(ALL_FARMER_DATA))
 	f.close()
