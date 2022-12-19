@@ -77,14 +77,15 @@ def thread_chunking(args):
 
 def thread_chunking_append_excel(args):
 	print(" ************* START thread_chunking appending excel_popu ")
-	f = open(c.RECORDS+"/profiles/farmer_profile.json", "r")
-	__data = json.loads(f.read())
-	f.close()
+	excel_popu()
+	# f = open(c.RECORDS+"/profiles/farmer_profile.json", "r")
+	# __data = json.loads(f.read())
+	# f.close()
 
-	all_data = __data + excel_popu()
-	f = open(c.RECORDS+"/profiles/farmer_profile.json", "w")
-	f.write(json.dumps(all_data))
-	f.close()
+	# all_data = __data + excel_popu()
+	# f = open(c.RECORDS+"/profiles/farmer_profile.json", "w")
+	# f.write(json.dumps(all_data))
+	# f.close()
 	print(" ************* FINISHED thread_chunking appending excel_popu")
 	pass
 
@@ -118,10 +119,16 @@ def excel_popu():
 					for val in LLL[key]:
 						_result[key].append(val)
 				del _result[0]
-				f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL.json", "w")
-				f.write(json.dumps(all_data))
+
+				f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL.json", "r")
+				__data = json.loads(f.read())
 				f.close()
-				FROM_EXCEL_RPOFILES = FROM_EXCEL_RPOFILES + append_data_excel_mdata(_result,path)
+
+				__data.append(append_data_excel_mdata(_result,path))
+				f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL.json", "w")
+				f.write(json.dumps(__data))
+				f.close()
+				# FROM_EXCEL_RPOFILES = FROM_EXCEL_RPOFILES + append_data_excel_mdata(_result,path)
 
 	return (FROM_EXCEL_RPOFILES)
 	# return jsonify(FROM_EXCEL_RPOFILES)
