@@ -241,7 +241,7 @@ if(n==None):
 	print(" * No Argument defined")
 if(n=="mobile"):
 	thread_chunking(1)
-if(n=="c"):
+if(n=="excel"):
 	thread_chunking_append_excel(1)
 if(n=="excel_list_init"):
 	init_excel_list_farmer()
