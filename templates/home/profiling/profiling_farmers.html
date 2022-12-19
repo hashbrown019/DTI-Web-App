@@ -525,6 +525,7 @@
 	}
 
 	function filterByEnumArea(person){
+		println(person["input_by"])
 		var enum_area_= person["input_by"]["rcu"];
 		if(FILTER_SEL_ENUM_AREA=="all" ||FILTER_SEL_ENUM_AREA==undefined){SPINNER_LOADER.show();return true}
 		if(enum_area_==FILTER_SEL_ENUM_AREA){return true}
