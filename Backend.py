@@ -189,6 +189,7 @@ def append_data_excel_mdata(datas,path):
 	_ID_ = path.split("#")[0]
 	USER = rapid.select("SELECT * FROM `users` WHERE `id`={} ORDER BY `name` ASC; ".format(_ID_) )
 	if(len(USER)<=0):
+		print(" * No User Acc Linked")
 		USER = [{"name":"none","password":"CONFIDENTIAL","rcu":"NONE"}]
 	for datum in datas:
 		_farmer = datas[datum]
