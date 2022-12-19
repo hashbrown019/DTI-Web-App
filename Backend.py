@@ -113,47 +113,49 @@ def excel_popu():
 	for path in loads_:
 		PATH__ = os.path.join(dir_path, path)
 		loads_.desc = path
-		if(path in __data):continue;
-		if os.path.isfile(PATH__):
-			if PATH__.find("._DELETED_FILE_")<0:	
-				# print(PATH__)
-				file_name =  PATH__ # path to file + file name
-				# file_name =  c.RECORDS+"/spreadsheets/93#2022-09-19#NSAMAR_vc_a_1.xlsx" # path to file + file name
-				sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
-				try:
-					df = pd.read_excel(io=file_name, sheet_name=sheet, engine='openpyxl')
-				except Exception as e:
-					print(" * Error in [{}] :: {}".format(path,e))
-					continue
+		if(path not in __data):continue;
 
-				EXCEL_DATA = df.iterrows()
 
-				_result = {} ;
-				LLL = dict(EXCEL_DATA)
-				for key in (LLL):
-					_result[key] = [] 
-					for val in LLL[key]:
-						_result[key].append(val)
-				del _result[0]
+			if os.path.isfile(PATH__):
+				if PATH__.find("._DELETED_FILE_")<0:	
+					# print(PATH__)
+					file_name =  PATH__ # path to file + file name
+					# file_name =  c.RECORDS+"/spreadsheets/93#2022-09-19#NSAMAR_vc_a_1.xlsx" # path to file + file name
+					sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
+					try:
+						df = pd.read_excel(io=file_name, sheet_name=sheet, engine='openpyxl')
+					except Exception as e:
+						print(" * Error in [{}] :: {}".format(path,e))
+						continue
 
-				f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL.json", "r")
-				__data = json.loads(f.read())
-				f.close()
+					EXCEL_DATA = df.iterrows()
 
-				__data.append(append_data_excel_mdata(_result,path))
-				f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL.json", "w")
-				f.write(json.dumps(__data))
-				f.close()
-				# FROM_EXCEL_RPOFILES = FROM_EXCEL_RPOFILES + append_data_excel_mdata(_result,path)
+					_result = {} ;
+					LLL = dict(EXCEL_DATA)
+					for key in (LLL):
+						_result[key] = [] 
+						for val in LLL[key]:
+							_result[key].append(val)
+					del _result[0]
 
-		f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "r")
-		sdf = json.loads(f.read())
-		f.close()
+					f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL.json", "r")
+					__data = json.loads(f.read())
+					f.close()
 
-		sdf.append(path)
-		f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "w")
-		f.write(json.dumps(sdf))
-		f.close()
+					__data.append(append_data_excel_mdata(_result,path))
+					f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL.json", "w")
+					f.write(json.dumps(__data))
+					f.close()
+					# FROM_EXCEL_RPOFILES = FROM_EXCEL_RPOFILES + append_data_excel_mdata(_result,path)
+
+			f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "r")
+			sdf = json.loads(f.read())
+			f.close()
+
+			sdf.append(path)
+			f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "w")
+			f.write(json.dumps(sdf))
+			f.close()
 
 		LS_COUNTER = LS_COUNTER + 1
 	return (FROM_EXCEL_RPOFILES)
