@@ -113,7 +113,7 @@ def merger_mobile_excel():
 	f.close()
 	all_d_excel = []
 	for file_ex in EXCEL: #THIS LOOP IS created to  putl all record enc;osed to their file array excel
-		for ind_ex in fil_ex:
+		for ind_ex in file_ex:
 			all_d_excel.append(ind_ex)
 	ALL_FARMER_DATA = all_d_excel + MOBILE
 	f = open(c.RECORDS+"/profiles/farmer_profile.json", "w")
