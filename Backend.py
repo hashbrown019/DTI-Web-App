@@ -97,8 +97,12 @@ def init_excel_list_farmer():
 	f.close()
 
 def excel_popu():
+	dir_path = c.RECORDS+"/spreadsheets/"
 	FROM_EXCEL_RPOFILES = []
-	loads_ = tqdm(os.listdir(dir_path))
+	f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "r")
+	__data = json.loads(f.read())
+	f.close()
+	loads_ = tqdm(__data)
 	for path in loads_:
 		PATH__ = os.path.join(dir_path, path)
 		loads_.desc = path
@@ -133,7 +137,10 @@ def excel_popu():
 				f.write(json.dumps(__data))
 				f.close()
 				# FROM_EXCEL_RPOFILES = FROM_EXCEL_RPOFILES + append_data_excel_mdata(_result,path)
-
+		__data.remove(path)
+		f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "w")
+		f.write(json.dumps(__data))
+		f.close()
 	return (FROM_EXCEL_RPOFILES)
 	# return jsonify(FROM_EXCEL_RPOFILES)
 
