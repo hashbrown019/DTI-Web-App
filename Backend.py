@@ -67,7 +67,6 @@ def profile_info_farmer(path):
 def thread_chunking(args):
 	print(" ************* START thread_chunking")
 	all_data  =  list_all_profile___()
-	res = res + excel_popu()
 	f = open(c.RECORDS+"/profiles/farmer_profile.json", "w")
 	f.write(json.dumps(all_data))
 	f.close()
