@@ -111,9 +111,9 @@ def excel_popu():
 	loads_ = tqdm(os.listdir(dir_path))
 	LS_COUNTER = 0
 	for path in loads_:
-		PATH__ = os.path.join(dir_path, path)
-		loads_.desc = path
 		if(path not in __data):
+			PATH__ = os.path.join(dir_path, path)
+			loads_.desc = path
 			if os.path.isfile(PATH__):
 				if PATH__.find("._DELETED_FILE_")<0:	
 					# print(PATH__)
@@ -155,6 +155,7 @@ def excel_popu():
 			f.write(json.dumps(sdf))
 			f.close()
 		else:
+			loads_.desc = "Skipping || {}".format(path)
 			pass
 
 		LS_COUNTER = LS_COUNTER + 1
