@@ -98,6 +98,10 @@ def init_excel_list_farmer():
 	f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL.json", "w")
 	f.write(json.dumps([]))
 	f.close()
+	
+	f = open(c.RECORDS+"/profiles/farmer_profile.json", "w")
+	f.write(json.dumps([]))
+	f.close()
 
 def merger_mobile_excel():
 	ff = open(c.RECORDS+"/profiles/farmer_profile.json", "r")
