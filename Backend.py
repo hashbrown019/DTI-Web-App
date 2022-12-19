@@ -99,6 +99,22 @@ def init_excel_list_farmer():
 	f.write(json.dumps([]))
 	f.close()
 
+def merger_mobile_excel():
+	ff = open(c.RECORDS+"/profiles/farmer_profile.json", "r")
+	MOBILE = json.loads(ff.read())
+	ff.close()
+
+	f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL.json", "r")
+	EXCEL = json.loads(f.read())
+	f.close()
+
+	ALL_FARMER_DATA = EXCEL + MOBILE
+
+	f = open(c.RECORDS+"/profiles/farmer_profile.json", "w")
+	f.write(json.dumps(ALL_FARMER_DATA))
+	f.close()
+	pass
+
 def excel_popu():
 	dir_path = c.RECORDS+"/spreadsheets/"
 	FROM_EXCEL_RPOFILES = []
@@ -257,9 +273,11 @@ def other_name_cleaner(strs):
 n = (sys.argv[1])
 if(n==None):
 	print(" * No Argument defined")
+if(n=="init"):
+	init_excel_list_farmer()
 if(n=="mobile"):
 	thread_chunking(1)
 if(n=="excel"):
 	thread_chunking_append_excel(1)
-if(n=="init"):
-	init_excel_list_farmer()
+if(n=="merge"):
+	merger_mobile_excel()
