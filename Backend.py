@@ -103,6 +103,7 @@ def excel_popu():
 	__data = json.loads(f.read())
 	f.close()
 	loads_ = tqdm(__data)
+	LS_COUNTER = 0
 	for path in loads_:
 		PATH__ = os.path.join(dir_path, path)
 		loads_.desc = path
@@ -137,10 +138,11 @@ def excel_popu():
 				f.write(json.dumps(__data))
 				f.close()
 				# FROM_EXCEL_RPOFILES = FROM_EXCEL_RPOFILES + append_data_excel_mdata(_result,path)
-		__data.remove(path)
+		del __data[LS_COUNTER]
 		f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "w")
 		f.write(json.dumps(__data))
 		f.close()
+		LS_COUNTER = LS_COUNTER + 1
 	return (FROM_EXCEL_RPOFILES)
 	# return jsonify(FROM_EXCEL_RPOFILES)
 
@@ -239,7 +241,7 @@ if(n==None):
 	print(" * No Argument defined")
 if(n=="mobile"):
 	thread_chunking(1)
-if(n=="excel"):
+if(n=="c"):
 	thread_chunking_append_excel(1)
 if(n=="excel_list_init"):
 	init_excel_list_farmer()
