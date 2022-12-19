@@ -156,6 +156,7 @@ def excel_popu():
 			f.close()
 		else:
 			loads_.desc = "Skipping || {}".format(path)
+			print("Skipping || {}".format(path))
 			pass
 
 		LS_COUNTER = LS_COUNTER + 1
