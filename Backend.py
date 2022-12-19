@@ -90,9 +90,13 @@ def thread_chunking_append_excel(args):
 	pass
 
 # ===============================================================
+def init_excel_list_farmer():
+	dir_path = c.RECORDS+"/spreadsheets/"
+	f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "w")
+	f.write(json.dumps(os.listdir(dir_path)))
+	f.close()
 
 def excel_popu():
-	dir_path = c.RECORDS+"/spreadsheets/"
 	FROM_EXCEL_RPOFILES = []
 	loads_ = tqdm(os.listdir(dir_path))
 	for path in loads_:
@@ -223,10 +227,12 @@ def other_name_cleaner(strs):
 
 
  
-n = int(sys.argv[1])
+n = (sys.argv[1])
 if(n==None):
 	print(" * No Argument defined")
-if(n==0):
+if(n=="mobile"):
 	thread_chunking(1)
-if(n==1):
+if(n=="excel"):
 	thread_chunking_append_excel(1)
+if(n=="excel_list_init"):
+	init_excel_list_farmer()
