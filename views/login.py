@@ -18,7 +18,12 @@ class _main:
 
 	@app.route("/login",methods=["POST","GET"])
 	def login():
-		# return render_template("SITE_OFF.html") # MAINTENANCE
+		return render_template("SITE_OFF.html") # MAINTENANCE
+		return render_template("login/login.html")
+
+
+	@app.route("/login_dev_test",methods=["POST","GET"])
+	def login_dev_test():
 		return render_template("login/login.html")
 
 	@app.route("/login_new",methods=["POST","GET"])

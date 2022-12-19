@@ -118,7 +118,10 @@ def excel_popu():
 					for val in LLL[key]:
 						_result[key].append(val)
 				del _result[0]
-				FROM_EXCEL_RPOFILES = FROM_EXCEL_RPOFILES +append_data_excel_mdata(_result,path)
+				f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL.json", "w")
+				f.write(json.dumps(all_data))
+				f.close()
+				FROM_EXCEL_RPOFILES = FROM_EXCEL_RPOFILES + append_data_excel_mdata(_result,path)
 
 	return (FROM_EXCEL_RPOFILES)
 	# return jsonify(FROM_EXCEL_RPOFILES)
