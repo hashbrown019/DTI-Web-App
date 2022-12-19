@@ -273,11 +273,13 @@ def other_name_cleaner(strs):
 n = (sys.argv[1])
 if(n==None):
 	print(" * No Argument defined")
-if(n=="init"):
+elif(n=="init"):
 	init_excel_list_farmer()
-if(n=="mobile"):
+elif(n=="mobile"):
 	thread_chunking(1)
-if(n=="excel"):
+elif(n=="excel"):
 	thread_chunking_append_excel(1)
-if(n=="merge"):
+elif(n=="merge"):
 	merger_mobile_excel()
+else:
+	print("not in options")
