@@ -155,7 +155,7 @@ def excel_popu():
 			f.write(json.dumps(sdf))
 			f.close()
 		else:
-			passs
+			pass
 
 		LS_COUNTER = LS_COUNTER + 1
 	return (FROM_EXCEL_RPOFILES)
