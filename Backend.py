@@ -91,22 +91,30 @@ def thread_chunking_append_excel(args):
 
 # ===============================================================
 def init_excel_list_farmer():
-	dir_path = c.RECORDS+"/spreadsheets/"
 	f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "w")
-	f.write(json.dumps(os.listdir(dir_path)))
+	f.write(json.dumps([]))
+	f.close()
+
+	f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL.json", "w")
+	f.write(json.dumps([]))
 	f.close()
 
 def excel_popu():
 	dir_path = c.RECORDS+"/spreadsheets/"
 	FROM_EXCEL_RPOFILES = []
+
+
 	f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "r")
 	__data = json.loads(f.read())
 	f.close()
-	loads_ = tqdm(__data)
+
+
+	loads_ = tqdm(os.listdir(dir_path))
 	LS_COUNTER = 0
 	for path in loads_:
 		PATH__ = os.path.join(dir_path, path)
 		loads_.desc = path
+		if(path in __data):continue;
 		if os.path.isfile(PATH__):
 			if PATH__.find("._DELETED_FILE_")<0:	
 				# print(PATH__)
@@ -133,15 +141,22 @@ def excel_popu():
 				__data = json.loads(f.read())
 				f.close()
 
+
 				__data.append(append_data_excel_mdata(_result,path))
 				f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL.json", "w")
 				f.write(json.dumps(__data))
 				f.close()
 				# FROM_EXCEL_RPOFILES = FROM_EXCEL_RPOFILES + append_data_excel_mdata(_result,path)
-		del __data[LS_COUNTER]
-		f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "w")
-		f.write(json.dumps(__data))
+
+		f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "r")
+		sdf = json.loads(f.read())
 		f.close()
+
+		sdf.append(path)
+		f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "w")
+		f.write(json.dumps(sdf))
+		f.close()
+
 		LS_COUNTER = LS_COUNTER + 1
 	return (FROM_EXCEL_RPOFILES)
 	# return jsonify(FROM_EXCEL_RPOFILES)
