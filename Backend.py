@@ -113,9 +113,7 @@ def excel_popu():
 	for path in loads_:
 		PATH__ = os.path.join(dir_path, path)
 		loads_.desc = path
-		if(path not in __data):continue;
-
-
+		if(path not in __data):
 			if os.path.isfile(PATH__):
 				if PATH__.find("._DELETED_FILE_")<0:	
 					# print(PATH__)
@@ -156,6 +154,8 @@ def excel_popu():
 			f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "w")
 			f.write(json.dumps(sdf))
 			f.close()
+		else:
+			passs
 
 		LS_COUNTER = LS_COUNTER + 1
 	return (FROM_EXCEL_RPOFILES)
