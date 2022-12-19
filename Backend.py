@@ -113,7 +113,8 @@ def merger_mobile_excel():
 	f.close()
 
 	ALL_FARMER_DATA = EXCEL[1] + MOBILE
-
+	print(len(EXCEL))
+	print(len(MOBILE))
 	f = open(c.RECORDS+"/profiles/farmer_profile.json", "w")
 	f.write(json.dumps(ALL_FARMER_DATA))
 	f.close()
