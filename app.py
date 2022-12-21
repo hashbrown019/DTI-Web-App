@@ -9,6 +9,8 @@ c._USER = c.SERVER_USER
 c._PASSWORD = c.SERVER_PASSWORD
 c._DATABASE = c.SERVER_DATABASE
 
+print(" * Providing Imports Flask app")
+
 from flask import Flask, session, jsonify, request, redirect
 from flask_cors import CORS,cross_origin
 from flask_minify import Minify
@@ -27,6 +29,7 @@ from templates.home.form_c import excel_migration as e_m
 # import sms_main as gsm
 c.PORT = 80
 
+print(" * Creating Flask app")
 
 app = Flask(__name__)
 Minify(app=app, html=True, js=True, cssless=True, static=True)
@@ -36,6 +39,9 @@ app.secret_key=c.SECRET_KEY
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['JSON_SORT_KEYS'] = False
+
+
+print(" * Registring blueprints on  Flask app")
 
 app.register_blueprint(home.app)
 app.register_blueprint(login.app)
@@ -51,5 +57,7 @@ Globals_(app)
 
 @app.route("/")
 def index():return redirect("/login")
+
+print(" * Running Flask app")
 
 app.run()
