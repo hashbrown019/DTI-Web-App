@@ -60,4 +60,4 @@ def index():return redirect("/login")
 
 print(" * Running Flask app")
 
-app.run()
+app.run(host="0.0.0.0")
