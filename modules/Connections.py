@@ -1,4 +1,4 @@
-import mysql.connector as connects
+# import mysql.connector as connects # TEMPORARY DISABLED
 import sqlite3
 import socket
 
