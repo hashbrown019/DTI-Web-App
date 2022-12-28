@@ -17,15 +17,15 @@ IS_DEBUG = True
 SQLITE_DB_LOCAL = "assets/DB/dti_rapidxi.db"
 SQLITE_DB_SERVER = "/var/www/html/DTI-Web-App/assets/DB/dti_rapidxi.db"
 
-RECORDS_SERVER = "/var/www/html/DTI-Web-App/assets/records/"
+RECORDS_SERVER = "/var/www/html/DTI-Web-App/assets/records"
 # SQLITE_DB_SERVER = "/home/crisnotbrown/DTI-Web-App/assets/DB/dti_rapidxi.db"
 SQLITE_DB = "none"
 
 RECORDS_LOCAL = "assets/records/"
 SQLITE_DB_SERVER = "/var/www/html/DTI-Web-App/assets/DB/dti_rapidxi.db"
 
-RECORDS_SERVER = "/var/www/html/DTI-Web-App/assets/records/"
-# RECORDS_SERVER = "/home/crisnotbrown/DTI-Web-App/assets/records/"
+RECORDS_SERVER = "/var/www/html/DTI-Web-App/assets/records"
+# RECORDS_SERVER = "/home/crisnotbrown/DTI-Web-App/assets/records"
 RECORDS = "none"
 
 
