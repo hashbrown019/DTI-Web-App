@@ -83,3 +83,6 @@ __STORE = {}
 # 	"show_rel_path": true,
 # 	"show_project_first": true,
 # }
+
+
+# sudo rsync -a --info=progress2 --ignore-existing "dtirapid@ssh.pythonanywhere.com:DTI-Web-App/assets/*" "/var/www/html/DTI-Web-App/assets/"
