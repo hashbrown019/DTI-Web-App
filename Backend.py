@@ -136,6 +136,7 @@ def excel_popu():
 		if(path not in __data):
 			PATH__ = os.path.join(dir_path, path)
 			loads_.desc = path
+			farmer_profile_EXCEL_LIST(path)
 			if os.path.isfile(PATH__):
 				if PATH__.find("._DELETED_FILE_")<0:	
 					# print(PATH__)
@@ -167,17 +168,6 @@ def excel_popu():
 					except Exception as e:
 						print(" * Error in [{}] :: {}".format(path,e))
 						continue
-
-
-			f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "r")
-			sdf = json.loads(f.read())
-			f.close()
-
-			sdf.append(path)
-			f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "w")
-			f.write(json.dumps(sdf))
-			f.close()
-
 		else:
 			loads_.desc = "Skipping || {}".format(path)
 			print("Skipping || {}".format(path))
@@ -187,6 +177,15 @@ def excel_popu():
 	return (FROM_EXCEL_RPOFILES)
 	# return jsonify(FROM_EXCEL_RPOFILES)
 
+def farmer_profile_EXCEL_LIST(path):
+		f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "r")
+		sdf = json.loads(f.read())
+		f.close()
+
+		sdf.append(path)
+		f = open(c.RECORDS+"/profiles/farmer_profile_EXCEL_LIST.json", "w")
+		f.write(json.dumps(sdf))
+		f.close()
 
 
 def append_data_excel_mdata(datas,path):
