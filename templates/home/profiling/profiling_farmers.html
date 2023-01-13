@@ -626,6 +626,19 @@
 	}
 
 	var LS__PROF;
+	// function get_list_file(){ // For Inititalizing list in profiling/profiling_farmers.html
+	// 	// return //REMOVED FOR DEVELOPMENT ?? REMOVE THIS TO LOAD THE DATA
+	// 	SPINNER_LOADER.show()
+	// 	var misrg = localStorage.getItem("misrg");
+	// 	ALL_FARMERS = JSON.parse(misrg)
+
+	// 	$ID("prof_farmer_count_all").innerHTML = ALL_FARMERS.length
+	// 	enumerator_encoded_num = {}
+	// 	populate_farm_list_for_numbers(ALL_FARMERS)
+	// 	get_last_farmer_data_date()
+	// 	conso_all(ALL_FARMERS)
+	// }
+
 	function get_list_file(){ // For Inititalizing list in profiling/profiling_farmers.html
 		// return //REMOVED FOR DEVELOPMENT ?? REMOVE THIS TO LOAD THE DATA
 		SPINNER_LOADER.show()
@@ -634,6 +647,9 @@
 			method: POST,
 			func : function(res){
 				ALL_FARMERS = JSON.parse(res)
+				localStorage.setItem("misrg", ALL_FARMERS);
+				var misrg = localStorage.getItem("misrg");
+			
 				$ID("prof_farmer_count_all").innerHTML = ALL_FARMERS.length
 				enumerator_encoded_num = {}
 				populate_farm_list_for_numbers(ALL_FARMERS)

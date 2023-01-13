@@ -19,17 +19,19 @@ class _main:
 	@app.route("/login",methods=["POST","GET"])
 	def login():
 		# return render_template("SITE_OFF.html") # MAINTENANCE
-		return render_template("login/login.html")
+		# return render_template("login/login.html") # OLD LOGIN
+		return redirect("/login_v2023")
 
 
 	@app.route("/login_dev_test",methods=["POST","GET"])
+	@app.route("/dev_test",methods=["POST","GET"])
 	def login_dev_test():
 		return render_template("login/login.html")
 
-	@app.route("/login_new",methods=["POST","GET"])
-	def login_new():
+	@app.route("/login_v2023",methods=["POST","GET"])
+	def login_v2023():
 		# return render_template("SITE_OFF.html") # MAINTENANCE
-		return render_template("login/login_new.html")
+		return render_template("login/login_v2.html")
 
 	@app.route("/login_auth",methods=["POST"])
 	def login_auth():

@@ -16,6 +16,9 @@ class _main:
 
 	def __init__(self, arg):super(_main, self).__init__();self.arg = arg
 
+
+	# ======================================================================================================
+
 	@app.route("/home",methods=["POST","GET"])
 	def home():
 		return redirect("/homepage#1")
@@ -28,7 +31,23 @@ class _main:
 			return render_template("home/home.html",USER_DATA = session["USER_DATA"][0])
 		else:
 			return redirect("/login?force_url=1")
+	# =====================================================================================================
 
+	@app.route("/home_v2",methods=["POST","GET"])
+	def home_v2():
+		return redirect("/homepage_v2#1")
+
+
+	@app.route("/homepage_v2",methods=["POST","GET"])
+	def homepage_v2():
+		# return render_template("SITE_OFF.html") # MAINTENANCE
+		if(_main.is_on_session()):
+			return render_template("home_v2/home_v2.html",USER_DATA = session["USER_DATA"][0])
+		else:
+			return redirect("/login?force_url=1")
+
+
+	# =====================================================================================================
 	@app.route("/get_sub_form_a_template",methods=["POST","GET"]) # GETS the Fulll data of Farmer
 	def get_sub_form_a_template():
 		page = request.form['subform_temp']

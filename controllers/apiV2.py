@@ -14,6 +14,8 @@ from tqdm import tqdm
 # import threading
 # from multiprocessing import Pool, Process
 import asyncio
+import compress_json
+import gzip
 
 app = Blueprint("apiV2",__name__)
 cors = CORS(app)
@@ -151,10 +153,19 @@ class _main:
 		chunck_farmer_profile = c.RECORDS+"/profiles/farmer_profile.json"
 		file_stats = os.stat(chunck_farmer_profile)
 		all_data = _main.get_alldata_from_shrink_data_file()
-		resp = Response(all_data)
+
+		# resp = Response(all_data)
+		# resp.headers['Content-Length'] = file_stats.st_size
+		# resp.headers['X-File-Length'] = file_stats.st_size
+		# resp.headers['total'] = file_stats.st_size
+
+		content = gzip.compress(all_data.encode('utf8'), 5)
+		resp = Response(content)
+		print(len(content)/1000000)
 		resp.headers['Content-Length'] = file_stats.st_size
 		resp.headers['X-File-Length'] = file_stats.st_size
 		resp.headers['total'] = file_stats.st_size
+		resp.headers['Content-Encoding'] = 'gzip'
 		return resp
 
 	@app.route("/api/v2/farmer_chunk_data_date",methods=["POST","GET"])

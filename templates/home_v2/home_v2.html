@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link href="static/bootstrap-4.0.0-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/styles_home_v2.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="card" >
+       <div class="card__image-container">
+         <img class="card__image" src="static/img/icons.jpg" alt="">
+      </div>
+        
+        <svg class="card__svg" viewBox="0 0 800 400">
+  
+          <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333"/>
+          <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
+        </svg>
+      
+       <div class="card__content" >
+        
+         <p class="card__title">PROFILING</p>
+         <ul>
+         
+            <li><strong>FORM A</strong> Farmer</li>
+      
+            <li><strong>FORM B</strong> Farmer Organization</li>
+
+            <li><strong>FORM C</strong>  MSME</li>
+          </ul>
+          <div id="button-container">
+            <button class="primary-button" data-toggle="modal" data-target="#profilingmodal">
+              Open
+              <span class="round"></span>
+            </button>
+          </div>
+      </div>
+    </div>
+
+    <div class="card dcf ">
+        <div class="card__image-container">
+          <img class="card__image" src="static/img/icons2.png" alt="">
+       </div>
+         
+       <svg class="card__svg" viewBox="0 0 800 400">
+   
+           <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333"/>
+           <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
+         </svg>
+       
+        <div class="card__content ">
+          <p class="card__title">DATA CAPTURE FORM</p>
+          <ul>
+          
+             <li>Trade Promotion Service</li>
+             <li>Product Development Consultancy Services</li>
+             <li>Product Development Consultancy Services Matching Grant Implementation Tracker</li>
+             <li>Equity Financing Tracker</li>
+             <li>DIP Preparation and Approval Tracker</li>
+             <li>Enablers Activity Tracker</li>
+           </ul>
+           <div id="button-container">
+            <button class="primary-button" data-toggle="modal" data-target="#dcfmodal">
+              Open
+              <span class="round"></span>
+            </button>
+          </div>
+       </div>
+     </div>
+
+     <div class="card fmi">
+        <div class="card__image-container">
+          <img class="card__image" src="static/img/icons3.png" alt="">
+       </div>
+         
+       <svg class="card__svg" viewBox="0 0 800 400">
+   
+           <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333"/>
+           <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
+         </svg>
+       
+        <div class="card__content">
+          <h6 class="card__title">FMI</h6>
+          <ul>
+          
+             <li></li>
+       
+             <li></li>
+ 
+             <li></li>
+           </ul>
+           <div id="button-container">
+            <button class="primary-button" data-toggle="modal" data-target="#fmimodal">
+              Open
+              <span class="round"></span>
+            </button>
+          </div>
+       </div>
+     </div>
+
+     
+     <div class="card fund">
+        <div class="card__image-container">
+          <img class="card__image" src="static/img/icons4.png" alt="">
+       </div>
+         
+       <svg class="card__svg" viewBox="0 0 800 400">
+   
+           <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#333"/>
+           <path class="card__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent"/>
+         </svg>
+       
+        <div class="card__content">
+          <p class="card__title">FUND TRACKER</p>
+          <ul>
+             <li></li>
+       
+             <li></li>
+ 
+             <li></li>
+           </ul>
+           <div id="button-container">
+            <button class="primary-button"  data-toggle="modal" data-target="#fundmodal">
+              Open
+              <span class="round"></span>
+            </button>
+          </div>
+       </div>
+     </div>
+    </div>
+
+ 
+<div class="modal fade" id="profilingmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modalprof modal-header " >
+        <h4 class="modal-title w-100 text-center" id="exampleModalLongTitle">PROFILING</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="profiling-bt">
+              <a href="#" class="btn-flip1" data-back="Farmer" data-front="Form A"></a>
+              <a href="#" class="btn-flip2" data-back="Farmer Organization" data-front="Form B"></a>
+              <a href="#" class="btn-flip3" data-back="MSME" data-front="Form C"></a>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="dcfmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-lg modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modaldcf modal-header " >
+        <h4 class="modal-title w-100 text-center" id="exampleModalLongTitle">DATA CAPTURE FORM</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="dcf-bt">
+              <a href="#" class="btn-dcf1">Trade Promotion Service</a>
+              <a href="#" class="btn-dcf2">Product Development Consultancy Services</a>
+              <a href="#" class="btn-dcf3">Matching Grant Implementation Tracker</a>
+              <a href="#" class="btn-dcf4">Equity Financing Tracker</a>
+              <a href="#" class="btn-dcf5">DIP Preparation and Approval Tracker</a>
+              <a href="#" class="btn-dcf6">Enablers Activity Tracker</a>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="modal fade" id="fundmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modalprof modal-header " >
+            <h4 class="modal-title w-100 text-center" id="exampleModalLongTitle">Title</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+   
+            </button>
+          </div>
+          <div class="modal-body">
+              <div class="fund-bt">
+             
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="fmimodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modalprof modal-header " >
+            <h4 class="modal-title w-100 text-center" id="exampleModalLongTitle">Title</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+   
+            </button>
+          </div>
+          <div class="modal-body">
+              <div class="fmi-bt">
+                  
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="static/jquery-3.5.1.min.js"></script>
+  <script src="static/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+  </body>
+  

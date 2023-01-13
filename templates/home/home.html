@@ -31,24 +31,9 @@
 				</button>
 				{% if USER_DATA['job'] != "Enumerator" %}
 				<button class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(2)">
-					<b class="x-text-teal fa fa-map-signs"></b>&nbsp;&nbsp; FMI
-				</button>
-				<button class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(3)">
-					<b class="x-text-teal fa fa-calendar-check-o"></b>&nbsp;&nbsp; Activities
-				</button>
-				<button class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(4)">
-					<b class="x-text-teal fa fa-money"></b>&nbsp;&nbsp; Fund Tracker
-				</button>
-				<button class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(5)">
-					<b class="x-text-teal fa fa-book"></b>&nbsp;&nbsp; Documents/Archive
-				</button>
-				<button style="display:none" class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(6)">
-					<b class="x-text-teal fa fa-newspaper-o"></b>&nbsp;&nbsp; Newsletters
-				</button>
-				<button class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(7)">
 					<b class="x-text-teal fa fa-newspaper-o"></b>&nbsp;&nbsp; Data Capture Forms
 				</button>
-				<button class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(8)">
+				<button class="top_tab x-button _x-round-large x-padding-large x-text-black" onclick="go_tab(3)">
 					<b class="x-text-teal fa fa-cog"></b>&nbsp;&nbsp; Settings
 				</button>
 				{% else %}
@@ -67,7 +52,6 @@
 		 <!-- CONTENT BODY ---------------------------------------- -->
 		<div class="x-container"  style="padding-left: 10%;padding-right: 10%;">
 			<div class="body_content x-padding x-round" style="display:block;">
-				{% include 'home/dashboard1.html' %}
 				{% include 'home/maintenance.html' %}
 			</div>
 			<div class="body_content x-padding x-round" style="display:none;">
@@ -75,26 +59,6 @@
 			</div>
 			<!-- RESTRICTIONFOR ENUMERATORS -->
 			{% if USER_DATA['job'] != "Enumerator" %} 
-			<div class="body_content x-padding x-round" style="display:none;">
-				{% include 'home/fmi.html' %}
-				{% include 'home/maintenance.html' %}
-			</div>
-			<div class="body_content x-padding x-round" style="display:none;">
-				{% include 'home/activities.html' %}
-				{% include 'home/maintenance.html' %}
-			</div>
-			<div class="body_content x-padding x-round" style="display:none;">
-				{% include 'home/fund_tracker.html' %}
-				{% include 'home/maintenance.html' %}
-			</div>
-			<div class="body_content x-padding x-round" style="display:none;">
-				{% include 'home/documents.html' %}
-				{% include 'home/maintenance.html' %}
-			</div>
-			<div class="body_content x-padding x-round" style="display:none;">
-				{% include 'home/newsletters.html' %}		
-				{% include 'home/maintenance.html' %}
-			</div>
 			<div class="body_content x-padding x-round" style="display:none;">
 				{% include 'home/data_capture_forms.html' %}		
 				<!-- {% include 'home/maintenance.html' %} -->
