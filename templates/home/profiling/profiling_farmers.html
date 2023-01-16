@@ -186,7 +186,14 @@
 				<b class="x-text-teal x-padding">Farmer Profiles</b><br>
 				<div class="x-row x-container x-padding">
 					<span>Search</span><br>
-					<input id='data_search_farmer' class="x-search x-input x-border" type="search" name="" onkeyup="data_search_farmer(this.value)" placeholder="input Search Criteria Here">
+					<div class="x-container x-row">
+						<div class="x-col l10">
+							<input id='data_search_farmer' class="x-search x-input x-border" type="search" name="" placeholder="input Search Criteria Here">
+						</div>
+						<div class="x-col l2">
+							<button class="x-btn x-blue fa fa-search" onclick="data_search_farmer($ID('data_search_farmer').value)"><span></span> </button>
+						</div>
+					</div>
 					<i id="data_search_farmer_note" class="x-text-grey x-animate-fading" style="display: none;padding:2px"><b>Searching. . . .</b> </i>
 				</div>
 

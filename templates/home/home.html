@@ -82,8 +82,8 @@
 
 	<!-- ============================================================================= -->
 	<div id="__TEMPMODAL_EXCEL_" style="display:none;">
-		<div class="x-container x-bottombar">
-			<b class="x-text-blue">IMPORT</b>
+		<div class="x-padding x-container x-bottombar">
+			<b class="x-text-blue x-xlarge">IMPORT</b>
 			<div class="x-container">
 				<span>Profiling Form</span>
 				<div class="x-container x-row">
@@ -132,15 +132,19 @@
 				</div>
 			</div>
 		</div>
-		<div class="x-container">
-			<b class="x-text-orange">EXPORT</b>
+		<br>
+		<div class="x-padding x-container">
+			<b class="x-text-orange x-xlarge">EXPORT</b><br>
+			<i>
+				Note : Exporting may take a while to process. we the system will alert you once its ready
+			</i>
+			<hr>
+				<span>Exporting spreadsheet from your designated area (Region):</span> [<b>{{USER_DATA['rcu']}}</b>]
+			<hr>
 			<div class="x-container">
 				<span>Profiling Form</span>
 				<div class="x-container x-row">
-					<div class="x-container x-col l3 ">
-						<input class="x-input x-btn" type="file" name="">
-					</div>
-					<div class="x-container x-col l3 ">
+					<div class="x-container x-col l6 ">
 						<select class="x-input x-select">
 							<option> Form A (Farmers)</option>
 							<option> Form B (Farmers Org)</option>
@@ -148,7 +152,7 @@
 							<option>! Auto Detect !</option>
 						</select>
 					</div>
-					<div class="x-container x-col l3 ">
+					<div class="x-container x-col l6 ">
 						<button class="x-btn x-text-orange x-hover-orange x-border x-border-orange">
 							<b>Export Spreadsheet</b> | <span class="fa fa-download"></span>
 						</button>
@@ -159,10 +163,7 @@
 			<div class="x-container">
 				<span>Data Capture Form Form</span>
 				<div class="x-container x-row">
-					<div class="x-container x-col l3 ">
-						<input class="x-input x-btn" type="file" name="">
-					</div>
-					<div class="x-container x-col l3 ">
+					<div class="x-container x-col l6 ">
 						<select class="x-input x-select">
 							<option>DIP Preparational and Approval (Old Version)</option>
 							<option>Trade Promotion</option>
@@ -174,7 +175,7 @@
 							<option>! Auto Detect !</option>
 						</select>
 					</div>
-					<div class="x-container x-col l3 ">
+					<div class="x-container x-col l6 ">
 						<button class="x-btn x-text-orange x-hover-orange x-border x-border-orange">
 							<b>Export Spreadsheet</b> | <span class="fa fa-download"></span>
 						</button>
@@ -217,9 +218,11 @@
 			go_tab(parseInt(tab_id));
 		}
 
+
+		var _temp_modal_excel = $ID('__TEMPMODAL_EXCEL_')
+		var excel_mngr = _temp_modal_excel.innerHTML
+		_temp_modal_excel.remove()
 		function spreadsheet_manager(){
-			var _temp_modal_excel = $ID('__TEMPMODAL_EXCEL_')
-			var excel_mngr = _temp_modal_excel.innerHTML
 			_temp_modal_excel.remove()
 			var spredsh_mngr = $dialog({
 				title : "Spreadsheet Manager",
@@ -229,6 +232,7 @@
 
 			spredsh_mngr.show()
 		}
+
 
 		function conso(){
 			$send({
