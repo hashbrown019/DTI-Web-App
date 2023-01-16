@@ -9,13 +9,14 @@
 				</div>
 				<div class="x-container x-padding-large x-col l6 ">
 					<div class="x-container">
-						<img src="../static/img/user.png" class="x-img x-circle x-right" style="max-width:7%">
+						<!-- <img src="../static/img/user.png" class="x-img x-circle x-right" style="max-width:7%"> -->
 						<span class="x-container x-right">
-							<button class="x-btn x-border x-round" onclick="logout()"> <span class="x-text-red fa fa-power-off"></span> Logout</button>
+							<button class="x-btn x-border x-round x-border-green x-hover-green" onclick="spreadsheet_manager()"> <b class="x-text-green fa fa-file-excel-o"></b> Spreadsheet Manager</button>&nbsp;&nbsp;&nbsp;&nbsp;
 							<button class="x-btn x-border x-round">
-								{{USER_DATA['job']}}
+								{{USER_DATA['name']}} <b>|</b> <i>{{USER_DATA['rcu']}}:{{USER_DATA['pcu']}}</i> <b>|</b> {{USER_DATA['job']}}
 								<span class="x-text-yellow fa fa-user"></span>
 							</button>
+							<button class="x-btn x-border x-round" onclick="logout()"> <span class="x-text-red fa fa-power-off"></span> Logout</button>
 						</span>
 					</div>
 				</div>
@@ -78,6 +79,111 @@
 	<style>
 		#conso1_chart{width: 100%;height: 100vh;}
 	</style>
+
+	<!-- ============================================================================= -->
+	<div id="__TEMPMODAL_EXCEL_">
+		<div class="x-container x-bottombar">
+			<b class="x-text-blue">IMPORT</b>
+			<div class="x-container">
+				<span>Profiling Form</span>
+				<div class="x-container x-row">
+					<div class="x-container x-col l3 ">
+						<input id="export_file_profiling_name_path" class="x-input x-btn" type="file" name="">
+					</div>
+					<div class="x-container x-col l3 ">
+						<select id="export_file_profiling_type" class="x-input x-select">
+							<option> Form A (Farmers)</option>
+							<option> Form B (Farmers Org)</option>
+							<option> Form C (MSME)</option>
+							<option>! Auto Detect !</option>
+						</select>
+					</div>
+					<div class="x-container x-col l3 ">
+						<button class="x-btn x-text-blue x-hover-blue x-border x-border-blue">
+							<b>Import Spreadsheet</b> | <span class="fa fa-upload"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="x-container">
+				<span>Data Capture Form Form</span>
+				<div class="x-container x-row">
+					<div class="x-container x-col l3 ">
+						<input id="export_file_dcf_name" class="x-input x-btn" type="file" name="">
+					</div>
+					<div class="x-container x-col l3 ">
+						<select id="export_file_dcf_type" class="x-input x-select">
+							<option>DIP Preparational and Approval (Old Version)</option>
+							<option>Trade Promotion</option>
+							<option>Product Development</option>
+							<option>Matching Grant Tracker</option>
+							<option>Enablers Activity Tracker</option>
+							<option>Equity Tracker</option>
+							<option>DIP Preparation Tracker</option>
+							<option>! Auto Detect !</option>
+						</select>
+					</div>
+					<div class="x-container x-col l3 ">
+						<button class="x-btn x-text-blue x-hover-blue x-border x-border-blue">
+							<b>Import Spreadsheet</b> | <span class="fa fa-upload"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="x-container">
+			<b class="x-text-orange">EXPORT</b>
+			<div class="x-container">
+				<span>Profiling Form</span>
+				<div class="x-container x-row">
+					<div class="x-container x-col l3 ">
+						<input class="x-input x-btn" type="file" name="">
+					</div>
+					<div class="x-container x-col l3 ">
+						<select class="x-input x-select">
+							<option> Form A (Farmers)</option>
+							<option> Form B (Farmers Org)</option>
+							<option> Form C (MSME)</option>
+							<option>! Auto Detect !</option>
+						</select>
+					</div>
+					<div class="x-container x-col l3 ">
+						<button class="x-btn x-text-orange x-hover-orange x-border x-border-orange">
+							<b>Export Spreadsheet</b> | <span class="fa fa-download"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="x-container">
+				<span>Data Capture Form Form</span>
+				<div class="x-container x-row">
+					<div class="x-container x-col l3 ">
+						<input class="x-input x-btn" type="file" name="">
+					</div>
+					<div class="x-container x-col l3 ">
+						<select class="x-input x-select">
+							<option>DIP Preparational and Approval (Old Version)</option>
+							<option>Trade Promotion</option>
+							<option>Product Development</option>
+							<option>Matching Grant Tracker</option>
+							<option>Enablers Activity Tracker</option>
+							<option>Equity Tracker</option>
+							<option>DIP Preparation Tracker</option>
+							<option>! Auto Detect !</option>
+						</select>
+					</div>
+					<div class="x-container x-col l3 ">
+						<button class="x-btn x-text-orange x-hover-orange x-border x-border-orange">
+							<b>Export Spreadsheet</b> | <span class="fa fa-download"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<script type="text/javascript">
 
 		// _INIT_()
@@ -109,6 +215,19 @@
 			// conso()
 			var tab_id = (window.location.href).split("#")[1];
 			go_tab(parseInt(tab_id));
+		}
+
+		function spreadsheet_manager(){
+			var _temp_modal_excel = $ID('__TEMPMODAL_EXCEL_')
+			var excel_mngr = _temp_modal_excel.innerHTML
+			_temp_modal_excel.remove()
+			var spredsh_mngr = $dialog({
+				title : "Spreadsheet Manager",
+				subtitle : "Spreadsheet Manager for Profiling and Data Capture Forms",
+				content : excel_mngr
+			})
+
+			spredsh_mngr.show()
 		}
 
 		function conso(){
