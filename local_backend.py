@@ -18,6 +18,7 @@ import asyncio
 
 c.RECORDS=c.RECORDS_LOCAL
 c.SQLITE_DB=c.SQLITE_DB_LOCAL
+
 rapid= sqlite(c.SQLITE_DB)
 
 def list_all_profile___():

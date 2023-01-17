@@ -4,10 +4,10 @@
 	<body class="x-light-grey" onload="__init__()">
 		<header class="x-white x-container x-border" style="padding-left: 10%;padding-right: 10%;">
 			<div class="">
-				<div class="x-container x-col l6 ">
-					<img src="../static/img/rapidlogo1.jpg" class="x-image" style="max-width: 10%;">
+				<div class="x-container x-col l4 ">
+					<img src="../static/img/rapidlogo1.jpg" class="x-image" style="max-width: 15%;">
 				</div>
-				<div class="x-container x-padding-large x-col l6 ">
+				<div class="x-container x-padding-large x-col l8 ">
 					<div class="x-container">
 						<!-- <img src="../static/img/user.png" class="x-img x-circle x-right" style="max-width:7%"> -->
 						<span class="x-container x-right">
@@ -87,10 +87,10 @@
 			<div class="x-container">
 				<span>Profiling Form</span>
 				<div class="x-container x-row">
-					<div class="x-container x-col l3 ">
+					<div class="x-container x-col l4 ">
 						<input id="export_file_profiling_name_path" class="x-input x-btn" type="file" name="">
 					</div>
-					<div class="x-container x-col l3 ">
+					<div class="x-container x-col l4 ">
 						<select id="export_file_profiling_type" class="x-input x-select">
 							<option> Form A (Farmers)</option>
 							<option> Form B (Farmers Org)</option>
@@ -98,8 +98,8 @@
 							<option>! Auto Detect !</option>
 						</select>
 					</div>
-					<div class="x-container x-col l3 ">
-						<button class="x-btn x-text-blue x-hover-blue x-border x-border-blue">
+					<div class="x-container x-col l4 ">
+						<button onclick="temp_action()" class="x-btn x-text-blue x-hover-blue x-border x-border-blue">
 							<b>Import Spreadsheet</b> | <span class="fa fa-upload"></span>
 						</button>
 					</div>
@@ -109,10 +109,10 @@
 			<div class="x-container">
 				<span>Data Capture Form Form</span>
 				<div class="x-container x-row">
-					<div class="x-container x-col l3 ">
+					<div class="x-container x-col l4 ">
 						<input id="export_file_dcf_name" class="x-input x-btn" type="file" name="">
 					</div>
-					<div class="x-container x-col l3 ">
+					<div class="x-container x-col l4 ">
 						<select id="export_file_dcf_type" class="x-input x-select">
 							<option>DIP Preparational and Approval (Old Version)</option>
 							<option>Trade Promotion</option>
@@ -124,8 +124,8 @@
 							<option>! Auto Detect !</option>
 						</select>
 					</div>
-					<div class="x-container x-col l3 ">
-						<button class="x-btn x-text-blue x-hover-blue x-border x-border-blue">
+					<div class="x-container x-col l4 ">
+						<button onclick="temp_action()" class="x-btn x-text-blue x-hover-blue x-border x-border-blue">
 							<b>Import Spreadsheet</b> | <span class="fa fa-upload"></span>
 						</button>
 					</div>
@@ -153,7 +153,7 @@
 						</select>
 					</div>
 					<div class="x-container x-col l6 ">
-						<button class="x-btn x-text-orange x-hover-orange x-border x-border-orange">
+						<button onclick="temp_action()" class="x-btn x-text-orange x-hover-orange x-border x-border-orange">
 							<b>Export Spreadsheet</b> | <span class="fa fa-download"></span>
 						</button>
 					</div>
@@ -176,7 +176,7 @@
 						</select>
 					</div>
 					<div class="x-container x-col l6 ">
-						<button class="x-btn x-text-orange x-hover-orange x-border x-border-orange">
+						<button onclick="temp_action()" class="x-btn x-text-orange x-hover-orange x-border x-border-orange">
 							<b>Export Spreadsheet</b> | <span class="fa fa-download"></span>
 						</button>
 					</div>
@@ -221,16 +221,19 @@
 
 		var _temp_modal_excel = $ID('__TEMPMODAL_EXCEL_')
 		var excel_mngr = _temp_modal_excel.innerHTML
+		var spredsh_mngr = undefined
 		_temp_modal_excel.remove()
 		function spreadsheet_manager(){
 			_temp_modal_excel.remove()
-			var spredsh_mngr = $dialog({
+			spredsh_mngr = $dialog({
 				title : "Spreadsheet Manager",
 				subtitle : "Spreadsheet Manager for Profiling and Data Capture Forms",
 				content : excel_mngr
 			})
-
 			spredsh_mngr.show()
+		}
+		function temp_action(){
+			spredsh_mngr.remove()
 		}
 
 
