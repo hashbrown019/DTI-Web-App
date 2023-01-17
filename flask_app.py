@@ -15,6 +15,8 @@ from flask_minify import Minify
 
 from views import login
 from views import home
+from views import webrep
+
 from controllers import api
 from controllers import apiV2
 from controllers import migrations
@@ -42,6 +44,7 @@ app.register_blueprint(login.app)
 app.register_blueprint(api.app)
 app.register_blueprint(apiV2.app)
 app.register_blueprint(migrations.app)
+app.register_blueprint(webrep.app)
 
 app.register_blueprint(bp_c.app)
 app.register_blueprint(e_m.app)
