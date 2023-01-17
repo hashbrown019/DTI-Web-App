@@ -12,6 +12,7 @@ class _main:
 
 	def __init__(self, arg):super(_main, self).__init__();self.arg = arg
 
+	app.errorhandler(404)
 
 	# ======================================================================================================
 
@@ -19,37 +20,26 @@ class _main:
 	def home():
 		return render_template("webrep/home.html")
 
+	@app.route("/rapid/<_>",methods=["POST","GET"])
+	def home_(_):
+		if(_!="home.html"):
+			return _main._404(404)
+		return render_template("webrep/home.html")
+	# ===========================================================/
+
+	@app.route("/rapid/<segment>/<page>",methods=["POST","GET"])
+	def page_loader(segment,page):
+		_main.moderator(segment,page)
+		return render_template("webrep/{}/{}".format(segment,page))
+	# ==================================================================
 
 
-	@app.route("/rapid/knowledgecenter/<page>",methods=["POST","GET"])
-	def knowledgecenter(page):
-		print(page)
-		return render_template("webrep/knowledgecenter/{}".format(page))
+	@app.app_errorhandler(404)
+	def _404(err):
+		return render_template("webrep/error/404.html"), 404
 
 
-	@app.route("/rapid/publications/<page>",methods=["POST","GET"])
-	def publications(page):
-		print(page)
-		return render_template("webrep/publications/{}".format(page))
-
-
-	@app.route("/rapid/whatwedo/<page>",methods=["POST","GET"])
-	def whatwedo(page):
-		print(page)
-		return render_template("webrep/whatwedo/{}".format(page))
-
-
-	@app.route("/rapid/wherewework/<page>",methods=["POST","GET"])
-	def wherewework(page):
-		print(page)
-		return render_template("webrep/wherewework/{}".format(page))
-
-
-	@app.route("/rapid/whoweare/<page>",methods=["POST","GET"])
-	def whoweare(page):
-		print(page)
-		return render_template("webrep/whoweare/{}".format(page))
-
-
+	def moderator(segment,page):
+		pass
 
 		# /rapid/whatwedo/
