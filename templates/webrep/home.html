@@ -1,0 +1,661 @@
+	<!DOCTYPE html>
+
+<html>
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-890" lang="en-us">
+		<!-- Bootstrap CSS -->
+		<!-- <link rel="stylesheet" href="css/bootstrap.min.css">-->
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/w3.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&display=swap" rel="stylesheet">
+
+		<script src="js/jquery.min.js"></script>
+
+		<!-- CSS only -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+<!-- JavaScript Bundle with Popper -->
+		<script defer src="js/bs@5.2.3/bootstrap.bundle.min.js"></script>
+   		
+   		<script type="text/javascript" src="js/index.js"></script>
+
+		<title>DTI RAPID</title>
+	</head>
+
+
+<body>
+
+
+<!--NAVBAR-->
+<nav class="navbar navbar-expand-xl navbar-light bg-white fixed-top">
+	<div class="container">
+		<a class="navbar-brand mx-auto mx-sm-start" href="/rapid/home.html">
+				 <img src="img/RAPID.svg" width="150" height="110" class="" alt="home">
+			</a>
+
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			
+			<ul class="navbar-nav mx-auto ">
+
+				<li class="nav-item dropdown pr-2">
+						<a class="nav-link dropdown-toggle " href="whatWedo.html" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							What we do
+						</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="/rapid/whatwedo/whatWedoDD.html">Development Direction</a>
+						<a class="dropdown-item" href="/rapid/whatwedo/whatWedoDAB.html">Direction Assistance to Beneficiaries</a>
+						<a class="dropdown-item" href="/rapid/whatwedo/whatWedoIS.html">Institutional Strengthening</a>
+						<a class="dropdown-item" href="/rapid/whatwedo/whatWedoFSP.html">Technical Assistance to Financial Service Providers (FSPs)</a>
+						<a class="dropdown-item" href="/rapid/whatwedo/whatWedoPM.html">Project Management</a>
+						<a class="dropdown-item" href="/rapid/whatwedo/whatWedoRBM.html">RAPID Business Model</a>
+						<a class="dropdown-item" href="/rapid/whatwedo/whatWedoVC.html">Value Chain</a>
+					</div>
+				</li>
+
+				<li class="nav-item dropdown pr-2">
+						<a class="nav-link dropdown-toggle " href="/rapid/whoweare/whoweareHistory.html" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Who we are
+						</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="/rapid/whoweare/whoweareHistory.html">History</a>
+						<a class="dropdown-item" href="/rapid/whoweare/whoweareMMV.html">Mandate, Mission & Vission</a>
+						<a class="dropdown-item" href="/rapid/whoweare/whoweareORG.html">Organization</a>
+						<a class="dropdown-item" href="/rapid/whoweare/whoweareGOV.html">Governance</a>
+						<a class="dropdown-item" href="/rapid/whoweare/whoweareFIN.html">Finances</a>
+						<a class="dropdown-item" href="/rapid/whoweare/whoweareFP.html">Fundamental Principles</a>
+						<a class="dropdown-item" href="/rapid/whoweare/whoweareWR.html">Working for RAPID</a>
+					</div>
+				</li>
+
+				<li class="nav-item dropdown pr-2">
+						<a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Where we work
+						</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="/rapid/wherewework/whereWeworkEV.html">EASTERN VISAYAS</a>
+						<a class="dropdown-item" href="/rapid/wherewework/whereWeworkZP.html">ZAMBOANGA PENINSULA</a>
+						<a class="dropdown-item" href="/rapid/wherewework/whereWeworkNM.html">NORTHERN MINDANAO</a>
+						<a class="dropdown-item" href="/rapid/wherewework/whereWeworkDV.html">DAVAO</a>
+						<a class="dropdown-item" href="/rapid/wherewework/whereWeworkSOC.html">SOCCSKSARGEN</a>
+						<a class="dropdown-item" href="/rapid/wherewework/whereWeworkCAR.html">CARAGA</a>
+						<a class="dropdown-item" href="/rapid/wherewework/whereWeworkBARMM.html">BARMM</a>
+
+					</div>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#">News & Stories</a>
+				</li>
+
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Knowledge
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="/rapid/knowledgecenter/knowledgeCenter.html">Document</a>
+						<a class="dropdown-item" href="/rapid/knowledgecenter/knowledgeCenter.html">Multimedia</a>
+						<a class="dropdown-item" href="/rapid/knowledgecenter/knowledgeCenter.html">Publications</a>
+						
+					</div>
+				</li>
+
+
+			</ul>
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item">
+					<a class="nav-link fs-5" data-bs-toggle="modal" data-bs-target="#loginModal" onclick="window.location.href='http://dtirapid.ph'">Login</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+
+
+<!--Carousel-->
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+
+	<div class="carousel-inner">
+
+		<div class="carousel-item c-item">
+			<img src="https://images.pexels.com/photos/50707/cocoa-man-colombia-peasant-50707.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block w-100 c-img" alt="...">
+			
+			<div class="carousel-caption ">
+				<!-- NESTED CAROUSEL -->
+				<div class="w3-content" style="max-width:100%;position:relative; border: 1px solid white;">
+
+					<div class="mySlides" style="width:100%">RRRRRRRR</div>
+					<div class="mySlides" style="width:100%;display: none;">AAAAAAAA</div>
+					<div class="mySlides" style="width:100%;display: none;">PPPPPPPP</div>
+					<div class="mySlides" style="width:100%;display: none;">IIIIIIII</div>
+					<div class="mySlides" style="width:100%;display: none;">DDDDDDDDD</div>
+
+					<a class="w3-btn-floating" style="position:absolute;top:45%;left:0" onclick="plusDivs(-1)">❮</a>
+					<a class="w3-btn-floating" style="position:absolute;top:45%;right:0" onclick="plusDivs(1)">❯</a>
+				</div>
+				<div class="w3-center w3-container">
+					<span class="w3-xlarge w3-text-teal" onclick="mini_carousel(0)">R</span>
+					<span class="w3-xlarge w3-text-teal" onclick="mini_carousel(1)">A</span>
+					<span class="w3-xlarge w3-text-teal" onclick="mini_carousel(2)">P</span>
+					<span class="w3-xlarge w3-text-teal" onclick="mini_carousel(3)">I</span>
+					<span class="w3-xlarge w3-text-teal" onclick="mini_carousel(4)">D</span>
+				</div>
+			</div>
+		</div>
+		<div class="carousel-item active c-item data-mdb-">
+			<img src="https://images.pexels.com/photos/50707/cocoa-man-colombia-peasant-50707.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block w-100 c-img" alt="...">
+
+			<div class="carousel-caption ">
+				<h5 class="display-3 fw-bolder text-start">The RAPID Growth Project</h5>
+				<p class=" fst-italic text-start text-white">Our website is under construction , so please excuse us while we work on it. We will update this page as soon as we can. If you have any questions about the site, please contact us. Thanks! We will be updating this site frequently. Please check</p>
+			</div>
+			
+		</div>
+		<div class="carousel-item c-item">
+			<img src="https://images.pexels.com/photos/1212845/pexels-photo-1212845.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block w-100 c-img" alt="...">
+
+			<div class="carousel-caption ">
+				<h5 class="display-3 fw-bolder text-start">The RAPID Growth Project</h5>
+				<p class=" fst-italic text-start text-white">Our website is under construction , so please excuse us while we work on it. We will update this page as soon as we can. If you have any questions about the site, please contact us. Thanks! We will be updating this site frequently. Please check</p>
+			</div>
+			
+		</div>
+		<div class="carousel-item c-item">
+			<img src="https://images.pexels.com/photos/50707/cocoa-man-colombia-peasant-50707.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block w-100 c-img" alt="...">
+
+			<div class="carousel-caption ">
+				<h5 class="display-3 fw-bolder text-start">The RAPID Growth Project</h5>
+				<p class=" fst-italic text-start text-white">Our website is under construction , so please excuse us while we work on it. We will update this page as soon as we can. If you have any questions about the site, please contact us. Thanks! We will be updating this site frequently. Please check</p>
+			</div>
+			
+		</div>
+
+		
+	</div>
+	<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Previous</span>
+	</button>
+	<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Next</span>
+	</button>
+</div>
+
+<div class="mt-5" style="border: 1px ; height: 50px;">
+	
+</div>
+
+<!-----Vertical Carousel---->
+
+<div class="container mb-5">
+
+	<div class="container row d-flex">
+
+		<div class="col-xl ">
+
+				<!-- EVENTS_COUNTER -->
+				<div class="d-flex align-items-start mb-1 ms-auto">
+					<div class="me-3">
+						<button type="button" class="badge text-bg-secondary position-relative" style="border: none;">
+						  Events
+						  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white">
+						    0
+						    <span class="visually-hidden">unread messages</span>
+						  </span>
+						</button>
+					</div>
+					<div class="me-3">
+						<button type="button" class="badge text-bg-secondary position-relative" style="border: none;">
+						  News
+						  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white">
+						    0
+						    <span class="visually-hidden">unread messages</span>
+						  </span>
+						</button>
+					</div>
+					<div class="me-3">
+						<button type="button" class="badge text-bg-secondary  position-relative" style="border: none;">
+						  Stories
+						  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger text-white">
+						    0
+						    <span class="visually-hidden">unread messages</span>
+						  </span>
+						</button>
+					</div>
+				</div>
+				<div class="mx-auto mx-sm-start">
+					<div id="carouselExampleDark" class="carousel carousel slide " data-bs-ride="carousel" style="max-width: 600px;">
+								<div class="carousel-indicators">
+									<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active " aria-current="true" aria-label="Slide 1" ></button>
+									<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+									<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+								</div>
+								<div class="carousel-inner">
+									<div class="carousel-item active c2-item" data-bs-interval="10000"  >
+										<img src="https://images.unsplash.com/photo-1654564706005-b7828ace2cbe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class=" c2-img" alt="...">
+										<div class="carousel-caption ">
+											<h5 class="text-white">Content on going</h5>
+											<p class="fst-italic text-white">Our website is ongoing. We will be adding more content in the future.</p>
+										</div>
+									</div>
+									<div class="carousel-item c2-item" data-bs-interval="2000">
+										<img src="https://images.unsplash.com/photo-1512427631246-d0c374837803?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class=" c2-img" alt="...">
+										<div class="carousel-caption">
+											<h5 class="text-white">Content on going</h5>
+											<p class="fst-italic text-white">Our website is ongoing. We will be adding more content in the future.</p>
+										</div>
+									</div>
+									<div class="carousel-item c2-item">
+										<img src="https://images.unsplash.com/photo-1530496216518-a53d24e99c31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80" class=" c2-img" alt="...">
+										<div class="carousel-caption">
+											<h5 class="text-white">Content on going</h5>
+											<p class="fst-italic text-white">Our website is ongoing. We will be adding more content in the future.</p>
+										</div>
+									</div>
+								</div>
+								<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Previous</span>
+								</button>
+								<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Next</span>
+								</button>
+					</div>
+				</div>
+			
+			
+
+		</div>
+
+<!-----Counter---->
+
+		<div class="col-xl container" >
+
+			<div class=" container mt-5 text-center" >
+
+				<p class=" mt-2  display-2">IMPACT</p>
+				
+			</div>
+
+			<div class="row  container mt-5 text-center" >
+
+				<div class="col mt-5 border-start border-success">
+
+					<span class="display-4" style="color:#9FC088 !important"> -</span>
+					<h5 class=" fst-italic text-secondary" >Farmers</h5>
+					
+
+				</div>
+
+				<div class="col mt-5 border-start border-warning">
+
+					<span class="display-4 "style="color:#ECA869 !important"> -</span>
+					<h5 class=" fst-italic text-secondary" >Farmers Organizations</h5>
+					
+
+				</div>
+				
+
+			</div>
+
+			<div class="row  container mt-5 text-center" >
+
+				<div class="col mt-5 border-start border-primary">
+
+					<span class="display-4"style="color:#46C2CB !important"> -</span>
+					<h5 class=" fst-italic text-secondary" >MSME's</h5>
+					
+
+				</div>
+
+				<div class="col mt-5 border-start border-danger">
+
+					<span class="display-4" style="color:#EE6983 !important"> -</span>
+					<h5 class=" fst-italic text-secondary" >Anchor Firms</h5>
+					
+
+				</div>
+				
+
+			</div>
+			
+
+
+		</div>
+		
+	</div>
+
+</div>
+
+<div class="" style="border: 1px ; height: 100px;">
+	
+</div>
+
+
+<!--News & Stories Searchbar-->
+
+<div class="title d-flex justify-content-center mt-5">
+	<p class="display-3">News & Stories</p>	
+</div>
+
+<div class="container flex-grow-1 col-sm-8 mt-3 mb-5">
+	<form class="searchbar d-flex mb-5" role="search">
+				<input class="form-control form-control-lg me-2 rounded-pill border border-secondary border-2 mb-5" type="search" placeholder="Search" aria-label="Search">
+				<!--<button class="btn btn-outline-success rounded-pill" type="submit">Search</button>-->
+			</form>
+</div>
+
+<!--Todays News & Stories--> 
+
+
+<div class=" container mb-3 mt-5  fw-bolder fs-4">
+			<span href="#">Latest News & Stories</span>
+</div>
+
+<div class="container mt-5" style="height: 500px;">
+
+		
+	<div class=" row g-2 g-lg-4 overflow-auto " style="height:500px;">
+		
+	
+				<div class="col-lg-6 d-flex" >
+					<div class="cimg-item">
+					<img  src="https://images.unsplash.com/photo-1447946442870-3be230521a91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" class=" me-4 cimg-img" alt="...">
+					</div>
+					<div class="ms-3" style=" width:100%;">
+						<span class="d-block fw-bolder fs-1 mt-3 ">The Farmer Life</span>
+						<span class="d-block mt-2 fst-italic">Our website is ongoing. We will be adding more content in the future.</span> 
+						<a href="#" class="d-block mt-2 text-end me-3 mt-3 text-muted fst-italic" >Read...</a>
+					</div> 
+				</div>
+
+				<div class="col-lg-6 d-flex" >
+					<div class="cimg-item">
+					<img  src="https://images.unsplash.com/photo-1603833665858-e61d17a86224?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80" class=" me-4 cimg-img" alt="...">
+					</div>
+					<div class="ms-3" style=" width:100%;">
+						<span class="d-block fw-bolder fs-1 mt-3 ">Banana Industry</span>
+						<span class="d-block mt-2 fst-italic">Our website is ongoing. We will be adding more content in the future.</span> 
+						<a href="#" class="d-block mt-2 text-end me-3 mt-3 text-muted fst-italic">Read...</a>
+					</div> 
+				</div>
+
+				<div class="col-lg-6 d-flex" >
+					<div class="cimg-item">
+					<img  src="https://images.unsplash.com/photo-1560493676-04071c5f467b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" class=" me-4 cimg-img" alt="...">
+					</div>
+					<div class="ms-3" style=" width:100%;">
+						<span class="d-block fw-bolder fs-1 mt-3 ">Good Morning</span>
+						<span class="d-block mt-2 fst-italic">Our website is ongoing. We will be adding more content in the future.</span> 
+						<a href="#" class="d-block mt-2 text-end me-3 mt-3 text-muted fst-italic">Read...</a>
+					</div> 
+				</div>
+
+				<div class="col-lg-6 d-flex" >
+					<div class="cimg-item">
+					<img  src="https://images.unsplash.com/photo-1530541835461-dedaf9cf368a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" class=" me-4 cimg-img" alt="...">
+					</div>
+					<div class="ms-3" style=" width:100%;">
+						<span class="d-block fw-bolder fs-1 mt-3 ">Tomatoes Tomato</span>
+						<span class="d-block mt-2 fst-italic">Our website is ongoing. We will be adding more content in the future.</span> 
+						<a href="#" class="d-block mt-2 text-end me-3 mt-3 text-muted fst-italic">Read...</a>
+					</div> 
+				</div>
+
+				<div class="col-lg-6 d-flex" >
+					<div class="cimg-item">
+					<img  src="https://images.unsplash.com/photo-1562191326-80d0d9ddded4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=805&q=80" class=" me-4 cimg-img" alt="...">
+					</div>
+					<div class="ms-3" style=" width:100%;">
+						<span class="d-block fw-bolder fs-1 mt-3 ">Banana Farmers</span>
+						<span class="d-block mt-2 fst-italic">Our website is ongoing. We will be adding more content in the future.</span> 
+						<a href="#" class="d-block mt-2 text-end me-3 mt-3 text-muted fst-italic">Read...</a>
+					</div> 
+				</div>
+
+				<div class="col-lg-6 d-flex" >
+					<div class="cimg-item">
+					<img  src="https://images.unsplash.com/photo-1447946442870-3be230521a91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" class=" me-4 cimg-img" alt="...">
+					</div>
+					<div class="ms-3" style=" width:100%;">
+						<span class="d-block fw-bolder fs-1 mt-3 ">The Coffee Grinder</span>
+						<span class="d-block mt-2 fst-italic">Our website is ongoing. We will be adding more content in the future.</span> 
+						<a href="#" class="d-block mt-2 text-end me-3 mt-3 text-muted fst-italic">Read...</a>
+					</div> 
+				</div>
+
+
+
+
+	</div>
+</div>
+
+
+
+
+
+
+<!--cards-->
+
+
+
+<div class="container mt-3">
+	<div class=" mt-5 fw-bolder fs-4 title">
+			<span href="#">Categorize News & Stories</span>
+	</div>
+	<div class="row mt-3">
+		<div class="col-lg mb-5">
+			<div class="card">
+
+				<img src="https://images.unsplash.com/photo-1629008642899-178df6fc5f2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" class="card-img-top" alt="...">
+				
+				<div class="card-body">
+							<h6 class="card-title fst-italic mb-5">Coffee</h6>
+							<h5 class="card-title fw-bolder">Coffee Stories</h5>
+							<p class="card-text">Our website is ongoing. We will be adding more content in the future.</p>
+							<a href="#" class="ms-auto">Read...</a>
+				 </div>
+			</div>
+		</div>
+
+		<div class="col-lg mb-5">
+			<div class="card">
+				
+				<img src="https://images.unsplash.com/photo-1507576164121-220762647800?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" class="card-img-top" alt="...">
+				
+				<div class="card-body">
+							<h6 class="card-title fst-italic mb-5">Cacao</h6>
+							<h5 class="card-title fw-bolder">Cacao Stories</h5>
+							<p class="card-text">Our website is ongoing. We will be adding more content in the future.</p>
+							<a href="#" class="ms-auto">Read...</a>
+				 </div>
+			</div>
+		</div>
+
+		<div class="col-lg mb-5">
+			<div class="card">
+				
+					<img src="https://plus.unsplash.com/premium_photo-1664910633795-a678f61a8aad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" class="card-img-top" alt="...">
+				
+				<div class="card-body">
+							<h6 class="card-title fst-italic mb-5">Coconut</h6>
+							<h5 class="card-title fw-bolder">Coconut Stories</h5>
+							<p class="card-text">Our website is ongoing. We will be adding more content in the future.</p>
+							<a href="#" class="ms-auto">Read...</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg mb-5">
+			<div class="card">
+				
+				<img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80" class="card-img-top" alt="...">
+				
+				<div class="card-body">
+							<h6 class="card-title fst-italic mb-5">Fruits & Nuts</h6>
+							<h5 class="card-title fw-bolder">Fruits & Nuts Stories</h5>
+							<p class="card-text">Our website is ongoing. We will be adding more content in the future.</p>
+							<a href="#" class="ms-auto">Read...</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+		<div class=" mt-5 fst-italic fs-1">
+			<a href="#" style="text-decoration: none !important; color: #1F4F5A; ">See more stories...</a>
+		</div>
+</div>
+
+<!-- What we do -->
+
+<div class="position-relative">
+	<div class="cover-item mt-5 " >
+
+		<img src="https://images.unsplash.com/photo-1622718831336-d6c854e91ccd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" class="d-block w-100 cover-img" alt="...">
+
+	</div>
+
+	<div class="container ">
+		<div class="col-sm position-absolute top-50 start-50 translate-middle mb-5 text-center">
+
+			<h5 class="display-4 fw-bolder fst-italic text-white">What we do</h5>
+			<p class="col-sm fst-italic text-white text-start mt-5">Our website is under construction , so please excuse us while we work on it. We will update this page as soon as we can. If you have any questions about the site, please contact us. Thanks! We will be updating this site frequently. Please check</p>
+					
+		 </div>
+	</div>
+</div>
+
+<!-- Who we are -->
+<div class="container">
+
+	<div class="d-lg-flex mt-5">
+		<div class="www-item mx-auto">
+			<img src="https://images.unsplash.com/photo-1626984232603-cc32cf514a83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" class="d-block w-100 www-img">
+		</div>
+		<div class="container col-sm mx-auto p-5 mt-5 ">
+			<h5 class="headings display-3 fst-italic " style="color: #1F4F5A !important;">Who we are</h5>
+			<p class="fst-italic text-start mt-5">Our website is under construction , so please excuse us while we work on it. We will update this page as soon as we can. If you have any questions about the site, please contact us. Thanks! We will be updating this site frequently. Please check</p>
+		</div>
+	</div>
+
+</div>
+
+<!-- Where we work -->
+
+<div class="container">
+	
+<div class="col-lg mx-auto mt-5 text-center">
+			<h5 class=" headings display-3 fst-italic" style="color: #1F4F5A !important;">Where we work</h5>
+			<p class="fst-italic text-start mt-5 ">Our website is under construction , so please excuse us while we work on it. We will update this page as soon as we can. If you have any questions about the site, please contact us. Thanks! We will be updating this site frequently. Please check</p>
+		</div>
+
+</div>
+
+		<div class="container mt-5 fst-italic fs-4">
+			<a href="#" style="text-decoration: none !important; color: #1F4F5A; ">See more...</a>
+		</div>
+
+<!--Footer-->
+
+	<div class="position-relative mt-5 c-item">
+
+		<img src="https://images.unsplash.com/photo-1504788576473-fa4b594356a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" class="d-block w-100 c-img" alt="...">
+
+		
+
+		<div class="cont position-absolute top-50 start-50 translate-middle"  style="width: 100%">
+
+         	 <div class="container d-flex" >
+
+	            <div class="mx-auto d-lg-block d-xl-none " style="margin-top: -200px;">
+	              <img src="img/footer.svg" width="800" height="200" class="" alt="home">
+	            </div>	           
+
+        	 </div>
+
+      	</div>
+      
+
+
+		<!-- <div class="footer bg-dark text-white w-100 position-absolute bottom-0 start-50 translate-middle-x opacity-25">
+		</div> -->
+
+					<div class="container text-white w-100 position-absolute bottom-0 start-50 translate-middle-x">
+
+						<div class="col-lg-12  d-flex mt-3 border-bottom border-white">
+
+							<div class="d-none d-xl-block w-50 ">
+				              <img src="img/footer.svg" width="400" class="w-100 " alt="home" >
+				            </div>
+
+							<div class="d-block me-5">
+							<h5>Office Hours</h5>
+							<span class="small text-white">Monday - Friday</span><br>
+							<span class="small text-white">8:00am - 5:00pm</span><br>
+							<span class="small text-white">(except hollidays)</span>
+							</div>
+
+							<div clas="d-block ms-5 ">
+							<h5>Main Office Address</h5>
+							<span class="small text-white">National Project Coordination Office</span><br>
+							<span class="small text-white">RAPID GROWTH PROJECT</span><br>
+							<span class="small text-white">Department of Trade and Industry</span><br>
+							<span class="small text-white">2F MINTRADE BLDG.</span>
+							</div>
+
+							<div class="d-block ms-5 ">
+							<h5>Feedback</h5>
+							<span class="small text-white">We would like to hear from you.</span><br>
+							<span class="small text-white">Fill out the <a class="text-white" href="#" style="display: inline;">feedback</a> Form to<br>provide us your ideas on <br>how we can improve our website</span><br>
+							<span class="small text-white">Thank you.</span>
+							</div>
+
+							<!-- <div class="mx-auto" style=" border: solid 1px yellow;">
+				              <img class="w-100 h-75" src="img/footer.svg" class="" alt="home">
+				            </div> -->
+
+							
+
+						</div>
+
+						<div class="col-sm-6 mt-1">
+
+							<div class="d-flex">
+
+								<a class="text-white" href="">Privacy Policy</a>
+								<a class="text-white ms-3" href=""> Terms</a>
+								<a class="text-white ms-3" href="">Security</a>
+
+							</div>
+							
+						</div>
+
+						<div class="col-sm-4">
+							
+						</div>
+						
+					</div>
+			
+
+
+
+	</div>
+
+
+</body>
+</html>
+
+
+
+
+
+
