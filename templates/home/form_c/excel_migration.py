@@ -46,8 +46,8 @@ def index(user,region,num_entries):
         worksheet.write(0, col_num, value, header_format)
     writer.save()
 
-
-    df2 = pd.DataFrame(excel_export_a_get_excel(user,region,num_entries))
+    df2 = pd.read_json(json.dumps(excel_export_a_get_excel(user,region,num_entries)))
+    # df2 = pd.DataFrame(excel_export_a_get_excel(user,region,num_entries))
 
     with pd.ExcelWriter(__TO_DL_EXCEL, engine='openpyxl', mode='a') as writer:  
         df2.to_excel(writer, sheet_name='excel_imports')
@@ -64,19 +64,19 @@ def __populate_response(region,num_entries):
 
 @app.route("/excel_export_a/get_excel/<user>/<region>/<num_entries>",methods=["POST","GET"])
 def excel_export_a_get_excel(user,region,num_entries):
+    region = region.replace("_"," ").upper()
     dir_path = c.RECORDS+"/spreadsheets/"
     FROM_EXCEL_RPOFILES = []
     loads_ = tqdm(os.listdir(dir_path))
     count = 0
     for path in loads_:
         PATH__ = os.path.join(dir_path, path)
-        loads_.desc = path
         if os.path.isfile(PATH__):
             if PATH__.find("._DELETED_FILE_")<0:    
                 # print(PATH__)
                 file_name =  PATH__ # path to file + file name
-                _ID_ = file_name.split("/")[len(file_name.split("/"))-1].split("#")[0]
-                print(_ID_)
+                _ID_ = path.split("#")[0]
+                loads_.desc = "{} ;|| {}".format( _ID_, path)
                 USER = rapid.select("SELECT * FROM `users` WHERE `id`={} ; ".format(_ID_) )
                 if(len(USER)!=0):
                     if(USER[0]['rcu']==region):
@@ -106,28 +106,38 @@ def excel_export_a_get_excel(user,region,num_entries):
                 # count = count + 1
 
     # print(FROM_EXCEL_RPOFILES)
+    # print(len(FROM_EXCEL_RPOFILES[0]))
     KEYS = FROM_EXCEL_RPOFILES[0][1]
     KEYS_DATA = []
-    print(KEYS)
-    del FROM_EXCEL_RPOFILES[0][1]
 
-    for key in FROM_EXCEL_RPOFILES[0]:
-        _count = 0
-        _temp_data = {}
-        for key2 in FROM_EXCEL_RPOFILES[0][key]:
-            print(key2)
-            kkk = KEYS[_count]
-            ddd = key2
-            # ddd = FROM_EXCEL_RPOFILES[0][key][_count]
-            # break
-            _temp_data.update({kkk:ddd})
-            # FROM_EXCEL_RPOFILES[0][key][key2]
+    # return jsonify(FROM_EXCEL_RPOFILES)
+    # ss = open("sample.json","w")
+    # ss.write(json.dumps((FROM_EXCEL_RPOFILES)))
+    # ss.close()
+    # return "done"
+    # print(KEYS)
+    # del FROM_EXCEL_RPOFILES[0][1]
 
-            _count = _count + 1
-        KEYS_DATA.append(_temp_data)
-        print(key)
+    for kkk in FROM_EXCEL_RPOFILES:
+        for key in FROM_EXCEL_RPOFILES[kkk]:
+            _count = 0
+            _temp_data = {}
+            for key2 in FROM_EXCEL_RPOFILES[kkk][key]:
+                kkk = KEYS[_count]
+                ddd = key2
+                # ddd = FROM_EXCEL_RPOFILES[0][key][_count]
+                # break
+                _temp_data.update({kkk:ddd})
+                # return jsonify(_temp_data)
+                # FROM_EXCEL_RPOFILES[0][key][key2]
+
+                _count = _count + 1
+
+            # print(_temp_data)
+            KEYS_DATA.append(_temp_data)
+
     # return json.jsonify(FROM_EXCEL_RPOFILES)
-    return json.jsonify(KEYS_DATA)
+    return (KEYS_DATA)
 
 if __name__ == "__main__":
     app.run(debug=True)
