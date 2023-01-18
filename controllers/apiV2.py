@@ -255,6 +255,7 @@ class _main:
 				else:
 					print("Skipping Profiles : No User Associated || " +path)
 		new_f_ls = []
+		
 		for key2 in res_ls:
 			new_f_ls_IND = {}
 			for key_new in MOBILE_DATA_ROWS_FORM_A:
