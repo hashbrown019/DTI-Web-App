@@ -200,8 +200,9 @@ class _main:
 # ================================================================================
 
 
-	@app.route("/api/v2/sample/<entry>",methods=["POST","GET"])
-	def v2_sample(entry):
+	@app.route("/api/v2/excel_export_a_mobile/<region>/<entry>",methods=["POST","GET"])
+	def excel_export_a_mobile(region,entry):
+		region = region.replace("_"," ").upper()
 		complete_col = {}
 		res = []
 		res_ls = {}
@@ -214,7 +215,7 @@ class _main:
 		for path in loads_:
 			if os.path.isfile(os.path.join(dir_path, path)):
 				# if(path.find("@profile")>=0):
-				loads_.desc = "Profiles : ["+str(sample)+"] || "+path
+				
 				# res.append(path)
 				prefix = path.split("@")[1]
 				f_id = path.split("@")[0]
@@ -222,25 +223,37 @@ class _main:
 				fff = open(c.RECORDS+"/profiles/__temp__/"+ path, "r")
 				strsd = fff.read()
 				fff.close()
+				# print(prof_1['farmer_code'])
+				try:
+					prof_1 = json.loads(json.loads(strsd));
+				except Exception as e:
+					print("Skipping Profiles : Error in Farmer Data Structure || " +path)
 
-				prof_1 = json.loads(json.loads(strsd));
-				if(prof_1['farmer_code']==" " or prof_1['farmer_code']=="" ):
-					continue
+				USER = rapid.select("SELECT * from `users` WHERE `id`={} ;".format(prof_1['USER_ID']))
+				if(len(USER)!=0):
+					if(USER[0]['rcu']==region):
+						loads_.desc = "Profiles : ["+str(sample)+"] || "+path
+						if(prof_1['farmer_code']==" " or prof_1['farmer_code']=="" ):
+							continue
 
-				if(f_id not in res_ls):res_ls[f_id] = {}
-				for key in prof_1:
-					if(key == 'farmer_img_base64'):prof_1[key]= "HIDDEN";
-					if(key == 'post_harv-photo'):prof_1[key]= "HIDDEN";
-					if(key == 'farm-photo'):prof_1[key]= "HIDDEN";
+						if(f_id not in res_ls):res_ls[f_id] = {}
+						for key in prof_1:
+							if(key == 'farmer_img_base64'):prof_1[key]= "HIDDEN";
+							if(key == 'post_harv-photo'):prof_1[key]= "HIDDEN";
+							if(key == 'farm-photo'):prof_1[key]= "HIDDEN";
 
-					res_ls[f_id]["{}__{}".format(prefix,key)] = str(prof_1[key])
+							res_ls[f_id]["{}__{}".format(prefix,key)] = str(prof_1[key])
 
-					# complete_col["{}__{}".format(prefix,key)] = {}
-				if(sample >=int(entry)): break
-				# if(sample >=10): return jsonify(res_ls)
-				if(prefix=="profile"):
-					sample = sample + 1;
-
+							# complete_col["{}__{}".format(prefix,key)] = {}
+						if(entry!="all"):
+							if(sample >=int(entry)): break
+						# if(sample >=10): return jsonify(res_ls)
+						if(prefix=="profile"):
+							sample = sample + 1;
+					else:
+						loads_.desc = "Skipping Profiles : ["+str(sample)+"] || "+path
+				else:
+					print("Skipping Profiles : No User Associated || " +path)
 		new_f_ls = []
 		for key2 in res_ls:
 			new_f_ls_IND = {}
@@ -264,7 +277,7 @@ class _main:
 		# 				res_ls[key2][key_for_add_] = "NONE"
 		# 		new_f_ls.append(res_ls[key2])
 
-		return jsonify(new_new_f_ls)
+		return json.dumps(new_new_f_ls)
 		# return jsonify(new_f_ls)
 
 		# return jsonify(complete_col)
