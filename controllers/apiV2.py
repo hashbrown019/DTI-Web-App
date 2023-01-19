@@ -231,6 +231,8 @@ class _main:
 
 				USER = rapid.select("SELECT * from `users` WHERE `id`={} ;".format(prof_1['USER_ID']))
 				if(len(USER)!=0):
+					if(region=="all"):
+						pass
 					if(USER[0]['rcu']==region):
 						loads_.desc = "Profiles : ["+str(sample)+"] || "+path
 						if(prof_1['farmer_code']==" " or prof_1['farmer_code']=="" ):

@@ -66,7 +66,7 @@ def __populate_response(region,num_entries):
 def excel_export_a_get_excel(user,region,num_entries):
     region = region.replace("_"," ").upper()
     dir_path = c.RECORDS+"/spreadsheets/"
-    FROM_EXCEL_RPOFILES = []
+    FROM_EXCEL_RPOFILES = {}
     loads_ = tqdm(os.listdir(dir_path))
     count = 0
     for path in loads_:
@@ -95,7 +95,7 @@ def excel_export_a_get_excel(user,region,num_entries):
                             for val in LLL[key]:
                                 _result[key].append(val)
                         del _result[0]
-                        FROM_EXCEL_RPOFILES.append(_result)
+                        FROM_EXCEL_RPOFILES.update(_result)
 
                     else:
                         loads_.desc = "Skipping Profiles : ["+str(file_name)+"] || "+path
@@ -107,37 +107,38 @@ def excel_export_a_get_excel(user,region,num_entries):
 
     # print(FROM_EXCEL_RPOFILES)
     # print(len(FROM_EXCEL_RPOFILES[0]))
-    KEYS = FROM_EXCEL_RPOFILES[0][1]
+    KEYS = FROM_EXCEL_RPOFILES[1]
     KEYS_DATA = []
 
-    # return jsonify(FROM_EXCEL_RPOFILES)
-    # ss = open("sample.json","w")
-    # ss.write(json.dumps((FROM_EXCEL_RPOFILES)))
-    # ss.close()
+    # return jsonify(KEYS)
+
     # return "done"
     # print(KEYS)
     # del FROM_EXCEL_RPOFILES[0][1]
 
-    for kkk in FROM_EXCEL_RPOFILES:
-        for key in FROM_EXCEL_RPOFILES[kkk]:
-            _count = 0
-            _temp_data = {}
-            for key2 in FROM_EXCEL_RPOFILES[kkk][key]:
-                kkk = KEYS[_count]
-                ddd = key2
-                # ddd = FROM_EXCEL_RPOFILES[0][key][_count]
-                # break
-                _temp_data.update({kkk:ddd})
-                # return jsonify(_temp_data)
-                # FROM_EXCEL_RPOFILES[0][key][key2]
+    # for kkk in FROM_EXCEL_RPOFILES:
+        # print(kkk)
+    for key in FROM_EXCEL_RPOFILES:
+        _count = 0
+        _temp_data = {}
+        for key2 in FROM_EXCEL_RPOFILES[key]:
+            kkk = KEYS[_count]
+            # ddd = FROM_EXCEL_RPOFILES[key][key2]
+            ddd = key2
+            _temp_data.update({kkk:ddd})
+            _count = _count + 1
 
-                _count = _count + 1
-
-            # print(_temp_data)
-            KEYS_DATA.append(_temp_data)
-
+        # print(_temp_data)
+        KEYS_DATA.append(_temp_data)
+    json_save_as_file(KEYS_DATA,"sample")
     # return json.jsonify(FROM_EXCEL_RPOFILES)
     return (KEYS_DATA)
+
+
+def json_save_as_file(data,name):
+    ss = open("{}.json".format(name),"w")
+    ss.write(json.dumps((data)))
+    ss.close()
 
 if __name__ == "__main__":
     app.run(debug=True)
