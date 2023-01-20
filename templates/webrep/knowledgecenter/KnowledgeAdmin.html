@@ -17,7 +17,7 @@
 <!-- JavaScript Bundle with Popper -->
     <script defer src="../../static/webrepstatic/js/bs@5.2.3/bootstrap.bundle.min.js"></script>
 
-    <title>Knowledge</title>
+    <title>Knowledge Admin</title>
   </head>
 
 
@@ -164,8 +164,13 @@
 
     <div class="container d-flex justify-content-end col-lg-3">
       
-      <div class="">
-       <a class=" rounded-pill " href="#" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="color: #1F4F5A !important;">Upload files</a>
+      <div class="dropdown">
+       <a class=" rounded-pill dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"  style="color: #1F4F5A !important;">Upload files</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#uploadDocument" href="">Document</a></li>
+          <li><a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#uploadMultimedia" href="" href="#">Multimedia</a></li>
+          <li><a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#uploadPublication" href="" href="#">Publication</a></li>
+        </ul>
       </div>
       <div>
        <a class=" rounded-pill  ms-5" href= "#" role="button" style="color: #1F4F5A !important;">Delete files</a>
@@ -175,40 +180,29 @@
     
   </div>
 
-
-<!-- OVERVIEW -->
-  <div class="container shadow-sm p-3 mb-5 bg-body rounded mt-5" id="OVER" >
-
-    <div class="container d-flex" style="border:  1px red;">
-      <div class="col-lg-9">
-        <p class="display-3 " style="color: #1F4F5A !important;">Overview</p>
-      </div>
-      
-    </div>
-
-
-    <!-- Upload MODAL -->
-
-      <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <!-- Upload MODAL (DOCUMENT)-->
+      <div class="modal fade " id="uploadDocument" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="staticBackdropLabel">Upload Files</h1>
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Upload Document</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class=" modal-body">
 
               <form class="row g-3 needs-validation" >
+
                   <div class="col-md-6">
-                    <label for="validationCustom01 " class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="" value="" required>
+                    <label for="validationCustom01 " class="form-label">Email</label>
+                    <input type="email" class="form-control" id="validationCustom01" placeholder="" value="" required>
                     <div class="valid-feedback">
                       Looks good!
                     </div>
                   </div>
+
                   <div class="col-md-6">
-                    <label for="validationCustom02" class="form-label">Last name</label>
-                    <input type="text" class="form-control" id="validationCustom02" value="" required>
+                    <label for="validationCustom01 " class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="" value="" required>
                     <div class="valid-feedback">
                       Looks good!
                     </div>
@@ -217,7 +211,7 @@
                   <div class="col-md-6">
                     <label for="validationCustom03" class="form-label">Unit</label>
                     <select class="form-select" id="validationCustom04" required>
-                      <option selected  value="">NPCO</option>
+                      <option>NPCO</option>
                       <option>RCU</option>
                       <option>PCU</option>
                     </select>
@@ -245,7 +239,7 @@
                   <div class="col-md-8">
                     <label for="validationCustom06" class="form-label">Category/Topic</label>
                     <select class="form-select" id="validationCustom04" required>
-                      <option selected value="">Accomplishment Report</option>
+                      <option>Accomplishment Report</option>
                       <option>Bidding Documents</option>
                       <option>Business Plan</option>
                       <option>COA Document</option>
@@ -311,7 +305,7 @@
                   <div class="col-md-6">
                     <label for="validationCustom10" class="form-label">Do you want to receive notifications in your email?</label>
                     <select class="form-select" id="validationCustom04" required>
-                      <option selected  value="">YES</option>
+                      <option>YES</option>
                       <option>NO</option>
                     </select>
                     <div class="invalid-feedback">
@@ -328,6 +322,279 @@
           </div>
         </div>
       </div>
+
+    <!-- Upload MODAL (MULTIMEDIA)-->
+
+      <div class="modal fade " id="uploadMultimedia" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Upload Multimedia</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class=" modal-body">
+
+              <form class="row g-3 needs-validation" >
+
+                  <div class="col-md-6">
+                    <label for="validationCustom01 " class="form-label">Email</label>
+                    <input type="email" class="form-control" id="validationCustom01" placeholder="" value="" required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="validationCustom01 " class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="" value="" required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                  </div>
+                 
+
+                  <div class="col-md-6">
+                    <label for="validationCustom03" class="form-label">Unit</label>
+                    <select class="form-select" id="validationCustom04" required>
+                      <option>NPCO</option>
+                      <option>RCU</option>
+                      <option>PCU</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Please select a Unit.
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <label for="validationCustom04" class="form-label">Designation</label>
+                    <input type="text" class="form-control" id="validationCustom03" required>
+                    <div class="invalid-feedback">
+                      Please provide a Designation.
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="validationCustom03" class="form-label">Form</label>
+                    <select class="form-select" id="validationCustom04" required>
+                      <option>AUDIO</option>
+                      <option>INTERVIEW</option>
+                      <option>PHOTO</option>
+                      <option>VIDEOS</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Please select a Unit.
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="validationCustom07" class="form-label">Date Approved</label>
+                    <input type="text" class="form-control" id="validationCustom03" required>
+                    <div class="invalid-feedback">
+                      Please provide a date approve.
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-12">
+                    <label for="validationCustom05" class="form-label form-label-lg">Title Of Multimedia (Extracted From What Activity/Event)</label>
+                    <input type="text" class="form-control" id="validationCustom05" required>
+                    <div class="invalid-feedback">
+                      Please provide a Title of Document.
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="validationCustom08" class="form-label">Short Description of Title/Topic/Name of File</label>
+                    <input type="text" class="form-control" id="validationCustom05" required>
+                    <div class="invalid-feedback">
+                      Please provide a Title of Document.
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="validationCustom08" class="form-label">Tags/Search Keywords</label>
+                    <input type="text" class="form-control" id="validationCustom05" required>
+                    <div class="invalid-feedback">
+                      Please provide a Title of Document.
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="formFile" class="form-label">Please upload your files</label>
+                    <input class="form-control" type="file" id="formFile">
+                    <div class="invalid-feedback">
+                      Please provide a Title of Document.
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="validationCustom09" class="form-label">Who can Access? (PLS PUT EMAIL ADDRESS/ES)</label>
+                    <input type="text" class="form-control" id="validationCustom03" required>
+                    <div class="invalid-feedback">
+                      Please provide a date approve.
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="validationCustom10" class="form-label">Do you want to receive notifications in your email?</label>
+                    <select class="form-select" id="validationCustom04" required>
+                      <option>YES</option>
+                      <option>NO</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Please select a Unit.
+                    </div>
+                  </div>
+
+            </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                  </div>
+                </form>
+          </div>
+        </div>
+      </div>
+
+    <!-- Upload MODAL (Publication)-->
+
+      <div class="modal fade " id="uploadPublication" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Upload Publication</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class=" modal-body">
+
+              <form class="row g-3 needs-validation" >
+
+                  <div class="col-md-6">
+                    <label for="validationCustom01 " class="form-label">Email</label>
+                    <input type="email" class="form-control" id="validationCustom01" placeholder="" value="" required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="validationCustom01 " class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="" value="" required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="validationCustom03" class="form-label">Unit</label>
+                    <select class="form-select" id="validationCustom04" required>
+                      <option>NPCO</option>
+                      <option>RCU</option>
+                      <option>PCU</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Please select a Unit.
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <label for="validationCustom04" class="form-label">Designation</label>
+                    <input type="text" class="form-control" id="validationCustom03" required>
+                    <div class="invalid-feedback">
+                      Please provide a Designation.
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-12">
+                    <label for="validationCustom05" class="form-label form-label-lg">Title of Publication (Extracted from what activity/event, if any?)</label>
+                    <input type="text" class="form-control" id="validationCustom05" required>
+                    <div class="invalid-feedback">
+                      Please provide a Title of Document. 
+                    </div>
+                  </div>
+
+                  <div class="col-md-8">
+                    <label for="validationCustom03" class="form-label">Form</label>
+                    <select class="form-select" id="validationCustom04" required>
+                      <option>AUDIO</option>
+                      <option>INTERVIEW</option>
+                      <option>PHOTO</option>
+                      <option>VIDEOS</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Please select a Unit.
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-4">
+                    <label for="validationCustom07" class="form-label">Date Approved</label>
+                    <input type="text" class="form-control" id="validationCustom03" required>
+                    <div class="invalid-feedback">
+                      Please provide a date approve.
+                    </div>
+                  </div>
+
+                   <div class="col-md-12">
+                    <label for="validationCustom08" class="form-label">Short Description of Title/Topic/Name of Document</label>
+                    <input type="text" class="form-control" id="validationCustom05" required>
+                    <div class="invalid-feedback">
+                      Please provide a Title of Document.
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="formFile" class="form-label">Please upload your files</label>
+                    <input class="form-control" type="file" id="formFile">
+                    <div class="invalid-feedback">
+                      Please provide a Title of Document.
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="validationCustom09" class="form-label">Who can Access? (PLS PUT EMAIL ADDRESS/ES)</label>
+                    <input type="text" class="form-control" id="validationCustom03" required>
+                    <div class="invalid-feedback">
+                      Please provide a date approve.
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="validationCustom10" class="form-label">Do you want to receive notifications in your email?</label>
+                    <select class="form-select" id="validationCustom04" required>
+                      <option>YES</option>
+                      <option>NO</option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Please select a Unit.
+                    </div>
+                  </div>
+
+            </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                  </div>
+                </form>
+          </div>
+        </div>
+      </div>
+
+
+<!-- OVERVIEW -->
+  <div class="container shadow-sm p-3 mb-5 bg-body rounded mt-5" id="OVER" >
+
+    <div class="container d-flex" style="border:  1px red;">
+      <div class="col-lg-9">
+        <p class="display-3 " style="color: #1F4F5A !important;">Overview</p>
+      </div>
+      
+    </div>
+
+    <!-- Select Modal -->
+
+
+
+
 
 
 
