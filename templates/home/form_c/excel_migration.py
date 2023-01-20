@@ -12,17 +12,10 @@ rapid= sqlite(c.SQLITE_DB)
 
 @app.route('/excel_export_a/<user>/<region>/<num_entries>')
 def index(user,region,num_entries):
-    # get_url= urllib.request.urlopen('https://dtirapid.pythonanywhere.com/api/v2/sample')
-    # print("Response Status: "+ str(get_url.getcode()) )
-    # _DATA_ = json.loads(get_url.read())
-    __JSN = __populate_response(region,num_entries);
-    # print("----------")
-    # print(__JSN.response())
-    # print("----------")
-    # return (__JSN.response)
-    # lll = pd.DataFrame.from_records(__JSN)
-    # print(lll)
-    # df = pd.DataFrame.to_json(lll)
+
+    __JSN = __populate_response(user,region,num_entries);
+    __JSN_excel = json.dumps(excel_export_a_get_excel(user,region,num_entries))
+
     df = pd.read_json(__JSN)
 
     __TO_DL_EXCEL = c.RECORDS+'/exports/spreadsheets/{}.xlsx'.format(user)
@@ -46,7 +39,7 @@ def index(user,region,num_entries):
         worksheet.write(0, col_num, value, header_format)
     writer.save()
 
-    df2 = pd.read_json(json.dumps(excel_export_a_get_excel(user,region,num_entries)))
+    df2 = pd.read_json(__JSN_excel)
     # df2 = pd.DataFrame(excel_export_a_get_excel(user,region,num_entries))
 
     with pd.ExcelWriter(__TO_DL_EXCEL, engine='openpyxl', mode='a') as writer:  
@@ -56,8 +49,10 @@ def index(user,region,num_entries):
 
     
 
-def __populate_response(region,num_entries):
-    return (v2._main.excel_export_a_mobile(region,num_entries))
+def __populate_response(user,region,num_entries):
+    _d = v2._main.excel_export_a_mobile(region,num_entries)
+    json_save_as_file(_d ,"temp_a_mobile__{}".format(user))
+    return (_d)
 
 
 # ========================================================================
@@ -71,15 +66,16 @@ def excel_export_a_get_excel(user,region,num_entries):
     count = 0
     for path in loads_:
         PATH__ = os.path.join(dir_path, path)
+        loads_.desc = "Scanning || {}".format( path)
         if os.path.isfile(PATH__):
             if PATH__.find("._DELETED_FILE_")<0:    
                 # print(PATH__)
                 file_name =  PATH__ # path to file + file name
                 _ID_ = path.split("#")[0]
-                loads_.desc = "{} ;|| {}".format( _ID_, path)
+                loads_.desc = "Retriveing [{}]|| {}".format( _ID_, path)
                 USER = rapid.select("SELECT * FROM `users` WHERE `id`={} ; ".format(_ID_) )
                 if(len(USER)!=0):
-                    if(USER[0]['rcu']==region):
+                    if(USER[0]['rcu']==region or region=="ALL"):
                         sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
                         try:
                             df = pd.read_excel(io=file_name, sheet_name=sheet, engine='openpyxl')
@@ -105,9 +101,7 @@ def excel_export_a_get_excel(user,region,num_entries):
                 #     if(count>=int(num_entries)):break
                 # count = count + 1
 
-    # print(FROM_EXCEL_RPOFILES)
-    # print(len(FROM_EXCEL_RPOFILES[0]))
-    KEYS = FROM_EXCEL_RPOFILES[1]
+    KEYS = ["ID","First name","Middle name","Last name","Extension name","Sex","Mobile number","email address","birthday","bday not sure","civil status","is head og household","name of head of household","head hh name","head hh relationship","head hh sex","head hh pwd","head hh ofw","head hh ip","longitude","latitude","region","province","city municipality","brgy","purok sitio street","primary crop","DIP name","Farmer pwd","Farmer ofw","farmer ip","years of farming","Name of coop","position in coop","coop member since","is listed in RSBSA","highest educational attainment","Vocational Skills","Longitude","Latitude","municipality","Brgy","street/purok/sitio","declared area (Ha.)","is intercroping?","Primary crop","sloping area in hectares (greater than 18 degrees)","flat/[lain area in hectares","No. bearing trees planted","No. bearing non-trees planted","Sole ownership","co-ownership","CLOA/individual EP","stewardship","usufruct","tenancy","others","Primary crop Ave. Production volume (w018-2019) (kg/cycle)","Primary Crop total land area covered (Ha.)","Primary Crop No of Cycle ","Secondary Crop if Any","Sloping ","Flat/Plain","Sloping","flat/plain","No. Male","no. Female","List of IP group Presentt in the HH","Estimated Total Annual Income (Php) - Primary Crop ","Estimated Total Annual Income (Php) - Secondary Crop ","Estimated Total Annual Income (Php) - Livestock/Fishing etc","Family Remittnaces","Employment","Skilled Labor","Business","Social Pension","Pantawid Beneficary","Other Subsidies","If Others, Please specify","Does Farmer Keep Records","Crop Cycle Per year","Land Development Preperation","Crop Maintenance Activities","Crop Harvesting","Post-Harvest Activities","Youth","Senior Citizen","PWD","OFW","IP","List of IP group Present for FAMILY Workers","List of IP group Present for NON-FAMILY Workers","Male Family Income (Yearly)","Female Family Income (Yearly)","Male NON-Family Income (Yearly)","Female NON-Family Income (Yearly)","Type of PH Facility/Equipment","Name of Equipment/Facility","Region","Province","City/Municipality","PH Product Form","PH Capacity (qty)","PH Capacity unit (kg/metric_tons/sac/crate/box)","PH Capacity Frequency (hr, day,month, year, cycle/harvest)","Primary crop/Product Type","Primary crop/Product Delivery","Farmers Org","SME","Anchor Firm","Negosyo Center","Others","Payment Terms (Consignment, Cash, Credit, Others)","Buyer Type (Trader, Consolidator, Processor. Others)","Farm Gate Price (FGP) on Php","Unit (Kg, Metric_tons, Sack/box)","Crop Insurance (yes, No)","Name of Govt. Bank (LBP. DBP) if any","Type of Loan","Name of Private Bank if any","Loan Initiative (Relatives, Informal Lenders)","Type of Deposits if any","Name of bank if the  FSP is Bank","Name of non-bank if the  FSP is non-Bank","Type of Insurance if any","Type of Payments if any","Name of Non Bank FSP","Number of Farm-Related Trainings attended in the last 2-3 years","List of Value Chain","Farm Certification Acquired if any","List of Medium/source of information","List of  frequency of Medium/source of information ","Owns what Type of Mobile Phone (None, Smartphone, Legacy_phone)","Support Needed to improve farm productivity","Farmer Comments about Rapid","Enumerator Remarks"]
     KEYS_DATA = []
 
     # return jsonify(KEYS)
@@ -121,22 +115,26 @@ def excel_export_a_get_excel(user,region,num_entries):
     for key in FROM_EXCEL_RPOFILES:
         _count = 0
         _temp_data = {}
-        for key2 in FROM_EXCEL_RPOFILES[key]:
-            kkk = KEYS[_count]
+        for key2 in KEYS:
+        # for key2 in FROM_EXCEL_RPOFILES[key]:
+            kkk = str(FROM_EXCEL_RPOFILES[key][_count])
+            # kkk = KEYS[_count]
             # ddd = FROM_EXCEL_RPOFILES[key][key2]
-            ddd = key2
+            ddd = str(key2)
             _temp_data.update({kkk:ddd})
             _count = _count + 1
 
         # print(_temp_data)
         KEYS_DATA.append(_temp_data)
-    json_save_as_file(KEYS_DATA,"sample")
-    # return json.jsonify(FROM_EXCEL_RPOFILES)
+    json_save_as_file(KEYS_DATA,"temp_a_excel__{}".format(user))
+    # json_save_as_file(KEYS_DATA,"sample")
+    # # return json.jsonify(FROM_EXCEL_RPOFILES)
+    # json_save_as_file(KEYS_DATA,"temp_a_excel")
     return (KEYS_DATA)
 
 
 def json_save_as_file(data,name):
-    ss = open("{}.json".format(name),"w")
+    ss = open(c.RECORDS+"/exports/TEMP/{}.json".format(name),"w")
     ss.write(json.dumps((data)))
     ss.close()
 
