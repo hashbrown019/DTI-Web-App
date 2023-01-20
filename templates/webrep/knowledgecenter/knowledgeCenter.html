@@ -128,7 +128,7 @@
   <p class="d.block col-sm fst-italic mb-5">Lorem ipsum dolor sit amet. Est facere internos et error nihil aut mollitia nisi. Ut ducimus labore aut aperiam quibusdam cum necessitatibus nobis ex iste o hic repudiandae voluptatibus aut deleniti fugit ut eveniet neque..</p>
 </div>
 
-
+<!-- Sticky Nav -->
 	<nav id="navbar-example2" class="navbar bg-light px-3 mb-3 sticky-top shadow-sm p-3 mb-5 bg-body rounded">
 	  <div class=" mx-auto">
 		  <ul class="nav nav-pills">
@@ -148,6 +148,57 @@
 		</div>
 	</nav>
 <div class="mb-5" data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class=" bg-white p-3 rounded-2" tabindex="0" style="border: 1px  red; height: 2500px;">
+
+
+<!-- File Details Modals -->
+		<div class="modal" id="viewDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg modal-dialog-centered">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="fileTitle">File Type</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		      
+
+
+		        <dl class="row">
+
+		        	<dt class="col-3">File Name:</dt>
+						  <dd class="col-8 ">
+						  	<h5 class="  text-muted" id="fileName">Example Filename</h5>
+							  <p class="fst-italic small text-muted" id="fileuploaderEmail">This is an example description of the file.</p>
+							</dd>
+
+						  <dt class="col-3 mt-2">Upload by:</dt>
+						  <dd class="col-8 border-top border-light">
+						  	<p class="fst-italic small text-muted mt-2" id="fileuploaderName">Christian Born</p>
+							  <p class="fst-italic small text-muted" id="fileuploaderEmail">christianborn@gmail.com</p>
+							  <!-- <span class="fst-italic small text-muted">|</span> -->
+							  <span class="fst-italic small text-muted" id="fileuploaderUnit">NPCO</span>
+							 	<span class="fst-italic small text-muted">|</span>
+							  <span class="fst-italic small text-muted" id="fileuploaderDesignation">ISA</span>
+							</dd>
+
+							<dt class="col-3 mt-2">File Details:</dt>
+						  <dd class="col-8 border-top border-light">
+							  <p class="fst-italic small text-muted mt-2" id="fileFormat">.Pdf</p>
+							  <p class="fst-italic small text-muted" id="fileSize">325 mb</p>
+							  <p class="fst-italic small text-muted" id="fileuploadDate">22 October 2020</p>
+							</dd>
+
+						</dl>
+
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-danger">Delete</button>
+		        <button type="button" class="btn btn-primary">Download</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	
 
 
 <!-- OVERVIEW -->

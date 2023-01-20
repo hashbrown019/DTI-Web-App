@@ -129,11 +129,12 @@
 </div>
 
 <!-- Sticky Nav -->
-	<nav id="navbar-example2" class="navbar bg-light px-3 mb-3 sticky-top shadow-sm p-3 mb-5 bg-body rounded">
+	
+	<nav id="navbar-example2" class="navbar bg-light px-3 mb-3 sticky-top shadow-sm p-3 mb-5 bg-body rounded ">
 		<div class=" mx-auto">
 			<ul class="nav nav-pills">
 				<li class="nav-item me-5">
-					<a class="nav-link rounded-pill active" href="#OVER">OVERVIEW</a>
+					<a class="nav-link rounded-pill active " href="#OVER">OVERVIEW</a>
 				</li>
 				<li class="nav-item me-5">
 					<a class="nav-link rounded-pill" href="#KP">KNOWLEDGE PRODUCTS</a>
@@ -150,21 +151,20 @@
 			</ul>
 		</div>
 	</nav>
+
 <div class="mb-5" data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class=" bg-white p-3 rounded-2" tabindex="0" style="border: 1px  red; height: 2500px;">
 
 	<!-- Upload Navbar -->
 
 	<div class="container d-flex shadow-sm p-3  bg-body rounded ">
 
-		<div class=" col-lg-6 mx-auto">
-			
+		<div class=" col-9">
+
+			<a class="" style="color: #1F4F5A !important;">Search files</a>
+		
 		</div>
 
-		<div class="container col-lg-3" >
-			
-		</div>
-
-		<div class="container d-flex justify-content-end col-lg-3">
+		<div class="container d-flex justify-content-end col-3">
 			
 			<div class="dropdown">
 			 <a class=" rounded-pill dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"  style="color: #1F4F5A !important;">Upload files</a>
@@ -181,6 +181,8 @@
 		</div>
 		
 	</div>
+
+		<!-- MODALS -->
 
 		<!-- Upload MODAL (DOCUMENT)-->
 			<div class="modal fade " id="uploadDocument" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -581,6 +583,56 @@
 				</div>
 			</div>
 
+		<!-- File Details Modals -->
+		<div class="modal" id="viewDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg modal-dialog-centered">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="fileTitle">File Type</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		      
+
+
+		        <dl class="row">
+
+		        	<dt class="col-3">File Name:</dt>
+						  <dd class="col-8 ">
+						  	<h5 class="  text-muted" id="fileName">Example Filename</h5>
+							  <p class="fst-italic small text-muted" id="fileuploaderEmail">This is an example description of the file.</p>
+							</dd>
+
+						  <dt class="col-3 mt-2">Upload by:</dt>
+						  <dd class="col-8 border-top border-light">
+						  	<p class="fst-italic small text-muted mt-2" id="fileuploaderName">Christian Born</p>
+							  <p class="fst-italic small text-muted" id="fileuploaderEmail">christianborn@gmail.com</p>
+							  <!-- <span class="fst-italic small text-muted">|</span> -->
+							  <span class="fst-italic small text-muted" id="fileuploaderUnit">NPCO</span>
+							 	<span class="fst-italic small text-muted">|</span>
+							  <span class="fst-italic small text-muted" id="fileuploaderDesignation">ISA</span>
+							</dd>
+
+							<dt class="col-3 mt-2">File Details:</dt>
+						  <dd class="col-8 border-top border-light">
+							  <p class="fst-italic small text-muted mt-2" id="fileFormat">.Pdf</p>
+							  <p class="fst-italic small text-muted" id="fileSize">325 mb</p>
+							  <p class="fst-italic small text-muted" id="fileuploadDate">22 October 2020</p>
+							</dd>
+
+						</dl>
+
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-danger">Delete</button>
+		        <button type="button" class="btn btn-primary">Download</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+
 
 <!-- OVERVIEW -->
 	<div class="container shadow-sm p-3 mb-5 bg-body rounded mt-5" id="OVER" >
@@ -621,7 +673,7 @@
 																								<div class="card-body">
 																									<h5 class="card-title"> Example file</h5>
 																									<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-																									<a href="#" class="btn btn-dark stretched-link  btn-sm text-white"><em>View Details </em></a>
+																									<a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 																									
 																								</div>
 																							</div>
