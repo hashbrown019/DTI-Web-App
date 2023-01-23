@@ -128,7 +128,7 @@
   <p class="d.block col-sm fst-italic mb-5">Lorem ipsum dolor sit amet. Est facere internos et error nihil aut mollitia nisi. Ut ducimus labore aut aperiam quibusdam cum necessitatibus nobis ex iste o hic repudiandae voluptatibus aut deleniti fugit ut eveniet neque..</p>
 </div>
 
-
+<!-- Sticky Nav -->
 	<nav id="navbar-example2" class="navbar bg-light px-3 mb-3 sticky-top shadow-sm p-3 mb-5 bg-body rounded">
 	  <div class=" mx-auto">
 		  <ul class="nav nav-pills">
@@ -150,8 +150,73 @@
 <div class="mb-5" data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class=" bg-white p-3 rounded-2" tabindex="0" style="border: 1px  red; height: 2500px;">
 
 
+<!-- File Details Modals -->
+		<div class="modal" id="viewDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg modal-dialog-centered">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="fileTitle">File Type</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		      
+
+
+		        <dl class="row">
+
+		        	<dt class="col-3">File Name:</dt>
+						  <dd class="col-8 ">
+						  	<h5 class="  text-muted" id="fileName">Example Filename</h5>
+							  <p class="fst-italic small text-muted" id="fileuploaderEmail">This is an example description of the file. With supporting text below as a natural lead-in to additional content</p>
+							</dd>
+
+						  <dt class="col-3 mt-2">Upload by:</dt>
+						  <dd class="col-8 border-top border-light">
+						  	<p class="fst-italic small text-muted mt-2" id="fileuploaderName">Christian Born</p>
+							  <p class="fst-italic small text-muted" id="fileuploaderEmail">christianborn@gmail.com</p>
+							  <!-- <span class="fst-italic small text-muted">|</span> -->
+							  <span class="fst-italic small text-muted" id="fileuploaderUnit">NPCO</span>
+							 	<span class="fst-italic small text-muted">|</span>
+							  <span class="fst-italic small text-muted" id="fileuploaderDesignation">ISA</span>
+							</dd>
+
+							<dt class="col-3 mt-2">File Details:</dt>
+						  <dd class="col-8 border-top border-light">
+							  <p class="fst-italic small text-muted mt-2" id="fileFormat">.Pdf</p>
+							  <p class="fst-italic small text-muted" id="fileSize">325 mb</p>
+							  <p class="fst-italic small text-muted" id="fileuploadDate">22 October 2020</p>
+							</dd>
+
+							<dt class="col-3 mt-2">People with access:</dt>
+						  <dd class="col-8 border-top border-light">
+
+						  	<p class="mt-2"><span class="fst-italic small text-muted " id="PWA">Public</span></p>
+						  	
+						  	<!-- <span class="fst-italic small text-muted mt-2" id="PWA">cjmontanez@gmail.com</span>
+						  	<span class="fst-italic small text-muted">|</span>
+							  <span class="fst-italic small text-muted" id="fileuploaderUnit">NPCO</span>
+							  <br>
+						  	<span class="fst-italic small text-muted mt-2" id="PWA">jaybalino@gmail.com</span>
+						  	<span class="fst-italic small text-muted">|</span>
+							  <span class="fst-italic small text-muted" id="fileuploaderUnit">NPCO</span> -->
+
+							</dd>
+
+						</dl>
+
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Download</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+
+
 <!-- OVERVIEW -->
-  <div class="container shadow-sm p-3 mb-5 bg-body rounded" id="OVER" style="border: 1px  red; height: 500px;">
+  <div class="container shadow-sm p-3 mb-5 bg-body rounded" id="OVER" style="border: 1px  red;">
 
   	<p class=" containe  r display-3 " style="color: #1F4F5A !important;">Overview</p>
 
@@ -168,32 +233,32 @@
 						      
 						      <div class="row mt-5" >
 											  
-																				<div class="col-sm-4 mb-3">
+																				<div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card card_size">
 							                                  <div class="card-body">
 							                                    <h5 class="card-title">KM Strategy Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                    
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">KM Strategy Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                    
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">KM Strategy Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                    
 							                                  </div>
 							                                </div>
@@ -212,11 +277,11 @@
 	<div id="KP" class="container shadow-sm p-3 mb-5 bg-body rounded ">
 		<p class=" container display-3 " style="color: #1F4F5A !important;">Knowledge Products</p>
 
-						    <div class=" container d-flex">
+						    <div class=" container d-flex" >
 
-						     	<div class="nav container flex-row nav-pills pe-5 " id="v-pills-tab" role="tablist ">
+						     	<div class="nav container flex-row nav-pills pe-5 " id="v-pills-tab" role="tablist" >
 						     		
-						          <a class=" nav-link rounded-pill show active me-2" id="v-pills-mul-tab" data-bs-toggle="pill" data-bs-target="#v-pills-mul" type="button" role="tab" aria-controls="v-pills-mul" aria-selected="true" style="">Multimedia</a>
+						          <a class=" nav-link rounded-pill show active me-2" id="v-pills-mul-tab" data-bs-toggle="pill" data-bs-target="#v-pills-mul" type="button" role="tab" aria-controls="v-pills-mul" aria-selected="true">Multimedia</a>
 						          <a class=" nav-link rounded-pill me-2 " id="v-pills-pub-tab" data-bs-toggle="pill" data-bs-target="#v-pills-pub" type="button" role="tab" aria-controls="v-pills-pub" aria-selected="false">Publications</a>
 						          
 						       
@@ -225,7 +290,7 @@
 						        <div class="tab-content w-100" id="v-pills-tabContent">
 
 						        	<!-- Multimedia -->
-						          <div class="container tab-pane fade show active mt-5 overflow-auto" id="v-pills-mul" role="tabpanel" aria-labelledby="v-pills-mul-tab" tabindex="0" style=" height:400px;">
+						          <div class="container tab-pane fade show active mt-5 " id="v-pills-mul" role="tabpanel" aria-labelledby="v-pills-mul-tab" tabindex="0" >
 						           
 						           <div class="d-flex align-items-start ">
 												  
@@ -243,37 +308,37 @@
 
 													</div>
 
-												  <div class="tab-content w-100" id="v-pills-tabContent">
+												  <div class="container tab-content w-100 overflow-auto tab_size" id="v-pills-tabContent"  >
 
 												  	<div class="tab-pane fade show active mt-5" id="v-pills-aud" role="tabpanel" aria-labelledby="v-pills-aud-tab" tabindex="0">
 																<div class="row mt-5" >
 												  
-																					<div class="col-sm-4 mb-3">
-								                                <div class="card card_size">
+																					<div class="col-sm-6 col-lg-4 mb-3">
+								                                <div class="card card_size" href="#">
 								                                  <div class="card-body">
 								                                    <h5 class="card-title"> Audio Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title"> Audio Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title"> Audio Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
@@ -285,32 +350,32 @@
 														<div class="tab-pane fade  mt-5" id="v-pills-photos" role="tabpanel" aria-labelledby="v-pills-photos-tab" tabindex="0">
 															<div class="row mt-5" >
 												  
-																					<div class="col-sm-4 mb-3">
+																					<div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card card_size">
 								                                  <div class="card-body">
 								                                    <h5 class="card-title"> Photos Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title"> Photos Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title"> Photos Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
@@ -322,32 +387,32 @@
 														<div class="tab-pane fade  mt-5" id="v-pills-videos" role="tabpanel" aria-labelledby="v-pills-videos-tab" tabindex="0">
 															<div class="row mt-5" >
 												  
-																					<div class="col-sm-4 mb-3">
+																					<div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card card_size">
 								                                  <div class="card-body">
 								                                    <h5 class="card-title"> Videos Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title"> Videos Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title"> Videos Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
@@ -359,32 +424,32 @@
 														<div class="tab-pane fade  mt-5" id="v-pills-info" role="tabpanel" aria-labelledby="v-pills-info-tab" tabindex="0">
 															<div class="row mt-5" >
 												  
-																					<div class="col-sm-4 mb-3">
+																					<div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card card_size">
 								                                  <div class="card-body">
 								                                    <h5 class="card-title"> Infographics Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title"> Infographics Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title"> Infographics Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
@@ -396,32 +461,32 @@
 														<div class="tab-pane fade  mt-5" id="v-pills-int" role="tabpanel" aria-labelledby="v-pills-int-tab" tabindex="0">
 															<div class="row mt-5" >
 												  
-																					<div class="col-sm-4 mb-3">
+																					<div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card card_size">
 								                                  <div class="card-body">
 								                                    <h5 class="card-title"> Interviews Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title"> Interviews Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title"> Interviews Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
@@ -467,37 +532,37 @@
 
 													</div>
 
-												  <div class="tab-content w-100" id="v-pills-tabContent">
+												  <div class="tab-content w-100 " id="v-pills-tabContent">
 
 												  	<div class="tab-pane fade show active mt-5" id="v-pills-SFF" role="tabpanel" aria-labelledby="v-pills-SFF-tab" tabindex="0">
 															<div class="row mt-5" >
 												  
-																					<div class="col-sm-4 mb-3">
+																					<div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card card_size">
 								                                  <div class="card-body">
 								                                    <h5 class="card-title"> Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title"> Audio Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title"> Audio Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
@@ -509,32 +574,32 @@
 														<div class="tab-pane fade  mt-5" id="v-pills-LL" role="tabpanel" aria-labelledby="v-pills-LL-tab" tabindex="0">
 															<div class="row mt-5" >
 												  
-																					<div class="col-sm-4 mb-3">
+																					<div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card card_size">
 								                                  <div class="card-body">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
@@ -546,32 +611,32 @@
 														<div class="tab-pane fade  mt-5" id="v-pills-PB" role="tabpanel" aria-labelledby="v-pills-PB-tab" tabindex="0">
 														<div class="row mt-5" >
 												  
-																					<div class="col-sm-4 mb-3">
+																					<div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card card_size">
 								                                  <div class="card-body">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
@@ -583,32 +648,32 @@
 														<div class="tab-pane fade  mt-5" id="v-pills-RAS" role="tabpanel" aria-labelledby="v-pills-RAS-tab" tabindex="0">
 															<div class="row mt-5" >
 												  
-																					<div class="col-sm-4 mb-3">
+																					<div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card card_size">
 								                                  <div class="card-body">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
@@ -620,32 +685,32 @@
 														<div class="tab-pane fade  mt-5" id="v-pills-TG" role="tabpanel" aria-labelledby="v-pills-TG-tab" tabindex="0">
 															<div class="row mt-5" >
 												  
-																					<div class="col-sm-4 mb-3">
+																					<div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card card_size">
 								                                  <div class="card-body">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
@@ -657,32 +722,32 @@
 														<div class="tab-pane fade  mt-5" id="v-pills-WP" role="tabpanel" aria-labelledby="v-pills-WP-tab" tabindex="0">
 															<div class="row mt-5" >
 												  
-																					<div class="col-sm-4 mb-3">
+																					<div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card card_size">
 								                                  <div class="card-body">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
@@ -694,32 +759,32 @@
 														<div class="tab-pane fade  mt-5" id="v-pills-HTDN" role="tabpanel" aria-labelledby="v-pills-HTDN-tab" tabindex="0">
 															<div class="row mt-5" >
 												  
-																					<div class="col-sm-4 mb-3">
+																					<div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card card_size">
 								                                  <div class="card-body">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
@@ -731,32 +796,32 @@
 														<div class="tab-pane fade  mt-5" id="v-pills-research" role="tabpanel" aria-labelledby="v-pills-research-tab" tabindex="0">
 															<div class="row mt-5" >
 												  
-																					<div class="col-sm-4 mb-3">
+																					<div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card card_size">
 								                                  <div class="card-body">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
@@ -768,32 +833,32 @@
 														<div class="tab-pane fade  mt-5" id="v-pills-VCG" role="tabpanel" aria-labelledby="v-pills-VCG-tab" tabindex="0">
 															<div class="row mt-5" >
 												  
-																					<div class="col-sm-4 mb-3">
+																					<div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card card_size">
 								                                  <div class="card-body">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
@@ -805,32 +870,32 @@
 														<div class="tab-pane fade  mt-5" id="v-pills-ART" role="tabpanel" aria-labelledby="v-pills-ART-tab" tabindex="0">
 															<div class="row mt-5" >
 												  
-																					<div class="col-sm-4 mb-3">
+																					<div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card card_size">
 								                                  <div class="card-body">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
@@ -842,32 +907,32 @@
 														<div class="tab-pane fade  mt-5" id="v-pills-NEWSLET" role="tabpanel" aria-labelledby="v-pills-NEWSLET-tab" tabindex="0">
 															<div class="row mt-5" >
 												  
-																					<div class="col-sm-4 mb-3">
+																					<div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card card_size">
 								                                  <div class="card-body">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
@@ -879,32 +944,32 @@
 														<div class="tab-pane fade  mt-5" id="v-pills-ES" role="tabpanel" aria-labelledby="v-pills-ES-tab" tabindex="0">
 															<div class="row mt-5" >
 												  
-																					<div class="col-sm-4 mb-3">
+																					<div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card card_size">
 								                                  <div class="card-body">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
 								                          </div>
-								                          <div class="col-sm-4 mb-3">
+								                          <div class="col-sm-6 col-lg-4 mb-3">
 								                                <div class="card">
 								                                  <div class="card-body ">
 								                                    <h5 class="card-title">  Example file</h5>
 								                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+								                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 								                                    <span class="small  text-muted ms-5 fst-italic"></span>
 								                                  </div>
 								                                </div>
@@ -953,31 +1018,31 @@
 											      
 											      <div class="row mt-5" >
 											  
-																				<div class="col-sm-4 mb-3">
+																				<div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card card_size">
 							                                  <div class="card-body">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
@@ -989,31 +1054,31 @@
 											      
 											      <div class="row mt-5" >
 											  
-																				<div class="col-sm-4 mb-3">
+																				<div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card card_size">
 							                                  <div class="card-body">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
@@ -1025,31 +1090,31 @@
 											      
 											      <div class="row mt-5" >
 											  
-																				<div class="col-sm-4 mb-3">
+																				<div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card card_size">
 							                                  <div class="card-body">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
@@ -1061,31 +1126,31 @@
 											      
 											      <div class="row mt-5" >
 											  
-																				<div class="col-sm-4 mb-3">
+																				<div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card card_size">
 							                                  <div class="card-body">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
@@ -1097,31 +1162,31 @@
 											      
 											      <div class="row mt-5" >
 											  
-																				<div class="col-sm-4 mb-3">
+																				<div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card card_size">
 							                                  <div class="card-body">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
@@ -1133,31 +1198,31 @@
 											      
 											      <div class="row mt-5" >
 											  
-																				<div class="col-sm-4 mb-3">
+																				<div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card card_size">
 							                                  <div class="card-body">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
@@ -1169,31 +1234,31 @@
 											      
 											      <div class="row mt-5" >
 											  
-																				<div class="col-sm-4 mb-3">
+																				<div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card card_size">
 							                                  <div class="card-body">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
@@ -1231,31 +1296,31 @@
 											      
 											      <div class="row mt-5" >
 											  
-																				<div class="col-sm-4 mb-3">
+																				<div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card card_size">
 							                                  <div class="card-body">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
@@ -1267,31 +1332,31 @@
 											      
 											      <div class="row mt-5" >
 											  
-																				<div class="col-sm-4 mb-3">
+																				<div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card card_size">
 							                                  <div class="card-body">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
@@ -1303,31 +1368,31 @@
 											      
 											      <div class="row mt-5" >
 											  
-																				<div class="col-sm-4 mb-3">
+																				<div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card card_size">
 							                                  <div class="card-body">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
@@ -1339,31 +1404,31 @@
 											      
 											      <div class="row mt-5" >
 											  
-																				<div class="col-sm-4 mb-3">
+																				<div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card card_size">
 							                                  <div class="card-body">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
-							                          <div class="col-sm-4 mb-3">
+							                          <div class="col-sm-6 col-lg-4 mb-3">
 							                                <div class="card">
 							                                  <div class="card-body ">
 							                                    <h5 class="card-title">Example file</h5>
 							                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							                                    <a href="#" class="btn btn-warning btn-sm"><em> Download Files </em></a>
+							                                    <a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
 							                                  </div>
 							                                </div>
 							                          </div>
@@ -1458,7 +1523,7 @@
               
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-6 col-lg-4">
               
             </div>
             
