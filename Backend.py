@@ -40,6 +40,7 @@ def list_all_profile___():
 	random.shuffle(res)
 	return res
 
+# =============
 def profile_info_farmer(path):
 	f = open(c.RECORDS+"/profiles/__temp__/"+ path, "r")
 	strsd = f.read()
