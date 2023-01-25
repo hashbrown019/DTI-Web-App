@@ -35,7 +35,11 @@
 
 /*	font*/
 
-  
+  		.searchFont {
+  			font-family: 'Jost', sans-serif;
+  			color: #1F4F5A !important;
+
+  		}
 
 		.fontBold{
 				font-family: 'Jost', sans-serif;
