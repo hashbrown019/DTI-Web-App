@@ -130,7 +130,7 @@
 
 <!-- Sticky Nav -->
 	
-	<nav id="navbar-example2" class="navbar bg-light px-3 mb-3 sticky-top shadow-sm p-3 mb-5 bg-body rounded">
+	<nav id="navbar-example2" class="navbar bg-light px-3 mb-3 sticky-top shadow-sm p-3 mb-5 bg-body rounded ">
 		<div class=" mx-auto">
 			<ul class="nav nav-pills">
 				<li class="nav-item me-5">
@@ -156,24 +156,109 @@
 
 <!-- Upload Navbar -->
 
-<nav class="container navbar bg-light shadow-sm p-3  bg-body rounded justify-content-end">
+
+
+<nav class="container navbar bg-light shadow-sm p-3  bg-body rounded">
   <div class="container-fluid">
     <div class="dropdown d-flex ">
-			 <a class=" rounded-pill dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"  style="color: #1F4F5A !important;">Upload files</a>
+			<a class=" rounded-pill dropdown-toggle me-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"  style="color: #1F4F5A !important;">Upload files</a>
 				<ul class="dropdown-menu">
 					<li><a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#uploadDocument" href="">Document</a></li>
 					<li><a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#uploadMultimedia" href="" href="#">Multimedia</a></li>
 					<li><a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#uploadPublication" href="" href="#">Publication</a></li>
 				</ul>
-			</div>
+			<a class="me-4" style="color: #1F4F5A !important;" href="#" role="button">Publish</a>
+			<a class="me-4" id="search" onclick="searchclicked()" style="color: #1F4F5A !important;" href="#" role="button">Search</a>
+				
+				<script>
+					function searchclicked() {
+					  var x = document.getElementById("searchdiv");
+					  if (x.style.display === "none") {
+					    x.style.display = "block";
+					  } else {
+					    x.style.display = "none";
+					  }
+					}
+				</script>
+
+
+		</div>
+
+		<div class="d-flex">
+			<a class="me-4 active" style="color: #1F4F5A !important;" href="#" role="button"><u>My Files</u></a>
+			<a class="" style="color: #1F4F5A !important;" href="#" role="button">All Files</a>
+		</div>
+
   </div>
-</nav>
+</nav >
+
+<div class="container shadow-lg p-3  bg-body rounded mt-2" id="searchdiv" style="display: block;">
+		<div class="container">			
+			<form class="row row-cols-lg-auto g-3 align-items-center mt-1">
+			  <div class="col-12">
+			    <label class="fs-5 searchFont" for="searchTitle">Title:</label>
+			    <input class="form-control form-control-md" id="searchTitle" type="text" placeholder="(e.g., Coffee Story)" aria-label=".form-control-lg example">
+			  </div>
+
+			  <div class="col-12">
+			    <label class="fs-5 searchFont" for="seachDatatype">Data Type:</label>
+			    <select class="form-select form-select-md" id="seachDatatype">
+			      <option selected>Choose...</option>
+			      <option value="1">Document</option>
+			      <option value="2">Multimedia</option>
+			      <option value="3">Publication</option>
+			    </select>
+			  </div>
+
+			  <div class="col-12">
+			    <label class="fs-5 searchFont" for="searchFiletype">File Type:</label>
+			    <input class="form-control form-control-md" id="searchFiletype" type="text" placeholder="(e.g., Accomplishment Report)" aria-label=".form-control-lg example">
+			  </div>
+
+			  <div class="col-12">
+			    <label class="fs-5 searchFont" for="seachRegion">Region:</label>
+			    <select class="form-select form-select-md" id="seachRegion">
+			      <option selected>National</option>
+			      <option value="1">Region XIII</option>
+			      <option value="2">Region IX</option>
+			      <option value="3">Region X</option>
+			      <option value="4">Region XI</option>
+			      <option value="5">Region XII (SOCCSKSARGEN)</option>
+			      <option value="6">Region XIII (CARAGA)</option>
+			      <option value="7">BARMM</option>			      
+			    </select>
+			  </div>
+
+			  <div class="col-12">
+			    <label class="fs-5 searchFont" for="seachYear">Year:</label>
+			    <select class="form-select form-select-md" id="seachYear">
+			      <option selected>Choose...</option>
+			      <option value="1">2015</option>
+			      <option value="2">2016</option>
+			      <option value="3">2017</option>
+			      <option value="4">2018</option>
+			      <option value="5">2019</option>
+			      <option value="6">2020</option>
+			      <option value="7">2021</option>
+			      <option value="8">2022</option>
+			      <option value="9">2023</option>
+			    </select>
+			  </div>
+			  
+
+			  <div class="col-12">
+			    <a type="submit" class="fs-3 searchFont mt-4 ms-3" role="button">Search</a>
+			  </div>
+			</form>
+		</div>
+	
+</div>
 
 		<!-- MODALS -->
 
 		<!-- Upload MODAL (DOCUMENT)-->
 			<div class="modal fade " id="uploadDocument" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				<div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+				<div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable modal-fullscreen-lg-down">
 					<div class="modal-content">
 						<div class="modal-header">
 							<h1 class="modal-title fs-5" id="staticBackdropLabel">Upload Document</h1>
@@ -317,7 +402,7 @@
 		<!-- Upload MODAL (MULTIMEDIA)-->
 
 			<div class="modal fade " id="uploadMultimedia" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				<div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+				<div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable modal-fullscreen-lg-down">
 					<div class="modal-content">
 						<div class="modal-header">
 							<h1 class="modal-title fs-5" id="staticBackdropLabel">Upload Multimedia</h1>
@@ -449,7 +534,7 @@
 		<!-- Upload MODAL (Publication)-->
 
 			<div class="modal fade " id="uploadPublication" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				<div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+				<div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable modal-fullscreen-lg-down">
 					<div class="modal-content">
 						<div class="modal-header">
 							<h1 class="modal-title fs-5" id="staticBackdropLabel">Upload Publication</h1>
