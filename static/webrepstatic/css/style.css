@@ -85,6 +85,8 @@ img {
 /*nav css*/
 
 
+
+
 .nav-pills > li.active > a{
     color: red;
 }
@@ -113,7 +115,7 @@ img {
 
 
 .c-item{
-height: 700px;
+height: 1000px;
 
 }
 
