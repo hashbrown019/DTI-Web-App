@@ -32,6 +32,9 @@
 		color: none;
 	}
 
+img {
+    pointer-events: none;
+}
 
 /*	font*/
 
@@ -133,14 +136,28 @@ height: 700px;
 
 .c2-item{
 
-	height: 80% !important;
+	height: 40% !important;
 
 
 }
 
 .c2-img{
 
-	height: 700px;
+	height: 300px;
+	object-fit: cover;
+
+}
+
+.c3-item{
+
+	height: 20% !important;
+
+
+}
+
+.c3-img{
+
+	height: 200px;
 	object-fit: cover;
 
 }
@@ -181,7 +198,7 @@ height: 700px;
 
 
 
-/**cardstyle*//
+/**style*//
 .card-size{
 		height: 5rems;
 		width: 5rems;
@@ -201,6 +218,15 @@ height: 700px;
 
 .card:hover{
 	transform: scale(1.05);
+}
+
+.card2{
+	transition: all 0.3s;
+}
+
+
+.card2:hover{
+	transform: scale(1.02);
 }
 
 
