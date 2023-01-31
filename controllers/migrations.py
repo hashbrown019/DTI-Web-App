@@ -156,7 +156,8 @@ class _main:
 					# file_name =  c.RECORDS+"/spreadsheets/93#2022-09-19#NSAMAR_vc_a_1.xlsx" # path to file + file name
 					sheet =  "VC FORM A" # sheet name or sheet number or list of sheet numbers and names
 					try:
-						df = pd.read_excel(io=file_name, sheet_name=sheet, engine='openpyxl')
+						# df = pd.read_excel(io=file_name, sheet_name=sheet, engine='openpyxl')
+						df = pd.read_excel(io=file_name, sheet_name=sheet)
 					except Exception as e:
 						print(" * Error in [{}] :: {}".format(path,e))
 						continue
