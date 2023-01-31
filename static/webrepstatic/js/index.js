@@ -1,5 +1,14 @@
-var slideIndex = 1;
-showDivs(slideIndex);
+// var slideIndex = 0;
+// showDivs(slideIndex);
+var hidden_talent = document.getElementById("hidden_talent")
+var show_talent = document.getElementsByClassName("show_talent")
+var hidden_talent_div = hidden_talent
+hidden_talent.remove()
+
+for (var i = 0; i < show_talent.length; i++) {
+	show_talent[i].innerHTML = hidden_talent.innerHTML
+}
+
 
 function plusDivs(n) {
 	showDivs(slideIndex += n);
@@ -17,7 +26,6 @@ function showDivs(n) {
 }
 
 function mini_carousel(ind){
-	console.log(ind);  
 	var x = document.getElementsByClassName("mySlides");
 	for (var i = 0; i < x.length; i++) {
 		x[i].style.display = "none";
@@ -25,3 +33,4 @@ function mini_carousel(ind){
 	x[ind].style.display = "block";
 	// showDivs(slideIndex += ind);
 }
+
