@@ -30,7 +30,7 @@
 
 
 
-<!-- Top Navigation/Login -->
+<!-- Top Nav/Login -->
 	<nav class="container-fluid navbar navbar-expand-sm position-absolute" style="z-index: 1;">
 			<div class="container">
 				<div class="container ms-5  mt-5" >
@@ -38,7 +38,7 @@
 							 <img src="../../static/webrepstatic/img/rapid_project_white.svg" width="150" height="110" class="" alt="home">
 						</a>
 				</div>
-				<div class="section ms-5 me-5"></div>
+				
 				<div class="collapse navbar-collapse" id="navbarNavDropdown">
 					<ul class="navbar-nav mt-5 ms-5">
 							<li class="nav-item ">
@@ -49,14 +49,53 @@
 			</div>
 	</nav>
 
+<!-- Login Modal -->	
+	<div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-fullscreen-lg-down">
+		    <div class="modal-content">
+		    	<div class="modal-header justify-content-center mb-3">
+		    		<img src="../../static/webrepstatic/img/RAPID.svg" width="90" height="60" class="mb-1" alt="home">
+			    </div>	     
+			    <div class="modal-body mt-3">
+			    	<div class="container">
+			    		<div class="vstack gap-2 mx-auto">
+						    <div class="mb-3 row">
+							    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+							    <div class="col-sm-10">
+							      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+							    </div>
+							</div>
+							<div class="row">
+							    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+							    <div class="col-sm-10">
+							      <input type="password" class="form-control" id="inputPassword">
+							    </div>
+							</div>
+							<div class="mb-3 d-flex justify-content-end">
+							    <a href="#">Forgot Password?</a>				    
+							</div>
+
+							<div class=" d-grid gap-2 mb-3">
+							  <button class="btn btn-outline-dark rounded-pill" type="button">Login</button>
+							  <button class="btn btn-dark rounded-pill" type="button" data-bs-dismiss="modal">Cancel</button>
+							</div>
+						</div>
+			   		</div>
+			   	</div>	
+		    </div>
+		</div>
+	</div>
+
+
+
 <!--Carousel-->
 	<div id="carousel" class="carousel slide" data-bs-ride="carousel">
 		<div class="carousel-inner">
 
 			<div class="mySlides carousel-item c-item active" data-bs-interval="5000">
-				<img src="../static/webrepstatic/img/rapidimage/6_CIDOFSFA_BrgyCervantes_Catarman (35).jpg" class="d-block w-100 c-img" alt="...">				
+				<img src="../static/webrepstatic/img/rapidimage/6_CIDOFSFA_BrgyCervantes_Catarman_RCU8.jpg" class="d-block w-100 c-img" alt="...">				
 				<div class="carousel-caption ">	
-					<p class="text-white display-5" style="margin-bottom: 300px; text-shadow: 5px 5px 10px black;"><span class="text-white display-1 me-1">R</span>esponds to specific gaps in the agricultural sector by linking farmers to MSMEs and large firms.</p>
+					<p class="text-white fs-1 shadowText" style="margin-bottom: 200px; "><span class="text-white display-1 me-1">R</span>esponds to specific gaps in the agricultural sector by linking farmers to MSMEs and large firms.</p>
 
 					<div class="show_talent justify-content-center "></div>
 
@@ -64,9 +103,9 @@
 				</div>
 			</div>
 			<div class="mySlides carousel-item c-item" data-bs-interval="5000">
-				<img src="../static/webrepstatic/img/rapidimage/6_CIDOFSFA_BrgyCervantes_Catarman_RCU8.jpg" class="d-block w-100 c-img" alt="...">
+				<img src="../static/webrepstatic/img/rapidimage/6_CIDOFSFA_BrgyCervantes_Catarman (35).jpg" class="d-block w-100 c-img" alt="...">
 				<div class="carousel-caption ">
-					<p class="text-white display-5" style="margin-bottom: 300px;text-shadow: 5px 5px 10px black;"><span class="text-white display-1 me-1">A</span>dopts a whole-of-government/nation approach in the delivery of services,</p>
+					<p class="text-white fs-1 shadowText" style="margin-bottom: 200px;"><span class="text-white display-1 me-1">A</span>dopts a whole-of-government/nation approach in the delivery of services,</p>
 					<div class="show_talent justify-content-center "></div>
 				</div>
 				
@@ -74,7 +113,7 @@
 			<div class="mySlides carousel-item c-item" data-bs-interval="5000">
 				<img src="../static/webrepstatic/img/rapidimage/RCU 9 (05).jpg" class="d-block w-100 c-img" alt="...">
 				<div class="carousel-caption  ">
-					<p class="text-white display-5" style="margin-bottom: 300px;text-shadow: 5px 5px 10px black;"><span class="text-white display-1 ">P</span>roviding strategic business development interventions across the value chain of focused agricultural sector such as coffee, cacao, coconut and processed fruits and nuts.</p>		
+					<p class="text-white fs-1 shadowText" style="margin-bottom: 200px;"><span class="text-white display-1 ">P</span>roviding strategic business development interventions across the value chain of focused agricultural sector such as coffee, cacao, coconut and processed fruits and nuts.</p>		
 					<div class="show_talent justify-content-center "></div>
 				</div>
 				
@@ -82,18 +121,20 @@
 			<div class="mySlides carousel-item c-item" data-bs-interval="5000">
 				<img src="../static/webrepstatic/img/rapidimage/RCU 9 (08).jpg" class="d-block w-100 c-img" alt="...">
 				<div class="carousel-caption  ">	
-					<p class="text-white display-5" style="margin-bottom: 300px;text-shadow: 5px 5px 10px black;"><span class="text-white display-1 ">I</span>ncrease the income level of smallholder farmers and unemployed rural women and men across selected agri-based value chain.</p>
+					<p class="text-white fs-1 shadowText" style="margin-bottom: 200px;"><span class="text-white display-1 ">I</span>ncrease the income level of smallholder farmers and unemployed rural women and men across selected agri-based value chain.</p>
 					<div class="show_talent justify-content-center "></div>
 				</div>
 			</div>
 			<div class="mySlides carousel-item c-item" data-bs-interval="5000">
 				<img src="../static/webrepstatic/img/rapidimage/RCU 9 (09).jpg" class="d-block w-100 c-img" alt="...">
 				<div class="carousel-caption  ">		
-					<p class="text-white display-5" style="margin-bottom: 300px;text-shadow: 5px 5px 10px black;"><span class="text-white display-1 me-1">D</span>TI’s goal to bring employment, business and livelihood opportunities to the rural communities.</p>
+					<p class="text-white fs-1 shadowText" style="margin-bottom: 200px;"><span class="text-white display-1 me-1">D</span>TI’s goal to bring employment, business and livelihood opportunities to the rural communities.</p>
 					<div class="show_talent justify-content-center "></div>
 				</div>
 			</div>
 		</div>
+
+
 
 	</div>
 
@@ -103,8 +144,11 @@
 			<span class="display-1 text-white ms-5 me-5" type="button" onclick="mini_carousel(1)">A</span>
 			<span class="display-1 text-white ms-5 me-5" type="button" onclick="mini_carousel(2)">P</span>
 			<span class="display-1 text-white ms-5 me-5" type="button" onclick="mini_carousel(3)">I</span>
-			<span class="display-1 text-white ms-5 me-5" type="button" onclick="mini_carousel(4)">D</span>			
+			<span class="display-1 text-white ms-5 me-5" type="button" onclick="mini_carousel(4)">D</span>	
+			<div class="section ms-5 me-5" style="padding: 50px;"></div>		
 		</div>
+
+
 	</div>
 
 <!--NAVBAR-->
@@ -407,7 +451,20 @@
 
 	</div>
 
-
+<!-- What we do -->
+	<div class="position-relative mb-5">
+		<div class="cover-item mt-5 " >
+			<img src="https://images.unsplash.com/photo-1622718831336-d6c854e91ccd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" class="d-block w-100 cover-img" alt="...">
+		</div>
+		<div class="container ">
+			<div class="col-sm position-absolute top-50 start-50 translate-middle mb-5 text-center">
+				<h5 class="display-4 fw-bolder fst-italic text-white">What we do</h5>
+				<p class="col-sm fst-italic text-white text-start mt-5">Our website is under construction , so please excuse us while we work on it. We will update this page as soon as we can. If you have any questions about the site, please contact us. Thanks! We will be updating this site frequently. Please check</p>
+				<a class="btn btn-outline-light rounded-pill border border-secondary mt-5" href="/rapid/whatwedo/whatWedoDD.html">See More &nbsp <span><i class="fa-solid fa-arrow-right text-white"></i></span></a>
+						
+			 </div>
+		</div>
+	</div>
 
 <!--Todays News & Stories--> 
 	<div class="container shadow-sm p-3 mb-5 bg-body rounded">
@@ -508,13 +565,25 @@
 		</div>
 	</div>
 
+<!-- Where we work -->
+	<div class="position-relative mb-5">
+		<div class="cover-item mt-5 " >
+			<img src="https://images.unsplash.com/photo-1606313456936-e34dabc46840?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class="d-block w-100 cover-img" alt="...">
+		</div>
+		<div class="container ">
+			<div class="col-sm position-absolute top-50 start-50 translate-middle mb-5 text-center">
+				<h5 class="display-4 fw-bolder fst-italic text-white">Where we work</h5>
+				<p class="col-sm fst-italic text-white text-start mt-5">Our website is under construction , so please excuse us while we work on it. We will update this page as soon as we can. If you have any questions about the site, please contact us. Thanks! We will be updating this site frequently. Please check</p>
+				<a class="btn btn-outline-light rounded-pill border border-secondary mt-5" href="/rapid/wherewework/whereWeworkEV.html">See More &nbsp <span><i class="fa-solid fa-arrow-right text-white"></i></span></a>
+						
+			 </div>
+		</div>
+	</div>
 
 <!--cards-->
-
-
 	<div class="container mt-3">
 		<div class=" mt-5 fw-bolder fs-4 title">
-				<span href="#" class="display-5">Stories</span>
+				<!-- <span href="#" class="display-5">Stories</span> -->
 		</div>
 		<div class="row mt-3">
 			<div class="col-lg mb-5 ">
@@ -610,25 +679,9 @@
 			</div>			
 
 		</div>
-			<div class=" mt-5 fst-italic fs-1">
+			<!-- <div class="fst-italic fs-1 d-flex justify-content-end">
 				<a href="#" style="text-decoration: none !important; color: #1F4F5A; ">See more stories...</a>
-			</div>
-	</div>
-
-<!-- What we do -->
-
-	<div class="position-relative">
-		<div class="cover-item mt-5 " >
-			<img src="https://images.unsplash.com/photo-1622718831336-d6c854e91ccd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" class="d-block w-100 cover-img" alt="...">
-		</div>
-		<div class="container ">
-			<div class="col-sm position-absolute top-50 start-50 translate-middle mb-5 text-center">
-				<h5 class="display-4 fw-bolder fst-italic text-white">What we do</h5>
-				<p class="col-sm fst-italic text-white text-start mt-5">Our website is under construction , so please excuse us while we work on it. We will update this page as soon as we can. If you have any questions about the site, please contact us. Thanks! We will be updating this site frequently. Please check</p>
-				<a class="btn btn-outline-light rounded-pill border border-secondary mt-5" href="/rapid/whatwedo/whatWedoDD.html">See More &nbsp <span><i class="fa-solid fa-arrow-right text-white"></i></span></a>
-						
-			 </div>
-		</div>
+			</div> -->
 	</div>
 
 <!-- Who we are -->
@@ -645,20 +698,6 @@
 		</div>
 
 	</div>
-
-<!-- Where we work -->
-
-	<div class="container">		
-		<div class="col-lg mx-auto mt-5">
-				<h5 class=" headings display-3 fst-italic" style="color: #1F4F5A !important;">Where we work</h5>
-				<p class="fst-italic mt-5 ">Our website is under construction , so please excuse us while we work on it. We will update this page as soon as we can. If you have any questions about the site, please contact us. Thanks! We will be updating this site frequently. Please check</p>
-		</div>
-		<div class="mt-5 fst-italic fs-5">
-			<a href="#" style="text-decoration: none !important; color: #1F4F5A; ">See more...</a>
-		</div>
-	</div>
-
-		
 
 <!--Footer-->
 	<div class="position-relative mt-5 c-item">

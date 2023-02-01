@@ -64,6 +64,11 @@ img {
   }
 }
 
+
+.shadowText{
+/*	text-shadow: 5px 5px 10px black;*/
+}
+
 /*	font*/
 
   		.searchFont {
@@ -111,9 +116,6 @@ img {
 
 
 /*nav css*/
-
-
-
 
 .nav-pills > li.active > a{
     color: red;
