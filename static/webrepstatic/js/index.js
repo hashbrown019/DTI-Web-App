@@ -46,3 +46,10 @@ $(document).ready(function(){
     $(this).parent().toggleClass('open');
   });
 });
+
+
+// Scrollspy
+
+$('.navbar-nav>li>a').on('click', function(){
+    $('.navbar-collapse').collapse('hide');
+});

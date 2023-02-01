@@ -27,100 +27,167 @@
 <body data-spy="scroll" data-target="#navbar-example2" data-offset="50">
  
 <!--NAVBAR-->
-<nav class="navbar navbar-expand-xl navbar-light bg-white">
-	<div class="container">
-		<a class="navbar-brand mx-auto mx-sm-start" href="/rapid/home.html">
-				 <img src="../../static/webrepstatic/img/RAPID.svg" width="150" height="110" class="" alt="home">
-			</a>
-
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbarNavDropdown">
-			
-			<ul class="navbar-nav mx-auto ">
-
-				<li class="nav-item dropdown pr-2">
-						<a class="nav-link dropdown-toggle " href="whatWedo.html" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							What we do
-						</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="/rapid/whatwedo/whatWedoDD.html">Development Direction</a>
-						<a class="dropdown-item" href="/rapid/whatwedo/whatWedoDAB.html">Direction Assistance to Beneficiaries</a>
-						<a class="dropdown-item" href="/rapid/whatwedo/whatWedoIS.html">Institutional Strengthening</a>
-						<a class="dropdown-item" href="/rapid/whatwedo/whatWedoFSP.html">Technical Assistance to Financial Service Providers (FSPs)</a>
-						<a class="dropdown-item" href="/rapid/whatwedo/whatWedoPM.html">Project Management</a>
-						<a class="dropdown-item" href="/rapid/whatwedo/whatWedoRBM.html">RAPID Business Model</a>
-						<a class="dropdown-item" href="/rapid/whatwedo/whatWedoVC.html">Value Chain</a>
-					</div>
-				</li>
-
-				<li class="nav-item dropdown pr-2">
-						<a class="nav-link dropdown-toggle " href="/rapid/whoweare/whoweareHistory.html" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Who we are
-						</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="/rapid/whoweare/whoweareHistory.html">History</a>
-						<a class="dropdown-item" href="/rapid/whoweare/whoweareMMV.html">Mandate, Mission & Vission</a>
-						<a class="dropdown-item" href="/rapid/whoweare/whoweareORG.html">Organization</a>
-						<a class="dropdown-item" href="/rapid/whoweare/whoweareGOV.html">Governance</a>
-						<a class="dropdown-item" href="/rapid/whoweare/whoweareFIN.html">Finances</a>
-						<a class="dropdown-item" href="/rapid/whoweare/whoweareFP.html">Fundamental Principles</a>
-						<a class="dropdown-item" href="/rapid/whoweare/whoweareWR.html">Working for RAPID</a>
-					</div>
-				</li>
-
-				<li class="nav-item dropdown pr-2">
-						<a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Where we work
-						</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="/rapid/wherewework/whereWeworkEV.html">EASTERN VISAYAS</a>
-						<a class="dropdown-item" href="/rapid/wherewework/whereWeworkZP.html">ZAMBOANGA PENINSULA</a>
-						<a class="dropdown-item" href="/rapid/wherewework/whereWeworkNM.html">NORTHERN MINDANAO</a>
-						<a class="dropdown-item" href="/rapid/wherewework/whereWeworkDV.html">DAVAO</a>
-						<a class="dropdown-item" href="/rapid/wherewework/whereWeworkSOC.html">SOCCSKSARGEN</a>
-						<a class="dropdown-item" href="/rapid/wherewework/whereWeworkCAR.html">CARAGA</a>
-						<a class="dropdown-item" href="/rapid/wherewework/whereWeworkBARMM.html">BARMM</a>
-
-					</div>
-				</li>
-
-				<li class="nav-item">
-					<a class="nav-link disabled" href="#">News & Stories</a>
-				</li>
-
-				<li class="nav-item ">
-					<a class="nav-link " href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Knowledge
-					</a>
-					<!-- <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="/rapid/knowledgecenter/knowledgeCenter.html" >Overview</a>
-						<a class="dropdown-item" href="/rapid/knowledgecenter/knowledgeCenter.html">Knowledge Products</a>
-						<a class="dropdown-item" href="/rapid/knowledgecenter/knowledgeCenter.html">Templates</a>
-						<a class="dropdown-item" href="/rapid/knowledgecenter/knowledgeCenter.html">Tools &  Guidelines</a>
-						
-					</div> -->
-				</li>
-
-
-			</ul>
-			<ul class="navbar-nav ms-auto">
-				<li class="nav-item">
-					<a class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal" href="http://dtirapid.ph">Login</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-</nav>
+  <nav class="navbar navbar-expand-sm navbar-light bg-white" style="height: 150px;">
+    <div class="container">
+      <a class="navbar-brand d-lg-none d-md-none d-sm-none d-xl-block" href="/rapid/home.html">
+           <img src="../../static/webrepstatic/img/RAPID.svg" width="150" height="110" class="" alt="home">
+        </a>
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle ps-4" type="button" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">What we do</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Project Goal</a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" role="button">Development Objectives</a></li>
+                          <li><a class="dropdown-item" role="button">Project Outcomes</a></li>                              
+                      </ul>
+                  </li>
+                  <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Project Components and Interventions</a>
+                      <ul class="dropdown-menu">
+                          <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Direct Assistance to Enterprise</a>
+                              <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" role="button">Business Services</a></li>
+                                  <li><a class="dropdown-item" role="button">Enterprise strengthening</a></li>
+                                  <li><a class="dropdown-item" role="button">Farm to Market Infrastructure</a></li>
+                              </ul>
+                          </li>
+                          <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Institutional Strengthening</a>
+                              <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" role="button">Value Chain Governance</a></li>
+                                  <li><a class="dropdown-item" role="button">Commercial Partnership</a></li>
+                              </ul>
+                          </li>
+                          <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Technical Assistance to Financial Service Providers (FSPs)</a>
+                              <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" role="button">Technical Assistance to Financial Service Providers (FSPs)</a></li>
+                                  <li><a class="dropdown-item" role="button">Capacity Building of FSP</a></li>
+                                  <li><a class="dropdown-item" role="button">Financial Literacy Program</a></li>
+                                  <li><a class="dropdown-item" role="button">Crop Insurance, Guarantee and Credit Surety Fund</a></li>
+                                  <li><a class="dropdown-item" role="button">Strategic Financing Scheme</a></li>
+                                  <li><a class="dropdown-item" role="button">Debt Financing Implementation Process</a></li>
+                                  <li><a class="dropdown-item" role="button">Matching Grant Fund Pool with GFIs</a></li>
+                                  <li><a class="dropdown-item" role="button">Accreditation of FSP</a></li>
+                              </ul>
+                          </li>
+                          <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Innovation Fund/ Financing Support</a>
+                              <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item text-truncate" role="button">Training, Conduct of Awareness and promotional activities... <!--on innovative fund, Seminar and workshops on equity venture capital and other innovative financing product--></a></li>
+                                  <li><a class="dropdown-item" role="button">Equity Venture Capital</a></li>
+                              </ul>
+                          </li>
+                          <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Project Management</a>
+                              <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" role="button">Establishment of Project Management Structures and Systems</a></li>
+                                  <li><a class="dropdown-item" role="button">Staff Training and Capacity Building</a></li>
+                                  <li><a class="dropdown-item" role="button">Project Coordination and Networking</a></li>
+                                  <li><a class="dropdown-item" role="button">Results Based Project Monitoring and Evaluation</a></li>
+                                  <li><a class="dropdown-item" role="button">Mainstreaming Gender Equality and Social Inclusion</a></li>
+                                  <li><a class="dropdown-item" role="button">Financial Performance Monitoring</a></li>
+                                  <li><a class="dropdown-item" role="button">Procurement</a></li>
+                                  <li><a class="dropdown-item" role="button">Administrative Support</a></li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </li>
+                  <li><a class="dropdown-item" role="button">RAPID Business Model</a></li>
+                  <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Value Chain</a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" role="button">Cacao</a></li>
+                          <li><a class="dropdown-item" role="button">Coffee</a></li>
+                          <li><a class="dropdown-item" role="button">Coconut</a></li>
+                          <li><a class="dropdown-item" role="button">Processed Fruits and Nuts</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle ps-4" role="button" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Who we are</a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">                                         
+                  <li><a class="dropdown-item" role="button">History</a></li>
+                  <li><a class="dropdown-item" role="button">Agency Mandate Mission & Vision</a></li> 
+                  <li><a class="dropdown-item" role="button">Organogram</a></li>  
+                  <li><a class="dropdown-item" role="button">Project Implementation Manual</a></li> 
+                  <li><a class="dropdown-item" role="button">Accomplishments</a></li> 
+                  <li><a class="dropdown-item" role="button">Working for RAPID</a></li> 
+                  <li><a class="dropdown-item" role="button">Contacts</a></li>                        
+              </ul>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle ps-4" role="button" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Where we work </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">                     
+                  <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Eastern Visayas</a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" role="button">Northern Samar</a></li>
+                          <li><a class="dropdown-item" role="button">Leyte</a></li> 
+                          <li><a class="dropdown-item" role="button">Southern Leyte</a></li>                           
+                      </ul>
+                  </li>
+                  <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Zamboanga Peninsula</a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" role="button">Zamboanga del Norte</a></li>
+                          <li><a class="dropdown-item" role="button">Zamboanga Sibugay</a></li>
+                          <li><a class="dropdown-item" role="button">Zamboanga del Sur</a></li>                           
+                      </ul>
+                  </li>
+                  <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Northern Mindanao</a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" role="button">Misamis Oriental</a></li>
+                          <li><a class="dropdown-item" role="button">Bukidnon</a></li>
+                          <li><a class="dropdown-item" role="button">Lanao del Norte</a></li>                            
+                      </ul>
+                  </li>
+                  <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Davao</a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" role="button">Davao de Oro</a></li>
+                          <li><a class="dropdown-item" role="button">Davao Oriental</a></li>
+                          <li><a class="dropdown-item" role="button">Davao del Norte</a></li>
+                          <li><a class="dropdown-item" role="button">Davao del Sur</a></li>
+                          <li><a class="dropdown-item" role="button">Davao del Occidental</a></li>                           
+                      </ul>
+                  </li>
+                  <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">SOCCSKSARGEN</a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" role="button">North Cotabato</a></li>
+                          <li><a class="dropdown-item" role="button">Sultan Kudarat</a></li>
+                          <li><a class="dropdown-item" role="button">Sarangani</a></li>                           
+                      </ul>
+                  </li>
+                  <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">CARAGA</a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" role="button">Agusan del Norte</a></li>
+                          <li><a class="dropdown-item" role="button">Agusan del Sur</a></li> 
+                          <li><a class="dropdown-item" role="button">Surigao del Sur</a></li>                          
+                      </ul>
+                  </li>
+                  <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">BARMM</a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" role="button">Maguindanao</a></li>                    
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle ps-4" role="button" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> News & Stories </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" role="button">Latest News</a></li>
+                  <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" role="button">Stories</a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" role="button">Cacao Stories</a></li>
+                          <li><a class="dropdown-item" role="button">Coconut Stories</a></li>
+                          <li><a class="dropdown-item" role="button">Coffee Stories</a></li>
+                          <li><a class="dropdown-item" role="button">Processed Fruits and Nuts Stories</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" role="button">Knowledge</a>
+          </li>             
+        </ul>
+     </div>
+  </nav>
 
 <!-- Content -->
-
-<div style="border: 1px ; height: 0%;">
-  
-</div>
-
 
 
 <div class=" container mt-5  mb-5">
@@ -212,6 +279,7 @@
 		    </div>
 		  </div>
 		</div>
+
 
 
 
@@ -1442,7 +1510,6 @@
 				</div>
 	
 </div>
-
 
 
 
