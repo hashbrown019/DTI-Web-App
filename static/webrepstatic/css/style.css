@@ -32,6 +32,42 @@
 		color: none;
 	}
 
+img {
+    pointer-events: none;
+}
+
+.section {
+
+  width: 100%;
+}
+
+.section::before {
+  animation: bounce 2s ease infinite;
+  bottom: 2rem;
+  color: #fff;
+  content: '╲╱';
+  font-size: 2rem;
+  height: 4rem;
+  left: 50%;
+  letter-spacing: -4px;
+  line-height: 4rem;
+  margin-left: -3rem;
+  opacity: 0.8;
+  position: absolute;
+  text-align: center;
+  width: 6rem;
+}
+
+@keyframes bounce {
+  50% {
+    transform: translateY(-50%);
+  }
+}
+
+
+.shadowText{
+/*	text-shadow: 5px 5px 10px black;*/
+}
 
 /*	font*/
 
@@ -77,10 +113,28 @@
 
 		}
 
+/*Nav Hover Dropdaown*/
 
+.navbar-nav li:hover > ul.dropdown-menu {
+    display: block;
+}
+.dropdown-submenu {
+    position:relative;
+}
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top:-6px;
+    margin-left: 1.9px;
+}
+
+/* rotate caret on hover */
+.dropdown-menu > li > a:hover:after {
+    text-decoration: underline;
+    transform: rotate(-90deg);
+} 
 
 /*nav css*/
-
 
 .nav-pills > li.active > a{
     color: red;
@@ -110,14 +164,14 @@
 
 
 .c-item{
-height: 700px;
+height: 1000px;
 
 }
 
 .c-img{
 	height: 100%;
 	object-fit: cover;
-	filter: brightness(0.6);
+	filter: brightness(0.5);
 }
 
 .content-item{
@@ -131,17 +185,40 @@ height: 700px;
 	filter: brightness(0.6);
 }
 
+
+.carousel-indicators a{
+    width: 30px;
+    height: 30px;
+    text-indent: -999px;
+}
+
 .c2-item{
 
-	height: 80% !important;
+	height: 40% !important;
 
 
 }
 
 .c2-img{
 
-	height: 700px;
+	height: 300px;
 	object-fit: cover;
+	filter: brightness(0.6);
+
+}
+
+.c3-item{
+
+	height: 20% !important;
+
+
+}
+
+.c3-img{
+
+	height: 200px;
+	object-fit: cover;
+	filter: brightness(0.6);
 
 }
 
@@ -181,7 +258,7 @@ height: 700px;
 
 
 
-/**cardstyle*//
+/**style*//
 .card-size{
 		height: 5rems;
 		width: 5rems;
@@ -201,6 +278,15 @@ height: 700px;
 
 .card:hover{
 	transform: scale(1.05);
+}
+
+.card2{
+	transition: all 0.3s;
+}
+
+
+.card2:hover{
+	transform: scale(1.02);
 }
 
 
@@ -285,3 +371,7 @@ height: 700px;
  height:400px;
  width: 100%;
 }
+
+
+/*scrollspy*/
+

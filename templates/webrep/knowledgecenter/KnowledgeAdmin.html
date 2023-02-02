@@ -8,6 +8,10 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&display=swap" rel="stylesheet">
 
+		<!-- fontawesomeCDN -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+		
 		<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 
 		<!-- CSS only -->
@@ -157,7 +161,7 @@
 						<li><a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#uploadPublication" href="" href="#">Publication</a></li>
 					</ul>
 				<a class="me-4" style="color: #1F4F5A !important;" href="#" role="button">Publish</a>
-				<a class="me-4" id="search" onclick="searchclicked()" style="color: #1F4F5A !important;" href="#" role="button">Search</a>
+				<a class="me-4" id="search" onclick="searchclicked()" style="color: #1F4F5A !important;" role="button">Search Files</a>
 					
 					<script>
 						function searchclicked() {
@@ -182,16 +186,16 @@
 	</nav >
 
 <!-- Search Area -->
-	<div class="container shadow-lg p-3  bg-body rounded mt-2" id="searchdiv" style="display: block;">
-			<div class="container ">			
-				<form class="row row-cols-lg-auto g-3 align-items-center mt-1">
-				  <div class="col-12 me-4">
-				    <label class="fs-5 searchFont" for="searchTitle">Title:</label>
+	<div class="container shadow-lg p-3  bg-body rounded mt-2" id="searchdiv" style="display: none;">
+			<div class=" ">			
+				<form class="row row-cols-xxl-auto g-3 align-items-center mt-1">
+				  <div class="col-12 ">
+				    <label class="fs-5 searchFont mb-2" for="searchTitle">Title:</label>
 				    <input class="form-control form-control-md" id="searchTitle" type="text" placeholder="(e.g., Coffee Story)" aria-label=".form-control-lg example">
 				  </div>
 
-				  <div class="col-12 me-4">
-				    <label class="fs-5 searchFont" for="seachDatatype">Data Type:</label>
+				  <div class="col-12 ">
+				    <label class="fs-5 searchFont mb-2" for="seachDatatype">Data Type:</label>
 				    <select class="form-select form-select-md" id="seachDatatype">
 				      <option selected>Choose...</option>
 				      <option value="1">Document</option>
@@ -200,13 +204,13 @@
 				    </select>
 				  </div>
 
-				  <div class="col-12 me-4 ">
-				    <label class="fs-5 searchFont" for="searchFiletype">File Type:</label>
+				  <div class="col-12 ">
+				    <label class="fs-5 searchFont mb-2" for="searchFiletype">File Type:</label>
 				    <input class="form-control form-control-md" id="searchFiletype" type="text" placeholder="(e.g., Accomplishment Report)" aria-label=".form-control-lg example">
 				  </div>
 
-				  <div class="col-12 me-4 ">
-				    <label class="fs-5 searchFont" for="seachRegion">Region:</label>
+				  <div class="col-12  ">
+				    <label class="fs-5 searchFont mb-2" for="seachRegion">Region:</label>
 				    <select class="form-select form-select-md" id="seachRegion">
 				      <option selected>National</option>
 				      <option value="1">Region XIII</option>
@@ -219,8 +223,8 @@
 				    </select>
 				  </div>
 
-				  <div class="col-12 me-4">
-				    <label class="fs-5 searchFont" for="seachYear">Year:</label>
+				  <div class="col-12 ">
+				    <label class="fs-5 searchFont mb-2" for="seachYear">Year:</label>
 				    <select class="form-select form-select-md" id="seachYear">
 				      <option selected>Choose...</option>
 				      <option value="1">2015</option>
@@ -234,10 +238,18 @@
 				      <option value="9">2023</option>
 				    </select>
 				  </div>
+
+				  <div class="col-12 ">
+				    <label class="fs-5 searchFont mb-2" for="searchTags">Tags:</label>
+				    <input class="form-control form-control-md" id="searchTafs" type="text" placeholder="(e.g., Cacao)" aria-label=".form-control-lg example">
+				  </div>
 				  
 
-				  <div class="col-12 me-4">
-				    <a type="submit" class="fs-4 searchFont mt-4 ms-3" role="button" data-bs-toggle="modal" data-bs-target="#searchResult">Search</a>
+				  <div class="col-12 ">
+				  	<label class="fs-5 searchFont mb-2" ></label>
+				  	
+				    <a type="submit" class="fs-4 searchFont mt-4 ms-3" role="button" data-bs-toggle="modal" data-bs-target="#searchResult"> <span><i class="fa-solid fa-magnifying-glass"></i></span></a>
+
 				  </div>
 				</form>
 			</div>
@@ -863,9 +875,9 @@
 
 
 <!-- OVERVIEW -->
-	<div class="container shadow-sm p-3 mb-5 bg-body rounded mt-5" id="OVER" >
+	<div class="container shadow-sm p-3 mb-5 bg-body rounded mt-5" id="OVER">
 
-		<div class="container d-flex" style="border:  1px red;">
+		<div class="container d-flex" >
 			<div class="col-lg-9">
 				<p class="display-3 " style="color: #1F4F5A !important;">Overview</p>
 			</div>
@@ -875,145 +887,140 @@
 		<!-- Select Modal -->
 
 
-
-
-
-
-
 		<!-- KM Strategy -->
-		<div class="nav container flex-row nav-pills pe-5 " id="v-pills-tab" role="tablist ">
+			<div class="nav container flex-row nav-pills pe-5 " id="v-pills-tab" role="tablist ">
+											
+					<a class=" nav-link rounded-pill show active me-2 mt-3 mx-2" id="v-pills-KMS-tab" data-bs-toggle="pill" data-bs-target="#v-pills-KMS" type="button" role="tab" aria-controls="v-pills-KMS" aria-selected="true" style="">KM Strategy</a>
+
+					<a class=" nav-link rounded-pill  me-2 mt-3 mx-2 " id="v-pills-KMPLANS-tab" data-bs-toggle="pill" data-bs-target="#v-pills-KMPLANS" type="button" role="tab" aria-controls="v-pills-KMPLANS" aria-selected="true" style="">KM Plans</a>
+
+					<a class=" nav-link rounded-pill  me-2 mt-3  mx-2" id="v-pills-CPLANS-tab" data-bs-toggle="pill" data-bs-target="#v-pills-CPLANS" type="button" role="tab" aria-controls="v-pills-CPLANS" aria-selected="true" style="">Communication Plans</a>
+
+						<div class="tab-content w-100" id="v-pills-tabContent">
+								
+								<!-- KM Strategy -->
+								<div class="container tab-pane fade show active mt-3 overflow-auto  " id="v-pills-KMS" role="tabpanel " aria-labelledby="v-pills-KMS-tab" tabindex="0" >
 										
-				<a class=" nav-link rounded-pill show active me-2 mt-3 mx-2" id="v-pills-KMS-tab" data-bs-toggle="pill" data-bs-target="#v-pills-KMS" type="button" role="tab" aria-controls="v-pills-KMS" aria-selected="true" style="">KM Strategy</a>
+																			<div class="row mt-5" >
+													
+																					<div class="col-sm-6 col-lg-4 mb-3">
+																								<div class="card card_size">
+																									<div class="card-body">
+																										<h5 class="card-title"> Example file</h5>
+																										<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+																										<a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
+																										
+																									</div>
+																								</div>
+																					</div>
+																					<div class="col-sm-6 col-lg-4 mb-3">
+																								<div class="card">
+																									<div class="card-body ">
+																										<h5 class="card-title"> Example file</h5>
+																										<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+																										<a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
+																										
+																									</div>
+																								</div>
+																					</div>
+																					<div class="col-sm-6 col-lg-4 mb-3">
+																								<div class="card">
+																									<div class="card-body ">
+																										<h5 class="card-title"> Example file</h5>
+																										<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+																										<a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
+																										
+																									</div>
+																								</div>
+																					</div>
+																					
+											</div>
 
-				<a class=" nav-link rounded-pill  me-2 mt-3 mx-2 " id="v-pills-KMPLANS-tab" data-bs-toggle="pill" data-bs-target="#v-pills-KMPLANS" type="button" role="tab" aria-controls="v-pills-KMPLANS" aria-selected="true" style="">KM Plans</a>
+								</div>
 
-				<a class=" nav-link rounded-pill  me-2 mt-3  mx-2" id="v-pills-CPLANS-tab" data-bs-toggle="pill" data-bs-target="#v-pills-CPLANS" type="button" role="tab" aria-controls="v-pills-CPLANS" aria-selected="true" style="">Communication Plans</a>
-
-					<div class="tab-content w-100" id="v-pills-tabContent">
-							
-							<!-- KM Strategy -->
-							<div class="container tab-pane fade show active mt-3 overflow-auto  " id="v-pills-KMS" role="tabpanel " aria-labelledby="v-pills-KMS-tab" tabindex="0" >
-									
-																		<div class="row mt-5" >
-												
-																				<div class="col-sm-6 col-lg-4 mb-3">
-																							<div class="card card_size">
-																								<div class="card-body">
-																									<h5 class="card-title"> Example file</h5>
-																									<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-																									<a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
-																									
-																								</div>
-																							</div>
-																				</div>
-																				<div class="col-sm-6 col-lg-4 mb-3">
-																							<div class="card">
-																								<div class="card-body ">
-																									<h5 class="card-title"> Example file</h5>
-																									<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-																									<a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
-																									
-																								</div>
-																							</div>
-																				</div>
-																				<div class="col-sm-6 col-lg-4 mb-3">
-																							<div class="card">
-																								<div class="card-body ">
-																									<h5 class="card-title"> Example file</h5>
-																									<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-																									<a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
-																									
-																								</div>
-																							</div>
-																				</div>
-																				
-										</div>
-
-							</div>
-
-							<!-- KM Plans -->
-							<div class="container tab-pane fade  mt-3 overflow-auto  " id="v-pills-KMPLANS" role="tabpanel" aria-labelledby="v-pills-KMPLANS-tab" tabindex="0" >
-									
-									<div class="row mt-5" >
-												
-																				<div class="col-sm-6 col-lg-4 mb-3">
-																							<div class="card card_size">
-																								<div class="card-body">
-																									<h5 class="card-title"> Example file</h5>
-																									<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-																									<a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
-																									
-																								</div>
-																							</div>
-																				</div>
-																				<div class="col-sm-6 col-lg-4 mb-3">
-																							<div class="card">
-																								<div class="card-body ">
-																									<h5 class="card-title"> Example file</h5>
-																									<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-																									<a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
-																									
-																								</div>
-																							</div>
-																				</div>
-																				<div class="col-sm-6 col-lg-4 mb-3">
-																							<div class="card">
-																								<div class="card-body ">
-																									<h5 class="card-title"> Example file</h5>
-																									<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-																									<a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
-																									
-																								</div>
-																							</div>
-																				</div>
-																				
-										</div>
+								<!-- KM Plans -->
+								<div class="container tab-pane fade  mt-3 overflow-auto  " id="v-pills-KMPLANS" role="tabpanel" aria-labelledby="v-pills-KMPLANS-tab" tabindex="0" >
 										
-							</div>
+										<div class="row mt-5" >
+													
+																					<div class="col-sm-6 col-lg-4 mb-3">
+																								<div class="card card_size">
+																									<div class="card-body">
+																										<h5 class="card-title"> Example file</h5>
+																										<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+																										<a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
+																										
+																									</div>
+																								</div>
+																					</div>
+																					<div class="col-sm-6 col-lg-4 mb-3">
+																								<div class="card">
+																									<div class="card-body ">
+																										<h5 class="card-title"> Example file</h5>
+																										<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+																										<a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
+																										
+																									</div>
+																								</div>
+																					</div>
+																					<div class="col-sm-6 col-lg-4 mb-3">
+																								<div class="card">
+																									<div class="card-body ">
+																										<h5 class="card-title"> Example file</h5>
+																										<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+																										<a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
+																										
+																									</div>
+																								</div>
+																					</div>
+																					
+											</div>
+											
+								</div>
 
-							<!-- Communication Plans -->
-							<div class="container tab-pane fade  mt-3 overflow-auto  " id="v-pills-CPLANS" role="tabpanel" aria-labelledby="v-pills-CPLANS-tab" tabindex="0" >
-									
-									<div class="row mt-5" >
-												
-																				<div class="col-sm-6 col-lg-4 mb-3">
-																							<div class="card card_size">
-																								<div class="card-body">
-																									<h5 class="card-title"> Example file</h5>
-																									<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-																									<a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
-																									
-																								</div>
-																							</div>
-																				</div>
-																				<div class="col-sm-6 col-lg-4 mb-3">
-																							<div class="card">
-																								<div class="card-body ">
-																									<h5 class="card-title"> Example file</h5>
-																									<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-																									<a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
-																									
-																								</div>
-																							</div>
-																				</div>
-																				<div class="col-sm-6 col-lg-4 mb-3">
-																							<div class="card">
-																								<div class="card-body ">
-																									<h5 class="card-title"> Example file</h5>
-																									<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-																									<a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
-																									
-																								</div>
-																							</div>
-																				</div>
-																				
-										</div>
+								<!-- Communication Plans -->
+								<div class="container tab-pane fade  mt-3 overflow-auto  " id="v-pills-CPLANS" role="tabpanel" aria-labelledby="v-pills-CPLANS-tab" tabindex="0" >
 										
-							</div>
+										<div class="row mt-5" >
+													
+																					<div class="col-sm-6 col-lg-4 mb-3">
+																								<div class="card card_size">
+																									<div class="card-body">
+																										<h5 class="card-title"> Example file</h5>
+																										<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+																										<a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
+																										
+																									</div>
+																								</div>
+																					</div>
+																					<div class="col-sm-6 col-lg-4 mb-3">
+																								<div class="card">
+																									<div class="card-body ">
+																										<h5 class="card-title"> Example file</h5>
+																										<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+																										<a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
+																										
+																									</div>
+																								</div>
+																					</div>
+																					<div class="col-sm-6 col-lg-4 mb-3">
+																								<div class="card">
+																									<div class="card-body ">
+																										<h5 class="card-title"> Example file</h5>
+																										<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+																										<a href="#" class="btn btn-dark stretched-link  btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#viewDetails"><em>View Details </em></a>
+																										
+																									</div>
+																								</div>
+																					</div>
+																					
+											</div>
+											
+								</div>
 
 
-					</div>
-		</div>
+						</div>
+			</div>
 	</div>
 
 											
