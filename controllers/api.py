@@ -8,6 +8,8 @@ from flask_cors import CORS,cross_origin
 import base64
 import sys
 import random
+
+
 from controllers.migrations import _main as migrations
 
 app = Blueprint("api",__name__)
