@@ -1,3 +1,11 @@
+/*COLOR PALLETE*/
+/*
+#F9F5E7
+#ECF9FF
+#F5F5F5
+*/
+
+
 /**SCROLLBAR**/
 /* width */
 ::-webkit-scrollbar {
@@ -373,5 +381,5 @@ height: 1000px;
 }
 
 
-/*scrollspy*/
+
 
