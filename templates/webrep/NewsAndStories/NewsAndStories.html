@@ -196,9 +196,9 @@
     <h1 class="newsfont display-2 texttheme">News and Stories</h1>
   </div>
 
-<div class="container" style="height: 800px;">
+<div class="" style="height: 800px;">
 <!-- Menu Navbar -->
-  <nav class="container navbar bg-light shadow-sm p-3 bg-body rounded ">
+  <nav class="container navbar bg-light shadow-sm p-3 bg-body rounded sticky-top">
     <div class="container-fluid">
       <div class="dropdown d-flex ">
         <a class="me-4 " style="color: #1F4F5A !important;" role="button"><u>Latest</u></a>
@@ -210,6 +210,7 @@
             <li><a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#uploadPublication" href="" href="#">Coconut Stories</a></li>
             <li><a class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#uploadPublication" href="" href="#">Processed Fruits and Nuts Stories</a></li>
           </ul>
+        <a class="me-4 " style="color: #1F4F5A !important;" role="button">Events</a>
         <a class="me-4" id="search" onclick="searchclicked()" style="color: #1F4F5A !important;" role="button">Search</a>          
           <script>
             function searchclicked() {
@@ -232,12 +233,12 @@
       <div class="d-flex justify-content-center">     
         <form class="row row-cols-xxl-auto g-3 align-items-center mt-1 ">
           <div class="col-12 ">
-            <label class="fs-5 searchFont mb-2" for="searchTitle">Title:</label>
+            <label class=" searchFont mb-2 " for="searchTitle">News, Stories & Events</label>
             <input class="form-control form-control-md" id="searchTitle" type="text" placeholder="(e.g., Coffee Story)" aria-label=".form-control-lg example">
           </div>
 
           <div class="col-12  ">
-            <label class="fs-5 searchFont mb-2" for="seachRegion">Region:</label>
+            <label class=" searchFont mb-2" for="seachRegion">Region</label>
             <select class="form-select form-select-md" id="seachRegion">
               <option selected>National</option>
               <option value="1">Region XIII</option>
@@ -251,7 +252,7 @@
           </div>
 
           <div class="col-12 ">
-            <label class="fs-5 searchFont mb-2" for="seachYear">Year:</label>
+            <label class=" searchFont mb-2" for="seachYear">Year</label>
             <select class="form-select form-select-md" id="seachYear">
               <option selected>Choose...</option>
               <option value="1">2015</option>
@@ -267,15 +268,15 @@
           </div>
 
           <div class="col-12 ">
-            <label class="fs-5 searchFont mb-2" for="searchTags">Tags:</label>
+            <label class=" searchFont mb-2" for="searchTags">Tags</label>
             <input class="form-control form-control-md" id="searchTafs" type="text" placeholder="(e.g., Cacao)" aria-label=".form-control-lg example">
           </div>
           
 
           <div class="col-12 ">
-            <label class="fs-5 searchFont mb-2" ></label>
+            <label class=" searchFont mb-2" ></label>
             
-            <a type="submit" class="fs-4 searchFont mt-4 ms-3" role="button" data-bs-toggle="modal" data-bs-target="#searchResult"><span><i class="fa-solid fa-magnifying-glass small"></i>&nbspSearch</span></a>
+            <a type="submit" class="fs-5 searchFont mt-4 ms-3" role="button" data-bs-toggle="modal" data-bs-target="#searchResult"><span><i class="fa-solid fa-magnifying-glass small"></i>&nbspSearch</span></a>
 
           </div>
         </form>
@@ -283,10 +284,27 @@
   </div>
 
 
-
-<div class="row border border-secondary">
-      
-</div>
+<!-- Latest News & Stories -->
+  <div class="container mt-5">
+    <div class="container mt-3">
+      <div class="container row shadow-sm p-3 bg-body rounded">
+        <div class="col-2">
+          <p class="small">2023 &nbsp Jan. 3</p>
+        </div>
+        <div class="col-7">
+          <p class="small text-muted">Northern Mindanao</p>
+          <h3 class="newsfont texttheme fw-bolder">This is a sample heading</h3>
+          <p class="small">Lorem ipsum dolor sit amet. Ut illum magnam est animi error qui voluptas voluptatem nam nostrum enim. Ut enim soluta cum doloremque nisi et nostrum dolores.</p>
+          <figcaption class="blockquote-footer mt-3 fst-italic">Christian Castle Bron</figcaption>
+        </div>
+        <div class="col-3">
+          <div class="cimg-item ">
+            <img  src="https://images.unsplash.com/photo-1447946442870-3be230521a91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" class="cimg-img" alt="...">
+          </div>
+        </div>      
+      </div>
+    </div>   
+  </div>
 
 
 
