@@ -22,6 +22,16 @@
 	background: #1F4F5A; 
 }
 
+/*News Font*/
+
+.newsfont{
+	font-family: 'Times New Roman', sans-serif;
+}
+
+.texttheme{
+	color: #1F4F5A;
+}
+
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
 	background: #81A33E; }
@@ -120,6 +130,8 @@ img {
 			color: #1F4F5A !important;
 
 		}
+
+
 
 /*Nav Hover Dropdaown*/
 
